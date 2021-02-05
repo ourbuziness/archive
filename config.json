@@ -3,17 +3,17 @@
   "cameraPara": "camera_para.dat",
   "videoSettings": {
     "width": {
-      "idea": 576
+      "ideal": 576
     },
     "height": {
-      "idea": 765
+      "ideal": 765
     },
     "facingMode": "environment" ,
-    aspectRatio: { ideal:  0.75}
+    "aspectRatio": { "ideal":  0.75}
   },
   "loading": {
     "logo": {
-      "src": "Data/arNFT-logo.gif",
+      "src": "arNFT-logo.gif",
       "alt": "arNFT.js logo"
     },
     "loadingMessage": "Loading, please wait..."
