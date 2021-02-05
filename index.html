@@ -22,12 +22,14 @@
     <script>
 			ARnft.ARnft.init(576, 765, "archive/DataNFT/chamran", 'config.json', true)
 			.then((nft) => {
-				let mat = new THREE.MeshLambertMaterial({color: 0xff0000});
-				let cubeGeom = new THREE.CubeGeometry(1,1,1);
-				let cube = new THREE.Mesh(cubeGeom, mat);
-				cube.position.z = 90;
-				cube.scale.set(180,180,180);
-				nft.add(cube);
+// 				let mat = new THREE.MeshLambertMaterial({color: 0xff0000});
+// 				let cubeGeom = new THREE.CubeGeometry(1,1,1);
+// 				let cube = new THREE.Mesh(cubeGeom, mat);
+// 				cube.position.z = 90;
+// 				cube.scale.set(180,180,180);
+// 				nft.add(cube);
+				
+				nft.addModel('./skull.glb', 40, 80, 80, 80);
 			}).catch((error) => {
 				console.log(error);
 			});
