@@ -1,0 +1,27 @@
+{
+  "addPath": "",
+  "cameraPara": "camera_para.dat",
+  "videoSettings": {
+    "width": {
+      "idea": 576
+    },
+    "height": {
+      "idea": 765
+    },
+    "facingMode": "environment" ,
+    aspectRatio: { ideal:  0.75}
+  },
+  "loading": {
+    "logo": {
+      "src": "Data/arNFT-logo.gif",
+      "alt": "arNFT.js logo"
+    },
+    "loadingMessage": "Loading, please wait..."
+  },
+  "renderer": {
+    "type": "three",
+    "alpha": true,
+    "antialias": true,
+    "precision": "mediump"
+  }
+}
