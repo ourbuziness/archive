@@ -1,6 +1,6 @@
 {
   "addPath": "",
-  "cameraPara": "camera_para.dat",
+  "cameraPara": "archive/camera_para.dat",
   "videoSettings": {
     "width": {
       "ideal": 576
