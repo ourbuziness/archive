@@ -28,8 +28,14 @@
 // 				cube.position.z = 90;
 // 				cube.scale.set(180,180,180);
 // 				nft.add(cube);
+				
+				document.addEventListener('getNFTMarker', (ev) => {
+      markerResult = { type: 'found', matrixGL_RH: JSON.stringify(ev.data.matrixGL_RH) 
+		     }
+    })
+				
 				document.addEventListener('onInitThreejsRendering', (ev) => {
-					console.log(ev.detail);
+					console.log("YMZ - " + ev.detail);
 					const renderer = ev.detail.renderer;
 					console.log(renderer);
 					const scene = ev.detail.scene;
@@ -49,6 +55,7 @@
 				
 				nft.addModel('./skull1.glb', 40, 80, 80, 3);
 			}).catch((error) => {
+				alert(error);
 				console.log(error);
 			});
     </script>
