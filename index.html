@@ -53,6 +53,7 @@
 					let directionalLight = new THREE.DirectionalLight('#fff', 0.4);
 					directionalLight.position.set(0.5, 0, 0.866);
 					scene.add(directionalLight)
+var mixerContext	= new THREEx.HtmlMixer.Context(renderer, scene, camera)
 
 var url		= 'http://threejs.com';
 var mixerPlane	= THREEx.HtmlMixer.createPlaneFromIframe(mixerContext, url)
