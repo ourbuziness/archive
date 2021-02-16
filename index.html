@@ -47,14 +47,15 @@
 					console.log(scene);
 					const camera = ev.detail.camera;
 					console.log(camera);
-// 					renderer.outputEncoding = THREE.sRGBEncoding;
+ 					renderer.outputEncoding = THREE.sRGBEncoding;
+renderer.textureEncoding = THREE.sRGBEncoding
 					renderer.physicallyCorrectLights = true;
-					let directionalLight = new THREE.DirectionalLight('#fff', 0.5);
+					let directionalLight = new THREE.DirectionalLight('#fff', 2.5);
 					directionalLight.position.set(0.5, 0, 0.866);
 					scene.add(directionalLight)
 // var mixerContext	= new THREEx.HtmlMixer.Context(renderer, scene, camera)
 
-// var url		= 'http://threejs.com';
+// var url		= 'http://threejs.com'
 // var mixerPlane	= THREEx.HtmlMixer.createPlaneFromIframe(mixerContext, url)
 // scene.add(mixerPlane.object3d)
 				})
