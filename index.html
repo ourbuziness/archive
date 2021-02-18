@@ -47,12 +47,19 @@
 					console.log(scene);
 					const camera = ev.detail.camera;
 					console.log(camera);
- 					renderer.outputEncoding = THREE.sRGBEncoding;
-renderer.textureEncoding = THREE.sRGBEncoding
+  					renderer.outputEncoding = THREE.sRGBEncoding;
+                                        renderer.textureEncoding = THREE.sRGBEncoding
 					renderer.physicallyCorrectLights = true;
-					let directionalLight = new THREE.DirectionalLight('#fff', 2.5);
+                                        renderer.setClearColor( 0xcccccc );
+   
+const light1  = new Three.AmbientLight(0xFFFFFF, 0.3);
+    light1.name = 'ambient_light';
+    camera.add( light1 );
+
+					let directionalLight = new THREE.DirectionalLight(0xFFFFFF, 0.8 * Math.PI);
 					directionalLight.position.set(0.5, 0, 0.866);
-					scene.add(directionalLight)
+					camera.add(directionalLight)
+
 // var mixerContext	= new THREEx.HtmlMixer.Context(renderer, scene, camera)
 
 // var url		= 'http://threejs.com'
