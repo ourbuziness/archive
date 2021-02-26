@@ -72,6 +72,38 @@ const light1  = new THREE.AmbientLight(0xFFFFFF, 0.3);
 				})
 				
 				nft.addModel('./water2.glb', 80, 80, 0, 500);
+
+				try{
+				var loader = new THREE.FontLoader();
+
+loader.load( 'helvetiker_bold.typeface.json', function ( font ) {
+
+    var textGeo = new THREE.TextGeometry( "My Text", {
+
+        font: font,
+
+        size: 200,
+        height: 50,
+        curveSegments: 12,
+
+        bevelThickness: 2,
+        bevelSize: 5,
+        bevelEnabled: true
+
+    } );
+
+    var textMaterial = new THREE.MeshPhongMaterial( { color: 0xff0000 } );
+
+    var mesh = new THREE.Mesh( textGeo, textMaterial );
+    mesh.position.set( x, y, z );
+
+    scene.add( mesh );
+
+} );
+				}catch(e)
+				{
+					alert(e);	
+				}
 			}).catch((error) => {
 				alert(error);
 				console.log(error);
