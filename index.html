@@ -82,7 +82,7 @@ const light1  = new THREE.AmbientLight(0xFFFFFF, 0.3);
 
 loader.load( './helvetiker_bold.typeface.json', function ( font ) {
 
-    var textGeo = new THREE.TextGeometry( "قابل پرداخت : ۳۰۰۰ تومان", {
+    var textGeo = new THREE.TextGeometry( "price to pay : 3000 tomans", {
 
         font: font,
 
@@ -99,7 +99,7 @@ loader.load( './helvetiker_bold.typeface.json', function ( font ) {
     var textMaterial = new THREE.MeshPhongMaterial( { color: 0xff0000 } );
 
     var mesh = new THREE.Mesh( textGeo, textMaterial );
-    mesh.position.set( 10, 80, 30 );
+    mesh.position.set( 10, 200, 50 );
 
     nft.root.add( mesh );
 
