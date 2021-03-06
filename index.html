@@ -79,6 +79,7 @@ const light1  = new THREE.AmbientLight(0xFFFFFF, 0.3);
 				 nft.addModel('./tel.glb' , 70 , 80 ,0, 300);
 				 nft.addModel('./iphone12.glb' , 150 , 80 ,20, 900);
 				
+				
 
 									try{
 				var loader = new THREE.FontLoader();
@@ -103,8 +104,9 @@ loader.load( './iranyekan.json', function ( font ) {
 
     var mesh = new THREE.Mesh( textGeo, textMaterial );
     mesh.position.set( 10, 200, 50 );
-
-//     nft.root.add( mesh );
+mesh.callback = function() { console.log( this.name ); }
+     nft.root.add( mesh );
+	
 
 } );
 				}catch(e)
