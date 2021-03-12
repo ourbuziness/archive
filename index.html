@@ -72,7 +72,9 @@ function onDocumentMouseDown( event ) {
                                         renderer.textureEncoding = THREE.sRGBEncoding
 					renderer.physicallyCorrectLights = true;
 					try{
-                                       renderer.setClearColor( 0xcccccc );
+						
+                                       renderer.setClearColor( 0xcccccc,0 );
+						scene.background = null;
 					}catch(e){
 						alert(e);
 					}
