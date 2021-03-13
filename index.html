@@ -120,9 +120,11 @@ const intersects = raycaster.intersectObjects( sc.children );
 // 				nft.addImage('./payment.jpg',0Xfffff,5);
 				
 				try{
-// 				window.addEventListener( 'onClickEvent', onMouseMove, false );	
-					document.addEventListener( 'mousemove', onClickEvent, false );  
-// 					alert(nft.children.length);
+
+                              var domEvents = new THREEx.DomEvents(camera, renderer.domElement);
+// 				//window.addEventListener( 'onClickEvent', onMouseMove, false );	
+				//	document.addEventListener( 'mousemove', onClickEvent, false );  
+// 				//	alert(nft.children.length);
 				}catch(e){
 				alert("YMZYMA : " +e );
 				}
