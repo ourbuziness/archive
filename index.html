@@ -28,6 +28,8 @@ const mouse = new THREE.Vector2();
 
 function onClickEvent( event ) {
 
+	try{
+		alert(rt);
 const intersects = raycaster.intersectObjects( rt.root.children );
 	alert(intersects.length);
 	alert(intersects[0]);
@@ -35,6 +37,9 @@ const intersects = raycaster.intersectObjects( rt.root.children );
 	alert(sc.children);
 	alert(sc.root);
 	alert(rt.scene);
+	}catch(e){
+		alert(e);	
+	}
 	// calculate mouse position in normalized device coordinates
 	// (-1 to +1) for both components
 
