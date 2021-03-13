@@ -30,11 +30,11 @@ function onClickEvent( event ) {
 
 	try{
 		alert(rt);
-const intersects = raycaster.intersectObjects( sc );
+const intersects = raycaster.intersectObjects( sc.children );
 	alert(intersects.length);
 	alert(intersects[0]);
 // 	alert(sc);
-	alert(sc.children);
+//	alert(sc.children);
 // 	alert(sc.root);
 // 	alert(rt.scene);
 	}catch(e){
