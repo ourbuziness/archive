@@ -92,6 +92,8 @@ const intersects = raycaster.intersectObjects( rt.children );
 				})
 				document.addEventListener('onAfterInitThreejsRendering', (ev) => {
 				    // set here extra rendering settings after onInitThreejsRendering
+					rt = nft.root;
+					alert(rt.children.length);
 					console.log('onAfterInitThreejsRendering is emitted after onInitThreejsRendering!');
 				})
 				
@@ -101,7 +103,7 @@ const intersects = raycaster.intersectObjects( rt.children );
 				 nft.addModel('./tel.glb' , 10 , 100 ,0, 300);
 				 nft.addModel('./iphone12.glb' , 110 , 100 ,20, 900);
 				 nft.addModel('./lamp1.glb' , 100 , 200 ,72, 20);
-				rt = nft.root;
+				
 // 				nft.addModel('./lamp.glb',80,100,100,50);
 // 				nft.addImage('./payment.jpg',0Xfffff,5);
 				
