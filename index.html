@@ -23,13 +23,18 @@
 	    
 	    const raycaster = new THREE.Raycaster();
 	    let rt; 
+	    let sc ;
 const mouse = new THREE.Vector2();
 
 function onClickEvent( event ) {
 
-const intersects = raycaster.intersectObjects( rt.children );
+const intersects = raycaster.intersectObjects( rt.root.children );
 	alert(intersects.length);
 	alert(intersects[0]);
+	alert(sc);
+	alert(sc.children);
+	alert(sc.root);
+	alert(rt.scene);
 	// calculate mouse position in normalized device coordinates
 	// (-1 to +1) for both components
 
@@ -65,6 +70,7 @@ const intersects = raycaster.intersectObjects( rt.children );
 					console.log(scene);
 					const camera = ev.detail.camera;
 					console.log(camera);
+					sc = scene;
   					renderer.outputEncoding = THREE.sRGBEncoding;
                                         renderer.textureEncoding = THREE.sRGBEncoding
 					renderer.physicallyCorrectLights = true;
@@ -103,6 +109,7 @@ const intersects = raycaster.intersectObjects( rt.children );
 				 nft.addModel('./tel.glb' , 10 , 100 ,0, 300);
 				 nft.addModel('./iphone12.glb' , 110 , 100 ,20, 900);
 				 nft.addModel('./lamp1.glb' , 100 , 200 ,72, 20);
+				rt = nft
 				
 // 				nft.addModel('./lamp.glb',80,100,100,50);
 // 				nft.addImage('./payment.jpg',0Xfffff,5);
@@ -140,7 +147,7 @@ loader.load( './iranyekan.json', function ( font ) {
 
     var mesh = new THREE.Mesh( textGeo, textMaterial );
     mesh.position.set( 10, 200, 50 );
-mesh.callback = function() { console.log( this.name ); alert(this.name); }
+// mesh.callback = function() { console.log( this.name ); alert(this.name); }
 //      nft.root.add( mesh );
 	
 
