@@ -48,6 +48,9 @@ function onClickEvent( event ) {
 		}
 		else if(event.target == lamp ) {
 			alert("YMZ - lamp");
+		}else{
+			alert("lamp is " : lamp );
+			alert(event.target);	
 		}
 		
 	}catch(e){
@@ -126,20 +129,24 @@ function onClickEvent( event ) {
 			
 			         nft.addModel('./water2.glb', 280, 100, 0,0, 500,function loaded(m) { 
 					 water = m;
-					 domEvents.addEventListener(m,'mousedown',onClickEvent,false);
+					 water.name ="water";
+					 domEvents.addEventListener(water,'mousedown',onClickEvent,false);
 					});
 // 				 nft.addModel('./iphone12.glb' , 300 , 80 ,0, 70);
 				 nft.addModel('./tel.glb' , 10 , 100 ,0,0, 300,function loaded(m) { 
 					 phone = m ;
-					 domEvents.addEventListener(m,'mousedown',onClickEvent,false);
+					 phone.name ="phone";
+					 domEvents.addEventListener(phone,'mousedown',onClickEvent,false);
 					});
 				 nft.addModel('./iphone12.glb' , 110 , 100 ,20,0, 900,function loaded(m) { 
 					 mobile = m ;
-					domEvents.addEventListener(m,'mousedown',onClickEvent,false);
+					 mobile.name ="mobile";
+					domEvents.addEventListener(mobile,'mousedown',onClickEvent,false);
 					});
 				 lamp = nft.addModel('./lamp1.glb' , 100 , 200 ,72,0, 20,function loaded(m) { 
 					 lamp = m;
-					 domEvents.addEventListener(m,'mousedown',onClickEvent,false);
+					 lamp.name ="lamp";
+					 domEvents.addEventListener(lamp,'mousedown',onClickEvent,false);
 					});
 				rt = nft
 				
