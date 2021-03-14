@@ -85,6 +85,9 @@ let domEvents;
 				    // set here extra rendering settings after onInitThreejsRendering
 // 					 /rt = nft.root;
 					try{
+						
+					rndrr = ev.detail.renderer
+					domEvents =  new THREEx.DomEvents(rndrr.renderer.camera, rndrr.renderer.domElement);
 // 						rndrr = ev.details.renderer;
 // 						alert(ev.detail);
 // 						val threejsrenderer = ev.detail.renderer;
@@ -100,8 +103,7 @@ let domEvents;
 				})
 				
 				try{
-					rndrr = nft.renderer
-					domEvents =  new THREEx.DomEvents(rndrr.renderer.camera, rndrr.renderer.domElement);
+					alert(domEvents);
 			         nft.addModel('./water2.glb', 280, 100, 0,0, 500,function loaded(m) { 
 					 water = m;
 					 water.name ="water";
