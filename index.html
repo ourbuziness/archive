@@ -72,11 +72,7 @@ let domEvents;
 					directionalLight.position.set(0.5, 0, 0.866);
 					camera.add(directionalLight);
 					
-					try{
-                                     domEvents = new THREEx.DomEvents(camera, renderer.domElement);
-					}catch(e){
-						alert(e);
-					}
+			
 					
 // var mixerContext	= new THREEx.HtmlMixer.Context(renderer, scene, camera)
 
@@ -87,6 +83,13 @@ let domEvents;
 				document.addEventListener('onAfterInitThreejsRendering', (ev) => {
 				    // set here extra rendering settings after onInitThreejsRendering
 					rt = nft.root;
+					val threejsrenderer = ev.detail.renderer
+					try{
+                                     domEvents = new THREEx.DomEvents(threejsrenderer.camera, threejsrenderer.renderer.domElement);
+					}catch(e){
+						alert(e);
+					}
+					
 // 					alert(rt.children.length);
 					console.log('onAfterInitThreejsRendering is emitted after onInitThreejsRendering!');
 				})
