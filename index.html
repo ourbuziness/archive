@@ -101,7 +101,7 @@ let domEvents;
 				
 				try{
 			
-					domEvents =  new THREEx.DomEvents(rndrr.camera, rndrr.renderer.domElement);
+					domEvents =  new THREEx.DomEvents(rndrr.renderer.camera, rndrr.renderer.domElement);
 			         nft.addModel('./water2.glb', 280, 100, 0,0, 500,function loaded(m) { 
 					 water = m;
 					 water.name ="water";
