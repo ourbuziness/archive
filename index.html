@@ -24,7 +24,7 @@
 	    let rt; 
 	    let sc ;
 	    
-	    let rndrr;
+	    let rndrr = "YMZ";
 	    let lamp ;
 	    let phone ;
 	    let water;
@@ -85,7 +85,7 @@ let domEvents;
 				    // set here extra rendering settings after onInitThreejsRendering
 // 					 /rt = nft.root;
 					try{
-						rndrr = nft.renderer;
+// 						rndrr = ev.details.renderer;
 // 						alert(ev.detail);
 // 						val threejsrenderer = ev.detail.renderer;
 // 						alert(threejsrenderer);
@@ -100,7 +100,7 @@ let domEvents;
 				})
 				
 				try{
-			
+					rndrr = nft.renderer
 					domEvents =  new THREEx.DomEvents(rndrr.renderer.camera, rndrr.renderer.domElement);
 			         nft.addModel('./water2.glb', 280, 100, 0,0, 500,function loaded(m) { 
 					 water = m;
