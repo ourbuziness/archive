@@ -63,15 +63,7 @@ let domEvents;
   					renderer.outputEncoding = THREE.sRGBEncoding;
                                         renderer.textureEncoding = THREE.sRGBEncoding
 					renderer.physicallyCorrectLights = true;
-					try{
-                                     domEvents = new THREEx.DomEvents(camera, renderer.domElement);
-                                       //renderer.setClearColor( 0xcccccc,0 );
-						scene.background = null;
-					}catch(e){
-						alert(e);
-					}
-					
-   
+				
 					const light1  = new THREE.AmbientLight(0xFFFFFF, 0.3);
 					    light1.name = 'ambient_light';
 					    camera.add( light1 );
@@ -79,6 +71,12 @@ let domEvents;
 					let directionalLight = new THREE.DirectionalLight(0xFFFFFF, 0.8 * Math.PI);
 					directionalLight.position.set(0.5, 0, 0.866);
 					camera.add(directionalLight);
+					
+					try{
+                                     domEvents = new THREEx.DomEvents(camera, renderer.domElement);
+					}catch(e){
+						alert(e);
+					}
 					
 // var mixerContext	= new THREEx.HtmlMixer.Context(renderer, scene, camera)
 
@@ -98,8 +96,8 @@ let domEvents;
 			         nft.addModel('./water2.glb', 280, 100, 0,0, 500,function loaded(m) { 
 					 water = m;
 					 water.name ="water";
-					 alert(domEvents);
 					 domEvents.addEventListener(water,'click',function(event){  alert("YMA");  },false);
+					 alert("mun");
 					});
 				 nft.addModel('./tel.glb' , 10 , 100 ,0,0, 300,function loaded(m) { 
 					 phone = m ;
