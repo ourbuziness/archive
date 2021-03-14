@@ -83,9 +83,10 @@ let domEvents;
 				document.addEventListener('onAfterInitThreejsRendering', (ev) => {
 				    // set here extra rendering settings after onInitThreejsRendering
 					rt = nft.root;
-					val threejsrenderer = ev.detail.renderer
 					try{
-                                     domEvents = new THREEx.DomEvents(threejsrenderer.camera, threejsrenderer.renderer.domElement);
+						val threejsrenderer = ev.detail.renderer
+						val c = threejsrenderer.camera
+                                     domEvents = new THREEx.DomEvents(c, threejsrenderer.renderer.domElement);
 					}catch(e){
 						alert(e);
 					}
