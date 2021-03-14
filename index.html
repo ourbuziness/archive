@@ -99,7 +99,7 @@ let domEvents;
 					 water = m;
 					 water.name ="water";
 					 alert(domEvents);
-					 domEvents.addEventListener(water,'click',onClickEvent,false);
+					 domEvents.addEventListener(water,'click',function(event){  alert("YMA");  },false);
 					});
 				 nft.addModel('./tel.glb' , 10 , 100 ,0,0, 300,function loaded(m) { 
 					 phone = m ;
