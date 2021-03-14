@@ -24,6 +24,7 @@
 	    let rt; 
 	    let sc ;
 	    
+	    let rndrr;
 	    let lamp ;
 	    let phone ;
 	    let water;
@@ -82,9 +83,9 @@ let domEvents;
 				})
 				document.addEventListener('onAfterInitThreejsRendering', (ev) => {
 				    // set here extra rendering settings after onInitThreejsRendering
-					rt = nft.root;
+// 					 /rt = nft.root;
 					try{
-						alert("YMZ : " + nft.renderer);
+						rndrr = nft.renderer;
 // 						alert(ev.detail);
 // 						val threejsrenderer = ev.detail.renderer;
 // 						alert(threejsrenderer);
