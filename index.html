@@ -86,8 +86,8 @@ let domEvents;
 // 					 /rt = nft.root;
 					try{
 						
-					rndrr = ev.detail.renderer
-					domEvents =  new THREEx.DomEvents(rndrr.renderer.camera, rndrr.renderer.domElement);
+					//rndrr = ev.detail.renderer
+					//domEvents =  new THREEx.DomEvents(rndrr.renderer.camera, rndrr.renderer.domElement);
 // 						rndrr = ev.details.renderer;
 // 						alert(ev.detail);
 // 						val threejsrenderer = ev.detail.renderer;
@@ -104,26 +104,17 @@ let domEvents;
 				
 				try{
 					alert(domEvents);
-			         nft.addModel('./water2.glb', 280, 100, 0,0, 500,function loaded(m) { 
-					 water = m;
-					 water.name ="water";
-					 domEvents.addEventListener(water,'click',function(event){  alert("YMA");  },false);
+			         nft.addModel('./water2.glb', 280, 100, 0,0, 500,function loaded() { 
 					 alert("mun");
 					});
-				 nft.addModel('./tel.glb' , 10 , 100 ,0,0, 300,function loaded(m) { 
-					 phone = m ;
-					 phone.name ="phone";
-					 domEvents.addEventListener(phone,'click',onClickEvent,false);
+				 nft.addModel('./tel.glb' , 10 , 100 ,0,0, 300,function loaded() { 
+					
 					});
-				 nft.addModel('./iphone12.glb' , 110 , 100 ,20,0, 900,function loaded(m) { 
-					 mobile = m ;
-					 mobile.name ="mobile";
-					domEvents.addEventListener(mobile,'click',onClickEvent,false);
+				 nft.addModel('./iphone12.glb' , 110 , 100 ,20,0, 900,function loaded() { 
+					
 					});
-				 lamp = nft.addModel('./lamp1.glb' , 100 , 200 ,72,0, 20,function loaded(m) { 
-					 lamp = m;
-					 lamp.name ="lamp";
-					 domEvents.addEventListener(lamp,'click',onClickEvent,false);
+				 lamp = nft.addModel('./lamp1.glb' , 100 , 200 ,72,0, 20,function loaded() { 
+					 
 					});
 				rt = nft
 				
