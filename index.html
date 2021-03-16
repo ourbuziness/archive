@@ -119,8 +119,12 @@ let domEvents;
 					
 					nft.addModel('./iphone12.glb',100,100,0,900,function loaded(m){
 						let model = m ;
+						try{
 						nft.tickCallBack = function(){
 							model.rotation.y += 0.01;
+						}
+						}catch(e){
+						alert(e);	
 						}
 					});
 				rt = nft
