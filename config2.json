@@ -3,8 +3,8 @@
   "cameraPara": "archive/camera_para.dat",
   "container": {
     "create": false,
-    "containerName": "app",
-    "canvasName": "canvas"
+    "containerName": "",
+    "canvasName": ""
   },
   "videoSettings": {
     "width": {
@@ -35,13 +35,13 @@
       "depth": true,
       "logarithmicDepthBuffer": true
     },
-    "stats": {
-        "createHtml": false
-      },
     "camera": {
       "fov": "0.8 * 180 / Math.PI",
       "ratio": "window.clientWidth / window.clientHeight",
       "near": 0.01,
       "far": 1000
-    }
+    },
+    "stats": {
+        "createHtml": true
+      }
   }
