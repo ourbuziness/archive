@@ -1,58 +1,34 @@
 <!DOCTYPE html>
+</html>
+
+<!DOCTYPE html>
 <html>
 <head>
 	<meta charset="utf-8">
-	<title>ARnft example showing an simple red cube</title>
+	<title>ARnft example showing a simple red cube</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=1">
-	<link rel="stylesheet" href="nft-style.css">
+	<link rel="stylesheet" href="css/nft-style.css">
 </head>
 <body>
 
-     <!-- <a
+      <a
           href="https://raw.githubusercontent.com/artoolkitx/artoolkit5/master/doc/Marker%20images/pinball.jpg"
           class="ui marker"
           target="_blank">
           🖼 Marker Image
-      </a> -->
+      </a>
 
 		<script src="three.min.js"></script>
 		<script src="ARnft.js"></script>
-         <script src='threex.domevents.js'></script>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
 
     <script>
-	    
-	    let rt; 
-	    let sc ;
-	    
-	    let rndrr = "YMZ";
-	    let lamp ;
-	    let phone ;
-	    let water;
-	    let mobile;
-	   
-let domEvents;
-
+		  // This example not create the Html elements for loading, stats and container app.
+			// But instead you define in your html code. See 'config-container.json' for the set-up.
 	    
 			ARnft.ARnft.init(800, 600, "archive/DataNFT/chamran", 'config2.json', true, true)
 			.then((nft) => {
-// 				let mat = new THREE.MeshLambertMaterial({color: 0xff0000});
-// 				let cubeGeom = new THREE.CubeGeometry(1,1,1);
-// 				let cube = new THREE.Mesh(cubeGeom, mat);
-// 				cube.position.z = 90;
-// 				cube.scale.set(180,180,180);
-// 				nft.add(cube);
 				
-// 				 document.addEventListener('getProjectionMatrix', (ev) => {
-//       console.log("YMA - "+ev.detail.proj);
-//       console.log(ev.detail);
-//     })
-				
-// 				document.addEventListener('getNFTMarker', (ev) => {
-//       markerResult = { type: 'found', matrixGL_RH: JSON.stringify(ev.data.matrixGL_RH) 
-// 		     }
-//     })
-				
-				document.addEventListener('onInitThreejsRendering', (ev) => {
+								document.addEventListener('onInitThreejsRendering', (ev) => {
 					console.log("YMZ - " + ev.detail);
 					const renderer = ev.detail.renderer;
 					console.log(renderer);
@@ -81,134 +57,31 @@ let domEvents;
 // var mixerPlane	= THREEx.HtmlMixer.createPlaneFromIframe(mixerContext, url)
 // scene.add(mixerPlane.object3d)
 				})
-				document.addEventListener('onAfterInitThreejsRendering', (ev) => {
-				    // set here extra rendering settings after onInitThreejsRendering
-// 					 /rt = nft.root;
-					try{
-						
-					//rndrr = ev.detail.renderer
-					//domEvents =  new THREEx.DomEvents(rndrr.renderer.camera, rndrr.renderer.domElement);
-// 						rndrr = ev.details.renderer;
-// 						alert(ev.detail);
-// 						val threejsrenderer = ev.detail.renderer;
-// 						alert(threejsrenderer);
-// 						val c = threejsrenderer.camera
-//                                      domEvents = new THREEx.DomEvents(c, threejsrenderer.renderer.domElement);
-					}catch(e){
-						alert(e);
-					}
-					
-// 					alert(rt.children.length);
-					console.log('onAfterInitThreejsRendering is emitted after onInitThreejsRendering!');
-				})
 				
-				try{
-					//alert(domEvents);
-// 			         nft.addModel('./water2.glb', 280, 100, 0,0, 500,function loaded(m) { 
-// 					 alert("YMZ");
-// 					});
-// 				 nft.addModel('./tel.glb' , 10 , 100 ,0,0, 300,function loaded() { 
-					
-// 					});
-				nft.addModel('./tel.glb' , 150 , 150 ,0,(Math.PI / 2), 200,"YMZ");
-// 				 nft.addModel('./iphone12.glb' , 110 , 100 ,20,0, 900,function loaded() { 
-					
-// 					});
-// 				 lamp = nft.addModel('./lamp1.glb' , 100 , 200 ,72,0, 20,function loaded() { 
-					 
-// 					});
-					
-// 					 nft.addModel('./setareyek.glb' , 10 , 100 ,0,0, 300,function loaded() { 
-					
-// 					});
-				rt = nft
-				
-// 				nft.addModel('./lamp.glb',80,100,100,50);
-// 				nft.addImage('./payment.jpg',0Xfffff,5);
-				
-				
-
-                             // var domEvents = new THREEx.DomEvents(camera, renderer.domElement);
-// 				//window.addEventListener( 'onClickEvent', onMouseMove, false );	
-				//	document.addEventListener( 'mousemove', onClickEvent, false );  
-// 				//	alert(nft.children.length);
-				}catch(e){
-				alert("YMZYMA : " +e );
-				}
-				
-				
-
-									try{
-				var loader = new THREE.FontLoader();
-
-loader.load( './iranyekan.json', function ( font ) {
-
-    var textGeo = new THREE.TextGeometry( "یا علی", {
-
-        font: font,
-
-        size: 14,
-        height: 10,
-        curveSegments: 12,
-
-        bevelThickness: 1,
-        bevelSize: 5,
-        bevelEnabled: true
-
-    } );
-
-    var textMaterial = new THREE.MeshPhongMaterial( { color: 0xff0000 } );
-
-    var mesh = new THREE.Mesh( textGeo, textMaterial );
-    mesh.position.set( 10, 200, 50 );
-// mesh.callback = function() { console.log( this.name ); alert(this.name); }
-//      nft.root.add( mesh );
-	
-
-} );
-				}catch(e)
-				{
-					alert(e);	
-				}
-				//alert(nft.root);
-
+				nft.addModel('./tel.glb' , 150 , 150 ,0,(Math.PI / 2), 200);
 			}).catch((error) => {
-				alert(error);
 				console.log(error);
 			});
-	    
-	    function onClickEvent( event ) {
-
-		    alert("YMZ");
-	try{
-	
-		if(event.target == mobile){
-			alert("YMZ - mobile");
-		}
-		else if(event.target == phone ) {
-			alert("YMZ - phone");
-		}
-		else if(event.target == water ) {
-			alert("YMZ - water");
-		}
-		else if(event.target == lamp ) {
-			alert("YMZ - lamp");
-		}else{
-			alert("lamp is " + lamp );
-			alert(event.target);	
-		}
-		
-	}catch(e){
-		alert(e);	
-	}
-	// calculate mouse position in normalized device coordinates
-	// (-1 to +1) for both components
-
-// 	mouse.x = ( event.clientX / window.innerWidth ) * 2 - 1;
-// 	mouse.y = - ( event.clientY / window.innerHeight ) * 2 + 1;
-
-}
     </script>
+
+	<div id="stats" class="ui stats">
+		<div id="stats1" class="stats-item">
+            <p class="stats-item-title">Main</p>
+		</div>
+		<div id="stats2" class="stats-item">
+            <p class="stats-item-title">Worker</p>
+		</div>
+	</div>
+
+    <div id="loading">
+      <img src="Data/arNFT-logo.gif" alt="arNFT.js logo">
+      <span class="loading-text">Loading, please wait...</span>
+    </div>
+
+    <div id="app">
+      <canvas id="canvas" width="640" height="480"></canvas>
+      <video id="video" muted playsinline autoplay></video>
+    </div>
 </body>
 
 </html>
