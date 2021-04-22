@@ -1,11 +1,6 @@
 {
     "addPath": "",
   "cameraPara": "archive/camera_para.dat",
-  "container": {
-    "create": false,
-    "containerName": "",
-    "canvasName": ""
-  },
   "videoSettings": {
     "width": {
       "ideal": 800
@@ -17,7 +12,6 @@
     "aspectRatio": { "ideal":  0.75}
   },
   "loading": {
-    "create": false,
     "logo": {
       "src": "arlogo.png",
       "alt": "arNFT.js logo"
@@ -40,8 +34,6 @@
       "ratio": "window.clientWidth / window.clientHeight",
       "near": 0.01,
       "far": 1000
-    },
-    "stats": {
-        "createHtml": true
-      }
+    }
   }
+  
