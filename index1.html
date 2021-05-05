@@ -17,7 +17,7 @@
 
 		<script src="three.min.js"></script>
 		<script src="ARnft.js"></script>
-         <script src='threex.domevents.js'></script>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+	<script src="three.interactive.js"></script>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
 
     <script>
 	    
@@ -30,7 +30,6 @@
 	    let water;
 	    let mobile;
 	   
-let domEvents;
 
 	    
 			ARnft.ARnft.init(800, 600, "archive/DataNFT/chamran", 'config2.json', true, true)
@@ -73,6 +72,36 @@ let domEvents;
 					directionalLight.position.set(0.5, 0, 0.866);
 					camera.add(directionalLight);
 					
+                    try{
+					alert('YMZ - initRendering ')
+					nft.addModel('./tel.glb' , 150 , 150 ,0,(Math.PI / 2), 200 , function(model){
+					alert('YMZ - model added successfully ' + model)
+						const interactionManager = new THREE.InteractionManager(
+        					renderer,
+        					camera,
+        					renderer.domElement
+      						);
+					alert('YMZ - interactionManager : '+interactionManager)	
+						model.traverse((child) => {
+         						 if (child.children.length === 0) {
+								 interactionManager.add(child);
+								 child.addEventListener('mouseover', (event) => {
+									console.log("YMZ , mouseOver")
+									 alert("YMZ , mouseOver")
+								 });
+								 child.addEventListener('mousedown', (event) => {
+									console.log("YMZ , mousedown")
+									 alert("YMZ , mousedown")
+								 });
+							 }
+						})				 
+						
+						
+					})
+                }catch(e){
+                        alert("YMZYMA  - error "+e)
+                    }
+					
 			
 					
 // var mixerContext	= new THREEx.HtmlMixer.Context(renderer, scene, camera)
@@ -110,7 +139,7 @@ let domEvents;
 // 				 nft.addModel('./tel.glb' , 10 , 100 ,0,0, 300,function loaded() { 
 					
 // 					});
-				nft.addModel('./tel.glb' , 150 , 150 ,0,(Math.PI / 2), 200);
+				
 // 				 nft.addModel('./iphone12.glb' , 110 , 100 ,20,0, 900,function loaded() { 
 					
 // 					});
