@@ -74,11 +74,11 @@
 					
                     try{
 			    
-			    console.log("YMZ.YMA  - canvas = " + nft.getConv());
+			    console.log("YMZ.YMA  - dom = " + renderer.domElement);
 			    const interactionManager = new THREE.InteractionManager(
         					renderer,
         					camera,
-        					nft.getConv()
+        					renderer.domElement
       						);
 					alert('YMZ - interactionManager : '+interactionManager)	
 			    
