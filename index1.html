@@ -73,10 +73,12 @@
 					camera.add(directionalLight);
 					
                     try{
+			    
+			    console.log("YMZ.YMA  - canvas = " + nft.getConv());
 			    const interactionManager = new THREE.InteractionManager(
         					renderer,
         					camera,
-        					renderer.domElement
+        					nft.getConv()
       						);
 					alert('YMZ - interactionManager : '+interactionManager)	
 			    
