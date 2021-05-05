@@ -73,17 +73,18 @@
 					camera.add(directionalLight);
 					
                     try{
-					alert('YMZ - initRendering ')
-					nft.addModel('./tel.glb' , 150 , 150 ,0,(Math.PI / 2), 200 , function(model){
-					alert('YMZ - model added successfully ' + model)
-						const interactionManager = new THREE.InteractionManager(
+			    const interactionManager = new THREE.InteractionManager(
         					renderer,
         					camera,
         					renderer.domElement
       						);
 					alert('YMZ - interactionManager : '+interactionManager)	
+			    
+					nft.addModel('./tel.glb' , 150 , 150 ,0,(Math.PI / 2), 200 ,interactionManager, function(model){
+					alert('YMZ - model added successfully ' + model)
 						model.traverse((child) => {
          						 if (child.children.length === 0) {
+								 console.log("YMZ - child is zero ");
 								 interactionManager.add(child);
 								 child.addEventListener('mouseover', (event) => {
 									console.log("YMZ , mouseOver")
