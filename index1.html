@@ -52,6 +52,7 @@
 //     })
 				
 				document.addEventListener('onInitThreejsRendering', (ev) => {
+					sc = ev ;
 					console.log("YMZ - " + ev.detail);
 					const renderer = ev.detail.renderer;
 					console.log(renderer);
