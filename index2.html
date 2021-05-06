@@ -74,18 +74,7 @@
 					camera.add(directionalLight);
 					
 			    
-			    console.log("YMZ.YMA  - dom = " + renderer.domElement);
-			    const interactionManager = new THREE.InteractionManager(
-        					renderer,
-        					camera,
-        					renderer.domElement
-      						);
-					alert('YMZ - interactionManager : '+interactionManager)	
-			    
-					nft.addModel('./tel.glb' , 150 , 150 ,0,(Math.PI / 2), 200)
-                        alert("YMZYMA  - error "+e)
-					
-			
+			    		console.log("YMZ.YMA  - dom = " + renderer.domElement);
 					
 // var mixerContext	= new THREEx.HtmlMixer.Context(renderer, scene, camera)
 
@@ -93,6 +82,9 @@
 // var mixerPlane	= THREEx.HtmlMixer.createPlaneFromIframe(mixerContext, url)
 // scene.add(mixerPlane.object3d)
 				})
+				
+				nft.addModel('./tel.glb' , 150 , 150 ,0,(Math.PI / 2), 200)
+			
 				document.addEventListener('onAfterInitThreejsRendering', (ev) => {
 				    // set here extra rendering settings after onInitThreejsRendering
 // 					 /rt = nft.root;
