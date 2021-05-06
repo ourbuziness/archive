@@ -73,7 +73,6 @@
 					directionalLight.position.set(0.5, 0, 0.866);
 					camera.add(directionalLight);
 					
-                    try{
 			    
 			    console.log("YMZ.YMA  - dom = " + renderer.domElement);
 			    const interactionManager = new THREE.InteractionManager(
@@ -83,28 +82,8 @@
       						);
 					alert('YMZ - interactionManager : '+interactionManager)	
 			    
-					nft.addModel('./tel.glb' , 150 , 150 ,0,(Math.PI / 2), 200 ,interactionManager, function(model){
-// 					alert('YMZ - model added successfully ' + model)
-						model.traverse((child) => {
-          						if (child.children.length === 0) {
-								 console.log("YMZ - child is zero ");
-								 interactionManager.add(child);
-								 child.addEventListener('mouseover', (event) => {
-									console.log("YMZ , mouseOver")
-// 									 alert("YMZ , mouseOver")
-								 });
-								 child.addEventListener('mousedown', (event) => {
-									console.log("YMZ , mousedown")
-// 									 alert("YMZ , mousedown")
-								 });
-								
-							}
-						});
-						
-					})
-                }catch(e){
+					nft.addModel('./tel.glb' , 150 , 150 ,0,(Math.PI / 2), 200)
                         alert("YMZYMA  - error "+e)
-                    }
 					
 			
 					
