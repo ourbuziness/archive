@@ -32,7 +32,7 @@
 	   
 
 	    
-			ARnft.ARnft.init(800, 600, "archive/DataNFT/chamran", 'config2.json', true, true)
+			ARnft.ARnft.init(800, 600, "archive/DataNFT/metro", 'config2.json', true, true)
 			.then((nft) => {
 // 				let mat = new THREE.MeshLambertMaterial({color: 0xff0000});
 // 				let cubeGeom = new THREE.CubeGeometry(1,1,1);
@@ -86,7 +86,16 @@
 				nft.addModel('./tel.glb' , 150 , 150 ,0,(Math.PI / 2), 200 , "YMZ - telephone",function(){
 					alert("YMZ - YMA");	
 				});
-			
+				
+				nft.addModel('./water2.glb', 280, 100, 0,(Math.PI / 2), 500,"water",function () { 
+					 alert("water");
+					});
+			nft.addModel('./iphone12.glb' , 110 , 100 ,20,(Math.PI / 2), 900,"iphone12",function loaded() { 
+					alert("iphone12");
+					});
+// 				 nft.addModel('./lamp1.glb' , 100 , 200 ,72,(Math.PI / 2), 20,"lamp",function loaded() { 
+// 					 alert("lamp1");
+// 					});
 				document.addEventListener('onAfterInitThreejsRendering', (ev) => {
 				    // set here extra rendering settings after onInitThreejsRendering
 // 					 /rt = nft.root;
