@@ -181,9 +181,9 @@ function apply(m,v) { // multiply matrix and vector
 						mat = t;
 						var trans = "matrix3d(" + mat.join(", ") + ")";
                                         
-					ifr.style.transform = trans;
-    ifr.style.webkitTransform = trans;
-    ifr.style.msTransform = trans ;
+					ifram.style.transform = trans;
+    ifram.style.webkitTransform = trans;
+    ifram.style.msTransform = trans ;
 					}catch(e){
 						console.log("YMZ - mat problem  :  "+ e);
 					}
