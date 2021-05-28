@@ -8,7 +8,7 @@
 </head>
 <body>
 
-<iframe src="https://en.wikipedia.org/wiki/Ali" height="200" width="300" id="myifr"></iframe>
+<!--<iframe src="https://en.wikipedia.org/wiki/Ali" height="200" width="300" id="myifr"></iframe>-->
      <!-- <a
           href="https://raw.githubusercontent.com/artoolkitx/artoolkit5/master/doc/Marker%20images/pinball.jpg"
           class="ui marker"
@@ -116,20 +116,7 @@ function apply(m,v) { // multiply matrix and vector
 			ARnft.ARnft.init(800, 600, "archive/DataNFT/metro", 'config2.json', true, true)
 			.then((nft) => {
 				
-				ifram = document.getElementById('myifr');
-						sss = [
-						    0,0,1,
-						    ifram.offsetWidth,0,1,
-						    0,ifram.offsetHeight,1
-						];
-
-						var v = apply(adjugate(sss),[ifram.offsetWidth,ifram.offsetHeight,1]);
-
-						sss = multiply(sss,[
-						    v[0], 0, 0,
-						    0, v[1], 0,
-						    0, 0, v[2]
-						]);
+				
 				
 					
 // 				iframe = document.createElement("iframe");
@@ -152,47 +139,7 @@ function apply(m,v) { // multiply matrix and vector
 //       console.log(ev.detail);
 //     })
 				
-				document.addEventListener('getMatrixGL_RH', (ev) => {
-					try{  
-					
-     					var a = ev.detail.matrixGL_RH;
-					var result = interpolating(a);
-					var t = multiply(result,adjugate(sss));
 
-					for (i = 0; i < 9; ++i) {
-					    t[i] = t[i] / t[8];
-					    t[i] = Math.abs(t[i]) < Number.EPSILON ? 0 : t[i];
-					}
-
-					t = [
-					    t[0],t[1],0,t[2],
-					    t[3],t[4],0,t[5],
-					    0,0,1,0,
-					    t[6],t[7],0,t[8]
-					];
-					console.log(t);
-// 						var t = [
-// 							a[0],a[1],a[2],a[3],
-// 							a[4],a[5],a[6],a[7],
-// 							a[8],a[9],a[10],a[11],
-// 							a[12],a[13],a[14],a[15]
-// 							];
-// 						console.log(JSON.stringify(t));
-						mat = t;
-						var trans = "matrix3d(" + mat.join(", ") + ")";
-                                        
-					ifram.style.transform = trans;
-    ifram.style.webkitTransform = trans;
-    ifram.style.msTransform = trans ;
-					}catch(e){
-						console.log("YMZ - mat problem  :  "+ e);
-					}
-     
-    })
-				
-document.addEventListener('getProjectionMatrix', function (ev) {
-    console.log(" YMZ -  proj :    "+JSON.stringify(ev.detail.proj));
-});
 				document.addEventListener('onInitThreejsRendering', (ev) => {
 					sc = ev ;
 					console.log("YMZ - " + ev.detail);
