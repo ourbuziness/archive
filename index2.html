@@ -32,6 +32,34 @@
 	    let mobile;
 	    let iframe;
 	    let mat ;
+	    const trackedMatrix = {
+  // for interpolation
+  delta: [
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0
+  ],
+  interpolated: [
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0
+  ]
+	    };
+	    
+	     function interpolating (world) {
+    const interpolationFactor = 24
+
+    // interpolate matrix
+    for (let i = 0; i < 16; i++) {
+      trackedMatrix.delta[i] = world[i] - trackedMatrix.interpolated[i]
+      trackedMatrix.interpolated[i] =
+                  trackedMatrix.interpolated[i] +
+                  trackedMatrix.delta[i] / interpolationFactor
+    }
+    return trackedMatrix.interpolated
+  }
 	   
 
 	    
@@ -61,19 +89,21 @@
 				document.addEventListener('getMatrixGL_RH', (ev) => {
 					try{
      					var a = ev.detail.matrixGL_RH;
-						var t = [
-							a[0],a[1],a[2],a[3],
-							a[4],a[5],a[6],a[7],
-							a[8],a[9],a[10],a[11],
-							a[12],a[13],a[14],a[15]
-							];
-						console.log(JSON.stringify(t));
-						mat = t;
-						var trans = "matrix3d(" + mat.join(", ") + ")";
-                                          var ifr = document.getElementById('myifr');
-					ifr.style.transform = trans;
-    ifr.style.webkitTransform = trans;
-    ifr.style.msTransform = trans ;
+					var result = interpolating(a);
+					console.log(result);
+// 						var t = [
+// 							a[0],a[1],a[2],a[3],
+// 							a[4],a[5],a[6],a[7],
+// 							a[8],a[9],a[10],a[11],
+// 							a[12],a[13],a[14],a[15]
+// 							];
+// 						console.log(JSON.stringify(t));
+// 						mat = t;
+// 						var trans = "matrix3d(" + mat.join(", ") + ")";
+//                                           var ifr = document.getElementById('myifr');
+// 					ifr.style.transform = trans;
+//     ifr.style.webkitTransform = trans;
+//     ifr.style.msTransform = trans ;
 					}catch(e){
 						console.log("YMZ - mat problem  :  "+ e);
 					}
