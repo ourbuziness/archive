@@ -30,6 +30,7 @@
 	    let water;
 	    let mobile;
 	    let iframe;
+	    let mat ;
 	   
 
 	    
@@ -57,7 +58,7 @@
 				
 				document.addEventListener('getMatrixGL_RH', (ev) => {
 					try{
-     					var mat = ev.detail.matrixGL_RH;
+     					mat = ev.detail.matrixGL_RH;
 					iframe.style.transform = "matrix3d(" + mat.join(", ") + ")";
 					}catch(e){
 						console.log("YMZ - mat problem  :  "+ e);
