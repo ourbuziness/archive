@@ -8,6 +8,7 @@
 </head>
 <body>
 
+<iframe src="https://en.wikipedia.org/wiki/Ali" height="200" width="300" id="myifr"></iframe>
      <!-- <a
           href="https://raw.githubusercontent.com/artoolkitx/artoolkit5/master/doc/Marker%20images/pinball.jpg"
           class="ui marker"
@@ -37,13 +38,13 @@
 			ARnft.ARnft.init(800, 600, "archive/DataNFT/metro", 'config2.json', true, true)
 			.then((nft) => {
 				
-				iframe = document.createElement("iframe");
-                                iframe.setAttribute("id", "myIframe");
-				iframe.src = "https://google.com"; 
-				iframe.style.position = "absolute"; 
-				iframe.style.left = "0"; 
-				iframe.style.top = "0"; 
-				iframe.style.transformOrigin = "0 0"; 
+// 				iframe = document.createElement("iframe");
+//                                 iframe.setAttribute("id", "myIframe");
+// 				iframe.src = ; 
+// 				iframe.style.position = "absolute"; 
+// 				iframe.style.left = "0"; 
+// 				iframe.style.top = "0"; 
+// 				iframe.style.transformOrigin = "0 0"; 
 				//document.querySelector("body").appendChild(iframe);
 // 				let mat = new THREE.MeshLambertMaterial({color: 0xff0000});
 // 				let cubeGeom = new THREE.CubeGeometry(1,1,1);
@@ -62,7 +63,7 @@
      					var a = ev.detail.matrixGL_RH;
 						mat = Object.entries(a);
 						var trans = "matrix3d(" + mat.join(", ") + ")";
-                                          var ifr = document.getElementById('myIframe');
+                                          var ifr = document.getElementById('myifr');
 					ifr.style.transform = trans;
     ifr.style.webkitTransform = trans;
     ifr.style.msTransform = trans ;
