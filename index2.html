@@ -60,7 +60,10 @@
 					try{
      					var a = ev.detail.matrixGL_RH;
 						mat = Object.entries(a);
-					iframe.style.transform = "matrix3d(" + mat.join(", ") + ")";
+						var trans = "matrix3d(" + mat.join(", ") + ")"
+					iframe.style.transform = trans;
+    text.style.webkitTransform = trans;
+    text.style.msTransform = trans ;
 					}catch(e){
 						console.log("YMZ - mat problem  :  "+ e);
 					}
