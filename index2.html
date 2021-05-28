@@ -38,7 +38,7 @@
 			.then((nft) => {
 				
 				iframe = document.createElement("iframe"); 
-				iframe.src = "http://www.aviny.com/Quran/Estekhareh/index2.aspx"; 
+				iframe.src = "https://google.com"; 
 				iframe.style.position = "absolute"; 
 				iframe.style.left = "0"; 
 				iframe.style.top = "0"; 
@@ -58,8 +58,9 @@
 				
 				document.addEventListener('getMatrixGL_RH', (ev) => {
 					try{
-     					mat = ev.detail.matrixGL_RH;
-					iframe.style.transform = "matrix3d(" + mat.join(", ") + ")";
+     					var a = ev.detail.matrixGL_RH;
+						mat = Object.entries(a);
+					iframe.style.transform = "matrix3d(" + a.join(", ") + ")";
 					}catch(e){
 						console.log("YMZ - mat problem  :  "+ e);
 					}
