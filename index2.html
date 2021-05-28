@@ -61,6 +61,7 @@
 				document.addEventListener('getMatrixGL_RH', (ev) => {
 					try{
      					var a = ev.detail.matrixGL_RH;
+						console.log(JSON.stringify(a));
 						mat = Object.entries(a);
 						var trans = "matrix3d(" + mat.join(", ") + ")";
                                           var ifr = document.getElementById('myifr');
