@@ -51,6 +51,9 @@
 // 		     }
 //     })
 				
+document.addEventListener('getProjectionMatrix', function (ev) {
+    console.log(" YMZ -  :    "+ev.detail);
+});
 				document.addEventListener('onInitThreejsRendering', (ev) => {
 					sc = ev ;
 					console.log("YMZ - " + ev.detail);
