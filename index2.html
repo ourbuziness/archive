@@ -38,7 +38,7 @@
 			.then((nft) => {
 				
 				iframe = document.createElement("iframe");
-                                iframe.setAttribute("id", "iframe");
+                                iframe.setAttribute("id", "myIframe");
 				iframe.src = "https://google.com"; 
 				iframe.style.position = "absolute"; 
 				iframe.style.left = "0"; 
@@ -62,7 +62,7 @@
      					var a = ev.detail.matrixGL_RH;
 						mat = Object.entries(a);
 						var trans = "matrix3d(" + mat.join(", ") + ")";
-                                          var ifr = document.getElementById('iframe');
+                                          var ifr = document.getElementById('myIframe');
 					ifr.style.transform = trans;
     ifr.style.webkitTransform = trans;
     ifr.style.msTransform = trans ;
