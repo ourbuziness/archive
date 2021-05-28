@@ -98,12 +98,12 @@
 // 							a[12],a[13],a[14],a[15]
 // 							];
 // 						console.log(JSON.stringify(t));
-// 						mat = t;
-// 						var trans = "matrix3d(" + mat.join(", ") + ")";
-//                                           var ifr = document.getElementById('myifr');
-// 					ifr.style.transform = trans;
-//     ifr.style.webkitTransform = trans;
-//     ifr.style.msTransform = trans ;
+						mat = result;
+						var trans = "matrix3d(" + mat.join(", ") + ")";
+                                          var ifr = document.getElementById('myifr');
+					ifr.style.transform = trans;
+    ifr.style.webkitTransform = trans;
+    ifr.style.msTransform = trans ;
 					}catch(e){
 						console.log("YMZ - mat problem  :  "+ e);
 					}
