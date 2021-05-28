@@ -37,13 +37,14 @@
 			ARnft.ARnft.init(800, 600, "archive/DataNFT/metro", 'config2.json', true, true)
 			.then((nft) => {
 				
-				iframe = document.createElement("iframe"); 
+				iframe = document.createElement("iframe");
+                                iframe.setAttribute("id", "iframe");
 				iframe.src = "https://google.com"; 
 				iframe.style.position = "absolute"; 
 				iframe.style.left = "0"; 
 				iframe.style.top = "0"; 
 				iframe.style.transformOrigin = "0 0"; 
-				document.querySelector("body").appendChild(iframe);
+				//document.querySelector("body").appendChild(iframe);
 // 				let mat = new THREE.MeshLambertMaterial({color: 0xff0000});
 // 				let cubeGeom = new THREE.CubeGeometry(1,1,1);
 // 				let cube = new THREE.Mesh(cubeGeom, mat);
@@ -61,9 +62,10 @@
      					var a = ev.detail.matrixGL_RH;
 						mat = Object.entries(a);
 						var trans = "matrix3d(" + mat.join(", ") + ")";
-					iframe.style.transform = trans;
-    iframe.style.webkitTransform = trans;
-    iframe.style.msTransform = trans ;
+                                          var ifr = document.getElementById('iframe');
+					ifr.style.transform = trans;
+    ifr.style.webkitTransform = trans;
+    ifr.style.msTransform = trans ;
 					}catch(e){
 						console.log("YMZ - mat problem  :  "+ e);
 					}
