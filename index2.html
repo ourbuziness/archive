@@ -46,8 +46,8 @@
 //       console.log(ev.detail);
 //     })
 				
-				document.addEventListener('getNFTMarker', (ev) => {
-     console.log("YMZ - found : " + JSON.stringify(ev.data.matrixGL_RH));
+				document.addEventListener('getMatrixGL_RH', (ev) => {
+     console.log("YMZ - found : " + JSON.stringify(ev.detail.matrixGL_RH));
     })
 				
 document.addEventListener('getProjectionMatrix', function (ev) {
