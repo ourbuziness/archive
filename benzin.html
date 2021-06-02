@@ -165,6 +165,7 @@ function apply(m,v) { // multiply matrix and vector
 			    
 			    		console.log("YMZ.YMA  - dom = " + renderer.domElement);
 					
+					
 // var mixerContext	= new THREEx.HtmlMixer.Context(renderer, scene, camera)
 
 // var url		= 'http://threejs.com'
@@ -175,6 +176,16 @@ function apply(m,v) { // multiply matrix and vector
 // 				nft.addModel('./tel2.glb' , 150 , 150 ,0,(Math.PI / 2), 0.5 , "telephone",function(){
 // 					alert("YMZ");	
 // 				});
+				
+				try{
+				const geometry = new THREE.PlaneGeometry( 1, 1 );
+const material = new THREE.MeshBasicMaterial( {color: 0xffff00, side: THREE.DoubleSide} );
+const plane = new THREE.Mesh( geometry, material );
+				
+				nft.root.add(plane);
+				}catch(e){
+					alert(e);
+				}
 				
 				nft.addModel('./lamp1.glb', 280, 100, 0, 0 , 14,"lamp",function () { 
 					 alert("lamp");
