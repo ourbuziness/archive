@@ -3,13 +3,13 @@
   "cameraPara": "archive/camera_para.dat",
   "videoSettings": {
     "width": {
-      "ideal": 1000
+      "ideal": 1280
     },
     "height": {
-      "ideal": 750
+      "ideal": 720
     },
     "facingMode": "environment" ,
-    "aspectRatio": { "ideal":  0.75}
+    "aspectRatio": { "ideal":  0.56}
   },
   "loading": {
     "logo": {
