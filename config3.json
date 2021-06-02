@@ -9,7 +9,7 @@
       "ideal": 720
     },
     "facingMode": "environment" ,
-    "aspectRatio": { "ideal":  0.56}
+    "aspectRatio": { "ideal":  0.7}
   },
   "loading": {
     "logo": {
@@ -33,6 +33,6 @@
       "fov": "0.8 * 180 / Math.PI",
       "ratio": "window.clientWidth / window.clientHeight",
       "near": 0.01,
-      "far": 1000
+      "far": 10000
     }
   }
