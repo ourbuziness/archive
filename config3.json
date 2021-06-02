@@ -9,7 +9,7 @@
       "ideal": 720
     },
     "facingMode": "environment" ,
-    "aspectRatio": { "ideal":  0.7}
+    "aspectRatio": { "ideal":  0.75}
   },
   "loading": {
     "logo": {
