@@ -177,16 +177,6 @@ function apply(m,v) { // multiply matrix and vector
 // 					alert("YMZ");	
 // 				});
 				
-				try{
-				const geometry = new THREE.PlaneGeometry( 1, 1 );
-const material = new THREE.MeshBasicMaterial( {color: 0xffff00, side: THREE.DoubleSide} );
-const plane = new THREE.Mesh( geometry, material );
-				
-				nft.root.add(plane);
-				}catch(e){
-					alert(e);
-				}
-				
 				nft.addModel('./lamp1.glb', 280, 100, 0, 0 , 14,"lamp",function () { 
 					 alert("lamp");
 					});
