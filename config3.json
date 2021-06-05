@@ -30,7 +30,7 @@
       "logarithmicDepthBuffer": true
     },
     "camera": {
-      "fov": "0.8 * 180 / Math.PI",
+      "fov": 0.8 * 180 / 3.14,
       "ratio": "window.clientWidth / window.clientHeight",
       "near": 0.01,
       "far": 1000
