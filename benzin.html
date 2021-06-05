@@ -173,7 +173,7 @@ function apply(m,v) { // multiply matrix and vector
 // scene.add(mixerPlane.object3d)
 				})
 				
-				nft.addModel('./tel2.glb' , 150 , 150 ,240,(Math.PI / 2), 0.5 , "telephone",function(){
+				nft.addModel('./tel2.glb' , 150 , 150 ,0,(Math.PI / 2), 0.5 , "telephone",function(){
 					alert("YMZ");	
 				});
 				
@@ -181,10 +181,10 @@ function apply(m,v) { // multiply matrix and vector
 					// alert("lamp");
 					//});
 				//nft.addPlane(500)
-			nft.addModel('./iphone12.glb' , 0 , 100 ,240,(Math.PI / 8), 600,"iphone12",function loaded() { 
+			nft.addModel('./iphone12.glb' , 0 , 100 ,0,(Math.PI / 8), 600,"iphone12",function loaded() { 
 					alert("iphone12");
 					});
-				 nft.addModel('./lamp1.glb' , 100 , 200 ,240,(Math.PI / 2), 20,"lamp",function loaded() { 
+				 nft.addModel('./lamp1.glb' , 100 , 200 ,0,(Math.PI / 2), 20,"lamp",function loaded() { 
 					 alert("lamp1");					});
 				document.addEventListener('onAfterInitThreejsRendering', (ev) => {
 				    // set here extra rendering settings after onInitThreejsRendering
