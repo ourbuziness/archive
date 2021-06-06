@@ -254,6 +254,9 @@ alert("not checked");
                              //  addImg(nft.root);
                      
 
+document.addEventListener('nftTrackingLost',(ev) =>{
+ alert("lost");
+});
 				document.addEventListener('onAfterInitThreejsRendering', (ev) => {
 				    // set here extra rendering settings after onInitThreejsRendering
 // 					 /rt = nft.root;
