@@ -157,7 +157,7 @@ var canvas2 = document.createElement('canvas');
         new THREE.PlaneGeometry(canvas2.width, canvas2.height),
         material2
       );
-	mesh2.position.set(0,50,-50);
+	mesh2.position.set(10,50,0);
 	nftroot.add( mesh2 );	
 }
 	   
@@ -241,8 +241,8 @@ var canvas2 = document.createElement('canvas');
 
 				});
 				
-				addText(nft.root,320,210,10,"قبض برق");
-
+		 		addText(nft.root,320,210,10,"قبض برق");
+                                addImg(nft.root);
                      
 
 				document.addEventListener('onAfterInitThreejsRendering', (ev) => {
