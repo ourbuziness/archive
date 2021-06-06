@@ -114,7 +114,7 @@ function apply(m,v) { // multiply matrix and vector
 function addText(nftroot , x,y ,z,txt){
 var canvas1 = document.createElement('canvas');
 	var context1 = canvas1.getContext('2d');
-	context1.font = "Bold 28px Arial";
+	context1.font = "Bold 19px Arial";
 	context1.fillStyle = "rgba(0, 0, 0, 0.9)";
     context1.fillText(txt, 0, 50);
     
@@ -232,7 +232,7 @@ alert("not checked");
 				nft.addModel('./tel2.glb' , 170, 150 ,10,(Math.PI / 2), 0.6 , "telephone",function(){
 					alert("YMZ");	
 				});
-				addText(nft.root,200,160,10,"قبض تلفن")
+				addText(nft.root,230,160,10,"قبض تلفن")
 				//nft.addModel('./lamp1.glb', 280, 100, 100, 0 , 30,"lamp",function () { 
 					// alert("lamp");
 					//});
@@ -240,15 +240,15 @@ alert("not checked");
 			nft.addModel('./iphone12.glb' , 30 , 100 ,10,(Math.PI), 800,"iphone12",function loaded() { 
 					alert("iphone12");
 					});
-				addText(nft.root,70,110,10,"قبض موبایل")
+				addText(nft.root,50,110,10,"قبض موبایل")
 				
-				 nft.addModel('./lamp1.glb' , 300 , 200 ,10,(Math.PI / 2), 40,"lamp",function loaded() { 
+				 nft.addModel('./lamp1.glb' , 300 , 200 ,10,(Math.PI), 40,"lamp",function loaded() { 
 					 alert("lamp1");	
 
 				});
 				
-		 		addText(nft.root,340,210,10,"قبض برق");
-                              //  addImg(nft.root);
+		 		addText(nft.root,360,210,10,"قبض برق");
+                               addImg(nft.root);
                      
 
 				document.addEventListener('onAfterInitThreejsRendering', (ev) => {
