@@ -116,7 +116,7 @@ var canvas1 = document.createElement('canvas');
 	var context1 = canvas1.getContext('2d');
 	context1.font = "Bold 40px Arial";
 	context1.fillStyle = "rgba(255,0,0,0.95)";
-    context1.fillText('Hello, YMZ', 0, 50);
+    context1.fillText('قبض برق', 0, 50);
     
 	// canvas contents will be used for a texture
 	var texture1 = new THREE.Texture(canvas1) 
@@ -129,7 +129,7 @@ var canvas1 = document.createElement('canvas');
         new THREE.PlaneGeometry(canvas1.width, canvas1.height),
         material1
       );
-	mesh1.position.set(0,50,0);
+	mesh1.position.set(600,220,10);
 	nftroot.add( mesh1 );
 }
 	   
@@ -195,7 +195,7 @@ var canvas1 = document.createElement('canvas');
 // scene.add(mixerPlane.object3d)
 				})
 				
-				nft.addModel('./tel2.glb' , 150 , 150 ,0,(Math.PI / 2), 0.5 , "telephone",function(){
+				nft.addModel('./tel2.glb' , 400 , 150 ,10,(Math.PI / 2), 0.7 , "telephone",function(){
 					alert("YMZ");	
 				});
 				
@@ -203,10 +203,10 @@ var canvas1 = document.createElement('canvas');
 					// alert("lamp");
 					//});
 				//nft.addPlane(500)
-			nft.addModel('./iphone12.glb' , 0 , 100 ,0,(Math.PI), 600,"iphone12",function loaded() { 
+			nft.addModel('./iphone12.glb' , 200 , 100 ,10,(Math.PI), 800,"iphone12",function loaded() { 
 					alert("iphone12");
 					});
-				 nft.addModel('./lamp1.glb' , 100 , 200 ,0,(Math.PI / 2), 20,"lamp",function loaded() { 
+				 nft.addModel('./lamp1.glb' , 600 , 200 ,10,(Math.PI / 2), 40,"lamp",function loaded() { 
 					 alert("lamp1");	
 
 				});
