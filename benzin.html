@@ -215,7 +215,10 @@ var canvas1 = document.createElement('canvas');
 				
 				addText(nft.root,320,210,10,"قبض برق")
 
-                               
+                               var loader = new THREE.TextureLoader();
+var texture = loader.load( 'arlogo.png' );
+geometry = new THREE.PlaneBufferGeometry(); material = new THREE.MeshBasicMaterial( { map: texture ,opacity: 0.8, transparent: true } );
+mesh = new THREE.Mesh( geometry, material ); nft.root.add( mesh );
 				document.addEventListener('onAfterInitThreejsRendering', (ev) => {
 				    // set here extra rendering settings after onInitThreejsRendering
 // 					 /rt = nft.root;
