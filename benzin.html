@@ -213,9 +213,9 @@ var canvas1 = document.createElement('canvas');
 // 					 /rt = nft.root;
 					try{
 						
-					//rndrr = ev.detail.renderer
+					rndrr = ev.detail.renderer
 					//domEvents =  new THREEx.DomEvents(rndrr.renderer.camera, rndrr.renderer.domElement);
-// 						rndrr = ev.details.renderer;
+						rndrr = ev.details.renderer;
 // 						alert(ev.detail);
 // 						val threejsrenderer = ev.detail.renderer;
 // 						alert(threejsrenderer);
@@ -253,7 +253,7 @@ var canvas1 = document.createElement('canvas');
 // 				nft.addModel('./lamp.glb',80,100,100,50);
 // 				nft.addImage('./payment.jpg',0Xfffff,5);
 				
-				addText(rt.renderer.root);
+				addText(rndrr.root);
 
                              // var domEvents = new THREEx.DomEvents(camera, renderer.domElement);
 // 				//window.addEventListener( 'onClickEvent', onMouseMove, false );	
