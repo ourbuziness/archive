@@ -115,7 +115,7 @@ function addText(nftroot , x,y ,z,txt){
 var canvas1 = document.createElement('canvas');
 	var context1 = canvas1.getContext('2d');
 	context1.font = "Bold 40px Arial";
-	context1.fillStyle = "rgba(255,0,0,0.95)";
+	context1.fillStyle = "rgba(26, 26, 26, 0.7)";
     context1.fillText(txt, 0, 50);
     
 	// canvas contents will be used for a texture
@@ -224,10 +224,10 @@ var canvas2 = document.createElement('canvas');
 // scene.add(mixerPlane.object3d)
 				})
 				
-				nft.addModel('./tel2.glb' , 200, 150 ,10,(Math.PI / 2), 0.6 , "telephone",function(){
+				nft.addModel('./tel2.glb' , 170, 150 ,10,(Math.PI / 2), 0.6 , "telephone",function(){
 					alert("YMZ");	
 				});
-				addText(nft.root,170,160,10,"قبض تلفن")
+				addText(nft.root,200,160,10,"قبض تلفن")
 				//nft.addModel('./lamp1.glb', 280, 100, 100, 0 , 30,"lamp",function () { 
 					// alert("lamp");
 					//});
@@ -242,7 +242,7 @@ var canvas2 = document.createElement('canvas');
 
 				});
 				
-		 		addText(nft.root,320,210,10,"قبض برق");
+		 		addText(nft.root,340,210,10,"قبض برق");
                               //  addImg(nft.root);
                      
 
