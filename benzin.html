@@ -134,16 +134,16 @@ var canvas1 = document.createElement('canvas');
 }
 
 function addImg(nftroot){
-var canvas2 = document.createElement('canvas');
-	var context2 = canvas2.getContext('2d');
+//var canvas2 = document.createElement('canvas');
+	//var context2 = canvas2.getContext('2d');
 	// canvas contents will be used for a texture
-	var texture2 = new THREE.Texture(canvas2);
-	
+	//var texture2 = new THREE.Texture(canvas2);
+	var texture2 = THREE.ImageUtils.loadTexture( 'http://ewgl.erbix.com/js/nodes2/textures/sun.jpg');
 	// load an image
-	var imageObj = new Image();
-	imageObj.src = "https://cdn.davemorrowphotography.com/wp-content/uploads/2021/01/star-photography-39.jpg";
+	//var imageObj = new Image();
+	//imageObj.src = "https://cdn.davemorrowphotography.com/wp-content/uploads/2021/01/star-photography-39.jpg";
 	// after the image is loaded, this function executes
-	imageObj.onload = function()
+	/*imageObj.onload = function()
 	{ 
         alert("YMZ IMAGE LOADED");
 		context2.drawImage(imageObj, 0, 0);
@@ -153,13 +153,13 @@ alert("checked");
 }else{
 alert("not checked");
 }
-	};  
+	};  */
       
     var material2 = new THREE.MeshBasicMaterial( {map: texture2, side:THREE.DoubleSide} );
     material2.transparent = true;
 
     var mesh2 = new THREE.Mesh(
-        new THREE.PlaneGeometry(canvas2.width, canvas2.height),
+        new THREE.PlaneGeometry(200, 200),
         material2
       );
 	mesh2.position.set(50,50,100);
