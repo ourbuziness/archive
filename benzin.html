@@ -117,6 +117,7 @@ var canvas1 = document.createElement('canvas');
 	context1.font = "Bold 14px Arial";
 	context1.fillStyle = "rgba(255, 255, 255, 1)";
     context1.fillText(txt, 0, 50);
+	context1.fillRect(200, 50, 20, 60);
     
 	// canvas contents will be used for a texture
 	var texture1 = new THREE.Texture(canvas1) 
