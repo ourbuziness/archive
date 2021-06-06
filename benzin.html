@@ -218,7 +218,14 @@ var canvas1 = document.createElement('canvas');
                                var loader = new THREE.TextureLoader();
 var texture = loader.load( 'arlogo.png' );
 geometry = new THREE.PlaneBufferGeometry(); material = new THREE.MeshBasicMaterial( { map: texture ,opacity: 0.8, transparent: true } );
-mesh = new THREE.Mesh( geometry, material ); nft.root.add( mesh );
+mesh = new THREE.Mesh( geometry, material );
+mesh.scale.set(10, 10, 10)
+    document.addEventListener('getNFTData', (ev) => {
+      var msg = ev.detail
+      mesh.position.y = (msg.height / msg.dpi * 2.54 * 10) / 2.0
+      mesh.position.x = (msg.width / msg.dpi * 2.54 * 10) / 2.0
+    })
+nft.root.add( mesh );
 				document.addEventListener('onAfterInitThreejsRendering', (ev) => {
 				    // set here extra rendering settings after onInitThreejsRendering
 // 					 /rt = nft.root;
