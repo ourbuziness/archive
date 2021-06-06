@@ -111,12 +111,12 @@ function apply(m,v) { // multiply matrix and vector
     return trackedMatrix.interpolated
   }
 
-function addText(nftroot){
+function addText(nftroot , x,y ,z,txt){
 var canvas1 = document.createElement('canvas');
 	var context1 = canvas1.getContext('2d');
 	context1.font = "Bold 40px Arial";
 	context1.fillStyle = "rgba(255,0,0,0.95)";
-    context1.fillText('قبض برق', 0, 50);
+    context1.fillText(txt, 0, 50);
     
 	// canvas contents will be used for a texture
 	var texture1 = new THREE.Texture(canvas1) 
@@ -129,7 +129,7 @@ var canvas1 = document.createElement('canvas');
         new THREE.PlaneGeometry(canvas1.width, canvas1.height),
         material1
       );
-	mesh1.position.set(600,220,10);
+	mesh1.position.set(x,y,z);
 	nftroot.add( mesh1 );
 }
 	   
@@ -195,23 +195,27 @@ var canvas1 = document.createElement('canvas');
 // scene.add(mixerPlane.object3d)
 				})
 				
-				nft.addModel('./tel2.glb' , 400 , 150 ,10,(Math.PI / 2), 0.7 , "telephone",function(){
+				nft.addModel('./tel2.glb' , 150 , 150 ,10,(Math.PI / 2), 0.7 , "telephone",function(){
 					alert("YMZ");	
 				});
-				
+				addText(nft.root,170,160,10,"قبض تلفن")
 				//nft.addModel('./lamp1.glb', 280, 100, 100, 0 , 30,"lamp",function () { 
 					// alert("lamp");
 					//});
 				//nft.addPlane(500)
-			nft.addModel('./iphone12.glb' , 200 , 100 ,10,(Math.PI), 800,"iphone12",function loaded() { 
+			nft.addModel('./iphone12.glb' , 50 , 100 ,10,(Math.PI), 800,"iphone12",function loaded() { 
 					alert("iphone12");
 					});
-				 nft.addModel('./lamp1.glb' , 600 , 200 ,10,(Math.PI / 2), 40,"lamp",function loaded() { 
+				addText(nft.root,70,110,10,"قبض موبایل")
+				
+				 nft.addModel('./lamp1.glb' , 300 , 200 ,10,(Math.PI / 2), 40,"lamp",function loaded() { 
 					 alert("lamp1");	
 
 				});
+				
+				addText(nft.root,320,210,10,"قبض برق")
 
-                               addText(nft.root)
+                               
 				document.addEventListener('onAfterInitThreejsRendering', (ev) => {
 				    // set here extra rendering settings after onInitThreejsRendering
 // 					 /rt = nft.root;
