@@ -114,8 +114,8 @@ function apply(m,v) { // multiply matrix and vector
 function addText(nftroot , x,y ,z,txt){
 var canvas1 = document.createElement('canvas');
 	var context1 = canvas1.getContext('2d');
-	context1.font = "Bold 40px Arial";
-	context1.fillStyle = "rgba(26, 26, 26, 0.7)";
+	context1.font = "Bold 28px Arial";
+	context1.fillStyle = "rgba(0, 0, 0, 0.9)";
     context1.fillText(txt, 0, 50);
     
 	// canvas contents will be used for a texture
@@ -144,10 +144,15 @@ var canvas2 = document.createElement('canvas');
 	imageObj.src = "https://cdn.freebiesupply.com/logos/large/2x/red-star-1-logo-png-transparent.png";
 	// after the image is loaded, this function executes
 	imageObj.onload = function()
-	{  
+	{ 
+        alert("YMZ IMAGE LOADED");
 		context2.drawImage(imageObj, 0, 0);
-		if ( texture2 ) // checks if texture exists
+		if ( texture2 ){ // checks if texture exists
 			texture2.needsUpdate = true;
+alert("checked");
+}else{
+alert("not checked");
+}
 	};  
       
     var material2 = new THREE.MeshBasicMaterial( {map: texture2, side:THREE.DoubleSide} );
