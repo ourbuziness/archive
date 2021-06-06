@@ -207,13 +207,17 @@ var canvas1 = document.createElement('canvas');
 					alert("iphone12");
 					});
 				 nft.addModel('./lamp1.glb' , 100 , 200 ,0,(Math.PI / 2), 20,"lamp",function loaded() { 
-					 alert("lamp1");					});
+					 alert("lamp1");	
+
+				});
+
+                               addText(nft.root)
 				document.addEventListener('onAfterInitThreejsRendering', (ev) => {
 				    // set here extra rendering settings after onInitThreejsRendering
 // 					 /rt = nft.root;
 					try{
 						
-					rndrr = ev.detail.renderer
+					//rndrr = ev.detail.renderer
 					//domEvents =  new THREEx.DomEvents(rndrr.renderer.camera, rndrr.renderer.domElement);
 						rndrr = ev.details.renderer;
 // 						alert(ev.detail);
@@ -252,8 +256,6 @@ var canvas1 = document.createElement('canvas');
 				
 // 				nft.addModel('./lamp.glb',80,100,100,50);
 // 				nft.addImage('./payment.jpg',0Xfffff,5);
-				
-				addText(rndrr.root);
 
                              // var domEvents = new THREEx.DomEvents(camera, renderer.domElement);
 // 				//window.addEventListener( 'onClickEvent', onMouseMove, false );	
