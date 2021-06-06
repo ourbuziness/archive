@@ -115,7 +115,7 @@ function addText(nftroot , x,y ,z,txt){
 var canvas1 = document.createElement('canvas');
 	var context1 = canvas1.getContext('2d');
 	context1.font = "Bold 14px Arial";
-	context1.fillStyle = "rgba(255, 255, 255, 0.9)";
+	context1.fillStyle = "rgba(255, 255, 255, 1)";
     context1.fillText(txt, 0, 50);
     
 	// canvas contents will be used for a texture
@@ -237,10 +237,10 @@ alert("not checked");
 					// alert("lamp");
 					//});
 				//nft.addPlane(500)
-			nft.addModel('./iphone12.glb' , 30 , 100 ,10,(-5*Math.PI/4), 800,"iphone12",function loaded() { 
+			nft.addModel('./iphone12.glb' , 30 , 100 ,40,(-Math.PI), 800,"iphone12",function loaded() { 
 					alert("iphone12");
 					});
-				addText(nft.root,140,110,20,"قبض موبایل")
+				addText(nft.root,140,120,10,"قبض موبایل")
 				
 				 nft.addModel('./lamp1.glb' , 300 , 100 ,0,0, 30,"lamp",function loaded() { 
 					 alert("lamp1");	
