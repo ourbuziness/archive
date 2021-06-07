@@ -33,6 +33,9 @@
 	    let ifram;
 	    let sss;
 	    let mat ;
+	    let latestY = 100000
+	    let countGesture = 0
+	    let gestureDetected = false
 	    const trackedMatrix = {
   // for interpolation
   delta: [
@@ -150,7 +153,28 @@ var fontSize = 14;
 	mesh1.position.set(x,y,z);
 	nftroot.add( mesh1 );
 }
+	    
+function listenGesture(){
+	
 
+document.addEventListener('getNFTData', (ev) => {
+      var msg = ev.detail
+      var y = (msg.height / msg.dpi * 2.54 * 10) / 2.0
+      var x = (msg.width / msg.dpi * 2.54 * 10) / 2.0
+      if( y < latestY ){
+	      latestY = y
+	      countGesture++;
+	      if(countGesture >= 10)
+	      gestureDetected = true;
+      }else{
+	    gestureDetected = false  
+	      latestY = 10000
+	      countGesture = 0
+      }
+    });
+	
+}
+	    
 function addImg(nftroot){
 //var canvas2 = document.createElement('canvas');
 	//var context2 = canvas2.getContext('2d');
@@ -247,6 +271,8 @@ alert("not checked");
 // scene.add(mixerPlane.object3d)
 				})
 				
+				listenGesture();
+				
 				nft.addModel('./tel2.glb' , 170, 150 ,0,(Math.PI / 2), 0.4 , "telephone",function(){
 					alert("YMZ");	
 				});
@@ -272,7 +298,9 @@ alert("not checked");
                      
 
 document.addEventListener('nftTrackingLost',(ev) =>{
- alert("lost");
+ if(gestureDetected){
+	alert("detected");
+ }
 });
 				document.addEventListener('onAfterInitThreejsRendering', (ev) => {
 				    // set here extra rendering settings after onInitThreejsRendering
