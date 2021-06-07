@@ -5,6 +5,7 @@
 	<title>ARnft example showing an simple red cube</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=1">
 	<link rel="stylesheet" href="nft-style.css">
+	<p id="dateY"></p>
 </head>
 <body>
 
@@ -18,7 +19,7 @@
 
 		<script src="three.min.js"></script>
 		<script src="ARnft.js"></script>
-	<script src="three.interactive.js"></script>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+	<script src="three.interactive.js"></script>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
 
     <script>
 	    
@@ -161,6 +162,9 @@ document.addEventListener('getNFTData', (ev) => {
       var msg = ev.detail
       var y = (msg.height / msg.dpi * 2.54 * 10) / 2.0
       var x = (msg.width / msg.dpi * 2.54 * 10) / 2.0
+      
+      console.log("y = " + y);
+      console.log("latestY = " + latestY);
       if( y < latestY ){
 	      latestY = y
 	      countGesture++;
