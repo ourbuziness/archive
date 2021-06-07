@@ -302,12 +302,12 @@ alert("not checked");
                      
 
 document.addEventListener('nftTrackingLost',(ev) =>{
+	 if(gestureDetected)
+	alert("detected");
              gestureDetected = false  
 	      latestY = 10000
 	      countGesture = 0
- if(gestureDetected){
-	alert("detected");
- }
+ 
 });
 				document.addEventListener('onAfterInitThreejsRendering', (ev) => {
 				    // set here extra rendering settings after onInitThreejsRendering
