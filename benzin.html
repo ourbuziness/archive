@@ -170,7 +170,7 @@ document.addEventListener('getMatrixGL_RH', (ev) => {
 	      countGesture++;
 	      if(countGesture >= 3)
 	      gestureDetected = true;
-      }else if ( y >= latestY ) {
+      }else if ( y > latestY + 2) {
 	    gestureDetected = false  
 	      latestY = 10000
 	      countGesture = 0
