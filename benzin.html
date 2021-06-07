@@ -275,12 +275,12 @@ alert("not checked");
 // scene.add(mixerPlane.object3d)
 				})
 				
-				listenGesture(nft);
+				//listenGesture(nft);
 				
 				nft.addModel('./tel2.glb' , 170, 150 ,0,(Math.PI / 2), 0.4 , "telephone",function(){
 					alert("YMZ");	
 				});
-				addText(nft.root,170,180,20,"قبض تلفن")
+				addText(nft.root,170,180,0,"قبض تلفن")
 				//nft.addModel('./lamp1.glb', 280, 100, 100, 0 , 30,"lamp",function () { 
 					// alert("lamp");
 					//});
@@ -288,14 +288,14 @@ alert("not checked");
 			nft.addModel('./iphone12.glb' , 30 , 100 ,60,(-Math.PI), 800,"iphone12",function loaded() { 
 					alert("iphone12");
 					});
-				addText(nft.root,30,120,65,"قبض موبایل")
+				addText(nft.root,30,120,0,"قبض موبایل")
 				
 				 nft.addModel('./lamp1.glb' , 300 , 100 ,0,0, 30,"lamp",function loaded() { 
 					 alert("lamp1");	
 
 				});
 				
-		 		addText(nft.root,300,120,40,"قبض برق");
+		 		addText(nft.root,300,200,0,"قبض برق");
 				//nft.addImage('./arlogo.png', 0xbbbbff, 280)
 				
                              //  addImg(nft.root);
