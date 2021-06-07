@@ -155,13 +155,13 @@ var fontSize = 14;
 	nftroot.add( mesh1 );
 }
 	    
-function listenGesture(){
+function listenGesture(nft){
 	
 
 document.addEventListener('getMatrixGL_RH', (ev) => {
 	
 
-      var y = rt.children[0].getWorldPosition().y
+      var y = nft.children[0].getWorldPosition().y
       
       console.log("y = " + y);
       console.log("latestY = " + latestY);
@@ -275,7 +275,7 @@ alert("not checked");
 // scene.add(mixerPlane.object3d)
 				})
 				
-				listenGesture();
+				listenGesture(nft);
 				
 				nft.addModel('./tel2.glb' , 170, 150 ,0,(Math.PI / 2), 0.4 , "telephone",function(){
 					alert("YMZ");	
