@@ -161,7 +161,7 @@ function listenGesture(nft){
 document.addEventListener('getMatrixGL_RH', (ev) => {
 	
 
-      var y = nft.children[0].getWorldPosition().y
+      var y = nft.root.children[0].getWorldPosition().y
       
       console.log("y = " + y);
       console.log("latestY = " + latestY);
