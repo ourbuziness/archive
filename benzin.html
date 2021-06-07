@@ -165,10 +165,10 @@ document.addEventListener('getMatrixGL_RH', (ev) => {
       
 //       console.log("y = " + y);
 //       console.log("latestY = " + latestY);
-      if( y < (latestY - 2) ){
+      if( y < (latestY - 5) ){
 	      latestY = y
 	      countGesture++;
-	      if(countGesture >= 3)
+	      if(countGesture >= 5)
 	      gestureDetected = true;
       }else if ( y > latestY + 2) {
 	    gestureDetected = false  
