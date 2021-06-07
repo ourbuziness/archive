@@ -165,10 +165,10 @@ document.addEventListener('getMatrixGL_RH', (ev) => {
       
       console.log("y = " + y);
       console.log("latestY = " + latestY);
-      if( y < (latestY - 4) ){
+      if( y < (latestY - 3) ){
 	      latestY = y
 	      countGesture++;
-	      if(countGesture >= 5)
+	      if(countGesture >= 3)
 	      gestureDetected = true;
       }else{
 	    gestureDetected = false  
@@ -302,6 +302,9 @@ alert("not checked");
                      
 
 document.addEventListener('nftTrackingLost',(ev) =>{
+             gestureDetected = false  
+	      latestY = 10000
+	      countGesture = 0
  if(gestureDetected){
 	alert("detected");
  }
