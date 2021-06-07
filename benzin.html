@@ -34,7 +34,7 @@
 	    let ifram;
 	    let sss;
 	    let mat ;
-	    let latestY = -100000
+	    let latestY = 100000
 	    let countGesture = 0
 	    let gestureDetected = false
 	    const trackedMatrix = {
@@ -165,7 +165,7 @@ document.addEventListener('getMatrixGL_RH', (ev) => {
       
       console.log("y = " + y);
       console.log("latestY = " + latestY);
-      if( y > latestY ){
+      if( y < latestY ){
 	      latestY = y
 	      countGesture++;
 	      if(countGesture >= 10)
