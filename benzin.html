@@ -277,30 +277,30 @@ alert("not checked");
 				
 				//listenGesture(nft);
 				
-				nft.addModel('./tel2.glb' , 170, 150 ,0,(Math.PI / 2), 0.4 ,function(){
+				nft.addModelWithLabel('./tel2.glb' , 170, 150 ,0,(Math.PI / 2), 0.4 ,"قبض تلفن",function(){
 					//alert("YMZ");	
 				window.open("https://pay.setareyek.ir/BillPayment/09124083575/12047656", '_blank').focus();
 
 				});
-				addText(nft.root,170,200,30,"قبض تلفن")
+// 				addText(nft.root,170,200,30,"قبض تلفن")
 				//nft.addModel('./lamp1.glb', 280, 100, 100, 0 , 30,"lamp",function () { 
 					// alert("lamp");
 					//});
 				//nft.addPlane(500)
-			nft.addModel('./iphone12.glb' , 30 , 100 ,60,(-Math.PI), 800,function loaded() { 
+			nft.addModelWithLabel('./iphone12.glb' , 30 , 100 ,60,(-Math.PI), 800,"قبض موبایل",function loaded() { 
 					//alert("iphone12");
 				window.open("https://pay.setareyek.ir/BillPayment/09124083575/12047656", '_blank').focus();
 
 					});
-				addText(nft.root,30,120,65,"قبض موبایل")
+// 				addText(nft.root,30,120,65,"قبض موبایل")
 				
-				 nft.addModel('./lamp1.glb' , 300 , 100 ,0,0, 30,function loaded() { 
+				 nft.addModelWithLabel('./lamp1.glb' , 300 , 100 ,0,0, 30,"قبض برق",function loaded() { 
 					// alert("lamp1");	
 				window.open("https://pay.setareyek.ir/BillPayment/09124083575/12047656", '_blank').focus();
 
 				});
 				
-		 		addText(nft.root,300,120,40,"قبض برق");
+// 		 		addText(nft.root,300,120,40,"قبض برق");
 				//nft.addImage('./arlogo.png', 0xbbbbff, 280)
 				
                              //  addImg(nft.root);
