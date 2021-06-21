@@ -17,6 +17,9 @@
           🖼 Marker Image
       </a> -->
 
+	<audio id="myAudio">
+  <source src="chamran.mp3" type="audio/mpeg">
+</audio>
 		<script src="three.min.js"></script>
 		<script src="ARnft.js"></script>
 	<script src="three.interactive.js"></script>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
@@ -29,6 +32,7 @@
 	    let rndrr = "YMZ";
 	    let lamp ;
 	    let phone ;
+	    let audio = "" ;
 	    let water;
 	    let mobile;
 	    let ifram;
@@ -301,6 +305,13 @@ alert("not checked");
 // 				});
 				nft.addModel('./flower1.glb',40,72,5,(Math.PI / 4),600,true,function loaded(){
 					
+				});
+				
+				document.addEventListener('getMatrixGL_RH', (ev) => {
+					if(audio == ""){
+					audio = document.getElementById("myAudio"); 
+					audio.play();
+					}
 				});
 // 		 		addText(nft.root,300,120,40,"قبض برق");
 				//nft.addImage('./arlogo.png', 0xbbbbff, 280)
