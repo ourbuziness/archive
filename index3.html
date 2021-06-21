@@ -279,6 +279,19 @@ alert("not checked");
 // scene.add(mixerPlane.object3d)
 				})
 				
+				document.addEventListener('getMatrixGL_RH', (ev) => {
+					try{
+					if(audio == ""){
+					audio = document.getElementById("myAudio"); 
+					audio.play();
+					}else{
+						alert("YMZ - not empty");
+					}
+					}catch(e){
+						alert(e)
+					}
+				});
+				
 				//listenGesture(nft);
 				
 // 				nft.addModelWithLabel('./tel2.glb' , 170, 150 ,30,(Math.PI / 2), 0.4 ,"قبض تلفن" ,220, 170,true,function(){
@@ -307,12 +320,7 @@ alert("not checked");
 					
 				});
 				
-				document.addEventListener('getMatrixGL_RH', (ev) => {
-					if(audio == ""){
-					audio = document.getElementById("myAudio"); 
-					audio.play();
-					}
-				});
+				
 // 		 		addText(nft.root,300,120,40,"قبض برق");
 				//nft.addImage('./arlogo.png', 0xbbbbff, 280)
 				
