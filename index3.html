@@ -215,7 +215,7 @@ alert("not checked");
 	   
 
 	    
-			ARnft.ARnft.init(800, 600, "archive/DataNFT/metro", 'config3.json', true, true)
+			ARnft.ARnft.init(800, 600, "archive/DataNFT/chamran", 'config3.json', true, true)
 			.then((nft) => {
 				
 				
@@ -277,29 +277,31 @@ alert("not checked");
 				
 				//listenGesture(nft);
 				
-				nft.addModelWithLabel('./tel2.glb' , 170, 150 ,30,(Math.PI / 2), 0.4 ,"قبض تلفن" ,220, 170,true,function(){
-					//alert("YMZ");	
-				window.open("https://pay.setareyek.ir/BillPayment/09124083575/12047656", '_blank').focus();
+// 				nft.addModelWithLabel('./tel2.glb' , 170, 150 ,30,(Math.PI / 2), 0.4 ,"قبض تلفن" ,220, 170,true,function(){
+// 					//alert("YMZ");	
+// 				window.open("https://pay.setareyek.ir/BillPayment/09124083575/12047656", '_blank').focus();
 
-				});
+// 				});
 // 				addText(nft.root,170,200,30,"قبض تلفن")
 				//nft.addModel('./lamp1.glb', 280, 100, 100, 0 , 30,"lamp",function () { 
 					// alert("lamp");
 					//});
 				//nft.addPlane(500)
-			nft.addModelWithLabel('./mob.glb' , 70 , 100 ,0,(Math.PI / 2), 24,"قبض موبایل", 80, 50,false,function loaded() { 
-					//alert("iphone12");
-				window.open("https://pay.setareyek.ir/BillPayment/09124083575/12047656", '_blank').focus();
+// 			nft.addModelWithLabel('./mob.glb' , 70 , 100 ,0,(Math.PI / 2), 24,"قبض موبایل", 80, 50,false,function loaded() { 
+// 					//alert("iphone12");
+// 				window.open("https://pay.setareyek.ir/BillPayment/09124083575/12047656", '_blank').focus();
 
-					});
+// 					});
 // 				addText(nft.root,30,120,65,"قبض موبایل")
 				
-				 nft.addModelWithLabel('./lamptry.glb' , 300 , 100 ,0,(Math.PI / 4), 30,"قبض برق", 50, 300,true,function loaded() { 
-					// alert("lamp1");	
-				window.open("https://pay.setareyek.ir/BillPayment/09124083575/12047656", '_blank').focus();
+// 				 nft.addModelWithLabel('./lamptry.glb' , 300 , 100 ,0,(Math.PI / 4), 30,"قبض برق", 50, 300,true,function loaded() { 
+// 					// alert("lamp1");	
+// 				window.open("https://pay.setareyek.ir/BillPayment/09124083575/12047656", '_blank').focus();
 
+// 				});
+				nft.addModel('./flower.glb',200,100,0,(Math.PI / 4),30,true,function loaded(){
+					
 				});
-				
 // 		 		addText(nft.root,300,120,40,"قبض برق");
 				//nft.addImage('./arlogo.png', 0xbbbbff, 280)
 				
