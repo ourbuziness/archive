@@ -280,15 +280,16 @@ alert("not checked");
 				
 				document.addEventListener('getNFTData', (ev: any) => {
            				var msg = ev.detail;
-					mat = msg
+					
 				
            
        					});
 				
 				document.addEventListener('getMatrixGL_RH', (ev) => {
 					try{
+						mat = ev.detail.matrixGL_RH
 // 						ev.detail.matrixGL_RH
-// 					if(audio == ""){
+					if(audio == ""){
 // 					audio = document.getElementById("myAudio"); 
 // 					audio.play();
 						
