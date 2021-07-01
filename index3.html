@@ -38,6 +38,8 @@
 	    let ifram;
 	    let sss;
 	    let mat ;
+	    let xx;
+	    let yy;
 	    let latestY = 100000
 	    let countGesture = 0
 	    let gestureDetected = false
@@ -278,9 +280,23 @@ alert("not checked");
 // scene.add(mixerPlane.object3d)
 				})
 				
+				document.addEventListener('getNFTData', (ev) => {
+				      var msg = ev.detail
+				      yy = (msg.height / msg.dpi * 2.54 * 10) / 2.0
+				      xx = (msg.width / msg.dpi * 2.54 * 10) / 2.0
+				    });
+				
 				document.addEventListener('getMatrixGL_RH', (ev) => {
 					try{
-						mat = ev.detail.matrixGL_RH
+						var t = ev.detail.matrixGL_RH
+						var tt = [
+						    	t[0],t[1],t[2],t[3]
+							,t[4],t[5],t[6],t[7]
+							,t[8],t[9],t[10],t[11]
+							,xx,yy,t[12],t[13]
+						];
+						var st = document.getElementById("stats");
+						st.style.transform = "matrix3d(" + tt.join(", ") + ")";
 // 						ev.detail.matrixGL_RH
 					if(audio == ""){
 // 					audio = document.getElementById("myAudio"); 
