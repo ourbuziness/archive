@@ -163,7 +163,6 @@ function listenGesture(nft){
 	
 
 document.addEventListener('getMatrixGL_RH', (ev) => {
-	
 
       var y = nft.root.children[0].getWorldPosition().y
       
@@ -279,16 +278,26 @@ alert("not checked");
 // scene.add(mixerPlane.object3d)
 				})
 				
+				document.addEventListener('getNFTData', (ev: any) => {
+           				var msg = ev.detail;
+					mat = msg
+				
+           
+       					});
+				
 				document.addEventListener('getMatrixGL_RH', (ev) => {
 					try{
-					if(audio == ""){
-					audio = document.getElementById("myAudio"); 
-					audio.play();
+// 						ev.detail.matrixGL_RH
+// 					if(audio == ""){
+// 					audio = document.getElementById("myAudio"); 
+// 					audio.play();
+						
+						
 					}else{
 						//alert("YMZ - not empty");
 					}
 					}catch(e){
-						alert(e)
+// 						alert(e)
 					}
 				});
 				
