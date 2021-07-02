@@ -284,16 +284,19 @@ alert("not checked");
 				      var msg = ev.detail
 				      yy = (msg.height / msg.dpi * 2.54 * 10) / 2.0
 				      xx = (msg.width / msg.dpi * 2.54 * 10) / 2.0
+                                     var st = document.getElementById("stats") ;
+st.style.transform = "translate("+xx+ "px,"+yy+"px");
 				    });
 				
 				document.addEventListener('getMatrixGL_RH', (ev) => {
 					try{
 						var t = ev.detail.matrixGL_RH
+t = interpolating(t);
 						var tt = [
 						    	t[0],t[1],t[2],t[3]
 							,t[4],t[5],t[6],t[7]
 							,t[8],t[9],t[10],t[11]
-							,xx,yy,t[14],t[15]
+							,t[12] ,t[13],t[14],t[15]
 						];
 						var st = document.getElementById("stats");
 						st.style.transform = "matrix3d(" + tt.join(", ") + ")";
