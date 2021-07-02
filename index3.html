@@ -285,7 +285,7 @@ alert("not checked");
 				      yy = (msg.height / msg.dpi * 2.54 * 10) / 2.0
 				      xx = (msg.width / msg.dpi * 2.54 * 10) / 2.0
                                      var st = document.getElementById("stats") ;
-st.style.transform = "translate("+xx+ "px,"+yy+"px");
+st.style.transform = "translate("+xx+ "px,"+yy+"px)";
 				    });
 				
 				document.addEventListener('getMatrixGL_RH', (ev) => {
@@ -298,8 +298,8 @@ t = interpolating(t);
 							,t[8],t[9],t[10],t[11]
 							,t[12] ,t[13],t[14],t[15]
 						];
-						var st = document.getElementById("stats");
-						st.style.transform = "matrix3d(" + tt.join(", ") + ")";
+						var stt = document.getElementById("stats");
+						stt.style.transform = "matrix3d(" + tt.join(", ") + ")";
 // 						ev.detail.matrixGL_RH
 					if(audio == ""){
 // 					audio = document.getElementById("myAudio"); 
