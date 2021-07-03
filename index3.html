@@ -235,7 +235,7 @@ alert("not checked");
         mesh2.scale.set(0.5, 0.5, 0.5);
 	nftroot.add( mesh2 );	
 }
-	    function createPlane( width, height, cssColor, pos, rot ) {
+	    function createPlane(inft, width, height, cssColor, pos, rot ) {
 
 					const element = document.createElement( 'div' );
 					element.style.width = width + 'px';
@@ -253,11 +253,11 @@ alert("not checked");
 					const mesh = new THREE.Mesh( geometry, material );
 					mesh.position.copy( object.position );
 					mesh.rotation.copy( object.rotation );
-					rt.root.add( mesh );
+					inft.root.add( mesh );
 
 				}
 	    
-	    function initcss(){
+	    function initcss(inft){
 		    
 		scene2 = new THREE.Scene();
 		renderer2 = new THREE.CSS3DRenderer();
@@ -266,7 +266,7 @@ alert("not checked");
 				renderer2.domElement.style.top = 0;
 				document.body.appendChild( renderer2.domElement );
 		    
-		    createPlane(
+		    createPlane(inft,
 					300, 300,
 					'seagreen',
 					new THREE.Vector3( 0, - 50, 0 ),
@@ -351,7 +351,7 @@ alert("not checked");
 					try{
 						if(flag){
 						flag = false ;
-						initcss();
+						initcss(nft);
 						}else
 						renderer2.render( scene2, rt.renderer.camera);
 					/*	var positions = getCoordinates(nft.root.children[0] ,function loaded(x,y){
