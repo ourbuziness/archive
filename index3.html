@@ -28,6 +28,7 @@
 	    
 	    let rt; 
 	    let sc ;
+	    let tt;
 	    
 	    let rndrr = "YMZ";
 	    let lamp ;
@@ -304,9 +305,10 @@ alert("not checked");
 				document.addEventListener('getMatrixGL_RH', (ev) => {
 					try{
 						var positions = getCoordinates(nft.root.children[0])
+						console.log("YMZYMA positions : " + positions);
 						var t = ev.detail.matrixGL_RH
 						t = interpolating(t);
-						var tt = [
+						tt = [
 						    	t[0],t[1],t[2],t[3]
 							,t[4],t[5],t[6],t[7]
 							,t[8],t[9],t[10],t[11]
@@ -324,7 +326,8 @@ alert("not checked");
 						//alert("YMZ - not empty");
 					}
 					}catch(e){
-						alert(e)
+						console.log("YMZYMA error : " + e );
+// 						alert(e)
 					}
 				});
 				
