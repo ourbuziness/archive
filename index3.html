@@ -238,20 +238,20 @@ alert("not checked");
 }
 	    function createPlane(inft, width, height, cssColor, pos, rot ) {
 
-					//const element = document.createElement( 'div' );
-				//	element.style.width = width + 'px';
-				//	element.style.height = height + 'px';
-				//	element.style.opacity = 0.75;
-				//	element.style.background = cssColor;
+					const element = document.createElement( 'div' );
+					element.style.width = width + 'px';
+					element.style.height = height + 'px';
+					element.style.opacity = 0.75;
+					element.style.background = cssColor;
 
-var html = [ '<div style="width:' + width + 'px; height:' + height + 'px;">', '<iframe src="' + "https://digikala.com" + '" width="' + width + '" height="' + height + '">', '</iframe>', '</div>' ].join('\n');
-var div = document.createElement('div');
-$(div).html(html); 
-var object = new THREE.CSS3DObject(div);
+//var html = [ '<div style="width:' + width + 'px; height:' + height + 'px;">', '<iframe src="' + "https://digikala.com" + '" width="' + width + '" height="' + height + '">', '</iframe>', '</div>' ].join('\n');
+//var div = document.createElement('div');
+//$(div).html(html); 
+//var object = new THREE.CSS3DObject(div);
 
 
 
-					//const object = new THREE.CSS3DObject( element );
+					const object = new THREE.CSS3DObject( element );
 					object.position.copy( pos );
 					object.rotation.copy( rot );
 					scene2.add( object );
@@ -277,8 +277,8 @@ var object = new THREE.CSS3DObject(div);
 		    createPlane(inft,
 					300, 300,
 					'seagreen',
-					new THREE.Vector3( 0, - 50, 0 ),
-					new THREE.Euler( - 90 * THREE.MathUtils.DEG2RAD, 0, 0 )
+					new THREE.Vector3( 20, 50, 0 ),
+					new THREE.Euler( 90 * THREE.MathUtils.DEG2RAD, 0, 0 )
 				);
 		   
 		    
