@@ -100,6 +100,19 @@ function multiply(a,b) { // multiply two matrices
     ];
 }
 
+function getCoordinates( element ) {
+
+    var screenVector = new THREE.Vector3();
+    element.localToWorld( screenVector );
+
+    screenVector.project( rt.renderer.camera );
+
+    var posx = Math.round(( screenVector.x + 1 ) * rt.renderer.renderer.domElement.offsetWidth / 2 );
+    var posy = Math.round(( 1 - screenVector.y ) * rt.renderer.renderer.domElement.offsetHeight / 2 );
+
+    return {"x": posx, "y" : posy}
+}
+	    
 function apply(m,v) { // multiply matrix and vector
     return [
         m[0]*v[0] + m[3]*v[1] + m[6]*v[2],
@@ -108,7 +121,7 @@ function apply(m,v) { // multiply matrix and vector
     ];
 }
 	    
-	     function interpolating (world) {
+function interpolating (world) {
     const interpolationFactor = 24
 
     // interpolate matrix
@@ -280,23 +293,24 @@ alert("not checked");
 // scene.add(mixerPlane.object3d)
 				})
 				
-				document.addEventListener('getNFTData', (ev) => {
-				      var msg = ev.detail
-				      yy = (msg.height / msg.dpi * 2.54 * 10) / 2.0
-				      xx = (msg.width / msg.dpi * 2.54 * 10) / 2.0
-                                     var st = document.getElementById("stats") ;
-st.style.transform = "translate("+xx+ "px,"+yy+"px)";
-				    });
+// 				document.addEventListener('getNFTData', (ev) => {
+// 				      var msg = ev.detail
+// 				      yy = (msg.height / msg.dpi * 2.54 * 10) / 2.0
+// 				      xx = (msg.width / msg.dpi * 2.54 * 10) / 2.0
+//                                      var st = document.getElementById("stats") ;
+// st.style.transform = "translate("+xx+ "px,"+yy+"px)";
+// 				    });
 				
 				document.addEventListener('getMatrixGL_RH', (ev) => {
 					try{
+						var positions = getCoordinates(nft.root.children[0])
 						var t = ev.detail.matrixGL_RH
-t = interpolating(t);
+						t = interpolating(t);
 						var tt = [
 						    	t[0],t[1],t[2],t[3]
 							,t[4],t[5],t[6],t[7]
 							,t[8],t[9],t[10],t[11]
-							,t[12] ,t[13],t[14],t[15]
+							,positions[0] ,positions[1],t[14],t[15]
 						];
 						var stt = document.getElementById("stats");
 						stt.style.transform = "matrix3d(" + tt.join(", ") + ")";
