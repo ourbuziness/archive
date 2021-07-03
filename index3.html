@@ -303,9 +303,9 @@ alert("not checked");
 // 				    });
 				
 				document.addEventListener('getMatrixGL_RH', (ev) => {
-					alert("YMZ");
 					try{
 						var positions = getCoordinates(nft.root.children[0])
+						alert("positision " :positision[0] +","+positision[1]);
 						console.log("YMZYMA positions : " + positions);
 						var t = ev.detail.matrixGL_RH
 						t = interpolating(t);
@@ -328,7 +328,7 @@ alert("not checked");
 					}
 					}catch(e){
 						console.log("YMZYMA error : " + e );
-// 						alert(e)
+						alert(e)
 					}
 				});
 				
