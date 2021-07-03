@@ -36,11 +36,14 @@
 	    let audio = "" ;
 	    let water;
 	    let mobile;
+	    let renderer2;
 	    let ifram;
 	    let sss;
 	    let mat ;
 	    let xx;
+	    let scene2;
 	    let yy;
+	    let flag = true;
 	    let latestY = 100000
 	    let countGesture = 0
 	    let gestureDetected = false
@@ -231,6 +234,47 @@ alert("not checked");
         mesh2.scale.set(0.5, 0.5, 0.5);
 	nftroot.add( mesh2 );	
 }
+	    function createPlane( width, height, cssColor, pos, rot ) {
+
+					const element = document.createElement( 'div' );
+					element.style.width = width + 'px';
+					element.style.height = height + 'px';
+					element.style.opacity = 0.75;
+					element.style.background = cssColor;
+
+					const object = new CSS3DObject( element );
+					object.position.copy( pos );
+					object.rotation.copy( rot );
+					scene2.add( object );
+                                        const material = new THREE.MeshBasicMaterial( { color: 0x000000, wireframe: true, wireframeLinewidth: 1, side: THREE.DoubleSide } );
+
+					const geometry = new THREE.PlaneGeometry( width, height );
+					const mesh = new THREE.Mesh( geometry, material );
+					mesh.position.copy( object.position );
+					mesh.rotation.copy( object.rotation );
+					rt.root.add( mesh );
+
+				}
+	    
+	    function initcss(){
+		    
+		scene2 = new THREE.Scene();
+		renderer2 = new CSS3DRenderer();
+				renderer2.setSize( window.innerWidth, window.innerHeight );
+				renderer2.domElement.style.position = 'absolute';
+				renderer2.domElement.style.top = 0;
+				document.body.appendChild( renderer2.domElement );
+		    
+		    createPlane(
+					300, 300,
+					'seagreen',
+					new THREE.Vector3( 0, - 50, 0 ),
+					new THREE.Euler( - 90 * THREE.MathUtils.DEG2RAD, 0, 0 )
+				);
+		   
+		    
+		   
+	    }
 	   
 
 	    
@@ -304,7 +348,12 @@ alert("not checked");
 				
 				document.addEventListener('getMatrixGL_RH', (ev) => {
 					try{
-						var positions = getCoordinates(nft.root.children[0] ,function loaded(x,y){
+						if(flag){
+						flag = false ;
+						initcss();
+						}else
+						rendere2.render( scene2, rt.renderer.camera);
+					/*	var positions = getCoordinates(nft.root.children[0] ,function loaded(x,y){
 // 					alert("positision  : " + positions[0] +","+positions[1]);
 // 						console.log("YMZYMA positions : " + x);
 // 							alert("positions : " + x +","+y);
@@ -328,7 +377,7 @@ alert("not checked");
 						
 					}else{
 						//alert("YMZ - not empty");
-					}
+					}*/
 					}catch(e){
 // 						console.log("YMZYMA error : " + e );
 // 						alert(e)
