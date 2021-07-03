@@ -238,13 +238,20 @@ alert("not checked");
 }
 	    function createPlane(inft, width, height, cssColor, pos, rot ) {
 
-					const element = document.createElement( 'div' );
-					element.style.width = width + 'px';
-					element.style.height = height + 'px';
-					element.style.opacity = 0.75;
-					element.style.background = cssColor;
+					//const element = document.createElement( 'div' );
+				//	element.style.width = width + 'px';
+				//	element.style.height = height + 'px';
+				//	element.style.opacity = 0.75;
+				//	element.style.background = cssColor;
 
-					const object = new THREE.CSS3DObject( element );
+var html = [ '<div style="width:' + width + 'px; height:' + height + 'px;">', '<iframe src="' + "https://digikala.com" + '" width="' + width + '" height="' + height + '">', '</iframe>', '</div>' ].join('\n');
+var div = document.createElement('div');
+$(div).html(html); 
+var object = new THREE.CSS3DObject(div);
+
+
+
+					//const object = new THREE.CSS3DObject( element );
 					object.position.copy( pos );
 					object.rotation.copy( rot );
 					scene2.add( object );
