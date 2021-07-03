@@ -101,7 +101,7 @@ function multiply(a,b) { // multiply two matrices
     ];
 }
 
-function getCoordinates( element ) {
+function getCoordinates( element ,callback ) {
 
     var screenVector = new THREE.Vector3();
     element.localToWorld( screenVector );
@@ -111,7 +111,7 @@ function getCoordinates( element ) {
     var posx = Math.round(( screenVector.x + 1 ) * rt.renderer.renderer.domElement.offsetWidth / 2 );
     var posy = Math.round(( 1 - screenVector.y ) * rt.renderer.renderer.domElement.offsetHeight / 2 );
 
-    return {"x": posx, "y" : posy}
+    callback(posx,posy);
 }
 	    
 function apply(m,v) { // multiply matrix and vector
@@ -304,19 +304,22 @@ alert("not checked");
 				
 				document.addEventListener('getMatrixGL_RH', (ev) => {
 					try{
-						var positions = getCoordinates(nft.root.children[0])
-						alert("positision  : " + positions[0] +","+positions[1]);
-						console.log("YMZYMA positions : " + positions);
+						var positions = getCoordinates(nft.root.children[0] ,function loaded(x,y){
+// 					alert("positision  : " + positions[0] +","+positions[1]);
+						console.log("YMZYMA positions : " + x);
+							alert("positions : " + x +","+y);
 						var t = ev.detail.matrixGL_RH
 						t = interpolating(t);
 						tt = [
 						    	t[0],t[1],t[2],t[3]
 							,t[4],t[5],t[6],t[7]
 							,t[8],t[9],t[10],t[11]
-							,positions[0] ,positions[1],t[14],t[15]
+							,x ,y,t[14],t[15]
 						];
 						var stt = document.getElementById("stats");
 						stt.style.transform = "matrix3d(" + tt.join(", ") + ")";
+				});
+						
 // 						ev.detail.matrixGL_RH
 					if(audio == ""){
 // 					audio = document.getElementById("myAudio"); 
