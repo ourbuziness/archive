@@ -243,7 +243,7 @@ alert("not checked");
 					element.style.opacity = 0.75;
 					element.style.background = cssColor;
 
-					const object = new CSS3DObject( element );
+					const object = new THREE.CSS3DObject( element );
 					object.position.copy( pos );
 					object.rotation.copy( rot );
 					scene2.add( object );
