@@ -20,6 +20,19 @@
 	<audio id="myAudio">
   <source src="chamran.mp3" type="audio/mpeg">
 </audio>
+	
+	<video
+				loop
+				autoplay
+				muted
+				webkit-playsinline
+				playsinline
+				crossOrigin="anonymous"
+				id="arvideo">
+				<source src="https://avo-content-dev.s3.amazonaws.com/videos/bg_1588085276090.mp4" type='video/mp4'>
+			</video>
+	
+	
 		<script src="three.min.js"></script>
 		<script src="ARnft.js"></script>
 	<script src="three.interactive.js"></script>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                
@@ -338,9 +351,11 @@ t = interpolating(t);
 // 				window.open("https://pay.setareyek.ir/BillPayment/09124083575/12047656", '_blank').focus();
 
 // 				});
-				nft.addAnimatedModel('./wolf.glb',56,140,40,(Math.PI / 2),300,0,function loaded(){
+// 				nft.addAnimatedModel('./wolf.glb',56,140,40,(Math.PI / 2),300,0,function loaded(){
 					
-				});
+// 				});
+				
+				nft.addVideo('arvideo', 180);
 				
 				
 // 		 		addText(nft.root,300,120,40,"قبض برق");
