@@ -165,7 +165,15 @@ function interpolating (world) {
 
 				document.addEventListener('getMatrixGL_RH', (ev) => {
 					try{
-						
+						if(flag){
+							try{
+								nft.renderer.configCSS();
+								flag = false ;
+							}catch(e){
+								alert(e);
+							}
+						}
+				
 // 						var position = new THREE.Vector3();
 // 						var quaternion = new THREE.Quaternion();
 // 						var scale = new THREE.Vector3();
@@ -251,11 +259,7 @@ function interpolating (world) {
 				nft.addImage('./cld1.png',0xbbbbff, 100,28,200,2);
 				nft.addImage('./cld1.png',0xbbbbff, 140,200,300,3);
 				
-				try{
-				nft.renderer.configCSS();
-				}catch(e){
-					alert(e);
-				}
+			
 // 				nft.addAnimatedModel('./wolf.glb',56,140,40,(Math.PI / 2),1,0,function loaded(){
 					
 // 				});
