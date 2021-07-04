@@ -178,13 +178,24 @@ let object;
 
 				document.addEventListener('getMatrixGL_RH', (ev) => {
 					try{
-if(flag){
+						
+						var t =nft.renderer.camera.projectionMatrixInverse()
+						
+						tt = [
+						    	t[0],t[1],t[2],t[3]
+							,t[4],t[5],t[6],t[7]
+							,t[8],t[9],t[10],t[11]
+							,t[12] ,t[13],t[14],t[15]
+						];
+						var stt = document.getElementById("stats");
+						stt.style.transform = "matrix3d(" + tt.join(", ") + ")";
+// if(flag){
 						flag = false ;
-						initcss(nft);
-						}else{
+// 						initcss(nft);
+// // 						}else{
 // 							object.position.copy( pmesh.position );
 // 							object.rotation.copy(pmesh.rotation);
-						renderer2.render( scene2, nft.renderer.camera);
+// 						renderer2.render( scene2, nft.renderer.camera);
                                              //    alert(nft.renderer.camera);
 }
 					/*	var positions = getCoordinates(nft.root.children[0] ,function loaded(x,y){
