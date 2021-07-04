@@ -123,7 +123,7 @@ let pmesh;
 				document.addEventListener('getMatrixGL_RH', (ev) => {
 					try{
 						
-						var t = nft.renderer.camera.projectionMatrixInverse
+						var t = ev.detail.matrixGL_RH
 						
 						tt = [
 						    	t[0],t[1],t[2],t[3]
@@ -197,9 +197,9 @@ let pmesh;
 // 				window.open("https://pay.setareyek.ir/BillPayment/09124083575/12047656", '_blank').focus();
 
 // 				});
-				nft.addAnimatedModel('./wolf.glb',56,140,40,(Math.PI / 2),1,0,function loaded(){
+// 				nft.addAnimatedModel('./wolf.glb',56,140,40,(Math.PI / 2),1,0,function loaded(){
 					
-				});
+// 				});
 				
 				
 // 		 		addText(nft.root,300,120,40,"قبض برق");
