@@ -52,6 +52,36 @@ let pmesh;
         let object;
 	    let gestureDetected = false
 	    
+	     const trackedMatrix = {
+  // for interpolation
+  delta: [
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0
+  ],
+  interpolated: [
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0
+  ]
+	    };
+	    
+   
+function interpolating (world) {
+    const interpolationFactor = 24
+
+    // interpolate matrix
+    for (let i = 0; i < 16; i++) {
+      trackedMatrix.delta[i] = world[i] - trackedMatrix.interpolated[i]
+      trackedMatrix.interpolated[i] =
+                  trackedMatrix.interpolated[i] +
+                  trackedMatrix.delta[i] / interpolationFactor
+    }
+    return trackedMatrix.interpolated
+  }
+	    
 			ARnft.ARnft.init(800, 600, "archive/DataNFT/notebook", 'config3.json', true, true)
 			.then((nft) => {
 				
