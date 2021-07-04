@@ -166,7 +166,7 @@ function interpolating (world) {
 				document.addEventListener('getMatrixGL_RH', (ev) => {
 					try{
 						
-						var poses = getCoordinates(nft.root.children[0])
+						var poses = getCoordinates(nft.root.children[0],nft)
 						var t = ev.detail.matrixGL_RH
 						var tchange = interpolating(t)
 						tt = [
