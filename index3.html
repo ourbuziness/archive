@@ -158,24 +158,13 @@ let object;
 // scene.add(mixerPlane.object3d)
 				})
 				
-// 				document.addEventListener('getNFTData', (ev) => {
-// 				      var msg = ev.detail
-// 				      yy = (msg.height / msg.dpi * 2.54 * 10) / 2.0
-// 				      xx = (msg.width / msg.dpi * 2.54 * 10) / 2.0
-//                                      var st = document.getElementById("stats") ;
-// st.style.transform = "translate("+xx+ "px,"+yy+"px)";
-// 				    });
-				
-				document.addEventListener('getWindowSize', (ev) => {
-					try{
-				      w = ev.detail.sw
-				      h = ev.detail.sh
-					
-				      renderer2.setSize(w, h);
-					}catch(e){
-					}
+				document.addEventListener('getNFTData', (ev) => {
+				      var msg = ev.detail
+				      yy = (msg.height / msg.dpi * 2.54 * 10) / 2.0
+				      xx = (msg.width / msg.dpi * 2.54 * 10) / 2.0
+                                     var st = document.getElementById("stats") ;
+				    st.style.transform = "translate("+xx+ "px,"+yy+"px)";
 				    });
-
 				document.addEventListener('getMatrixGL_RH', (ev) => {
 					try{
 						
