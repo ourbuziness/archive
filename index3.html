@@ -69,7 +69,7 @@ let pmesh;
 	    };
 	    
    
-function getCoordinates( element , nft ) {
+function getCoordinates( element , nft , callback ) {
 
     var screenVector = new THREE.Vector3();
     element.localToWorld( screenVector );
@@ -79,7 +79,7 @@ function getCoordinates( element , nft ) {
     var posx = Math.round(( screenVector.x + 1 ) * nft.renderer.renderer.domElement.offsetWidth / 2 );
     var posy = Math.round(( 1 - screenVector.y ) * nft.renderer.renderer.domElement.offsetHeight / 2 );
 
-    return {"x": posx, "y" : posy}
+    callback(posx,posy);
 }
 	    
 function interpolating (world) {
@@ -166,17 +166,19 @@ function interpolating (world) {
 				document.addEventListener('getMatrixGL_RH', (ev) => {
 					try{
 						
-						var poses = getCoordinates(nft.root.children[0],nft)
-						var t = ev.detail.matrixGL_RH
+						var poses = getCoordinates(nft.root.children[0],nft ,function loaded(x,y){
+							var t = ev.detail.matrixGL_RH
 						var tchange = interpolating(t)
 						tt = [
 						    	tchange[0]/2,tchange[1]/2,tchange[2]/2,tchange[3]/2
 							,tchange[4]/2,tchange[5]/2,tchange[6]/2,tchange[7]/2
 							,tchange[8]/2,tchange[9]/2,tchange[10]/2,tchange[11]/2
-							,poses[0] ,poses[1],tchange[14]/2,tchange[15]/2
+							,x ,y,tchange[14]/2,tchange[15]/2
 						];
 						var stt = document.getElementById("stats");
 						stt.style.transform = "matrix3d(" + tt.join(", ") + ")";
+				});
+						
 // if(flag){
 						// flag = false ;
 // 						initcss(nft);
