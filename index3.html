@@ -49,54 +49,8 @@ let pmesh;
 	    let flag = true;
 	    let latestY = 100000
 	    let countGesture = 0
-let object;
+        let object;
 	    let gestureDetected = false
-	    
-	    function createPlane(inft, width, height, cssColor, pos, rot ) {
-
-					const element = document.createElement( 'div' );
-					element.style.width = width + 'px';
-					element.style.height = height + 'px';
-					element.style.opacity = 0.75;
-		    			element.style.zIndex = 999;
-					element.style.background = cssColor;
-
-					object = new THREE.CSS3DObject( element );
-					object.position.copy( pos );
-					object.rotation.copy( rot );
-					scene2.add( object );
-//                                         const material = new THREE.MeshBasicMaterial( { color: 0x000000, wireframe: true, wireframeLinewidth: 1, side: THREE.DoubleSide } );
-
-// 					const geometry = new THREE.PlaneGeometry( width, height );
-// 					pmesh = new THREE.Mesh( geometry, material );
-// 					pmesh.position.copy( object.position );
-// 					pmesh.rotation.copy( object.rotation );
-// 					inft.root.add( pmesh );
-
-				}
-	    
-	    function initcss(inft){
-		    
-		scene2 = new THREE.Scene();
-		renderer2 = new THREE.CSS3DRenderer();
-				renderer2.setSize( window.innerWidth, window.innerHeight );
-				renderer2.domElement.style.position = 'absolute';
-                                renderer2.domElement.style.zIndex = 999;
-				renderer2.domElement.style.top = 0;
-				document.body.appendChild( renderer2.domElement );
-		    
-		    createPlane(inft,
-					200, 200,
-					'seagreen',
-					new THREE.Vector3( 20, 50, 0 ),
-					new THREE.Euler( 0, 0, 0 )
-				);
-		   
-		    
-		   
-	    }
-	   
-
 	    
 			ARnft.ARnft.init(800, 600, "archive/DataNFT/notebook", 'config3.json', true, true)
 			.then((nft) => {
@@ -165,6 +119,7 @@ let object;
                                      var st = document.getElementById("stats") ;
 				    st.style.transform = "translate("+xx+ "px,"+yy+"px)";
 				    });
+
 				document.addEventListener('getMatrixGL_RH', (ev) => {
 					try{
 						
@@ -179,14 +134,14 @@ let object;
 						var stt = document.getElementById("stats");
 						stt.style.transform = "matrix3d(" + tt.join(", ") + ")";
 // if(flag){
-						flag = false ;
+						// flag = false ;
 // 						initcss(nft);
 // // 						}else{
 // 							object.position.copy( pmesh.position );
 // 							object.rotation.copy(pmesh.rotation);
 // 						renderer2.render( scene2, nft.renderer.camera);
                                              //    alert(nft.renderer.camera);
-}
+// }
 					/*	var positions = getCoordinates(nft.root.children[0] ,function loaded(x,y){
 // 					alert("positision  : " + positions[0] +","+positions[1]);
 // 						console.log("YMZYMA positions : " + x);
