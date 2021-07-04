@@ -124,12 +124,12 @@ let pmesh;
 					try{
 						
 						var t = ev.detail.matrixGL_RH
-						
+						var tchange = interpolating(t)
 						tt = [
-						    	t[0],t[1],t[2],t[3]
-							,t[4],t[5],t[6],t[7]
-							,t[8],t[9],t[10],t[11]
-							,t[12] ,t[13],t[14],t[15]
+						    	tchange[0],tchange[1],tchange[2],tchange[3]
+							,tchange[4],tchange[5],tchange[6],tchange[7]
+							,tchange[8],tchange[9],tchange[10],tchange[11]
+							,tchange[12] ,tchange[13],tchange[14],tchange[15]
 						];
 						var stt = document.getElementById("stats");
 						stt.style.transform = "matrix3d(" + tt.join(", ") + ")";
