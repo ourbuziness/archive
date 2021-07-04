@@ -51,193 +51,7 @@ let pmesh;
 	    let countGesture = 0
 let object;
 	    let gestureDetected = false
-	    const trackedMatrix = {
-  // for interpolation
-  delta: [
-    0, 0, 0, 0,
-    0, 0, 0, 0,
-    0, 0, 0, 0,
-    0, 0, 0, 0
-  ],
-  interpolated: [
-    0, 0, 0, 0,
-    0, 0, 0, 0,
-    0, 0, 0, 0,
-    0, 0, 0, 0
-  ]
-	    };
 	    
-	    
-	    function adjugate(m) { // Compute the adjugate of m
-    return [
-        m[4]*m[8]-m[7]*m[5],m[7]*m[2]-m[1]*m[8],m[1]*m[5]-m[4]*m[2],
-        m[6]*m[5]-m[3]*m[8],m[0]*m[8]-m[6]*m[2],m[3]*m[2]-m[0]*m[5],
-        m[3]*m[7]-m[6]*m[4],m[6]*m[1]-m[0]*m[7],m[0]*m[4]-m[3]*m[1]
-    ];
-}
-
-function multiply(a,b) { // multiply two matrices
-    a = [
-        a[0],a[3],a[6],
-        a[1],a[4],a[7],
-        a[2],a[5],a[8]
-    ];
-
-    b = [
-        b[0],b[3],b[6],
-        b[1],b[4],b[7],
-        b[2],b[5],b[8]
-    ];
-
-    var m = Array(9);
-
-    for (var i = 0; i != 3; ++i) {
-        for (var j = 0; j != 3; ++j) {
-            var mij = 0;
-            for (var k = 0; k != 3; ++k) {
-                mij += a[3*i + k]*b[3*k + j];
-            }
-            m[3*i + j] = mij;
-        }
-    }
-
-    return [
-        m[0],m[3],m[6],
-        m[1],m[4],m[7],
-        m[2],m[5],m[8]
-    ];
-}
-
-function getCoordinates( element ,callback ) {
-
-    var screenVector = new THREE.Vector3();
-    element.localToWorld( screenVector );
-
-    screenVector.project( rt.renderer.camera );
-
-    var posx = Math.round(( screenVector.x + 1 ) * rt.renderer.renderer.domElement.offsetWidth / 2 );
-    var posy = Math.round(( 1 - screenVector.y ) * rt.renderer.renderer.domElement.offsetHeight / 2 );
-
-    callback(posx,posy);
-}
-	    
-function apply(m,v) { // multiply matrix and vector
-    return [
-        m[0]*v[0] + m[3]*v[1] + m[6]*v[2],
-        m[1]*v[0] + m[4]*v[1] + m[7]*v[2],
-        m[2]*v[0] + m[5]*v[1] + m[8]*v[2]
-    ];
-}
-	    
-function interpolating (world) {
-    const interpolationFactor = 24
-
-    // interpolate matrix
-    for (let i = 0; i < 16; i++) {
-      trackedMatrix.delta[i] = world[i] - trackedMatrix.interpolated[i]
-      trackedMatrix.interpolated[i] =
-                  trackedMatrix.interpolated[i] +
-                  trackedMatrix.delta[i] / interpolationFactor
-    }
-    return trackedMatrix.interpolated
-  }
-
-
-function addText(nftroot , x,y ,z,txt){
-var canvas1 = document.createElement('canvas');
-	var context1 = canvas1.getContext('2d');
-
-var i = txt.length
-var fontSize = 14;
-        i = i*fontSize*0.62;
-        if (i > canvas1.width) {
-          i = canvas1.width;
-        }
-        context1.fillStyle = "RGBA(255, 255, 255, 1)";
-        context1.fillRect(canvas1.width / 2 - i / 2,canvas1.height / 2 - (fontSize * 1.5) / 2, i, (fontSize * 1.5) );
-        context1.font = "Bold "+fontSize.toString() + "px Arial";
-        context1.fillStyle = "rgba(0,0,0,1)";
-        context1.textBaseline = "middle";
-        context1.textAlign = "center";
-
-        context1.fillText(txt, canvas1.width / 2, canvas1.height / 2);
-
-	//context1.font = "Bold 14px Arial";
-	//context1.fillStyle = "rgba(255, 255, 255, 1)";
-    //context1.fillText(txt, 0, 10);
-	//context1.fillRect(0, 0, 20, 60);
-    
-	// canvas contents will be used for a texture
-	var texture1 = new THREE.Texture(canvas1) 
-	texture1.needsUpdate = true;
-      
-    var material1 = new THREE.MeshBasicMaterial( {map: texture1, side:THREE.DoubleSide } );
-    material1.transparent = true;
-
-    var mesh1 = new THREE.Mesh(
-        new THREE.PlaneGeometry(canvas1.width, canvas1.height),
-        material1
-      );
-	mesh1.position.set(x,y,z);
-	nftroot.add( mesh1 );
-}
-	    
-function listenGesture(nft){
-	
-
-document.addEventListener('getMatrixGL_RH', (ev) => {
-
-      var y = nft.root.children[0].getWorldPosition().y
-      
-//       console.log("y = " + y);
-//       console.log("latestY = " + latestY);
-      if( y < (latestY - 8) ){
-	      latestY = y
-	      countGesture++;
-	      if(countGesture >= 10)
-	      gestureDetected = true;
-      }else if ( y > latestY + 2) {
-	    gestureDetected = false  
-	      latestY = 10000
-	      countGesture = 0
-      }
-    });
-	
-}
-	    
-function addImg(nftroot){
-//var canvas2 = document.createElement('canvas');
-	//var context2 = canvas2.getContext('2d');
-	// canvas contents will be used for a texture
-	//var texture2 = new THREE.Texture(canvas2);
-	var texture2 = THREE.ImageUtils.loadTexture( 'http://ewgl.erbix.com/js/nodes2/textures/sun.jpg');
-	// load an image
-	//var imageObj = new Image();
-	//imageObj.src = "https://cdn.davemorrowphotography.com/wp-content/uploads/2021/01/star-photography-39.jpg";
-	// after the image is loaded, this function executes
-	/*imageObj.onload = function()
-	{ 
-        alert("YMZ IMAGE LOADED");
-		context2.drawImage(imageObj, 0, 0);
-		if ( texture2 ){ // checks if texture exists
-			texture2.needsUpdate = true;
-alert("checked");
-}else{
-alert("not checked");
-}
-	};  */
-      
-    var material2 = new THREE.MeshBasicMaterial( {map: texture2, side:THREE.DoubleSide} );
-    material2.transparent = true;
-
-    var mesh2 = new THREE.Mesh(
-        new THREE.PlaneGeometry(200, 200),
-        material2
-      );
-	mesh2.position.set(50,50,100);
-        mesh2.scale.set(0.5, 0.5, 0.5);
-	nftroot.add( mesh2 );	
-}
 	    function createPlane(inft, width, height, cssColor, pos, rot ) {
 
 					const element = document.createElement( 'div' );
@@ -245,13 +59,6 @@ alert("not checked");
 					element.style.height = height + 'px';
 					element.style.opacity = 0.75;
 					element.style.background = cssColor;
-
-//var html = [ '<div style="width:' + width + 'px; height:' + height + 'px;">', '<iframe src="' + "https://digikala.com" + '" width="' + width + '" height="' + height + '">', '</iframe>', '</div>' ].join('\n');
-//var div = document.createElement('div');
-//$(div).html(html); 
-//var object = new THREE.CSS3DObject(div);
-
-
 
 					object = new THREE.CSS3DObject( element );
 					object.position.copy( pos );
@@ -360,7 +167,7 @@ alert("not checked");
 				
 				document.addEventListener('getMatrixGL_RH', (ev) => {
 					try{
-id(flag){
+if(flag){
 						flag = false ;
 						initcss(nft);
 						}else{
