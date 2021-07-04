@@ -166,18 +166,23 @@ function interpolating (world) {
 				document.addEventListener('getMatrixGL_RH', (ev) => {
 					try{
 						
-						var poses = getCoordinates(nft.root.children[0],nft ,function loaded(x,y){
-							var t = ev.detail.matrixGL_RH
-						var tchange = interpolating(t)
-						tt = [
-						    	tchange[0]/2,tchange[1]/2,tchange[2]/2,tchange[3]/2
-							,tchange[4]/2,tchange[5]/2,tchange[6]/2,tchange[7]/2
-							,tchange[8]/2,tchange[9]/2,tchange[10]/2,tchange[11]/2
-							,x ,y,tchange[14]/2,tchange[15]/2
-						];
-						var stt = document.getElementById("stats");
-						stt.style.transform = "matrix3d(" + tt.join(", ") + ")";
-				});
+// 						var position = new THREE.Vector3();
+// 						var quaternion = new THREE.Quaternion();
+// 						var scale = new THREE.Vector3();
+
+// 						nft.root.children[0].matrixWorld.decompose( position, quaternion, scale );
+// 						var poses = getCoordinates(nft.root.children[0],nft ,function loaded(x,y){
+// 							var t = ev.detail.matrixGL_RH
+// 						var tchange = interpolating(t)
+// 						tt = [
+// 						    	tchange[0]/2,tchange[1]/2,tchange[2]/2,tchange[3]/2
+// 							,tchange[4]/2,tchange[5]/2,tchange[6]/2,tchange[7]/2
+// 							,tchange[8]/2,tchange[9]/2,tchange[10]/2,tchange[11]/2
+// 							,x ,y,tchange[14]/2,tchange[15]/2
+// 						];
+// 						var stt = document.getElementById("stats");
+// 						stt.style.transform = "matrix3d(" + tt.join(", ") + ")";
+// 				});
 						
 // if(flag){
 						// flag = false ;
