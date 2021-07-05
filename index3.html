@@ -81,7 +81,14 @@ function getCoordinates( element , nft , callback ) {
     var posx = Math.round(( screenVector.x + 1 ) * nft.renderer.renderer.domElement.offsetWidth / 2 );
     var posy = Math.round(( 1 - screenVector.y ) * nft.renderer.renderer.domElement.offsetHeight / 2 );
 
-    callback(posx,posy);
+	var scale = new THREE.Vector3();
+var position = new THREE.Vector3();
+var quaternion = new THREE.Quaternion();
+
+rt.root.children[0].matrixWorld.decompose(position,quaternion,scale);
+var rotation = new THREE.Euler().setFromQuaternion(quaternion)
+
+    callback(posx,posy,rotation);
 }
 	    
 function interpolating (world) {
@@ -167,6 +174,15 @@ function interpolating (world) {
 
 				document.addEventListener('getMatrixGL_RH', (ev) => {
 					try{
+						
+						var poses = getCoordinates(nft.root.children[0],nft ,function loaded(x,y,rotation){
+						var st = document.getElementById("stats") ;
+							var tts = [
+						    		1,rotation.x,rotation.y
+								,1,x,y
+						];
+				    		st.style.transform = "matrix3d(" + tts.join(", ") + ")";
+						});
 // 						if(flag){
 // 							try{
 // 								nft.renderer.configCSS();
