@@ -105,7 +105,7 @@ function interpolating (world) {
     return trackedMatrix.interpolated
   }
 	    
-			ARnft.ARnft.init(800, 600, "archive/DataNFT/notebook", 'config3.json', true, true)
+			ARnft.ARnft.init(800, 600, "archive/DataNFT/resalat", 'config3.json', true, true)
 			.then((nft) => {
 				
 				
@@ -176,13 +176,13 @@ function interpolating (world) {
 				document.addEventListener('getMatrixGL_RH', (ev) => {
 					try{
 						
-						var poses = getCoordinates(nft.root.children[0],nft ,function loaded(x,y,rotation){
-						var st = document.getElementById("stats") ;
-							var tts = [
-						    		1,rotation.x,rotation.y
-								,1,x,y
-						];
-				    		st.style.transform = "matrix(" + tts.join(", ") + ")";
+// 						var poses = getCoordinates(nft.root.children[0],nft ,function loaded(x,y,rotation){
+// 						var st = document.getElementById("stats") ;
+// 							var tts = [
+// 						    		1,rotation.x,rotation.y
+// 								,1,x,y
+// 						];
+// 				    		st.style.transform = "matrix(" + tts.join(", ") + ")";
 						});
 // 						if(flag){
 // 							try{
