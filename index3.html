@@ -85,8 +85,9 @@ function getCoordinates( element , nft , callback ) {
 var position = new THREE.Vector3();
 var quaternion = new THREE.Quaternion();
 
-rt.root.children[0].matrixWorld.decompose(position,quaternion,scale);
+nft.root.children[0].matrixWorld.decompose(position,quaternion,scale);
 var rotation = new THREE.Euler().setFromQuaternion(quaternion)
+alert(rotation.x);
 
     callback(posx,posy,rotation);
 }
