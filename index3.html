@@ -87,7 +87,7 @@ var quaternion = new THREE.Quaternion();
 
 nft.root.children[0].matrixWorld.decompose(position,quaternion,scale);
 var rotation = new THREE.Euler().setFromQuaternion(quaternion)
-alert(rotation.x);
+// alert(rotation.x);
 
     callback(posx,posy,rotation);
 }
