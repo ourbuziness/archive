@@ -23,6 +23,7 @@
 	    let cssRenderer;
 	    let cssObject;
 	    let planeMesh;
+	    let cssScene;
 	    
       
 			ARnft.ARnft.init(800, 600, "archive/DataNFT/notebook", 'config3.json', true, true)
@@ -62,7 +63,7 @@
 					// we reference the same position and rotation 
 					cssObject.position = planeMesh.position;
 					cssObject.rotation = planeMesh.rotation;
-					var cssScene = new THREE.Scene()
+					cssScene = new THREE.Scene()
 					cssScene.add(cssObject);
 					cssRenderer = new THREE.CSS3DRenderer();
 				
@@ -81,6 +82,7 @@
 						nft.tickExtend = function load(){
 							cssObject.position = planeMesh.position;
 							cssObject.rotation = planeMesh.rotation;
+							 cssRenderer.render( cssScene, nft.renderer.camera );
 						}
 					      }catch(e){
 
