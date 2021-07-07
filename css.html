@@ -19,6 +19,11 @@
         <script type='text/javascript' src='Tween.js'></script>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
 
     <script>
+	    
+	    let cssRenderer;
+	    let cssObject;
+	    let planeMesh;
+	    
       
 			ARnft.ARnft.init(800, 600, "archive/DataNFT/notebook", 'config3.json', true, true)
 			.then((nft) => {
@@ -41,7 +46,48 @@
 	
 				})
 				
+				try{
+				
+					// create the plane mesh
+					var material = new THREE.MeshBasicMaterial({ wireframe: true });
+					var geometry = new THREE.PlaneGeometry();
+					planeMesh= new THREE.Mesh( geometry, material );
+					// add it to the WebGL scene
+					nft.root.add(planeMesh);
+					
+					var element = document.createElement( 'img' );
+					element.src = './arlogo.png';
+					// create the object3d for this element
+					cssObject = new THREE.CSS3DObject( element );
+					// we reference the same position and rotation 
+					cssObject.position = planeMesh.position;
+					cssObject.rotation = planeMesh.rotation;
+					var cssScene = new THREE.Scene()
+					cssScene.add(cssObject);
+					cssRenderer = new THREE.CSS3DRenderer();
+				
+				}catch(e){
+					alert(e);
+				}
 			
+				document.addEventListener('getWindowSize', (ev) => {
+				      w = ev.detail.sw
+				      h = ev.detail.sh
+					
+					try{
+						cssRenderer.setSize(w,h)
+						cssRenderer.domElement.style.position = 'absolute';
+						cssRenderer.domElement.style.top = 0;
+						nft.tickExtend = function load(){
+							cssObject.position = planeMesh.position;
+							cssObject.rotation = planeMesh.rotation;
+						}
+					      }catch(e){
+
+					      }
+					
+				});
+				
 				document.addEventListener('getMatrixGL_RH', (ev) => {
 					try{
 			
