@@ -49,7 +49,7 @@
 				
 				try{
 				
-                                    alert("init");
+                                 //   alert("init");
 					// create the plane mesh
 					var material = new THREE.MeshBasicMaterial({ wireframe: true });
 					var geometry = new THREE.PlaneGeometry();
@@ -67,9 +67,9 @@
 					cssScene = new THREE.Scene()
 					cssScene.add(cssObject);
 					cssRenderer = new THREE.CSS3DRenderer();
-				alert("finish init");
+				//alert("finish init");
 				}catch(e){
-					alert(e);
+				//	alert(e);
 				}
 			
 				document.addEventListener('getWindowSize', (ev) => {
@@ -77,7 +77,7 @@
 				      h = ev.detail.sh
 					
 					try{
-alert("setsize init");
+//alert("setsize init");
 						cssRenderer.setSize(w,h)
 						cssRenderer.domElement.style.position = 'absolute';
 						cssRenderer.domElement.style.top = 0;
@@ -86,9 +86,9 @@ alert("setsize init");
 	  						cssObject.position = planeMesh.position;
 							cssObject.rotation = planeMesh.rotation;
 							 cssRenderer.render( cssScene, nft.renderer.camera );
-                                                      alert("finish load");
+                                                  //    alert("finish load");
 						}
-alert("finish setsize");
+//alert("finish setsize");
 					      }catch(e){
 					      }
 					
