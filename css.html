@@ -24,10 +24,12 @@
 	    let cssObject;
 	    let planeMesh;
 	    let cssScene;
+	    let rt;
 	    
       
 			ARnft.ARnft.init(800, 600, "archive/DataNFT/notebook", 'config3.json', true, true)
 			.then((nft) => {
+				rt = nft;
 				document.addEventListener('onInitThreejsRendering', (ev) => {
 					const renderer = ev.detail.renderer;
 					const scene = ev.detail.scene;
