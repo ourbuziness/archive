@@ -55,6 +55,7 @@
 					var geometry = new THREE.PlaneGeometry();
 					planeMesh= new THREE.Mesh( geometry, material );
 					// add it to the WebGL scene
+					planeMesh.scale.set(200,200,200)
 					nft.root.add(planeMesh);
 					
 					var element = document.createElement( 'img' );
