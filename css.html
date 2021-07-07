@@ -49,6 +49,7 @@
 				
 				try{
 				
+                                    alert("init");
 					// create the plane mesh
 					var material = new THREE.MeshBasicMaterial({ wireframe: true });
 					var geometry = new THREE.PlaneGeometry();
@@ -66,7 +67,7 @@
 					cssScene = new THREE.Scene()
 					cssScene.add(cssObject);
 					cssRenderer = new THREE.CSS3DRenderer();
-				
+				alert("finish init");
 				}catch(e){
 					alert(e);
 				}
@@ -76,16 +77,18 @@
 				      h = ev.detail.sh
 					
 					try{
+alert("setsize init");
 						cssRenderer.setSize(w,h)
 						cssRenderer.domElement.style.position = 'absolute';
 						cssRenderer.domElement.style.top = 0;
 						nft.tickExtend = function load(){
+alert("load");
 							cssObject.position = planeMesh.position;
 							cssObject.rotation = planeMesh.rotation;
 							 cssRenderer.render( cssScene, nft.renderer.camera );
 						}
+alert("finish setsize");
 					      }catch(e){
-
 					      }
 					
 				});
