@@ -65,6 +65,10 @@
 					// we reference the same position and rotation 
 					cssObject.position = planeMesh.position;
 					cssObject.rotation = planeMesh.rotation;
+					cssObject.style.width  = "200px";
+					cssObject.style.height = "200px";
+					//give it a z-index so we can place it behind our webGL canvas element
+					cssObject.style.zIndex = 999;
 					cssScene = new THREE.Scene()
 					cssScene.add(cssObject);
 					cssRenderer = new THREE.CSS3DRenderer();
