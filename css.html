@@ -71,6 +71,7 @@
 					// we reference the same position and rotation 
 					cssObject.position = planeMesh.position;
 					cssObject.rotation = planeMesh.rotation;
+					cssObject.scale.set(200,200,200);
 					cssScene = new THREE.Scene()
 					cssScene.add(cssObject);
 					cssRenderer = new THREE.CSS3DRenderer();
