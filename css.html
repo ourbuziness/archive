@@ -81,11 +81,12 @@ alert("setsize init");
 						cssRenderer.setSize(w,h)
 						cssRenderer.domElement.style.position = 'absolute';
 						cssRenderer.domElement.style.top = 0;
-						nft.tickExtend = function load(){
-alert("load");
-							cssObject.position = planeMesh.position;
+						nft.tickExtend = function (){
+                                                        alert("load");
+	  						cssObject.position = planeMesh.position;
 							cssObject.rotation = planeMesh.rotation;
 							 cssRenderer.render( cssScene, nft.renderer.camera );
+                                                      alert("finish load");
 						}
 alert("finish setsize");
 					      }catch(e){
