@@ -16,7 +16,8 @@
 	
 		<script src="three.min.js"></script>
 		<script src="ARnft.js"></script>
-        <script type='text/javascript' src='Tween.js'></script>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+        <script type='text/javascript' src='Tween.js'></script>  
+	<script src='threex.htmlmixer.js'></script>
 
     <script>
 	    
@@ -25,6 +26,8 @@
 	    let planeMesh;
 	    let cssScene;
 	    let rt;
+	    let w;
+	    let h;
 	    
       
 			ARnft.ARnft.init(800, 600, "archive/DataNFT/notebook", 'config3.json', true, true)
@@ -35,6 +38,9 @@
 					const scene = ev.detail.scene;
 					const camera = ev.detail.camera;
 					
+					try{
+						renderer.autoClear	= false;
+					}catch(e){alert(e)}
   					renderer.outputEncoding = THREE.sRGBEncoding;
                                         renderer.textureEncoding = THREE.sRGBEncoding
 					renderer.physicallyCorrectLights = true;
@@ -50,44 +56,73 @@
 				})
 				
 				try{
-				
-                                 //   alert("init");
-					// create the plane mesh
-					var material = new THREE.MeshBasicMaterial({ wireframe: true });
-					var geometry = new THREE.PlaneGeometry();
-					planeMesh= new THREE.Mesh( geometry, material );
-					// add it to the WebGL scene
-					planeMesh.scale.set(200,200,200)
-					nft.root.add(planeMesh);
+
 					
-					var element = document.createElement( 'img' );
-					element.src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Qasem_Soleimani_with_Ya_Zahra_Headband.jpg/424px-Qasem_Soleimani_with_Ya_Zahra_Headband.jpg';
-					element.style.width  = "200px";
-					element.style.height = "200px";
-					//give it a z-index so we can place it behind our webGL canvas element
-					element.style.zIndex = 999;
-					// create the object3d for this element
-					cssObject = new THREE.CSS3DObject( element );
-					// we reference the same position and rotation 
-					cssObject.position = planeMesh.position;
-					cssObject.rotation = planeMesh.rotation;
-					cssObject.scale.set(200,200,200);
-					cssScene = new THREE.Scene()
-					cssScene.add(cssObject);
-					cssRenderer = new THREE.CSS3DRenderer();
+	var renderer	= nft.renderer.renderer;
+
+	/bvar updateFcts	= [];
+	//var scene	= nft.renderer.scene;
+					var scene = nft.root;
+	var camera	= nft.renderer.camera;
+					w = window.innerWidth
+					h = window.innerHeight 
+	
+	//////////////////////////////////////////////////////////////////////////////////
+	//		create THREEx.HtmlMixer						//
+	//////////////////////////////////////////////////////////////////////////////////
+	var mixerContext= new THREEx.HtmlMixer.Context(renderer, scene, camera)
+
+	// handle window resize for mixerContext
+	window.addEventListener('resize', function(){
+		mixerContext.rendererCss.setSize( w,h)
+	}, false)
+
+
+	//////////////////////////////////////////////////////////////////////////////////
+	//		mixerContext configuration and dom attachement
+	//////////////////////////////////////////////////////////////////////////////////
+
+ 	// set up rendererCss
+	var rendererCss		= mixerContext.rendererCss
+	rendererCss.setSize( w, h )
+	// set up rendererWebgl
+	var rendererWebgl	= mixerContext.rendererWebgl
+
+
+	var css3dElement		= rendererCss.domElement
+	css3dElement.style.position	= 'absolute'
+	css3dElement.style.top		= '0px'
+	css3dElement.style.width	= '100%'
+	css3dElement.style.height	= '100%'
+	document.body.appendChild( css3dElement )
+	
+	var webglCanvas			= rendererWebgl.domElement
+	webglCanvas.style.position	= 'absolute'
+	webglCanvas.style.top		= '0px'
+	webglCanvas.style.width		= '100%'
+	webglCanvas.style.height	= '100%'
+	webglCanvas.style.pointerEvents	= 'none'
+	css3dElement.appendChild( webglCanvas )
+	
+	//////////////////////////////////////////////////////////////////////////////////
+	//		create a Plane for THREEx.HtmlMixer				//
+	//////////////////////////////////////////////////////////////////////////////////
+	
+
+	// create the iframe element
+	var url		= 'http://threejs.org/';
+	var domElement	= document.createElement('iframe')
+	domElement.src	= url
+	domElement.style.border	= 'none'
+
+	// create the plane
+	var mixerPlane	= new THREEx.HtmlMixer.Plane(mixerContext, domElement)
+	mixerPlane.object3d.scale.multiplyScalar(2)
+	scene.add(mixerPlane.object3d)
 					
-					cssRenderer.domElement.style.position = 'absolute';
-							cssRenderer.domElement.style.top = 0;
-						
-						cssRenderer.domElement.style.width	= '100%'
-	cssRenderer.domElement.style.height	= '100%'
 					
-					document.body.appendChild( cssRenderer.domElement )
-					cssRenderer.domElement.appendChild( nft.renderer.renderer.domElement )
-					
-				//alert("finish init");
 				}catch(e){
-				//	alert(e);
+					alert(e)
 				}
 			
 				document.addEventListener('getWindowSize', (ev) => {
@@ -99,16 +134,11 @@
 						cssRenderer.setSize(w,h)
 						
 						nft.tickExtend = function (){
-                                                       // alert("load");
-// 	  						cssObject.position = planeMesh.position;
-// 							cssObject.rotation = planeMesh.rotation;
-							 cssRenderer.render( cssScene, nft.renderer.camera );
-							cssRenderer.domElement.style.position = 'absolute';
-							cssRenderer.domElement.style.top = 0;
-                                                  //    alert("finish load");
+                                                       mixerContext.update()
 						}
 //alert("finish setsize");
 					      }catch(e){
+						      alert(e)
 					      }
 					
 				});
