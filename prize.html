@@ -24,7 +24,7 @@
       let prize
       let flag = true
 
-    var current	= { rotation: 0 };
+    var current	= { rotation: 0 , scale : 0 };
 
     var update	= function(){
 	    	console.log("YMZ-ROTATION = " + current.rotation)
@@ -34,7 +34,7 @@
     var easing	= TWEEN.Easing.Cubic.InOut;
 
     var tweenBox	= new TWEEN.Tween(current)
-		.to({rotation: 1080}, 10000)
+		.to({rotation: 1080,scale :24}, 10000)
 		.delay(10)
     		.repeat( Infinity )
 		.easing(easing)
@@ -82,7 +82,8 @@
 								date = document.getElementById("date");
 								date.innerHTML = "rotation : "+ current.rotation;
 								TWEEN.update();
-								prize.rotation.y = (current.rotation* 0.01);
+								prize.rotation.y = (current.rotation* 0.05)
+								prize.scale.set(current.scale);
 							}catch(e){
 								alert(e)
 							}
