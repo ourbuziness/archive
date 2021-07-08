@@ -83,7 +83,7 @@
 								date.innerHTML = "rotation : "+ current.rotation;
 								TWEEN.update();
 								prize.rotation.y = (current.rotation* 0.05)
-								prize.scale.set(current.scale);
+								prize.scale.set(current.scale,current.scale,current.scale );
 							}catch(e){
 								alert(e)
 							}
