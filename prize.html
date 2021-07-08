@@ -75,6 +75,16 @@
 					nft.addSimpleModel('./mob.glb' , 70 , 100 ,0, 24 , function(model){
 						try{
 						prize = model;
+							nft.tickExtend = function(){
+							try{
+								console.log("YMZ-ROTATION call update");
+								TWEEN.update();
+								prize.rotation.y = current.rotation;
+							}catch(e){
+								alert(e)
+							}
+						}
+							
 						}catch(e){
 							alert(e);
 						}
@@ -86,14 +96,6 @@
 			
 				document.addEventListener('getMatrixGL_RH', (ev) => {
 					try{
-						nft.tickExtend = function(){
-							try{
-								console.log("YMZ-ROTATION call update");
-								TWEEN.update();
-							}catch(e){
-								alert(e)
-							}
-						}
 							console.log("YMZ-ROTATION START");
 						tweenBox.start()
 					}catch(e){
