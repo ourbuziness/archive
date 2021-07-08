@@ -82,7 +82,7 @@
 								date = document.getElementById("date");
 								date.innerHTML = "rotation : "+ current.rotation;
 								TWEEN.update();
-								prize.rotation.y = current.rotation;
+								prize.rotation.y = (current.rotation* 0.01);
 							}catch(e){
 								alert(e)
 							}
