@@ -78,8 +78,8 @@
 							nft.tickExtend = function(){
 							try{
 								console.log("YMZ-ROTATION call update");
-								TWEEN.update();
-								prize.rotation.y = current.rotation;
+								//TWEEN.update();
+								prize.rotation.y += 0.01;
 							}catch(e){
 								alert(e)
 							}
@@ -97,7 +97,7 @@
 				document.addEventListener('getMatrixGL_RH', (ev) => {
 					try{
 							console.log("YMZ-ROTATION START");
-						tweenBox.start()
+						//tweenBox.start()
 					}catch(e){
 						alert(e)
 					}
