@@ -26,6 +26,7 @@
     var current	= { rotation: 0 };
 
     var update	= function(){
+	    	console.log("YMZ-ROTATION = " + current.rotation)
 		prize.rotation.y = current.rotation*0.01;
 	}
 
@@ -75,11 +76,13 @@
 						prize = model;
 						nft.tickExtend = function(){
 							try{
+								console.log("YMZ-ROTATION call update");
 								TWEEN.update();
 							}catch(e){
 								alert(e)
 							}
 						}
+							console.log("YMZ-ROTATION START");
 						tweenBox.start()
 						}catch(e){
 							alert(e);
