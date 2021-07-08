@@ -75,6 +75,15 @@
 					cssScene = new THREE.Scene()
 					cssScene.add(cssObject);
 					cssRenderer = new THREE.CSS3DRenderer();
+					
+					cssRenderer.domElement.style.position = 'absolute';
+							cssRenderer.domElement.style.top = 0;
+						
+						cssRenderer.domElement.style.width	= '100%'
+	cssRenderer.domElement.style.height	= '100%'
+					
+					document.body.appendChild( cssRenderer.domElement )
+					
 				//alert("finish init");
 				}catch(e){
 				//	alert(e);
@@ -87,11 +96,7 @@
 					try{
 //alert("setsize init");
 						cssRenderer.setSize(w,h)
-						cssRenderer.domElement.style.position = 'absolute';
-							cssRenderer.domElement.style.top = 0;
 						
-						cssRenderer.domElement.style.width	= '100%'
-	cssRenderer.domElement.style.height	= '100%'
 						nft.tickExtend = function (){
                                                        // alert("load");
 // 	  						cssObject.position = planeMesh.position;
