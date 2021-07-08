@@ -189,5 +189,3 @@ THREEx.HtmlMixer.Plane = function(mixerContext, domElement, opts) {
 		cssObject.scale.set(1,1,1).multiplyScalar(mixerContext.cssFactor/scaleFactor)
 	})
 };
-
-
