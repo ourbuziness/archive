@@ -121,7 +121,9 @@
 	var mixerPlane	= new THREEx.HtmlMixer.Plane(mixerContext, domElement)
 	mixerPlane.object3d.scale.multiplyScalar(2)
 	scene.add(mixerPlane.object3d)
-					
+	nft.tickExtend = function (){
+                                                       mixerContext.update()
+						}				
 					
 				}catch(e){
 					alert(e)
@@ -135,9 +137,6 @@
 //alert("setsize init");
 						mixerContext.rendererCss.setSize(w,h)
 						
-						nft.tickExtend = function (){
-                                                       mixerContext.update()
-						}
 //alert("finish setsize");
 					      }catch(e){
 						      alert(e)
