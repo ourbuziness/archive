@@ -29,6 +29,8 @@
 	    let w;
 	    let h;
 	    
+	    let mixerContext;
+	    
       
 			ARnft.ARnft.init(800, 600, "archive/DataNFT/notebook", 'config3.json', true, true)
 			.then((nft) => {
@@ -70,7 +72,7 @@
 	//////////////////////////////////////////////////////////////////////////////////
 	//		create THREEx.HtmlMixer						//
 	//////////////////////////////////////////////////////////////////////////////////
-	var mixerContext= new THREEx.HtmlMixer.Context(renderer, scene, camera)
+	 mixerContext= new THREEx.HtmlMixer.Context(renderer, scene, camera)
 
 	// handle window resize for mixerContext
 	window.addEventListener('resize', function(){
@@ -131,7 +133,7 @@
 					
 					try{
 //alert("setsize init");
-						cssRenderer.setSize(w,h)
+						mixerContext.rendererCss.setSize(w,h)
 						
 						nft.tickExtend = function (){
                                                        mixerContext.update()
