@@ -5,7 +5,7 @@
 	<title>ARnft example showing an simple red cube</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=1">
 	<link rel="stylesheet" href="nft-style.css">
-	<p id="dateY"></p>
+	<p id="date" style="position: absolute;z-index:999"></p>
 </head>
 <body>
 
@@ -79,8 +79,10 @@
 							nft.tickExtend = function(){
 							try{
 								console.log("YMZ-ROTATION call update");
+								date = document.getElementById("date");
+								date.innerHTML = "rotation : "+ current.rotation;
 								//TWEEN.update();
-								prize.rotation.y = current.rotation;
+								prize.rotation.y += current.rotation;
 							}catch(e){
 								alert(e)
 							}
