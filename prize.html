@@ -20,6 +20,37 @@
 
     <script>
       
+      let box
+      let prize
+
+    var current	= { rotation: 0 };
+
+    var update	= function(){
+		prize.position.x = current.x;
+	}
+
+    var easing	= TWEEN.Easing.Cubic.InOut;
+
+    var tweenBox	= new TWEEN.Tween(current)
+		.to({rotation: 1000}, 2000)
+		.delay(10)
+		.easing(easing)
+		.onUpdate(update);
+
+		// tween1 = new TWEEN.Tween( target1.dataset )
+		// 				.to( { rotation: 360, y: 300 }, 750 )
+		// 				.repeat( 1 )
+		// 				.delay( 1000 )
+		// 				.yoyo( true )
+		// 				.easing( TWEEN.Easing.Cubic.InOut )
+		// 				.onUpdate( function() {
+		// 					updateBox( target1, this );
+		// 				})
+
+
+
+
+
 			ARnft.ARnft.init(800, 600, "archive/DataNFT/notebook", 'config3.json', true, true)
 			.then((nft) => {
 				document.addEventListener('onInitThreejsRendering', (ev) => {
@@ -39,6 +70,16 @@
 					directionalLight.position.set(0.5, 0, 0.866);
 					camera.add(directionalLight);
 	
+					nft.addSimpleModel('./mob.glb' , 70 , 100 ,0, 24 , function(model){
+						try{
+						prize = model;
+						tweenBox.start()
+						}catch(e){
+							alert(e);
+						}
+					});
+					
+					
 				})
 				
 			
