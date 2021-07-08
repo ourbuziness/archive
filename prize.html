@@ -73,6 +73,13 @@
 					nft.addSimpleModel('./mob.glb' , 70 , 100 ,0, 24 , function(model){
 						try{
 						prize = model;
+						nft.tickExtend = function(){
+							try{
+								TWEEN.update();
+							}catch(e){
+								alert(e)
+							}
+						}
 						tweenBox.start()
 						}catch(e){
 							alert(e);
