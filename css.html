@@ -57,6 +57,8 @@
 	
 				})
 				
+				
+				document.addEventListener('onAfterInitThreejsRendering', (ev) => {
 				try{
 
 					
@@ -128,6 +130,8 @@
 				}catch(e){
 					alert(e)
 				}
+					
+				});
 			
 				document.addEventListener('getWindowSize', (ev) => {
 				      w = ev.detail.sw
