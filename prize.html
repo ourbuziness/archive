@@ -22,6 +22,7 @@
       
       let box
       let prize
+      let flag = true
 
     var current	= { rotation: 0 };
 
@@ -97,7 +98,11 @@
 				document.addEventListener('getMatrixGL_RH', (ev) => {
 					try{
 							console.log("YMZ-ROTATION START");
+						if(flag){
+							flag = false
 						tweenBox.start()
+							
+						}
 					}catch(e){
 						alert(e)
 					}
