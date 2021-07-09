@@ -21,48 +21,51 @@
     <script>
       
       let ps5
-      let prize
+      let box
       let flag = true
+      let secondStart = true
 
-    var current	= { rotation: 0 , scale : 0 };
-	    var currentPS5 = {rotation: 0 , scale : 0}
-    var update	= function(){
-		prize.rotation.y = current.rotation;
+    	var current1	= { time : 0 };
+	var current2 = { scale : 24}
+	var current3 = {rotation: 0 , scale : 0}
+	
+    var update1	= function(){
+		box.rotation.y += 0.01
 	}
     
-    var updatePS5 = function(){
-	    ps5.rotation.y = currentPS5.rotation;
-	    ps5.scale.set(currentPS5.scale,currentPS5.scale,currentPS5.scale);
+    var update2 = function(){
+	    	    box.scale.set(current2.scale,current2.scale,current2.scale);
+    }
+    
+    var update3 = function(){
+	    ps5.rotation.y = current3.rotation;
+	    ps5.scale.set(current3.scale,current3.scale,current3.scale);
     }
 
-    var easing	= TWEEN.Easing.Linear.None;
-	    var ps5Easing = TWEEN.Easing.Back.Out;
-
-    	var tweenBox	= new TWEEN.Tween(current)
-		.to({rotation: 1080,scale :0.5}, 5000)
-		.delay(10)
-		.easing(ps5Easing)
-		.onUpdate(update);
+    	    var easing1	= TWEEN.Easing.Linear.None;
+	    var easing2 = TWEEN.Easing.Quintic.In;
+	    var easing3 = TWEEN.Easing.Cubic.InOut;	    
 	    
-	var tweenPS5 = new TWEEN.Tween(currentPS5)
-		.to({rotation: 1080,scale :24}, 10000)
+	    var tween1	= new TWEEN.Tween(current1)
+		.to({time :8000}, 8000)
 		.delay(10)
-		.easing(ps5Easing)
-		.onUpdate(updatePS5);
-
-		// tween1 = new TWEEN.Tween( target1.dataset )
-		// 				.to( { rotation: 360, y: 300 }, 750 )
-		// 				.repeat( 1 )
-		// 				.delay( 1000 )
-		// 				.yoyo( true )
-		// 				.easing( TWEEN.Easing.Cubic.InOut )
-		// 				.onUpdate( function() {
-		// 					updateBox( target1, this );
-		// 				})
-
-
-
-
+		.easing(easing1)
+		.onUpdate(update1);
+	    
+	    var tween2 = new TWEEN.Tween(current2)
+		.to({scale : 0}, 2000)
+		.delay(10)
+		.easing(easing2)
+		.onUpdate(update2);
+	    
+	    var tween3 = new TWEEN.Tween(current3)
+		.to({rotation: 720,scale :0.75}, 5000)
+		.delay(10)
+		.easing(easing2)
+		.onUpdate(update3);
+	    
+	    tween1.chain(tween2);
+	    twee2.chain(tween3);
 
 			ARnft.ARnft.init(800, 600, "archive/DataNFT/notebook", 'config3.json', true, true)
 			.then((nft) => {
@@ -83,18 +86,19 @@
 					directionalLight.position.set(0.5, 0, 0.866);
 					camera.add(directionalLight);
 	
-					nft.addSimpleModel('./ps5.glb' , 70 , 100 ,0, 24 , function(model){
+					nft.addSimpleModel('./prize.glb' , 70 , 100 ,0, 24 , function(model){
 						try{
-						prize = model;
-							prize.rotation.x = (Math.PI /2)
+						box = model;
 							nft.tickExtend = function(){
 							try{
-								console.log("YMZ-ROTATION call update");
-								date = document.getElementById("date");
-								date.innerHTML = "rotation : "+ current.rotation;
 								TWEEN.update();
-								prize.rotation.y = (current.rotation* 0.05)
-								prize.scale.set(current.scale,current.scale,current.scale );
+								if( current2.scale <= 10 && secondStart){
+									secondStart = false
+									nft.addSimpleModel('./ps5.glb' , 70 , 100 ,0, 0.75 , function(model){
+										ps5 = model
+									});
+								}
+								
 							}catch(e){
 								alert(e)
 							}
@@ -107,16 +111,15 @@
 					});
 					
 					
+					
 				})
 				
 			
 				document.addEventListener('getMatrixGL_RH', (ev) => {
 					try{
-							console.log("YMZ-ROTATION START");
 						if(flag){
 							flag = false
-						tweenBox.start()
-							
+						tween1.start()
 						}
 					}catch(e){
 						alert(e)
