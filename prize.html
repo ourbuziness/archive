@@ -107,7 +107,7 @@
 					
 					nft.addSimpleModel('./ps5.glb' , 70 , 100 ,0, 0 , function(model){
 						try{
-									controls = new OrbitControls( nft.renderer.camera, nft.renderer.renderer.domElement ); 
+									controls = new THREE.OrbitControls( nft.renderer.camera, nft.renderer.renderer.domElement ); 
 						}catch(e){
 							alert(e);	
 						}
