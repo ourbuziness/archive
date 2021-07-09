@@ -59,7 +59,7 @@
 		.onUpdate(update2);
 	    
 	    var tween3 = new TWEEN.Tween(current3)
-		.to({rotation: 720,scale :0.75}, 5000)
+		.to({rotation: 720,scale :0.5}, 5000)
 		.delay(10)
 		.easing(easing2)
 		.onUpdate(update3);
@@ -86,18 +86,18 @@
 					directionalLight.position.set(0.5, 0, 0.866);
 					camera.add(directionalLight);
 	
+					nft.addSimpleModel('./ps5.glb' , 70 , 100 ,0, 0 , function(model){
+										ps5 = model
+										ps5.rotation.x = (Math.PI / 2);
+									});
+					
 					nft.addSimpleModel('./gift.glb' , 70 , 100 ,0, 24 , function(model){
 						try{
 						box = model;
+							box.rotation.x = (Math.PI / 2);
 							nft.tickExtend = function(){
 							try{
 								TWEEN.update();
-								if( current2.scale <= 10 && secondStart){
-									secondStart = false
-									nft.addSimpleModel('./ps5.glb' , 70 , 100 ,0, 0.75 , function(model){
-										ps5 = model
-									});
-								}
 								
 							}catch(e){
 								alert(e)
