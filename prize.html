@@ -24,6 +24,7 @@
       let box
       let flag = true
       let secondStart = true
+      let finished = false
 
     	var current1	= { time : 0 };
 	var current2 = { scale : 28}
@@ -42,6 +43,9 @@
     }
     
     var update3 = function(){
+	    if(current3.scale == 0.42){
+		    finished = true
+	    }
 	    ps5.rotation.y = current3.rotation;
 	    ps5.scale.set(current3.scale,current3.scale,current3.scale);
     }
@@ -63,7 +67,7 @@
 		.onUpdate(update2);
 	    
 	    var tween3 = new TWEEN.Tween(current3)
-		.to({rotation: (8*Math.PI),scale :0.56}, 2500)
+		.to({rotation: (8*Math.PI),scale :0.42}, 5000)
 		.delay(10)
 		.easing(easing3)
 		.onUpdate(update3);
@@ -101,6 +105,7 @@
 							box.rotation.x = (Math.PI / 2);
 							nft.tickExtend = function(){
 							try{
+								if(!finished)
 								TWEEN.update();
 								
 							}catch(e){
