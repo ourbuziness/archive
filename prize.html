@@ -32,7 +32,6 @@
       let secondStart = true
       let finished = false 
       let confetiStart = false
-      let audio = ""
       
 
     	var current1	= { time : 0 };
@@ -55,8 +54,8 @@
 		    secondStart = false
 		    tween3.start()
 		    	document.getElementById('myAudio').muted = false 
-		    	document.getElementById('myAudio'.src = 'path/to/file.mp3'
-			document.getElementById('myAudio'.play();
+		    	document.getElementById('myAudio').src = 'win.mp3'
+			document.getElementById('myAudio').play();
 		    
 		    try{
 			    if(!confetiStart){
@@ -108,7 +107,7 @@
 
 	    
 	    window.addEventListener('touchstart', () => {
-					    audio = document.getElementById('myAudio').muted = false
+					    var audio = document.getElementById('myAudio').muted = false
 					    audio.play()
 					  });
 	    
