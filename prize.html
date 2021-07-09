@@ -106,7 +106,11 @@
 					camera.add(directionalLight);
 					
 					nft.addSimpleModel('./ps5.glb' , 70 , 100 ,0, 0 , function(model){
-						controls = new OrbitControls( nft.renderer.camera, nft.renderer.renderer.domElement ); 
+						try{
+									controls = new OrbitControls( nft.renderer.camera, nft.renderer.renderer.domElement ); 
+						}catch(e){
+							alert(e);	
+						}
 										ps5 = model
 										ps5.rotation.x = (Math.PI / 2);
 									});
