@@ -26,8 +26,7 @@
       let box
       let flag = true
       let secondStart = true
-      let finished = false
-      let controls                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+      let finished = false                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
       
 
     	var current1	= { time : 0 };
@@ -38,7 +37,6 @@
 	    	if(!finished)
 		box.rotation.y += 0.1
 	    else{
-		    current1.time = 0
 		    ps5.rotation.y += 0.01
 	    }
 	}
@@ -54,6 +52,8 @@
     var update3 = function(){
 	    if(current3.scale == 0.35){
 		    finished = true
+		     current1.time = 0
+		    tween1.start();
 	    }
 	    ps5.rotation.y = current3.rotation;
 	    ps5.scale.set(current3.scale,current3.scale,current3.scale);
@@ -83,7 +83,6 @@
 	    
 	    tween1.chain(tween2);
 // 	    tween2.chain(tween3);
-	    tween3.chain(tween1);
 
 			ARnft.ARnft.init(800, 600, "archive/DataNFT/notebook", 'config3.json', true, true)
 			.then((nft) => {
@@ -106,11 +105,6 @@
 					camera.add(directionalLight);
 					
 					nft.addSimpleModel('./ps5.glb' , 70 , 100 ,0, 0 , function(model){
-						try{
-									controls = new THREE.OrbitControls( nft.renderer.camera, nft.renderer.renderer.domElement ); 
-						}catch(e){
-							alert(e);	
-						}
 										ps5 = model
 										ps5.rotation.x = (Math.PI / 2);
 									});
@@ -124,8 +118,6 @@
 							try{
 								if(!finished)
 								TWEEN.update();
-								else
-									controls.update();
 								
 							}catch(e){
 								alert(e)
