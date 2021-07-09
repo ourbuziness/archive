@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=1">
 	<link rel="stylesheet" href="nft-style.css">
 	<center>
-	<p id="counter" style="position: absolute;z-index:999"></p>
+	<p id="counter" style="position: absolute;z-index:9999"></p>
 	</center>
 	<canvas id="whole" style="position: absolute;z-index:999"></canvas>
 </head>
@@ -37,12 +37,12 @@
     	var current1	= { time : 0 };
 	var current2 = { scale : 28}
 	var current3 = {rotation: 0 , scale : 0.14}
-	var counter = document.getElementById("counter");
 	
     var update1	= function(){
 	    	if(!finished){
 		box.rotation.y += 0.1
-// 			counter.innerHtml = "00:0"+ Math.floor(current1.time)
+			
+			document.getElementById("counter").innerHtml = "00:0" + (Math.floor(current1.time))
 		}
 // 	    else{
 // 		    ps5.rotation.y += 0.01
