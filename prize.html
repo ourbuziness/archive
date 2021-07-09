@@ -53,9 +53,8 @@
 	    if(current2.scale <14 && secondStart ){
 		    secondStart = false
 		    tween3.start()
-		    	document.getElementById('myAudio').muted = false 
-// 		    	document.getElementById('myAudio').src = 'win.mp3'
-			document.getElementById('myAudio').play();
+		    var audio = document.getElementById("myAudio"); 
+			audio.play();
 		    
 		    try{
 			    if(!confetiStart){
@@ -105,12 +104,6 @@
 	    tween1.chain(tween2);
 // 	    tween2.chain(tween3);
 
-	    
-	    window.addEventListener('touchstart', () => {
-					    var audio = document.getElementById('myAudio').muted = false
-					    audio.play()
-					  });
-	    
 			ARnft.ARnft.init(800, 600, "archive/DataNFT/notebook", 'config3.json', true, true)
 			.then((nft) => {
 				
@@ -131,6 +124,10 @@
 					directionalLight.position.set(0.5, 0, 0.866);
 					camera.add(directionalLight);
 					
+					window.addEventListener('touchstart', () => {
+					    document.getElementById('myAudio').muted = false
+					    document.getElementById('myAudio').play()
+					  });
 					
 					nft.addSimpleModel('./ps5.glb' , 70 , 100 ,0, 0 , function(model){
 										ps5 = model
