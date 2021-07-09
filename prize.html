@@ -26,11 +26,11 @@
       let secondStart = true
 
     	var current1	= { time : 0 };
-	var current2 = { scale : 24}
+	var current2 = { scale : 28}
 	var current3 = {rotation: 0 , scale : 0}
 	
     var update1	= function(){
-		box.rotation.y += 0.01
+		box.rotation.y += 0.1
 	}
     
     var update2 = function(){
@@ -53,13 +53,13 @@
 		.onUpdate(update1);
 	    
 	    var tween2 = new TWEEN.Tween(current2)
-		.to({scale : 0}, 2000)
+		.to({scale : 0}, 700)
 		.delay(10)
 		.easing(easing2)
 		.onUpdate(update2);
 	    
 	    var tween3 = new TWEEN.Tween(current3)
-		.to({rotation: 720,scale :0.5}, 5000)
+		.to({rotation: (8*Math.PI),scale :0.56}, 2500)
 		.delay(10)
 		.easing(easing2)
 		.onUpdate(update3);
@@ -91,7 +91,7 @@
 										ps5.rotation.x = (Math.PI / 2);
 									});
 					
-					nft.addSimpleModel('./gift.glb' , 70 , 100 ,0, 24 , function(model){
+					nft.addSimpleModel('./gift.glb' , 70 , 100 ,0, 28 , function(model){
 						try{
 						box = model;
 							box.rotation.x = (Math.PI / 2);
