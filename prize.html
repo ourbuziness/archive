@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=1">
 	<link rel="stylesheet" href="nft-style.css">
 	<p id="date" style="position: absolute;z-index:999"></p>
+	<div id="whole" style="width:100%;height:100%"></div>
 </head>
 <body>
 
@@ -17,7 +18,8 @@
 		<script src="three.min.js"></script>
 		<script src="ARnft.js"></script>
         	<script type='text/javascript' src='Tween.js'></script>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
-		<script type='text/javascript' src='OrbitControls.js'></script>  
+		<script type='text/javascript' src='OrbitControls.js'></script>
+		<script src="confetti.js"></script>
 	
 	
     <script>
@@ -26,7 +28,8 @@
       let box
       let flag = true
       let secondStart = true
-      let finished = false                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+      let finished = false 
+      let confetiStart = false
       
 
     	var current1	= { time : 0 };
@@ -36,15 +39,27 @@
     var update1	= function(){
 	    	if(!finished)
 		box.rotation.y += 0.1
-	    else{
-		    ps5.rotation.y += 0.01
-	    }
+// 	    else{
+// 		    ps5.rotation.y += 0.01
+// 	    }
 	}
     
     var update2 = function(){
 	    if(current2.scale <14 && secondStart ){
 		    secondStart = false
 		    tween3.start()
+		    
+		    try{
+			    if(!confetiStart){
+				    confetiStart = true;
+		   	var confettiElement = document.getElementById('whole');
+			var confettiSettings = { target: confettiElement };
+			var confetti = new ConfettiGenerator(confettiSettings);
+			confetti.render();
+			    }
+		    }catch(e){
+			   alert(e); 
+		    }
 	    }
 	    	    box.scale.set(current2.scale,current2.scale,current2.scale);
     }
@@ -52,8 +67,8 @@
     var update3 = function(){
 	    if(current3.scale == 0.35){
 		    finished = true
-		     current1.time = 0
-		    tween1.start();
+// 		     current1.time = 0
+// 		    tween1.start();
 	    }
 	    ps5.rotation.y = current3.rotation;
 	    ps5.scale.set(current3.scale,current3.scale,current3.scale);
