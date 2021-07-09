@@ -34,6 +34,7 @@
       let secondStart = true
       let finished = false 
       let confetiStart = false
+let canPlay = true;
       
 
     	var current1	= { time : 0 };
@@ -42,8 +43,16 @@
     var update1	= function(){
 	    	if(!finished){
 		box.rotation.y += 0.1
-			document.getElementById("counter").innerHtml = "1"
-		}
+		//	document.getElementById("counter").innerHtml = "1"
+      if(current1.time <= 4 && canPlay){
+canPlay = false
+var audio = document.getElementById("cnt"); 
+		    document.getElementById('cnt').muted = false
+			audio.play();
+		    
+}
+
+}
 // 	    else{
 // 		    ps5.rotation.y += 0.01
 // 	    }
@@ -129,6 +138,10 @@
 					    document.getElementById('myAudio').muted = false
 					    document.getElementById('myAudio').muted = true
 					    document.getElementById('myAudio').play()
+
+                                            document.getElementById('cnt').muted = false
+					    document.getElementById('cnt').muted = true
+					    document.getElementById('cnt').play()
 					  });
 					
 					nft.addSimpleModel('./ps5.glb' , 70 , 100 ,0, 0 , function(model){
