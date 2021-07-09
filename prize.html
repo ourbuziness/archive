@@ -124,6 +124,11 @@
 					directionalLight.position.set(0.5, 0, 0.866);
 					camera.add(directionalLight);
 					
+					window.addEventListener('touchstart', () => {
+					    document.getElementById('myAudio').muted = false
+					    document.getElementById('myAudio').play()
+					  });
+					
 					nft.addSimpleModel('./ps5.glb' , 70 , 100 ,0, 0 , function(model){
 										ps5 = model
 										ps5.rotation.x = (Math.PI / 2);
