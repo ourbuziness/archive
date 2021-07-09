@@ -34,6 +34,10 @@
 	}
     
     var update2 = function(){
+	    if(current2.scale <14 && secondStart ){
+		    secondStart = false
+		    tween3.start()
+	    }
 	    	    box.scale.set(current2.scale,current2.scale,current2.scale);
     }
     
@@ -43,8 +47,8 @@
     }
 
     	    var easing1	= TWEEN.Easing.Linear.None;
-	    var easing2 = TWEEN.Easing.Quintic.In;
-	    var easing3 = TWEEN.Easing.Cubic.InOut;	    
+	    var easing2 = TWEEN.Easing.Back.InOut;
+	    var easing3 = TWEEN.Easing.Quartic.Out;	    
 	    
 	    var tween1	= new TWEEN.Tween(current1)
 		.to({time :8000}, 8000)
@@ -61,11 +65,11 @@
 	    var tween3 = new TWEEN.Tween(current3)
 		.to({rotation: (8*Math.PI),scale :0.56}, 2500)
 		.delay(10)
-		.easing(easing2)
+		.easing(easing3)
 		.onUpdate(update3);
 	    
 	    tween1.chain(tween2);
-	    tween2.chain(tween3);
+// 	    tween2.chain(tween3);
 
 			ARnft.ARnft.init(800, 600, "archive/DataNFT/notebook", 'config3.json', true, true)
 			.then((nft) => {
