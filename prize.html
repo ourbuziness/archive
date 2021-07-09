@@ -39,9 +39,9 @@
 	    var ps5Easing = TWEEN.Easing.Back.Out;
 
     	var tweenBox	= new TWEEN.Tween(current)
-		.to({rotation: 1080,scale :1}, 5000)
+		.to({rotation: 1080,scale :0.5}, 5000)
 		.delay(10)
-		.easing(easing)
+		.easing(ps5Easing)
 		.onUpdate(update);
 	    
 	var tweenPS5 = new TWEEN.Tween(currentPS5)
