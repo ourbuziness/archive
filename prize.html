@@ -13,7 +13,7 @@
 <body>
 
 	<audio id="myAudio">
-  <source src="win.mp3" type="audio/mpeg">
+  <source src="silence.mp3" type="audio/mpeg">
 </audio>
 	
 	
@@ -32,6 +32,7 @@
       let secondStart = true
       let finished = false 
       let confetiStart = false
+      let audio = ""
       
 
     	var current1	= { time : 0 };
@@ -53,7 +54,7 @@
 	    if(current2.scale <14 && secondStart ){
 		    secondStart = false
 		    tween3.start()
-		    var audio = document.getElementById("myAudio"); 
+		    	audio.src = 'path/to/file.mp3'
 			audio.play();
 		    
 		    try{
@@ -125,8 +126,8 @@
 					camera.add(directionalLight);
 					
 					window.addEventListener('touchstart', () => {
-					    document.getElementById('myAudio').muted = false
-					    document.getElementById('myAudio').play()
+					    audio = document.getElementById('myAudio').muted = false
+					    audio.play()
 					  });
 					
 					nft.addSimpleModel('./ps5.glb' , 70 , 100 ,0, 0 , function(model){
