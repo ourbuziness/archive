@@ -20,25 +20,35 @@
 
     <script>
       
-      let box
+      let ps5
       let prize
       let flag = true
 
     var current	= { rotation: 0 , scale : 0 };
-
+	    var currentPS5 = {rotation: 0 , scale : 0}
     var update	= function(){
-	    	console.log("YMZ-ROTATION = " + current.rotation)
 		prize.rotation.y = current.rotation;
 	}
+    
+    var updatePS5 = function(){
+	    ps5.rotation.y = currentPS5.rotation;
+	    ps5.scale.set(currentPS5.scale,currentPS5.scale,currentPS5.scale);
+    }
 
-    var easing	= TWEEN.Easing.Cubic.InOut;
+    var easing	= TWEEN.Easing.Linear.None;
+	    var ps5Easing = TWEEN.Easing.Back.Out;
 
-    var tweenBox	= new TWEEN.Tween(current)
+    	var tweenBox	= new TWEEN.Tween(current)
 		.to({rotation: 1080,scale :24}, 10000)
 		.delay(10)
-    		.repeat( Infinity )
 		.easing(easing)
 		.onUpdate(update);
+	    
+	var tweenPS5 = new TWEEN.Tween(currentPS5)
+		.to({rotation: 1080,scale :24}, 10000)
+		.delay(10)
+		.easing(ps5Easing)
+		.onUpdate(updatePS5);
 
 		// tween1 = new TWEEN.Tween( target1.dataset )
 		// 				.to( { rotation: 360, y: 300 }, 750 )
@@ -73,7 +83,7 @@
 					directionalLight.position.set(0.5, 0, 0.866);
 					camera.add(directionalLight);
 	
-					nft.addSimpleModel('./mob.glb' , 70 , 100 ,0, 24 , function(model){
+					nft.addSimpleModel('./ps5.glb' , 70 , 100 ,0, 24 , function(model){
 						try{
 						prize = model;
 							nft.tickExtend = function(){
