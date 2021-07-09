@@ -102,8 +102,6 @@
 					let directionalLight = new THREE.DirectionalLight(0xFFFFFF, 0.8 * Math.PI);
 					directionalLight.position.set(0.5, 0, 0.866);
 					camera.add(directionalLight);
-	
-					controls = new OrbitControls( camera, renderer.domElement ); 
 					
 					nft.addSimpleModel('./ps5.glb' , 70 , 100 ,0, 0 , function(model){
 										ps5 = model
@@ -112,6 +110,7 @@
 					
 					nft.addSimpleModel('./gift.glb' , 70 , 100 ,0, 28 , function(model){
 						try{
+						controls = new OrbitControls( nft.renderer.camera, nft.renderer.renderer.domElement ); 
 						box = model;
 							box.rotation.x = (Math.PI / 2);
 							nft.tickExtend = function(){
