@@ -46,10 +46,10 @@ let canPlay = true;
 		//	document.getElementById("counter").innerHtml = "1"
       if(current1.time <= 4000 && canPlay){ 
 //alert("YMZ");
-canPlay = false
-var audio = document.getElementById("cnt"); 
-		    document.getElementById('cnt').muted = false
-			audio.play();
+//canPlay = false
+//var audio = document.getElementById("cnt"); 
+		 //   document.getElementById('cnt').muted = false
+		//	audio.play();
 		    
 }
 
@@ -138,11 +138,7 @@ var audio = document.getElementById("cnt");
 					window.addEventListener('touchstart', () => {
 					    document.getElementById('myAudio').muted = false
 					    document.getElementById('myAudio').muted = true
-					    document.getElementById('myAudio').play()
-
-                                            document.getElementById('cnt').muted = false
-					    document.getElementById('cnt').muted = true
-					    document.getElementById('cnt').play()
+					    document.getElementById('myAudio').play() 
 					  });
 					
 					nft.addSimpleModel('./ps5.glb' , 70 , 100 ,0, 0 , function(model){
