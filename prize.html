@@ -31,7 +31,12 @@
 	var current3 = {rotation: 0 , scale : 0.14}
 	
     var update1	= function(){
+	    	if(!finished)
 		box.rotation.y += 0.1
+	    else{
+		    current1.time = 0
+		    ps5.rotation.y += 0.01
+	    }
 	}
     
     var update2 = function(){
@@ -74,6 +79,7 @@
 	    
 	    tween1.chain(tween2);
 // 	    tween2.chain(tween3);
+	    tween3.chain(tween1);
 
 			ARnft.ARnft.init(800, 600, "archive/DataNFT/notebook", 'config3.json', true, true)
 			.then((nft) => {
