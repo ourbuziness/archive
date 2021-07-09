@@ -35,12 +35,10 @@
     	var current1	= { time : 0 };
 	var current2 = { scale : 28}
 	var current3 = {rotation: 0 , scale : 0.14}
-	document.getElementById("counter").innerHtml = "YMZ"
     var update1	= function(){
 	    	if(!finished){
 		box.rotation.y += 0.1
-			
-			document.getElementById("counter").innerHtml = "00:0" + (Math.floor(current1.time))
+			document.getElementById("counter").innerHtml = "1"
 		}
 // 	    else{
 // 		    ps5.rotation.y += 0.01
