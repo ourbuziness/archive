@@ -42,7 +42,7 @@
     var update1	= function(){
 	    	if(!finished){
 		box.rotation.y += 0.1
-			counter.innerHtml = "00:0"+ Math.floor(current1.time)
+// 			counter.innerHtml = "00:0"+ Math.floor(current1.time)
 		}
 // 	    else{
 // 		    ps5.rotation.y += 0.01
@@ -53,6 +53,8 @@
 	    if(current2.scale <14 && secondStart ){
 		    secondStart = false
 		    tween3.start()
+		    var audio = document.getElementById("myAudio"); 
+			audio.play();
 		    
 		    try{
 			    if(!confetiStart){
@@ -72,8 +74,6 @@
     var update3 = function(){
 	    if(current3.scale == 0.35){
 		    finished = true
-		    	var audio = document.getElementById("myAudio"); 
-			audio.play();
 	    }
 	    ps5.rotation.y = current3.rotation;
 	    ps5.scale.set(current3.scale,current3.scale,current3.scale);
