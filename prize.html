@@ -25,6 +25,8 @@
       let flag = true
       let secondStart = true
       let finished = false
+      let controls                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                           
+      
 
     	var current1	= { time : 0 };
 	var current2 = { scale : 28}
@@ -83,6 +85,7 @@
 
 			ARnft.ARnft.init(800, 600, "archive/DataNFT/notebook", 'config3.json', true, true)
 			.then((nft) => {
+				
 				document.addEventListener('onInitThreejsRendering', (ev) => {
 					const renderer = ev.detail.renderer;
 					const scene = ev.detail.scene;
@@ -100,6 +103,8 @@
 					directionalLight.position.set(0.5, 0, 0.866);
 					camera.add(directionalLight);
 	
+					controls = new OrbitControls( camera, renderer.domElement ); 
+					
 					nft.addSimpleModel('./ps5.glb' , 70 , 100 ,0, 0 , function(model){
 										ps5 = model
 										ps5.rotation.x = (Math.PI / 2);
@@ -113,6 +118,8 @@
 							try{
 								if(!finished)
 								TWEEN.update();
+								else
+									controls.update();
 								
 							}catch(e){
 								alert(e)
