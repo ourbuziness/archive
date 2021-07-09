@@ -16,8 +16,10 @@
 	
 		<script src="three.min.js"></script>
 		<script src="ARnft.js"></script>
-        <script type='text/javascript' src='Tween.js'></script>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
-
+        	<script type='text/javascript' src='Tween.js'></script>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+		<script type='text/javascript' src='OrbitControls.js'></script>  
+	
+	
     <script>
       
       let ps5
@@ -103,6 +105,8 @@
 					directionalLight.position.set(0.5, 0, 0.866);
 					camera.add(directionalLight);
 					
+					controls = new OrbitControls( camera, renderer.domElement ); 
+					
 					nft.addSimpleModel('./ps5.glb' , 70 , 100 ,0, 0 , function(model){
 										ps5 = model
 										ps5.rotation.x = (Math.PI / 2);
@@ -110,7 +114,7 @@
 					
 					nft.addSimpleModel('./gift.glb' , 70 , 100 ,0, 28 , function(model){
 						try{
-						controls = new OrbitControls( nft.renderer.camera, nft.renderer.renderer.domElement ); 
+						
 						box = model;
 							box.rotation.x = (Math.PI / 2);
 							nft.tickExtend = function(){
