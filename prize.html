@@ -50,7 +50,7 @@
     var update1	= function(){
 	    	if(!finished){
 			box.rotation.y += 0.1
-			var sec = Math.ceil(current1.time /1000)
+			var sec = Math.floor(current1.time /1000)
 			if(sec != lastNumber){
 			try{
 			var object = nft_loaded.root.getObjectByName( "text" );
