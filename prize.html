@@ -5,7 +5,6 @@
 	<title>ARnft example showing an simple red cube</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=1">
 	<link rel="stylesheet" href="nft-style.css">
-	<p id="counter" style="position: absolute;top:0;z-index:99999">YMZ YMA</p>
 	<canvas id="whole" style="position: absolute;z-index:999"></canvas>
 </head>
 <body>
@@ -44,6 +43,7 @@
 			var sec = Math.ceil(current1.time /1000)
 			if(sec !=lastNumber){
 			try{
+			lastNumber = sec
 			var object = nft_loaded.root.getObjectByName( "text" );
 				nft_loaded.root.remove(object);
 			}catch(e){}
