@@ -40,7 +40,7 @@
       
 
     	var current1	= { time : 0 };
-	var current2 = { scale : 28}
+	var current2 = { scale : 35}
 	var current3 = {rotation: 0 , scale : 0.14}
     var update1	= function(){
 	    	if(!finished){
@@ -51,7 +51,7 @@
 			var object = nft_loaded.root.getObjectByName( "text" );
 				nft_loaded.root.remove(object);
 			}catch(e){}
-			nft_loaded.addSimpleText( 140 , 220 ,0 , "00:0"+(8 - sec ) ,"text" ,"rgba(228, 233, 237, 1)","rgba(142, 68, 173, 1)" , 42 );
+			nft_loaded.addSimpleText( 140 , 0 ,0 , "00:0"+(8 - sec ) ,"text" ,"rgba(228, 233, 237, 1)","rgba(142, 68, 173, 1)" , 28 );
 			}
 		//	document.getElementById("counter").innerHtml = "1"
       if(current1.time <= 4000 && canPlay){ 
@@ -158,7 +158,7 @@
 										ps5.rotation.x = (Math.PI / 2);
 									});
 					
-					nft.addSimpleModel('./gift.glb' , 70 , 100 ,0, 28 , function(model){
+					nft.addSimpleModel('./gift.glb' , 70 , 100 ,0, 35 , function(model){
 						try{
 						
 						box = model;
