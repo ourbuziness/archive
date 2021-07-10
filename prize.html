@@ -105,7 +105,7 @@
 
 	    var tween1	= new TWEEN.Tween(current1)
 		.to({time :9000}, 9000)
-		.delay(2000)
+		.delay(1000)
 		.easing(easing1)
 		.onUpdate(update1);
 	    
@@ -167,6 +167,7 @@
 								if(flag){
 									flag = false
 									tween1.start()
+									nft_loaded.addSimpleText( 140 , 0 ,0 , "00:0"+(8 - sec ) ,"text" ,"rgba(228, 233, 237, 1)","rgba(142, 68, 173, 1)" , 19 );
 									document.getElementById('myAudio').muted = false
 					    				document.getElementById('myAudio').muted = true
 					    				document.getElementById('myAudio').play()
