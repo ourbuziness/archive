@@ -11,7 +11,11 @@
 
 	<audio id="myAudio">
 		<source src="win.mp3" type="audio/mpeg"></source>
-</audio>
+	</audio>
+
+	<audio id="myAudio1">
+		<source src="counter.mp3" type="audio/mpeg"></source>
+	</audio>
 	
 	
 		<script src="three.min.js"></script>
@@ -34,7 +38,8 @@
       let lastNumber = 9
       
 
-    	var current1	= { time : 0 };
+	var current0 = { wait : 0}
+    var current1	= { time : 0 };
 	var current2 = { scale : 35}
 	var current3 = {rotation: 0 , scale : 0.14}
     var update1	= function(){
@@ -48,22 +53,7 @@
 			}catch(e){ }
 				nft_loaded.addSimpleText( 140 , 0 ,0 , "00:0"+(8 - sec ) ,"text" ,"rgba(228, 233, 237, 1)","rgba(142, 68, 173, 1)" , 19 );
 			}
-				
-			
-		//	document.getElementById("counter").innerHtml = "1"
-      if(current1.time <= 4000 && canPlay){ 
-//alert("YMZ");
-//canPlay = false
-//var audio = document.getElementById("cnt"); 
-		 //   document.getElementById('cnt').muted = false
-		//	audio.play();
-		    
-}
-
-}
-// 	    else{
-// 		    ps5.rotation.y += 0.01
-// 	    }
+		}
 	}
     
     var update2 = function(){
@@ -97,10 +87,17 @@
 	    ps5.scale.set(current3.scale,current3.scale,current3.scale);
     }
 
-    	    var easing1	= TWEEN.Easing.Linear.None;
+    	var easing1	= TWEEN.Easing.Linear.None;
 	    var easing2 = TWEEN.Easing.Back.InOut;
 	    var easing3 = TWEEN.Easing.Quartic.Out;	    
 	    
+		var tween0	= new TWEEN.Tween(current0)
+		.to({wait :10}, 10000)
+		.delay(10)
+		.repeat(Infinity)
+		.easing(easing1)
+		.onUpdate(update0);
+
 	    var tween1	= new TWEEN.Tween(current1)
 		.to({time :8000}, 8000)
 		.delay(10)
@@ -144,9 +141,9 @@
 					camera.add(directionalLight);
 					
 					window.addEventListener('touchstart', () => {
-					    document.getElementById('myAudio').muted = false
-					    document.getElementById('myAudio').muted = true
-					    document.getElementById('myAudio').play() 
+					    // document.getElementById('myAudio').muted = false
+					    // document.getElementById('myAudio').muted = true
+					    // document.getElementById('myAudio').play() 
 
 					  });
 					
@@ -159,15 +156,27 @@
 					nft.addSimpleModel('./gift.glb' , 70 , 100 ,0, 35 , function(model){
 						try{
 						
-						box = model;
+							box = model;
 							box.rotation.x = (Math.PI / 2);
+							nft.setOnObjectClickListener('./gift.glb', function (){
+								if(flag){
+									flag = false
+									tween1.start()
+									document.getElementById('myAudio').muted = false
+					    			document.getElementById('myAudio').muted = true
+					    			document.getElementById('myAudio').play()
+									document.getElementById('myAudio1').play()
+								}
+							});
+
+
 							nft.tickExtend = function(){
 							try{
 								if(!finished)
 								TWEEN.update();
 								
 							}catch(e){
-								alert(e)
+								
 							}
 								
 						}
@@ -184,11 +193,11 @@
 			
 				document.addEventListener('getMatrixGL_RH', (ev) => {
 					try{
-						if(flag){
-							flag = false
-						tween1.start()
+						// if(flag){
+						// 	flag = false
+						// 	tween1.start()
 						
-						}
+						// }
 					}catch(e){
 						alert(e)
 					}
