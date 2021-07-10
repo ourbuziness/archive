@@ -150,6 +150,11 @@
 					    document.getElementById('myAudio').muted = false
 					    document.getElementById('myAudio').muted = true
 					    document.getElementById('myAudio').play() 
+						
+						
+						document.getElementById('cnt').muted = false
+						document.getElementById('cnt').muted = true
+						document.getElementById('cnt').play() 
 					  });
 					
 				
@@ -189,6 +194,8 @@
 						if(flag){
 							flag = false
 						tween1.start()
+							document.getElementById('cnt').muted = false
+							audio.play();
 						}
 					}catch(e){
 						alert(e)
