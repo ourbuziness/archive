@@ -34,7 +34,9 @@
       let secondStart = true
       let finished = false 
       let confetiStart = false
-let canPlay = true;
+      let canPlay = true;
+      let nft_loaded 
+      let lastNumber = 9
       
 
     	var current1	= { time : 0 };
@@ -43,6 +45,15 @@ let canPlay = true;
     var update1	= function(){
 	    	if(!finished){
 		box.rotation.y += 0.1
+			var sec = Math.ceil(current1.time /1000)
+			if(sec !=lastNumber){
+			try{
+			var object = nft_loaded.root.getObjectByName( "text" );
+			}catch(e){}
+			nft_loaded.addText( 140 , 180 ,0 , "00:0"+sec ,"text" , function() {
+						
+					});
+			}
 		//	document.getElementById("counter").innerHtml = "1"
       if(current1.time <= 4000 && canPlay){ 
 //alert("YMZ");
@@ -117,6 +128,7 @@ let canPlay = true;
 
 			ARnft.ARnft.init(800, 600, "archive/DataNFT/giftcard", 'config3.json', true, true)
 			.then((nft) => {
+				nft_loaded = nft;
 				
 				document.addEventListener('onInitThreejsRendering', (ev) => {
 					const renderer = ev.detail.renderer;
@@ -141,9 +153,7 @@ let canPlay = true;
 					    document.getElementById('myAudio').play() 
 					  });
 					
-					nft.addText( 70 , 130 ,0 , "00:08" ,"text" , function() {
-						
-					});
+				
 					nft.addSimpleModel('./ps5.glb' , 70 , 100 ,0, 0 , function(model){
 										ps5 = model
 										ps5.rotation.x = (Math.PI / 2);
