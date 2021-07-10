@@ -165,12 +165,12 @@
 							box.rotation.x = (Math.PI / 2);
 							nft.setOnObjectClickListener('./gift.glb', function (){
 								if(flag){
+									flag = false
+									tween1.start()
 									document.getElementById('myAudio').muted = false
 					    				document.getElementById('myAudio').muted = true
 					    				document.getElementById('myAudio').play()
 									document.getElementById('myAudio1').play()
-									flag = false
-									tween1.start()
 									
 								}
 							});
