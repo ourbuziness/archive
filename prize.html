@@ -49,6 +49,7 @@
 			if(sec !=lastNumber){
 			try{
 			var object = nft_loaded.root.getObjectByName( "text" );
+				nft_loaded.root.remove(object);
 			}catch(e){}
 			nft_loaded.addText( 140 , 180 ,0 , "00:0"+sec ,"text" , function() {
 						
