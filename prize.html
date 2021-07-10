@@ -41,15 +41,12 @@
 	    	if(!finished){
 			box.rotation.y += 0.1
 			var sec = Math.floor(current1.time /1000)
-			if(sec !=lastNumber){
 			try{
-			lastNumber = sec
 			var object = nft_loaded.root.getObjectByName( "text" );
 			nft_loaded.root.remove(object);
 			nft_loaded.addSimpleText( 140 , 0 ,0 , "00:0"+(8 - sec ) ,"text" ,"rgba(228, 233, 237, 1)","rgba(142, 68, 173, 1)" , 19 );
-				alert(sec);
-			}catch(e){}
-			}
+			}catch(e){ alert(e)}
+			
 		//	document.getElementById("counter").innerHtml = "1"
       if(current1.time <= 4000 && canPlay){ 
 //alert("YMZ");
