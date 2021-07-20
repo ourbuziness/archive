@@ -37,6 +37,7 @@
       let canPlay = true;
       let nft_loaded 
       let lastNumber = 9
+      let coffee
       
 
 			ARnft.ARnft.init(800, 600, "archive/DataNFT/coffee", 'config3.json', false, true)
@@ -61,8 +62,12 @@
 					camera.add(directionalLight);
 
 				
-					nft.addSimpleModel('./coffee2.glb' , 70 , 100 ,0,5 , function(model){
+					nft.addSimpleModel('./coffee1.glb' , 70 , 100 ,0,5 , function(model){
+							coffee = model
 						
+						nft.tickExtend = function() {
+							coffee.rotation.y += 0.08	
+						};
 						
 									});
 				
