@@ -65,10 +65,11 @@
 					nft.addSimpleAnimatedModel('./PLANE3.glb',56,140,40,5,function loaded(gltf, model){
 							
 						nft.setOnObjectClickListener('./PLANE3.glb',function(){
-							alert("YMZ");
 							try{
 							 var mixer = new THREE.AnimationMixer(model);
-							 var action = mixer.clipAction(gltf.animations[0]).play();
+							 var action = mixer.clipAction(gltf.animations[0]);
+							 action.setLoop(THREE.LoopOnce);
+   							 action.clampWhenFinished = true;
 							 action.play();
 							 nft.mixers.push(mixer);
 							}catch(e){
