@@ -62,14 +62,9 @@
 					camera.add(directionalLight);
 
 				
-					nft.addSimpleModel('./coffee1.glb' , 70 , 100 ,0,5 , function(model){
-							coffee = model
+					nft.addAnimatedModel('./PLANE3.glb',56,140,40,(Math.PI / 2),1,0,function loaded(){
 						
-						nft.tickExtend = function() {
-							coffee.rotation.y += 0.008	
-						};
-						
-									});
+					});
 				
 					
 				})
