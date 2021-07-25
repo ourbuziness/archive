@@ -62,7 +62,7 @@
 					camera.add(directionalLight);
 
 					nft.addSimpleModel('./flight_info.glb',0,140,0,100,function loaded(model){
-						
+						model.rotation.y = Math.PI /2
 					});
 				
 					nft.addSimpleAnimatedModel('./PLANE4.glb',56,140,0,8,function loaded(gltf, model){
