@@ -64,6 +64,10 @@
 				
 					nft.addSimpleAnimatedModel('./PLANE4.glb',56,140,40,8,function loaded(gltf, model){
 							
+						nft.tickExtend = function (){
+								model.rotation.y += 0.008
+						};
+						
 						nft.setOnObjectClickListener('./PLANE4.glb',function(){
 							try{
 							 var mixer = new THREE.AnimationMixer(model);
