@@ -61,13 +61,13 @@
 					directionalLight.position.set(0.5, 0, 0.866);
 					camera.add(directionalLight);
 
-					nft.addSimpleModel('./flight_info.glb',0,0,0,100,function loaded(model){
+					nft.addSimpleModel('./flight_info.glb',56,0,0,100,function loaded(model){
 						model.rotation.y = -Math.PI /2
 					});
 				
 					nft.addSimpleAnimatedModel('./PLANE4.glb',56,140,0,8,function loaded(gltf, model){
 							
- 						model.rotation.x = 28*Math.PI/180;
+ 						model.rotation.x = 42*Math.PI/180;
 						nft.tickExtend = function (){
 								model.rotation.y += 0.005
 						};
