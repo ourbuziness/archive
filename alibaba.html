@@ -64,7 +64,7 @@
 				
 					nft.addSimpleAnimatedModel('./PLANE4.glb',56,140,40,8,function loaded(gltf, model){
 							
-						nft.setOnObjectClickListener('./PLANE3.glb',function(){
+						nft.setOnObjectClickListener('./PLANE4.glb',function(){
 							try{
 							 var mixer = new THREE.AnimationMixer(model);
 							 var action = mixer.clipAction(gltf.animations[0]);
