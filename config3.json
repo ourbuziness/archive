@@ -32,7 +32,7 @@
     "camera": {
       "fov": 28,
       "ratio": "window.clientWidth / window.clientHeight",
-      "near": 0.01,
+      "near": 1,
       "far": 100000
     }
   }
