@@ -40,7 +40,7 @@
       let coffee
       
 
-			ARnft.ARnft.init(800, 600, "archive/DataNFT/sookht1", 'config3.json', false, true)
+			ARnft.ARnft.init(800, 600, "archive/DataNFT/sookht", 'config3.json', false, true)
 			.then((nft) => {
 				nft_loaded = nft;
 				
@@ -61,7 +61,7 @@
 					directionalLight.position.set(0.5, 0, 0.866);
 					camera.add(directionalLight);
 				
-					nft.addSimpleAnimatedModel('./mob.glb' , 200 , 100 ,0,24,function loaded(gltf, model){
+					nft.addSimpleAnimatedModel('./mob.glb' , 400 , 200 ,0,24,function loaded(gltf, model){
 							
 //  						model.rotation.x = 42*Math.PI/180;
 						nft.tickExtend = function (){
