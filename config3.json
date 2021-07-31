@@ -33,6 +33,6 @@
       "fov": 28,
       "ratio": "window.clientWidth / window.clientHeight",
       "near": 0.01,
-      "far": 1000
+      "far": 100000
     }
   }
