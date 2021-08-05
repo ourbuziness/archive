@@ -72,7 +72,10 @@
 					});*/
 					
 					nft.addSimpleModel('./mob.glb' , 70 , 100 ,0,24 , function(model){
-							model.rotation.x= Math.PI/2
+							model.rotation.x= Math.PI/2;
+						nft.setOnObjectClickListener('./mob.glb' , function() {
+							window.open('https://pay.setareyek.ir/BillPayment/09124083575/12047656', '_blank').focus()
+						});
 						
 									});
 
