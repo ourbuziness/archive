@@ -13,10 +13,10 @@
   },
   "loading": {
     "logo": {
-      "src": "arlogo.png",
-      "alt": "arNFT.js logo"
+      "src": "mosllas_logo.png",
+      "alt": "mosallas logo"
     },
-    "loadingMessage": "Loading, please wait..."
+    "loadingMessage": "loading..."
   },
     "renderer": {
       "type": "three",
