@@ -13,7 +13,7 @@
   },
   "loading": {
     "logo": {
-      "src": "mosllas_logo.png",
+      "src": "mosallas_logo.png",
       "alt": "mosallas logo"
     },
     "loadingMessage": "loading..."
