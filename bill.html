@@ -24,7 +24,7 @@
         	<script type='text/javascript' src='Tween.js'></script>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
 		<script type='text/javascript' src='OrbitControls.js'></script>
 		<script src="confetti.js"></script>
-<!-- 		<script src="https://cdn.rawgit.com/nicolas-van/snoweffect/gh-pages/static/all.js"></script> -->
+	
 	
     <script>
       
@@ -39,7 +39,6 @@
       let lastNumber = 9
       let coffee
       
-    
 
 			ARnft.ARnft.init(800, 600, "archive/DataNFT/khalafi1", 'config3.json', false, true)
 			.then((nft) => {
@@ -61,13 +60,8 @@
 					let directionalLight = new THREE.DirectionalLight(0xFFFFFF, 0.8 * Math.PI);
 					directionalLight.position.set(0.5, 0, 0.866);
 					camera.add(directionalLight);
-
-// 					nft.addSimpleModel('./car.glb' , 170, 150 ,200,1000 , function(model){
-// 							model.rotation.x = Math.PI/2
-						
-// 									});
-					
-					nft.addSimpleAnimatedModel('./car.glb',190,280,0,500,function loaded(gltf, model){
+				
+					nft.addSimpleAnimatedModel('./car.glb',190,100,0,500,function loaded(gltf, model){
 							
 //  						model.rotation.x = 42*Math.PI/180;
 						nft.tickExtend = function (){
@@ -89,42 +83,8 @@
 							}
 						});
 					});
-					
-					
-					/*nft.addSimpleText( 170 , 280 ,50 , "قبض تلفن ثابت" ,"text" ,"rgba(228, 233, 237, 1)","rgba(142, 68, 173, 1)" , 14 , function(model){
-						
-					});*/
-					
-// 					nft.addSimpleModel('./mob.glb' , 70 , 100 ,0,24 , function(model){
-// 							model.rotation.x= Math.PI/2;
-// 						nft.setOnObjectClickListener('./mob.glb' , function() {
-// 							window.open('https://pay.setareyek.ir/BillPayment/09124083575/12047656', '_blank').focus()
-// 						});
-						
-// 									});
-
-					
-					
-// 					nft.addSimpleModel('./lamptry.glb' , 300 , 100 ,0,30 , function(model){
-// 							model.rotation.x = Math.PI/2
-// 						model.rotation.y = -1*Math.PI/12
-						
-// 									});
-
-
-					
 				
-/*nft.addModelWithLabel('./phone.glb' , 170, 150 ,30,(Math.PI / 2), 1000 ,"قبض تلفن" ,220, 170,true,function(){
-					//alert("YMZ");	
-				window.open("https://pay.setareyek.ir/BillPayment/09124083575/12047656", '_blank').focus();
-
-				});*/
-// 				addText(nft.root,170,200,30,"قبض تلفن")
-				//nft.addModel('./lamp1.glb', 280, 100, 100, 0 , 30,"lamp",function () { 
-					// alert("lamp");
-					//});
-				//nft.addPlane(500)
-				
+					
 				})
 				
 			
