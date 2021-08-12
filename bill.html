@@ -61,7 +61,7 @@
 					directionalLight.position.set(0.5, 0, 0.866);
 					camera.add(directionalLight);
 				
-					nft.addSimpleAnimatedCompressedModel('./limo2.glb',198,100,0,56,function loaded(gltf, model){
+					nft.addSimpleAnimatedCompressedModel('./limo2.glb',198,100,100,56,function loaded(gltf, model){
 							
 //  						model.rotation.x = 42*Math.PI/180;
 						nft.tickExtend = function (){
@@ -72,7 +72,7 @@
 						//model.rotation.y = Math.PI/2
 // 						model.rotation.z = (-1*Math.PI)
 						
-						nft.setOnObjectClickListener('./car.glb',function(){
+						nft.setOnObjectClickListener('./limo2.glb',function(){
 							try{
 							 var mixer = new THREE.AnimationMixer(model);
 							 var action = mixer.clipAction(gltf.animations[0]);
