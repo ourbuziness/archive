@@ -67,7 +67,7 @@
 				
 					nft.addSimpleModel('./tarh.glb',10,280,42,50,function loaded(model){
 						model.rotation.x = ((-3*Math.PI)/2)
-						model.rotation.y = (-1*Math.PI)/2
+						model.rotation.y = (-1*Math.PI)
 						
 						nft.setOnObjectClickListener('./tarh.glb',function(){
 							
@@ -91,6 +91,9 @@
 							var confettiSettings = { target: confettiElement , clock : 56};
 							var confetti = new ConfettiGenerator(confettiSettings);
 							confetti.render();
+							    var audio = document.getElementById("myAudio"); 
+							    document.getElementById('myAudio').muted = false
+								audio.play();
 							    
 							    Swal.fire(
 								      'جایزه ت یادت نره',
