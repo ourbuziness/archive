@@ -40,6 +40,9 @@
       let lastNumber = 9
       let coffee
       
+     let carGltf
+     let carModel
+      
 
 			ARnft.ARnft.init(800, 600, "archive/DataNFT/skht", 'config3.json', false, true)
 			.then((nft) => {
@@ -62,15 +65,16 @@
 					directionalLight.position.set(0.5, 0, 0.866);
 					camera.add(directionalLight);
 				
-					nft.addSimpleModel('./tarh.glb',10,240,42,50,function loaded(model){
+					nft.addSimpleModel('./tarh.glb',10,280,42,50,function loaded(model){
 						model.rotation.x = ((-3*Math.PI)/2)
+						model.rotation.y = -1*Math.PI/2
 						
 						nft.setOnObjectClickListener('./tarh.glb',function(){
 							
 						Swal.fire({
 						  title: 'قابل پرداخت : ۱۵۳,۰۰۰ تومان',
 						  text: "پرداخت از طریق ؟",
-						  icon: 'warning',
+						  icon: 'info',
 						  showCancelButton: true,
 						  confirmButtonColor: '#3085d6',
 						  cancelButtonColor: '#d33',
@@ -87,6 +91,23 @@
 							var confettiSettings = { target: confettiElement , clock : 56};
 							var confetti = new ConfettiGenerator(confettiSettings);
 							confetti.render();
+							    
+							    Swal.fire(
+								      'جایزه ت یادت نره',
+								      'بعد هر پرداخت یه هدیه برات داریم',
+								      'info'
+								    ).then((result)->{
+								    try{
+							 var mixer = new THREE.AnimationMixer(carModel);
+							 var action = mixer.clipAction(carGltf.animations[1]);
+							 action.setLoop(THREE.LoopOnce);
+   							 action.clampWhenFinished = true;
+							 action.play();
+							 nft.mixers.push(mixer);
+							}catch(e){
+								alert(e);	
+							}
+							    });
 						    })
 						  }
 						})	
@@ -94,7 +115,8 @@
 					});
 					
 					nft.addSimpleAnimatedCompressedModel('./limo2.glb',198,100,40,56,function loaded(gltf, model){
-							
+						carGltf = gltf
+						carModel = model
 //  						model.rotation.x = 42*Math.PI/180;
 						nft.tickExtend = function (){
 // 								model.rotation.y += 0.005
