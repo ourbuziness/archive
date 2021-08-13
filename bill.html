@@ -67,7 +67,7 @@
 				
 					nft.addSimpleModel('./tarh.glb',10,280,42,50,function loaded(model){
 						model.rotation.x = ((-3*Math.PI)/2)
-						model.rotation.y = -1*Math.PI/2
+						model.rotation.y = (-1*Math.PI)/2
 						
 						nft.setOnObjectClickListener('./tarh.glb',function(){
 							
@@ -96,7 +96,7 @@
 								      'جایزه ت یادت نره',
 								      'بعد هر پرداخت یه هدیه برات داریم',
 								      'info'
-								    ).then((result)->{
+								    ).then((result)=>{
 								    try{
 							 var mixer = new THREE.AnimationMixer(carModel);
 							 var action = mixer.clipAction(carGltf.animations[1]);
