@@ -61,8 +61,9 @@
 					directionalLight.position.set(0.5, 0, 0.866);
 					camera.add(directionalLight);
 				
-					nft.addSimpleModel('./tarh.glb',198,0,42,10,function loaded(model){
-						
+					nft.addSimpleModel('./tarh.glb',198,0,42,200,function loaded(model){
+						model.rotation.x = ((-3*Math.PI)/2)
+						model.rotation.y = Math.PI/2
 					});
 					
 					nft.addSimpleAnimatedCompressedModel('./limo2.glb',198,100,40,56,function loaded(gltf, model){
