@@ -42,6 +42,8 @@
       
      let carGltf
      let carModel
+     
+     let open = false
       
 
 			ARnft.ARnft.init(800, 600, "archive/DataNFT/skht", 'config3.json', false, true)
@@ -65,19 +67,19 @@
 					directionalLight.position.set(0.5, 0, 0.866);
 					camera.add(directionalLight);
 					
-					nft.addSimpleModel('./avarez.glb',140,280,42,42,function loaded(model){
+					nft.addSimpleModel('./avarez.glb',280,280,0,42,function loaded(model){
 						model.rotation.x = ((-3*Math.PI)/2)
 						model.rotation.y = (-1*Math.PI)
 					});
 					
-					nft.addSimpleModel('./khalafi.glb',72,280,42,42,function loaded(model){
+					nft.addSimpleModel('./khalafi.glb',140,280,0,42,function loaded(model){
 						model.rotation.x = ((-3*Math.PI)/2)
 						model.rotation.y = (-1*Math.PI)
 					});
 				
-					nft.addSimpleModel('./tarh.glb',10,280,42,42,function loaded(model){
+					nft.addSimpleModel('./tarh.glb',10,280,0,42,function loaded(model){
 						model.rotation.x = ((-3*Math.PI)/2)
-// 						model.rotation.y = (-1*Math.PI)
+						model.rotation.y = (-1*Math.PI)
 						
 						nft.setOnObjectClickListener('./tarh.glb',function(){
 							
@@ -97,13 +99,15 @@
 						      'جریمه طرح ترافیک با موفقیت پرداخت شد',
 						      'success'
 						    ).then((result)=>{
+							     var audio = document.getElementById("myAudio"); 
+							    document.getElementById('myAudio').muted = false
+								audio.play();
+							    
 						      var confettiElement = document.getElementById('whole');
 							var confettiSettings = { target: confettiElement , clock : 56};
 							var confetti = new ConfettiGenerator(confettiSettings);
 							confetti.render();
-							    var audio = document.getElementById("myAudio"); 
-							    document.getElementById('myAudio').muted = false
-								audio.play();
+							   
 							    
 							    Swal.fire(
 								      'جایزه ت یادت نره',
@@ -144,15 +148,23 @@
 // 						model.rotation.z = (-1*Math.PI)
 						
 						nft.setOnObjectClickListener('./limo2.glb',function(){
-							try{
-							 var mixer = new THREE.AnimationMixer(model);
-							 var action = mixer.clipAction(gltf.animations[0]);
-							 action.setLoop(THREE.LoopOnce);
-   							 action.clampWhenFinished = true;
-							 action.play();
-							 nft.mixers.push(mixer);
-							}catch(e){
-								alert(e);	
+							if(open){
+								Swal.fire(
+								  'تبریک',
+								  'شما برنده کد تخفیف کلنگ شده اید !!',
+								  'info'
+								)
+							}else{
+								try{
+								 var mixer = new THREE.AnimationMixer(model);
+								 var action = mixer.clipAction(gltf.animations[0]);
+								 action.setLoop(THREE.LoopOnce);
+								 action.clampWhenFinished = true;
+								 action.play();
+								 nft.mixers.push(mixer);
+								}catch(e){
+									alert(e);	
+								}
 							}
 						});
 					});
