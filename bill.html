@@ -64,6 +64,16 @@
 					let directionalLight = new THREE.DirectionalLight(0xFFFFFF, 0.8 * Math.PI);
 					directionalLight.position.set(0.5, 0, 0.866);
 					camera.add(directionalLight);
+					
+					nft.addSimpleModel('./avarez.glb',140,280,42,42,function loaded(model){
+						model.rotation.x = ((-3*Math.PI)/2)
+						model.rotation.y = (-1*Math.PI)
+					});
+					
+					nft.addSimpleModel('./khalafi.glb',72,280,42,42,function loaded(model){
+						model.rotation.x = ((-3*Math.PI)/2)
+						model.rotation.y = (-1*Math.PI)
+					});
 				
 					nft.addSimpleModel('./tarh.glb',10,280,42,42,function loaded(model){
 						model.rotation.x = ((-3*Math.PI)/2)
