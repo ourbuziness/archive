@@ -82,7 +82,12 @@
 						      'پرداخت موفق!',
 						      'جریمه طرح ترافیک با موفقیت پرداخت شد',
 						      'success'
-						    )
+						    ).then((result)=>{
+						      var confettiElement = document.getElementById('whole');
+							var confettiSettings = { target: confettiElement , clock : 56};
+							var confetti = new ConfettiGenerator(confettiSettings);
+							confetti.render();
+						    })
 						  }
 						})	
 						});
