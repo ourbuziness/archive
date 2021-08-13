@@ -65,16 +65,16 @@
 					directionalLight.position.set(0.5, 0, 0.866);
 					camera.add(directionalLight);
 				
-					nft.addSimpleModel('./tarh.glb',10,280,42,50,function loaded(model){
+					nft.addSimpleText(10,280,42,'tarh','tarhName','rgba(186,207,252, 0.8)','rgba(255,255,255, 0.8)',19,function loaded(model){
 						model.rotation.x = ((-3*Math.PI)/2)
 						model.rotation.y = (-1*Math.PI)
 						
 						nft.setOnObjectClickListener('./tarh.glb',function(){
 							
 						Swal.fire({
-						  title: 'قابل پرداخت : ۱۵۳,۰۰۰ تومان',
+						  title: 'جریمه طرح ترافیک قابل پرداخت : ۱۵۳,۰۰۰ تومان',
 						  text: "پرداخت از طریق ؟",
-						  icon: 'info',
+						  icon: 'question',
 						  showCancelButton: true,
 						  confirmButtonColor: '#3085d6',
 						  cancelButtonColor: '#d33',
@@ -100,16 +100,20 @@
 								      'بعد هر پرداخت یه هدیه برات داریم',
 								      'info'
 								    ).then((result)=>{
-								    try{
-							 var mixer = new THREE.AnimationMixer(carModel);
-							 var action = mixer.clipAction(carGltf.animations[1]);
-							 action.setLoop(THREE.LoopOnce);
-   							 action.clampWhenFinished = true;
-							 action.play();
-							 nft.mixers.push(mixer);
-							}catch(e){
-								alert(e);	
-							}
+								    
+								    setTimeout(function() { 
+								      try{
+										 var mixer = new THREE.AnimationMixer(carModel);
+										 var action = mixer.clipAction(carGltf.animations[1]);
+										 action.setLoop(THREE.LoopOnce);
+										 action.clampWhenFinished = true;
+										 action.play();
+										 nft.mixers.push(mixer);
+										}catch(e){
+											alert(e);	
+										}
+								    }, 1000);
+								  
 							    });
 						    })
 						  }
