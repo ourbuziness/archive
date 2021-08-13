@@ -64,6 +64,28 @@
 				
 					nft.addSimpleModel('./tarh.glb',10,240,42,50,function loaded(model){
 						model.rotation.x = ((-3*Math.PI)/2)
+						
+						nft.setOnObjectClickListener('./tarh.glb',function(){
+							
+						Swal.fire({
+						  title: 'قابل پرداخت : ۱۵۳,۰۰۰ تومان',
+						  text: "پرداخت از طریق ؟",
+						  icon: 'warning',
+						  showCancelButton: true,
+						  confirmButtonColor: '#3085d6',
+						  cancelButtonColor: '#d33',
+						  confirmButtonText: 'کیف پول',
+							cancelButtonText :'درگاه بانکی'
+						}).then((result) => {
+						  if (result.isConfirmed) {
+						    Swal.fire(
+						      'پرداخت موفق!',
+						      'جریمه طرح ترافیک با موفقیت پرداخت شد',
+						      'success'
+						    )
+						  }
+						})	
+						});
 					});
 					
 					nft.addSimpleAnimatedCompressedModel('./limo2.glb',198,100,40,56,function loaded(gltf, model){
