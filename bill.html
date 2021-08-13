@@ -65,11 +65,11 @@
 					directionalLight.position.set(0.5, 0, 0.866);
 					camera.add(directionalLight);
 				
-					nft.addSimpleText(10,280,42,'tarh','tarhName','rgba(186,207,252, 0.8)','rgba(255,255,255, 0.8)',19,function loaded(model){
-						model.rotation.x = ((-3*Math.PI)/2)
+					nft.addSimpleText(10,280,42,'طرح ترافیک','tarhName','rgba(186,207,252, 1)','rgba(255,255,255, 1)',19,function loaded(model){
+// 						model.rotation.x = ((-3*Math.PI)/2)
 						model.rotation.y = (-1*Math.PI)
 						
-						nft.setOnObjectClickListener('./tarh.glb',function(){
+						nft.setOnObjectClickListener('tarhName',function(){
 							
 						Swal.fire({
 						  title: 'جریمه طرح ترافیک قابل پرداخت : ۱۵۳,۰۰۰ تومان',
