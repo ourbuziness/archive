@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=1">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<link rel="stylesheet" href="nft-style.css">
+	<img src="mosallas_logo.png" id="imgLogo" height="140" width="140" style="position: absolute;z-index:999"/>
 	<canvas id="whole" style="position: absolute;z-index:999"></canvas>
 </head>
 <body>
@@ -24,6 +25,8 @@
         	<script type='text/javascript' src='Tween.js'></script>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
 		<script type='text/javascript' src='OrbitControls.js'></script>
 		<script src="confetti.js"></script>
+		<script src="jquery.min.js"></script>
+
 	
 	
     <script>
@@ -38,6 +41,29 @@
       let nft_loaded 
       let lastNumber = 9
       let coffee
+      
+      function generateCSSString(matrix ){
+	   var str = '';
+	   str += matrix[0].toFixed(20) + ',';
+	   str += matrix[1].toFixed(20) + ',';
+	   str += matrix[2].toFixed(20) + ',';
+	   str += matrix[3].toFixed(20) + ',';
+	   str += matrix[4].toFixed(20) + ',';
+	   str += matrix[5].toFixed(20) + ',';
+	   str += matrix[6].toFixed(20) + ',';
+	   str += matrix[7].toFixed(20) + ',';
+	   str += matrix[8].toFixed(20) + ',';
+	   str += matrix[9].toFixed(20) + ',';
+	   str += matrix[10].toFixed(20) + ',';
+	   str += matrix[11].toFixed(20) + ',';
+	   str += matrix[12].toFixed(20) + ',';
+	   str += matrix[13].toFixed(20) + ',';
+	   str += matrix[14].toFixed(20) + ',';
+	   str += matrix[15].toFixed(20);
+
+	   return 'matrix3d(' + str + ')';
+
+}
       
 
 			ARnft.ARnft.init(800, 600, "archive/DataNFT/stand", 'config3.json', false, true)
@@ -99,7 +125,7 @@
 				document.addEventListener('getMatrixGL_RH', (ev) => {
 					try{
 						var matrix = ev.detail.matrixGL_RH;
-            
+            					 $('#imgLogo').css('transform', generateCSSString(matrix));
             
 					}catch(e){
 						alert(e)
