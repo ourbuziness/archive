@@ -66,7 +66,7 @@
 }
       
 
-			ARnft.ARnft.init(800, 600, "archive/DataNFT/skht", 'config3.json', false, true)
+			ARnft.ARnft.init(800, 600, "archive/DataNFT/notebook", 'config3.json', false, true)
 			.then((nft) => {
 				nft_loaded = nft;
 				
@@ -87,7 +87,7 @@
 					directionalLight.position.set(0.5, 0, 0.866);
 					camera.add(directionalLight);
 
-					nft.addSimpleModel('./flight_info.glb',190,140,0,240,function loaded(model){
+					nft.addSimpleModel('./toycar.glb',190,140,0,100,function loaded(model){
 						model.rotation.y = -Math.PI /2
 						nft.setOnObjectClickListener('./flight_info.glb' , function() {
 							window.open('https://www.filimo.com/m/nrWsV', '_blank').focus()
