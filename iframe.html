@@ -44,22 +44,22 @@
       
       function generateCSSString(matrix ){
 	   var str = '';
-	   str += matrix[0].toFixed(20) + ',';
-	   str += matrix[1].toFixed(20) + ',';
-	   str += matrix[2].toFixed(20) + ',';
-	   str += matrix[3].toFixed(20) + ',';
-	   str += matrix[8].toFixed(20) + ',';
-	   str += matrix[10].toFixed(20) + ',';
-	   str += matrix[9].toFixed(20) + ',';
-	   str += matrix[7].toFixed(20) + ',';
-	   str += matrix[4].toFixed(20) + ',';
-	   str += matrix[6].toFixed(20) + ',';
-	   str += matrix[5].toFixed(20) + ',';
-	   str += matrix[11].toFixed(20) + ',';
-	   str += matrix[12].toFixed(20) + ',';
-	   str += matrix[14].toFixed(20) + ',';
-	   str += matrix[13].toFixed(20) + ',';
-	   str += matrix[15].toFixed(20);
+	   str += 40*(matrix[0].toFixed(20)) + ',';
+	   str += 40*(matrix[1].toFixed(20)) + ',';
+	   str += 40*(matrix[2].toFixed(20))  + ',';
+	   str += 40*(matrix[3].toFixed(20))  + ',';
+	   str += 40*(matrix[8].toFixed(20))  + ',';
+	   str += 40*(matrix[10].toFixed(20))  + ',';
+	   str += 40*(matrix[9].toFixed(20) ) + ',';
+	   str += 40*(matrix[7].toFixed(20))  + ',';
+	   str += 40*(matrix[4].toFixed(20))  + ',';
+	   str += 40*(matrix[6].toFixed(20))  + ',';
+	   str += 40*(matrix[5].toFixed(20))  + ',';
+	   str += 40*(matrix[11].toFixed(20))  + ',';
+	   str += 40*(matrix[12].toFixed(20))  + ',';
+	   str += 40*(matrix[14].toFixed(20))  + ',';
+	   str += 40*(matrix[13].toFixed(20))  + ',';
+	   str +=40*( matrix[15].toFixed(20)) ;
 
 	   return 'matrix3d(' + str + ')';
 
@@ -85,39 +85,7 @@
 
 					let directionalLight = new THREE.DirectionalLight(0xFFFFFF, 0.8 * Math.PI);
 					directionalLight.position.set(0.5, 0, 0.866);
-					camera.add(directionalLight);
-
-					nft.addSimpleModel('./toycar.glb',190,140,0,100,function loaded(model){
-						model.rotation.y = -Math.PI /2
-						nft.setOnObjectClickListener('./flight_info.glb' , function() {
-							window.open('https://www.filimo.com/m/nrWsV', '_blank').focus()
-						});
-						
-					});
-				
-					nft.addSimpleAnimatedModel('./PLANE4.glb',190,280,0,14,function loaded(gltf, model){
-							
-//  						model.rotation.x = 42*Math.PI/180;
-						nft.tickExtend = function (){
-// 								model.rotation.y += 0.005
-						};
-						
-						model.rotation.y = (Math.PI /4)
-						
-						nft.setOnObjectClickListener('./PLANE4.glb',function(){
-							try{
-							 var mixer = new THREE.AnimationMixer(model);
-							 var action = mixer.clipAction(gltf.animations[0]);
-							 action.setLoop(THREE.LoopOnce);
-   							 action.clampWhenFinished = true;
-							 action.play();
-							 nft.mixers.push(mixer);
-							}catch(e){
-								alert(e);	
-							}
-						});
-					});
-				
+					camera.add(directionalLight);	
 					
 				})
 				
