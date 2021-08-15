@@ -6,7 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=1">
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<link rel="stylesheet" href="nft-style.css">
-	<img src="mosallas_logo.png" id="imgLogo" height="140" width="140" style="position: absolute;z-index:999"/>
+	<img src="mosallas_logo.png" id="imgLogo" height="280" width="280" style="position: absolute;z-index:999"/>
 	<canvas id="whole" style="position: absolute;z-index:999"></canvas>
 </head>
 <body>
@@ -44,22 +44,22 @@
       
       function generateCSSString(matrix ){
 	   var str = '';
-	   str += 40*(matrix[0].toFixed(20)) + ',';
-	   str += 40*(matrix[1].toFixed(20)) + ',';
-	   str += 40*(matrix[2].toFixed(20))  + ',';
-	   str += 40*(matrix[3].toFixed(20))  + ',';
-	   str += 40*(matrix[8].toFixed(20))  + ',';
-	   str += 40*(matrix[10].toFixed(20))  + ',';
-	   str += 40*(matrix[9].toFixed(20) ) + ',';
-	   str += 40*(matrix[7].toFixed(20))  + ',';
-	   str += 40*(matrix[4].toFixed(20))  + ',';
-	   str += 40*(matrix[6].toFixed(20))  + ',';
-	   str += 40*(matrix[5].toFixed(20))  + ',';
-	   str += 40*(matrix[11].toFixed(20))  + ',';
-	   str += 40*(matrix[12].toFixed(20))  + ',';
-	   str += 40*(matrix[14].toFixed(20))  + ',';
-	   str += 40*(matrix[13].toFixed(20))  + ',';
-	   str +=40*( matrix[15].toFixed(20)) ;
+	   str += 5*(matrix[0].toFixed(20)) + ',';
+	   str += 5*(matrix[1].toFixed(20)) + ',';
+	   str += 5*(matrix[2].toFixed(20))  + ',';
+	   str += 5*(matrix[3].toFixed(20))  + ',';
+	   str += 5*(matrix[8].toFixed(20))  + ',';
+	   str += 5*(matrix[10].toFixed(20))  + ',';
+	   str += 5*(matrix[9].toFixed(20) ) + ',';
+	   str += 5*(matrix[7].toFixed(20))  + ',';
+	   str += 5*(matrix[4].toFixed(20))  + ',';
+	   str += 5*(matrix[6].toFixed(20))  + ',';
+	   str += 5*(matrix[5].toFixed(20))  + ',';
+	   str += 5*(matrix[11].toFixed(20))  + ',';
+	   str += 5*(matrix[12].toFixed(20))  + ',';
+	   str += 5*(matrix[14].toFixed(20))  + ',';
+	   str += 5*(matrix[13].toFixed(20))  + ',';
+	   str +=5*( matrix[15].toFixed(20)) ;
 
 	   return 'matrix3d(' + str + ')';
 
