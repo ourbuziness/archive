@@ -161,40 +161,12 @@
 					
 					//nft_loaded.addSimpleText( 140 , 0 ,0 , "یه کلیک مونده تا جایزه تو باز کنی" ,"text" ,"rgba(228, 233, 237, 1)","rgba(142, 68, 173, 1)" , 19 );
 					
-					nft.addSimpleModel('./gift.glb' , 70 , 100 ,0, 35 , function(model){
-						try{
+					nft.addSimpleModel('./coca.glb' , 70 , 100 ,0, 35 , function(model){
 						
 							box = model;
 							box.rotation.x = (Math.PI / 2);
 							box.rotation.y = (Math.PI );
-							nft.setOnObjectClickListener('./gift.glb', function (){
-								if(flag){
-									flag = false
-									tween1.start()
-// 									nft_loaded.addSimpleText( 140 , 0 ,0 , "00:0"+(8 - sec ) ,"text" ,"rgba(228, 233, 237, 1)","rgba(142, 68, 173, 1)" , 19 );
-									document.getElementById('myAudio').muted = false
-					    				document.getElementById('myAudio').muted = true
-					    				document.getElementById('myAudio').play()
-									document.getElementById('myAudio1').play()
-									
-								}
-							});
-
-
-							nft.tickExtend = function(){
-							try{
-								if(!finished)
-								TWEEN.update();
-								
-							}catch(e){
-								
-							}
-								
-						}
-							
-						}catch(e){
-							alert(e);
-						}
+						
 					});
 					
 					
