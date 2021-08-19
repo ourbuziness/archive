@@ -125,7 +125,7 @@
 	    tween1.chain(tween2);
 // 	    tween2.chain(tween3);
 
-			ARnft.ARnft.init(800, 600, "archive/DataNFT/coca2", 'config3.json', false, true)
+			ARnft.ARnft.init(800, 600, "archive/DataNFT/coca", 'config3.json', false, true)
 			.then((nft) => {
 				nft_loaded = nft;
 				
@@ -157,7 +157,7 @@
 					
 					//nft_loaded.addSimpleText( 140 , 0 ,0 , "یه کلیک مونده تا جایزه تو باز کنی" ,"text" ,"rgba(228, 233, 237, 1)","rgba(142, 68, 173, 1)" , 19 );
 					
-					nft.addSimpleAnimatedModel('./coca.glb' , 70 , 0 ,-60, 114 , function(gltf,model){
+					nft.addSimpleAnimatedModel('./coca.glb' , 70 , 0 ,-30, 35 , function(gltf,model){
 						
 							box = model;
 							//box.rotation.x = (Math.PI / 2);
