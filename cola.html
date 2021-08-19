@@ -167,7 +167,7 @@
 
 
 try{
-	let geometry1	= new THREE.CylinderGeometry(1,1, 4, 32,1);
+	let geometry1	= new THREE.CylinderGeometry(56,56, 4, 32,1);
 	let loader = new THREE.TextureLoader();
 	let texture = loader.load( 'tiles.jpg');
 	texture.wrapS = THREE.RepeatWrapping;
@@ -183,7 +183,7 @@ try{
 	nft.root.add( mesh1 );
 	
 	// the invisibility cloak (ring; has circular hole)
-	let geometry0 = new THREE.RingGeometry(1,9, 32);
+	let geometry0 = new THREE.RingGeometry(1,56, 32);
 	let material0 = new THREE.MeshBasicMaterial({
 		// map: loader.load( 'images/color-grid.png' ), // for testing placement
 		colorWrite: false
