@@ -154,21 +154,44 @@
 					  });
 					
 				
-					nft.addSimpleModel('./ps5.glb' , 70 , 100 ,0, 0 , function(model){
-										ps5 = model
-										ps5.rotation.x = (Math.PI / 2);
-									});
 					
 					//nft_loaded.addSimpleText( 140 , 0 ,0 , "یه کلیک مونده تا جایزه تو باز کنی" ,"text" ,"rgba(228, 233, 237, 1)","rgba(142, 68, 173, 1)" , 19 );
 					
-					nft.addSimpleModel('./coca.glb' , 70 , 100 ,-20, 56 , function(model){
+					/*nft.addSimpleModel('./coca.glb' , 70 , 100 ,-20, 56 , function(model){
 						
 							box = model;
 							//box.rotation.x = (Math.PI / 2);
 							box.rotation.y = (Math.PI );
 						
-					});
-					
+					});*/
+
+
+try{
+	let geometry1	= new THREE.CylinderGeometry(1,1, 4, 32,1);
+	let loader = new THREE.TextureLoader();
+	let texture = loader.load( 'images/tiles.jpg', render );
+	texture.wrapS = THREE.RepeatWrapping;
+	texture.wrapT = THREE.RepeatWrapping;
+	texture.repeat.set(4,2);
+	let material1	= new THREE.MeshBasicMaterial({
+		transparent : true,
+		map: texture,
+		side: THREE.BackSide
+	}); 
+	mesh1 = new THREE.Mesh( geometry1, material1 );
+	mesh1.position.y = -2;
+	nft.root.add( mesh1 );
+	
+	// the invisibility cloak (ring; has circular hole)
+	let geometry0 = new THREE.RingGeometry(1,9, 32);
+	let material0 = new THREE.MeshBasicMaterial({
+		// map: loader.load( 'images/color-grid.png' ), // for testing placement
+		colorWrite: false
+	});
+	let mesh0 = new THREE.Mesh( geometry0, material0 );
+	mesh0.rotation.x = -Math.PI/2;
+	nft.root.add(mesh0);
+}catch(e){ alert(e) }					
 					
 					
 				})
