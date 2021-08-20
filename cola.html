@@ -160,7 +160,7 @@
 					// 35  -10  -30  28
 					//  72   0  -30  108
 					
-					nft.addSimpleAnimatedModel('./coin.glb',114,20,-30,20,function(gltf,model){
+					nft.addSimpleAnimatedModel('./coin.glb',114,20,0,28,function(gltf,model){
 							
 					});
 					
@@ -175,6 +175,8 @@
 							 var mixer = new THREE.AnimationMixer(model);
 							 var action = mixer.clipAction(gltf.animations[0]);
 							 var action1 = mixer.clipAction(gltf.animations[1]);
+								var action2 = mixer.clipAction(gltf.animations[2]);
+								var action3 = mixer.clipAction(gltf.animations[3]);
 							 action.setLoop(THREE.LoopOnce);
    							 action.clampWhenFinished = true;
 							 action.play();
@@ -182,6 +184,16 @@
 							 action1.setLoop(THREE.LoopOnce);
    							 action1.clampWhenFinished = true;
 							 action1.play();
+								
+								action2.setLoop(THREE.LoopOnce);
+   							 action2.clampWhenFinished = true;
+							 action2.play();
+								
+								action3.setLoop(THREE.LoopOnce);
+   							 action3.clampWhenFinished = true;
+							 action3.play();
+								
+								
 
 							 nft.mixers.push(mixer);
 							}catch(e){
