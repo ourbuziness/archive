@@ -164,20 +164,20 @@
 						
 						 nft.setOnObjectClickListener('./coin.glb',function(){
 							var mixer = new THREE.AnimationMixer(model);
-							 var action = mixer.clipAction(gltf.animations[1]);
+							 var actionch = mixer.clipAction(gltf.animations[1]);
 							 var action0 = mixer.clipAction(gltf.animations[0]);
 						var action1 = mixer.clipAction(gltf.animations[2]);
-						action.setLoop(THREE.LoopOnce);
-   							 action.clampWhenFinished = true;
-							 action.play();
-							 
-							 action0.setLoop(THREE.LoopOnce);
+						action0.setLoop(THREE.LoopOnce);
    							 action0.clampWhenFinished = true;
 							 action0.play();
-
-							 action1.setLoop(THREE.LoopRepeat);
-   							// action1.clampWhenFinished = true;
+							 
+							 action1.setLoop(THREE.LoopOnce);
+   							 action1.clampWhenFinished = true;
 							 action1.play();
+
+							 actionch.setLoop(THREE.LoopRepeat);
+   							// action1.clampWhenFinished = true;
+							 actionch.play();
 						
 						nft.mixers.push(mixer);
 						 });
