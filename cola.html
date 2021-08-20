@@ -11,11 +11,11 @@
 <body>
 
 	<audio id="myAudio">
-		<source src="win.mp3" type="audio/mpeg"></source>
+		<source src="door.mp3" type="audio/mpeg"></source>
 	</audio>
 
 	<audio id="myAudio1">
-		<source src="count.mp3" type="audio/mpeg"></source>
+		<source src="celebrate.mp3" type="audio/mpeg"></source>
 	</audio>
 	
 	
@@ -114,6 +114,7 @@ var colors = ['#bb0000', '#ffffff'];
 							 actionch.setLoop(THREE.LoopRepeat);
    							// action1.clampWhenFinished = true;
 							 actionch.play();
+							 document.getElementById('myAudio1').play() 
 						
 						nft.mixers.push(mixer);
 							 celebrate();
@@ -129,6 +130,7 @@ var colors = ['#bb0000', '#ffffff'];
 
 							nft.setOnObjectClickListener('./coca1.glb',function(){
 							try{
+								document.getElementById('myAudio').play() 
 							 var mixer = new THREE.AnimationMixer(model);
 							 var action = mixer.clipAction(gltf.animations[0]);
 							 var action1 = mixer.clipAction(gltf.animations[1]);
