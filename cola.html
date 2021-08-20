@@ -90,15 +90,20 @@ var colors = ['#bb0000', '#ffffff'];
 					camera.add(directionalLight);
 					
 					window.addEventListener('touchstart', () => {
-					    // document.getElementById('myAudio').muted = false
-					    // document.getElementById('myAudio').muted = true
-					    // document.getElementById('myAudio').play() 
+					    document.getElementById('myAudio').muted = false
+					     document.getElementById('myAudio').muted = true
+					    document.getElementById('myAudio').play() 
 
 					  });
 					
 					nft.addSimpleAnimatedModel('./coin.glb',56,14,-14,2,function(gltf,model){
 						
 						 nft.setOnObjectClickListener('./coin.glb',function(){
+							 document.getElementById('myAudio1').muted = false
+					     //document.getElementById('myAudio').muted = true
+					   // document.getElementById('myAudio').play() 
+							 document.getElementById('myAudio1').play() 
+							 
 							var mixer = new THREE.AnimationMixer(model);
 							 var actionch = mixer.clipAction(gltf.animations[1]);
 							 var action0 = mixer.clipAction(gltf.animations[0]);
@@ -114,7 +119,7 @@ var colors = ['#bb0000', '#ffffff'];
 							 actionch.setLoop(THREE.LoopRepeat);
    							// action1.clampWhenFinished = true;
 							 actionch.play();
-							 document.getElementById('myAudio1').play() 
+							
 						
 						nft.mixers.push(mixer);
 							 celebrate();
@@ -130,7 +135,12 @@ var colors = ['#bb0000', '#ffffff'];
 
 							nft.setOnObjectClickListener('./coca1.glb',function(){
 							try{
+								document.getElementById('myAudio').muted = false
+					  //   document.getElementById('myAudio').muted = true
+					//    document.getElementById('myAudio').play() 
 								document.getElementById('myAudio').play() 
+								
+								
 							 var mixer = new THREE.AnimationMixer(model);
 							 var action = mixer.clipAction(gltf.animations[0]);
 							 var action1 = mixer.clipAction(gltf.animations[1]);
@@ -152,7 +162,9 @@ var colors = ['#bb0000', '#ffffff'];
    							 action3.clampWhenFinished = true;
 							 action3.play();
 								
-								
+								document.getElementById('myAudio1').muted = false
+					     document.getElementById('myAudio1').muted = true
+					    document.getElementById('myAudio1').play() 
 
 							 nft.mixers.push(mixer);
 							}catch(e){
