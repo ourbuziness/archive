@@ -23,7 +23,7 @@
 		<script src="ARnft.js"></script>
         	<script type='text/javascript' src='Tween.js'></script>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
 		<script type='text/javascript' src='OrbitControls.js'></script>
-		<script src="confetti.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
 	
 	
     <script>
@@ -36,94 +36,37 @@
       let confetiStart = false
       let canPlay = true;
       let nft_loaded 
-      let lastNumber = 9
+     
       
+      function celebrate(){ 
+   
+var end = Date.now() + (2 * 1000);
+// go Buckeyes!
+var colors = ['#bb0000', '#ffffff'];
+(function frame() {
+  confetti({
+    particleCount: 5,
+    angle: 60,
+    spread: 55,
+    origin: { x: 0 }
+    //colors: colors
+  });
+  confetti({
+    particleCount: 5,
+    angle: 120,
+    spread: 55,
+    origin: { x: 1 }
+    //colors: colors
+  });
+  if (Date.now() < end) {
+    requestAnimationFrame(frame);
+  }
+}());
 
-	var current0 = { wait : 0}
-    var current1	= { time : 0 };
-	var current2 = { scale : 35}
-	var current3 = {rotation: 0 , scale : 0.14}
-	
-	var update0 = function() {
-		
-	}
-	
-    var update1	= function(){
-	    	if(!finished){
-			box.rotation.y += 0.1
-			var sec = Math.floor(current1.time /1000)
-			if(sec != lastNumber){
-			try{
-			var object = nft_loaded.root.getObjectByName( "text" );
-			nft_loaded.root.remove(object);
-			}catch(e){ }
-				nft_loaded.addSimpleText( 140 , 0 ,0 , "00:0"+(8 - sec ) ,"text" ,"rgba(228, 233, 237, 1)","rgba(142, 68, 173, 1)" , 19 );
-			}
-		}
-	}
-    
-    var update2 = function(){
-	    if(current2.scale <14 && secondStart ){
-		    secondStart = false
-		    tween3.start()
-		    var audio = document.getElementById("myAudio"); 
-		    document.getElementById('myAudio').muted = false
-			audio.play();
-		    
-		    try{
-			    if(!confetiStart){
-				    confetiStart = true;
-		   	var confettiElement = document.getElementById('whole');
-			var confettiSettings = { target: confettiElement , clock : 56};
-			var confetti = new ConfettiGenerator(confettiSettings);
-			confetti.render();
-			    }
-		    }catch(e){
-			   alert(e); 
-		    }
-	    }
-	    	    box.scale.set(current2.scale,current2.scale,current2.scale);
-    }
-    
-    var update3 = function(){
-	    if(current3.scale == 0.35){
-		    finished = true
-	    }
-	    ps5.rotation.y = current3.rotation;
-	    ps5.scale.set(current3.scale,current3.scale,current3.scale);
-    }
-
-    	var easing1	= TWEEN.Easing.Linear.None;
-	    var easing2 = TWEEN.Easing.Back.InOut;
-	    var easing3 = TWEEN.Easing.Quartic.Out;	    
-	    
-		var tween0	= new TWEEN.Tween(current0)
-		.to({wait :10}, 10000)
-		.delay(10)
-		.repeat(Infinity)
-		.easing(easing1)
-		.onUpdate(update0);
-
-	    var tween1	= new TWEEN.Tween(current1)
-		.to({time :9000}, 9000)
-		.delay(1000)
-		.easing(easing1)
-		.onUpdate(update1);
-	    
-	    var tween2 = new TWEEN.Tween(current2)
-		.to({scale : 0}, 1400)
-		.delay(10)
-		.easing(easing2)
-		.onUpdate(update2);
-	    
-	    var tween3 = new TWEEN.Tween(current3)
-		.to({rotation: (8*Math.PI),scale :0.42}, 8000)
-		.delay(10)
-		.easing(easing3)
-		.onUpdate(update3);
-	    
-	    tween1.chain(tween2);
-// 	    tween2.chain(tween3);
+      
+      
+      
+      }
 
 			ARnft.ARnft.init(800, 600, "archive/DataNFT/cola14", 'config3.json', false, true)
 			.then((nft) => {
@@ -153,13 +96,6 @@
 
 					  });
 					
-				
-					
-					//nft_loaded.addSimpleText( 140 , 0 ,0 , "یه کلیک مونده تا جایزه تو باز کنی" ,"text" ,"rgba(228, 233, 237, 1)","rgba(142, 68, 173, 1)" , 19 );
-					 
-					// 35  -10  -30  28
-					//  72   0  -30  108
-					
 					nft.addSimpleAnimatedModel('./coin.glb',56,14,-14,2,function(gltf,model){
 						
 						 nft.setOnObjectClickListener('./coin.glb',function(){
@@ -180,6 +116,7 @@
 							 actionch.play();
 						
 						nft.mixers.push(mixer);
+							 celebrate();
 						 });
 						
 					});
@@ -221,39 +158,7 @@
 							}
 						});
 						
-					});
-
-
-// try{
-// 	let geometry1	= new THREE.CylinderGeometry(56,56, 4, 32,1);
-// 	let loader = new THREE.TextureLoader();
-// 	let texture = loader.load( 'tiles.jpg');
-
-// 	texture.wrapS = THREE.RepeatWrapping;
-// 	texture.wrapT = THREE.RepeatWrapping;
-// 	texture.repeat.set(4,2);
-// 	let material1	= new THREE.MeshBasicMaterial({
-// 		transparent : true,
-// 		map: texture,
-// 		side: THREE.BackSide
-// 	}); 
-// 	mesh1 = new THREE.Mesh( geometry1, material1 );
-// 	mesh1.position.y = -2;
-//         mesh1.position.x = 70;
-//         mesh1.rotation.x = ( Math.PI / 2 )
-// 	nft.root.add( mesh1 );
-	
-// 	// the invisibility cloak (ring; has circular hole)
-// 	let geometry0 = new THREE.RingGeometry(1,56, 32);
-// 	let material0 = new THREE.MeshBasicMaterial({
-// 		// map: loader.load( 'images/color-grid.png' ), // for testing placement
-// 		colorWrite: false
-// 	});
-// 	let mesh0 = new THREE.Mesh( geometry0, material0 );
-// 	mesh0.rotation.x = -Math.PI/2;
-// 	nft.root.add(mesh0);
-// }catch(e){ alert(e) }					
-					
+					});		
 					
 				})
 				
