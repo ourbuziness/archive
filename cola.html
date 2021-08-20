@@ -160,8 +160,23 @@
 					// 35  -10  -30  28
 					//  72   0  -30  108
 					
-					nft.addSimpleAnimatedModel('./coin.glb',98,42,0,2.8,function(gltf,model){
-							p
+					nft.addSimpleAnimatedModel('./coin.glb',98,42,0,2,function(gltf,model){
+						
+						 nft.setOnObjectClickListener('./coin.glb',function(){
+							var mixer = new THREE.AnimationMixer(model);
+							 var action = mixer.clipAction(gltf.animations[1]);
+						var action1 = mixer.clipAction(gltf.animations[2]);
+						action.setLoop(THREE.LoopOnce);
+   							 action.clampWhenFinished = true;
+							 action.play();
+
+							 action1.setLoop(THREE.LoopRepeat);
+   							// action1.clampWhenFinished = true;
+							 action1.play();
+						
+						nft.mixers.push(mixer);
+						 });
+						
 					});
 					
 					nft.addSimpleAnimatedModel('./coca.glb' , 72 , -10 ,-56, 58 , function(gltf,model){
