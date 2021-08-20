@@ -160,15 +160,20 @@
 					// 35  -10  -30  28
 					//  72   0  -30  108
 					
-					nft.addSimpleAnimatedModel('./coin.glb',72,42,-14,2,function(gltf,model){
+					nft.addSimpleAnimatedModel('./coin.glb',56,14,-14,2,function(gltf,model){
 						
 						 nft.setOnObjectClickListener('./coin.glb',function(){
 							var mixer = new THREE.AnimationMixer(model);
 							 var action = mixer.clipAction(gltf.animations[1]);
+							 var action0 = mixer.clipAction(gltf.animations[0]);
 						var action1 = mixer.clipAction(gltf.animations[2]);
 						action.setLoop(THREE.LoopOnce);
    							 action.clampWhenFinished = true;
 							 action.play();
+							 
+							 action0.setLoop(THREE.LoopOnce);
+   							 action0.clampWhenFinished = true;
+							 action0.play();
 
 							 action1.setLoop(THREE.LoopRepeat);
    							// action1.clampWhenFinished = true;
