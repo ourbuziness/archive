@@ -143,7 +143,7 @@
 					    camera.add( light1 );
 
 					let directionalLight = new THREE.DirectionalLight(0xFFFFFF, 0.8 * Math.PI);
-					directionalLight.position.set(72, 0, 5);
+					directionalLight.position.set(0.5,0,0.866);
 					camera.add(directionalLight);
 					
 					window.addEventListener('touchstart', () => {
@@ -160,7 +160,7 @@
 					// 35  -10  -30  28
 					//  72   0  -30  108
 					
-					nft.addSimpleAnimatedModel('./coin.glb',72,20,-28,2,function(gltf,model){
+					nft.addSimpleAnimatedModel('./coin.glb',72,42,-14,2,function(gltf,model){
 						
 						 nft.setOnObjectClickListener('./coin.glb',function(){
 							var mixer = new THREE.AnimationMixer(model);
