@@ -65,15 +65,10 @@
 				
 					nft.addSimpleAnimatedModel('./bot1.glb',190,280,0,14,function loaded(gltf, model){
 							
-            botModel = model
-            botGltf = gltf
-            
-//  						model.rotation.x = 42*Math.PI/180;
-// 						nft.tickExtend = function (){
-// 								model.rotation.y += 0.005
-// 						};
+					    botModel = model
+					    botGltf = gltf
 						
-// 						model.rotation.y = (Math.PI /2)
+ 						model.rotation.y = (Math.PI /2)
 						
 						nft.setOnObjectClickListener('./bot1.glb',function(){
 							try{
