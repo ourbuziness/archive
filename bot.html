@@ -81,10 +81,10 @@
 							win = new Audio('win_.mp3');
 							box = new Audio('box.mp3');
 							
-							cracker.mute()
-							spin.mute()
-							win.mute()
-							box.mute()
+							cracker.muted = true;
+							spin.muted = true;
+							win.muted = true;
+							box.muted = true;
 
 							cracker.play()
 							spin.play()
@@ -96,7 +96,7 @@
 						
 						nft.setOnObjectClickListener('./bot1.glb',function(){
 							try{
-								cracker.unmute()
+								cracker.muted = false
 								cracker.play();
 							 var mixer = new THREE.AnimationMixer(model);
 							 var action1 = mixer.clipAction(gltf.animations[1]);
@@ -124,6 +124,8 @@
 												action0.clampWhenFinished = true;
 												action0.play();	
 											nft.mixers.push(mixer);
+win.muted = false;
+box.muted = false;
 											win.play();
 											box.play();
 											
