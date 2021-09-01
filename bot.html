@@ -34,7 +34,7 @@
       let confetiStart = false
       let canPlay = true;
       let nft_loaded 
-      let lastNumber = 9
+      let count = 0
       let coffee
       
       let botModel
@@ -82,8 +82,12 @@
 							 var action7 = mixer.clipAction(gltf.animations[7]);
                 
 								mixer.addEventListener('finished',function(e){
-
-								   alert("YMZ");
+									
+								   count++
+									if(count ==7) alert("7")
+									if(count ==6) alert("6")
+									if(count ==8) alert("8")
+									if(count ==9) alert("9")
 
 								 });
 								
