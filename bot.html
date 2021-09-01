@@ -121,6 +121,14 @@
 // 									if(count ==9) alert("9")
 									
 									try{
+										if(count == 6 ){
+											box.muted = false
+											box.play();
+											win.muted = false
+										win.play();
+											
+										}
+											
 										if( e.action.getClip().name == "UniqueID_133.003Action"){
 											var mixer = new THREE.AnimationMixer(model);
 											var action0 = mixer.clipAction(gltf.animations[0]);
@@ -130,8 +138,8 @@
 											nft.mixers.push(mixer);
 win.muted = false;
 box.muted = false;
-											win.play();
-											box.play();
+											
+											
 											
 										}
 											
