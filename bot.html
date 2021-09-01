@@ -84,13 +84,13 @@
 								mixer.addEventListener('finished',function(e){
 									
 								   count++
-									if(count ==7) alert("7")
-									if(count ==6) alert("6")
-									if(count ==8) alert("8")
-									if(count ==9) alert("9")
+// 									if(count ==7) alert("7")
+// 									if(count ==6) alert("6")
+// 									if(count ==8) alert("8")
+// 									if(count ==9) alert("9")
 									
 									try{
-										alert(e.action)
+										alert(JSON.stringify(e.action, null, 4))
 									}catch(e){
 										
 									}
