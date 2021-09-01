@@ -98,6 +98,10 @@
 							try{
 								cracker.muted = false
 								cracker.play();
+								
+								spin.muted = false
+								spin.play()
+								
 							 var mixer = new THREE.AnimationMixer(model);
 							 var action1 = mixer.clipAction(gltf.animations[1]);
 							 var action2 = mixer.clipAction(gltf.animations[2]);
@@ -166,7 +170,7 @@ box.muted = false;
 							 action7.play();
               
 							 nft.mixers.push(mixer);
-								spin.play();
+							
 							}catch(e){
 								alert(e);	
 							}
