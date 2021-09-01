@@ -91,8 +91,16 @@
 // 									if(count ==9) alert("9")
 									
 									try{
-										if( e.action.getClip().name == "UniqueID_133.003Action")
-											alert("YMZ")
+										if( e.action.getClip().name == "UniqueID_133.003Action"){
+											var mixer = new THREE.AnimationMixer(model);
+											var action0 = mixer.clipAction(gltf.animations[0]);
+												action0.setLoop(THREE.LoopOnce);
+												action0.clampWhenFinished = true;
+												action0.play();	
+											nft.mixers.push(mixer);
+											
+										}
+											
 									}catch(e){
 										
 									}
