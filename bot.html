@@ -44,13 +44,6 @@
 			ARnft.ARnft.init(800, 600, "archive/DataNFT/kinder", 'config3.json', false, true)
 			.then((nft) => {
 				nft_loaded = nft;
-				
-const music = new Audio('win.mp3');
-const soundEffects = new Audio('count.mp3')
-
-music.play()
-soundEffects.play()
-
 
 				document.addEventListener('onInitThreejsRendering', (ev) => {
 					const renderer = ev.detail.renderer;
@@ -79,6 +72,14 @@ soundEffects.play()
 						
 						nft.setOnObjectClickListener('./bot1.glb',function(){
 							try{
+
+
+const music = new Audio('win.mp3');
+const soundEffects = new Audio('count.mp3')
+
+music.play()
+soundEffects.play()
+
 							 var mixer = new THREE.AnimationMixer(model);
 							 var action1 = mixer.clipAction(gltf.animations[1]);
 							 var action2 = mixer.clipAction(gltf.animations[2]);
