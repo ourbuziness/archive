@@ -40,6 +40,11 @@
       let botModel
       let botGltf
       
+      let cracker
+      let spin
+      let win
+      let box
+      
 
 			ARnft.ARnft.init(800, 600, "archive/DataNFT/kinder", 'config3.json', false, true)
 			.then((nft) => {
@@ -70,16 +75,18 @@
 						
  						model.rotation.x = (Math.PI /2)
 						
+						window.addEventListener('touchstart', () => {
+						   cracker = new Audio('win.mp3');
+						   spin = new Audio('win.mp3');
+							win = new Audio('win.mp3');
+							box = new Audio('win.mp3');
+							
+						});
+						
+						
 						nft.setOnObjectClickListener('./bot1.glb',function(){
 							try{
-
-
-const music = new Audio('win.mp3');
-const soundEffects = new Audio('count.mp3')
-
-music.play()
-soundEffects.play()
-
+								cracker.play();
 							 var mixer = new THREE.AnimationMixer(model);
 							 var action1 = mixer.clipAction(gltf.animations[1]);
 							 var action2 = mixer.clipAction(gltf.animations[2]);
@@ -106,6 +113,8 @@ soundEffects.play()
 												action0.clampWhenFinished = true;
 												action0.play();	
 											nft.mixers.push(mixer);
+											win.play();
+											box.play();
 											
 										}
 											
@@ -144,6 +153,7 @@ soundEffects.play()
 							 action7.play();
               
 							 nft.mixers.push(mixer);
+								spin.play();
 							}catch(e){
 								alert(e);	
 							}
