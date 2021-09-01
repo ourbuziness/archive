@@ -81,6 +81,12 @@
 							 var action6 = mixer.clipAction(gltf.animations[6]);
 							 var action7 = mixer.clipAction(gltf.animations[7]);
                 
+								action1.addEventListener('finished',function(e){
+
+								   alert("YMZ");
+
+								 });
+								
 							 action1.setLoop(THREE.LoopOnce);
    						 action1.clampWhenFinished = true;
 							 action1.play();
