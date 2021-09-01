@@ -45,6 +45,13 @@
 			.then((nft) => {
 				nft_loaded = nft;
 				
+const music = new Audio('win.mp3');
+const soundEffects = new Audio('count.mp3')
+
+music.play()
+soundEffects.play()
+
+
 				document.addEventListener('onInitThreejsRendering', (ev) => {
 					const renderer = ev.detail.renderer;
 					const scene = ev.detail.scene;
