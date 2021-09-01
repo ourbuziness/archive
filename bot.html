@@ -176,8 +176,10 @@ box.muted = false;
                action7.setLoop(THREE.LoopOnce);
    						 action7.clampWhenFinished = true;
 							 action7.play();
+								
+								setTimeout(function() { nft.mixers.push(mixer); }, 1000);
               
-							 nft.mixers.push(mixer);
+							 
 							
 							}catch(e){
 								alert(e);	
