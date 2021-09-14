@@ -79,34 +79,21 @@
 						// 	window.open('https://www.filimo.com/m/nrWsV', '_blank').focus()
 						// });
 						
-					});
-				
-// 					nft.addSimpleAnimatedModel('./PLANE4.glb',190,280,0,14,function loaded(gltf, model){
-							
-// //  						model.rotation.x = 42*Math.PI/180;
-// 						nft.tickExtend = function (){
-// // 								model.rotation.y += 0.005
-// 						};
-						
-// 						model.rotation.y = (Math.PI /4)
-						
-// 					});
-				
-					
 					$('.up').click(function() {
-						target.position.y = (target.position.y + 10)
+						alert("up");
+						target.position.y = (y + 10)
 					});
 					
 					$('.down').click(function() {
-					target.position.y = (target.position.y - 10)	
+					target.position.y = (y - 10)	
 					});
 					
 					$('.left').click(function() {
-					target.position.x = (target.position.x - 10)	
+					target.position.x = (x - 10)	
 					});
 					
 					$('.right').click(function() {
-						target.position.x = (target.position.x + 10)
+						target.position.x = (x + 10)
 					});
 					
 					$('.scale').change(function(){
@@ -124,6 +111,21 @@
 					$('.rz').change(function(){
 						target.rotation.z = Math.PI*eval($(".rz").val())
 					});
+						
+					});
+				
+// 					nft.addSimpleAnimatedModel('./PLANE4.glb',190,280,0,14,function loaded(gltf, model){
+							
+// //  						model.rotation.x = 42*Math.PI/180;
+// 						nft.tickExtend = function (){
+// // 								model.rotation.y += 0.005
+// 						};
+						
+// 						model.rotation.y = (Math.PI /4)
+						
+// 					});
+				
+					
 				})
 				
 			
