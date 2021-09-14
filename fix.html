@@ -79,36 +79,36 @@
 						// 	window.open('https://www.filimo.com/m/nrWsV', '_blank').focus()
 						// });
 						
-					$('.up').click(function() {
+					$('#up').click(function() {
 						alert("up");
 						target.position.y = (y + 10)
 					});
 					
-					$('.down').click(function() {
+					$('#down').click(function() {
 					target.position.y = (y - 10)	
 					});
 					
-					$('.left').click(function() {
+					$('#left').click(function() {
 					target.position.x = (x - 10)	
 					});
 					
-					$('.right').click(function() {
+					$('#right').click(function() {
 						target.position.x = (x + 10)
 					});
 					
-					$('.scale').change(function(){
+					$('#scale').change(function(){
 						target.scale.set(scale, scale, scale)
 					});
 						
-					$('.rx').change(function(){
+					$('#rx').change(function(){
 						 target.rotation.x = Math.PI*eval($(".rx").val())
 					});
 					
-					$('.ry').change(function(){
+					$('#ry').change(function(){
  						target.rotation.y = Math.PI*eval($(".ry").val())
 					});
 					
-					$('.rz').change(function(){
+					$('#rz').change(function(){
 						target.rotation.z = Math.PI*eval($(".rz").val())
 					});
 						
