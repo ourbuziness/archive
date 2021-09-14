@@ -48,7 +48,7 @@
       let rz = 0
       let scale
 
-			ARnft.ARnft.init(800, 600, "archive/DataNFT/stand", 'config3.json', false, true)
+			ARnft.ARnft.init(800, 600, "archive/DataNFT/notebook", 'config3.json', false, true)
 			.then((nft) => {
 				nft_loaded = nft;
 				
@@ -69,10 +69,10 @@
 					directionalLight.position.set(0.5, 0, 0.866);
 					camera.add(directionalLight);
 
-					x = 190
-					y = 140
-					scale = 240
-					nft.addSimpleModel('./flight_info.glb',x,y,0,scale,function loaded(model){
+					x = 70
+					y = 100
+					scale = 35
+					nft.addSimpleModel('./ps5.glb',x,y,0,scale,function loaded(model){
 						target = model
 // 						model.rotation.y = -Math.PI /2
 						// nft.setOnObjectClickListener('./flight_info.glb' , function() {
