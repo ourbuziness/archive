@@ -12,7 +12,8 @@
 <body>
 	
 		<script src="three.min.js"></script>
-		<script src="ARnft.js"></script>    
+		<script src="ARnft.js"></script>
+		<script src="jquery.min.js"></script>
 	
     <div class="alls" style="position: absolute;z-index:999">
     <div class="col">
@@ -41,6 +42,11 @@
       
       let nft_loaded
       let target
+      let x,y
+      let rx = 0
+      let ry = 0
+      let rz = 0
+      let scale
 
 			ARnft.ARnft.init(800, 600, "archive/DataNFT/stand", 'config3.json', false, true)
 			.then((nft) => {
@@ -63,8 +69,12 @@
 					directionalLight.position.set(0.5, 0, 0.866);
 					camera.add(directionalLight);
 
-					nft.addSimpleModel('./flight_info.glb',190,140,0,240,function loaded(model){
-						model.rotation.y = -Math.PI /2
+					x = 190
+					y = 140
+					scale = 240
+					nft.addSimpleModel('./flight_info.glb',x,y,0,scale,function loaded(model){
+						target = model
+// 						model.rotation.y = -Math.PI /2
 						// nft.setOnObjectClickListener('./flight_info.glb' , function() {
 						// 	window.open('https://www.filimo.com/m/nrWsV', '_blank').focus()
 						// });
@@ -83,6 +93,37 @@
 // 					});
 				
 					
+					$('.up').click(function() {
+						target.position.y = (target.position.y + 10)
+					});
+					
+					$('.down').click(function() {
+					target.position.y = (target.position.y - 10)	
+					});
+					
+					$('.left').click(function() {
+					target.position.x = (target.position.x - 10)	
+					});
+					
+					$('.right').click(function() {
+						target.position.x = (target.position.x + 10)
+					});
+					
+					$('.scale').change(function(){
+						target.scale.set(scale, scale, scale)
+					});
+						
+					$('.rx').change(function(){
+						 target.rotation.x = Math.PI*eval($(".rx").val())
+					});
+					
+					$('.ry').change(function(){
+ 						target.rotation.y = Math.PI*eval($(".ry").val())
+					});
+					
+					$('.rz').change(function(){
+						target.rotation.z = Math.PI*eval($(".rz").val())
+					});
 				})
 				
 			
