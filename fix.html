@@ -16,22 +16,25 @@
 	
     <div class="alls" style="position: absolute;z-index:999">
     <div class="col">
-           <button class="btn btn-primary" type="button" style="margin-left: 60px;margin-bottom: 10px;width: 50px;background: var(--bs-purple);">↑</button>
+           <button id="up" class="btn btn-primary" type="button" style="margin-left: 60px;margin-bottom: 10px;width: 50px;background: #6f42c1;">↑</button>
     </div>
     <div class="col" bs-dragged="1">
-        <button class="btn btn-primary" type="button" style="margin-left: 60px;margin-bottom: 10px;width: 50px;background: var(--bs-purple);">←</button>
-        <button class="btn btn-primary" type="button" style="margin-left: 60px;margin-bottom: 10px;width: 50px;background: var(--bs-purple);">↓</button>
-        <button class="btn btn-primary" type="button" style="margin-left: 60px;margin-bottom: 10px;width: 50px;background: var(--bs-purple);">→</button>
+        <button id="left" class="btn btn-primary" type="button" style="margin-left: 60px;margin-bottom: 10px;width: 50px;background: #6f42c1;">←</button>
+        <button id="down" class="btn btn-primary" type="button" style="margin-left: 60px;margin-bottom: 10px;width: 50px;background: #6f42c1;">↓</button>
+        <button id="right" class="btn btn-primary" type="button" style="margin-left: 60px;margin-bottom: 10px;width: 50px;background: #6f42c1;">→</button>  
     </div>
 
     <div class="row">
-        <input type="number"/>
+        <input type="number" id="scale"/>
     </div>
     <div class="row">
-        <input type="number"/>
+        <input type="number" id="rx"/>
     </div>
     <div class="row">
-        <input type="number"/>
+        <input type="number" id="ry"/>
+    </div>
+	<div class="row">
+        <input type="number" id="rz"/>
     </div>
     </div>
     <script>
