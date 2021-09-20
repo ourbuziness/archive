@@ -162,7 +162,7 @@
 					//nft_loaded.addSimpleText( 140 , 0 ,0 , "یه کلیک مونده تا جایزه تو باز کنی" ,"text" ,"rgba(228, 233, 237, 1)","rgba(142, 68, 173, 1)" , 19 );
 					
        
-pointsPath = {
+//pointsPath = {
   const pointsPath = new THREE.CurvePath();
     const firstLine = new THREE.LineCurve3(
       new THREE.Vector3( 1, 0, 0 ),
@@ -190,10 +190,10 @@ pointsPath = {
  //   pointsPath.add(thirdLine);
     pointsPath.add(bezierLine);
     
-    return pointsPath;     
-             }
+   // return pointsPath;     
+      //       }
 
-path = {
+//path = {
   
     const material = new THREE.LineBasicMaterial({
 	color: 0x9132a8
@@ -203,12 +203,12 @@ path = {
     const geometry = new THREE.BufferGeometry().setFromPoints( points );
   
 
-    return new THREE.Line( geometry, material );
-    }
+    var path = new THREE.Line( geometry, material );
+  //  }
 
 
-
-                                     nft.root.add(path);
+                                   try{
+                                     nft.renderer.root.add(path);}catch(e){  alert(e) }
 					nft.addSimpleModel('./gift.glb' , 70 , 100 ,0, 35 , function(model){
 						try{
 						
