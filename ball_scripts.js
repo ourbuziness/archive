@@ -1,9 +1,9 @@
 v0_x = 0; //initial velocity
-v0_y = 4;
-v0_z = 1;
-w_x = 0 * Math.PI; // initial angular velocity
+v0_y = 5;
+v0_z = 20;
+w_x = 3 * Math.PI; // initial angular velocity
 w_y = 2 * Math.PI;
-w_z = 0 * Math.PI;
+w_z = 2 * Math.PI;
 m = 2; //weight
 rho = 1.2; // air density
 g = 9.8; // gravity 
