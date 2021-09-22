@@ -35,6 +35,8 @@
 	    let pointsPath;
 	    let y4;
 	    let fraction = 0
+	    const up = new THREE.Vector3( 0,1, 0 );
+  	    const axis = new THREE.Vector3( );
     
       
 	    function randomIntFromInterval(a1,a2) { // min and max included 
@@ -52,10 +54,7 @@
 	    
 	    
 	    function moveBall(){
-		    try{
-  const up = new THREE.Vector3( 0,1, 0 );
-  const axis = new THREE.Vector3( );
-		    
+		    try{		    
     const newPosition = pointsPath.getPoint(fraction);
     const tangent = pointsPath.getTangent(fraction);
     ball.position.copy(newPosition);
