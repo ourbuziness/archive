@@ -51,7 +51,7 @@
       function createGraph(x,y,z){
 	      
 	      try{
-		  var selectedObject = nft_loaded.root.getObjectByName("ymz_path);
+		  var selectedObject = nft_loaded.root.getObjectByName("ymz_path");
     		  nft_loaded.root.remove( selectedObject );
 		      
 	      }catch(e){
@@ -69,7 +69,7 @@
 		      y = -1*goal.position.y;
 	      }
 	      
-	      if( x< = 0){
+	      if( x<= 0){
 		      x4 = goal.position.x
 	      }else{
 			x4 = goal.position.x + 30   
@@ -160,7 +160,7 @@
 // 			alert("YMZ " + q.x +" , "+ q.y +" , "+q.z);
 			  var p1 =  model.worldToLocal(point);
 			  var p2 = model.worldToLocal(v);
-			 alert("YMZ : xs :  "+ ((*100) | 0) + " , ys : "+ (((p1.y - p2.y)*100) | 0 )    );
+// 			 alert("YMZ : xs :  "+ ((*100) | 0) + " , ys : "+ (((p1.y - p2.y)*100) | 0 )    );
 			  
 			 var xxs = (p1.x - p2.x)
 			 var yys = (p1.y - p2.y)
