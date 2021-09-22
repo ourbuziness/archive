@@ -33,6 +33,7 @@
 	    let ball ;
 	    let path ;
 	    let pointsPath;
+	    let y4;
     
       
 	    function randomIntFromInterval(a1,a2) { // min and max included 
@@ -52,7 +53,7 @@
 	    function moveBall(){
 		    try{
 		    let fraction = 0;
-  const up = new THREE.Vector3( 0,40, 0 );
+  const up = new THREE.Vector3( 0,y4, 0 );
   const axis = new THREE.Vector3( );
 		    
     const newPosition = pointsPath.getPoint(fraction);
@@ -85,14 +86,13 @@
 	      }
 	      var v1 = new THREE.Vector3( 70 , 5 ,0 );
 	      
-	      let y4;
 	      let x4;
 	      let z4;
 	      
 	      if(y <= 0 ){
 		      y4 = goal.position.y;
 	      }else {
-		      y = -1*goal.position.y;
+		      y4 = -1*goal.position.y;
 	      }
 	      
 	      if( x<= 0){
