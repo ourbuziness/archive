@@ -66,9 +66,10 @@
 // 			 alert("YMZ " + v.x +" , "+ v.y +" , "+v.z);
 // 			 const q = new THREE.Quaternion();
 // 			  model.getWorldQuaternion(q)
+			  var t = model.worldToLocal(point)
 // 			alert("YMZ " + q.x +" , "+ q.y +" , "+q.z);
 			  
-			alert(" point : " + point.x + " , "  + point.y + " , "+ point.z);  
+			alert(" point : " + t.x + " , "  + t.y + " , "+ t.z);  
 		 		
 		  		
 		  });
