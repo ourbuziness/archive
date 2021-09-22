@@ -27,7 +27,7 @@
         	<script type='text/javascript' src='Tween.js'></script>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
 		<script type='text/javascript' src='OrbitControls.js'></script>
 		<script src="confetti.js"></script>
-	
+		<script src="jquery.min.js"></script>
 	
     <script>
       
@@ -41,9 +41,12 @@
         let height = 20;
 	let sheddatArray = [0.1,0.2,0.3,0.6,0.75,0.85,1,1.5,2,2.5];
         let shedat = 1;
+	    let prog = 10;
+	    let step = 10;
 	    let fraction = 0
 	    const up = new THREE.Vector3( 0,1, 0 );
   	    const axis = new THREE.Vector3( );
+	    let interval;
     
       
 	    function randomIntFromInterval(a1,a2) { // min and max included 
@@ -221,6 +224,8 @@ const bezierLine = new THREE.CubicBezierCurve3(
 		  ball = model;
 		  
 		  nft.setOnObjectClickListener('./ball.glb',function(point){
+			  clearInterval(interval);
+			  shedat = sheddatArray[(prog/10 | 0)]
  			  var v = new THREE.Vector3()
 // 			  camera.getWorldDirection(v);
 // 			  alert("YMZ " + v.x +" , "+ v.y +" , "+v.z);
@@ -241,9 +246,6 @@ const bezierLine = new THREE.CubicBezierCurve3(
 			 var zzs = (p1.z - p2.z)
 			 
 			 createGraph(xxs,yys,zzs);
-			  
-
-			 
 			 
 		  });
 
@@ -262,7 +264,18 @@ const bezierLine = new THREE.CubicBezierCurve3(
 									});
 					
 					
-                    
+  interval = setInterval(function() {
+	  prog = prog + step
+	  if(prog>100){
+		  prog = 90
+		  step = -10
+	  }
+	  if(prog <0 ){
+		  prog = 10
+		  step = 10
+	  }
+   document.getElementById("power").value = prog;
+ }, 140);
 
 				});
 				
