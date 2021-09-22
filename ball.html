@@ -32,6 +32,7 @@
 	    let goal ;
 	    let ball ;
 	    let path ;
+	    let pointsPath;
     
       
 	    function randomIntFromInterval(a1,a2) { // min and max included 
@@ -47,6 +48,31 @@
   		return Math.floor(Math.random() * (max - min + 1) + min)
 		}
 	    
+	    
+	    function moveBall(){
+		    try{
+		    let fraction = 0;
+  const up = new THREE.Vector3( 0, 30, 0 );
+  const axis = new THREE.Vector3( );
+		    
+    const newPosition = pointsPath.getPoint(fraction);
+    const tangent = pointsPath.getTangent(fraction);
+    ball.position.copy(newPosition);
+    axis.crossVectors( up, tangent ).normalize();
+    
+    const radians = Math.acos( up.dot( tangent ) );
+    
+    ball.quaternion.setFromAxisAngle( axis, radians );
+    
+    fraction +=0.001;
+    if (fraction > 30) {
+      fraction = 0;
+    }    
+		    }catch(e){
+			alert(e);    
+		    }
+		    
+	    }
       
       function createGraph(x,y,z){
 	      try{
@@ -94,7 +120,7 @@
 	      
 	     
 	      
-	        const pointsPath = new THREE.CurvePath();
+	         pointsPath = new THREE.CurvePath();
 
   const bezierLine = new THREE.CubicBezierCurve3(
 	v1,
@@ -119,7 +145,12 @@
 
 // 		      alert(x4 + " , " + y4 + " , " + z4  + "\n ** "+ x3 + " , " + y3 + " , " + z3 );
                                    try{
-                                     nft_loaded.add(path);}catch(e){  
+                                     nft_loaded.add(path);
+				   nft_loaded.tickExtend = function() {
+						moveBall();
+ 						};
+				   
+				   }catch(e){  
 					     alert(e) 
 								   }
 		      
@@ -179,6 +210,8 @@
 			 var zzs = (p1.z - p2.z)
 			 
 			 createGraph(xxs,yys,zzs);
+			  
+
 			 
 			 
 		  });
