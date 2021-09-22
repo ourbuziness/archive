@@ -61,7 +61,13 @@
 			  camera.getWorldDirection(v);
 // 			  alert("YMZ " + v.x +" , "+ v.y +" , "+v.z);
 // 			  alert("YMZ (" + camera.position.x + " , " + camera.position.y + " , " + camera.position.z + ")" + "\n ("+camera.rotation.x + " , " + camera.rotation.y + " , " + camera.rotation.z + ")"  );
-		 		alert("YMZ " + nft_loaded.renderer.camera.projectionMatrix);
+// 		 		alert("YMZ " + nft_loaded.renderer.camera.projectionMatrix);
+			  model.getWorldPosition(v)
+			 alert("YMZ " + v.x +" , "+ v.y +" , "+v.z);
+			 const q = new THREE.Quaternion();
+			  model.getWorldQuaternion(q)
+			alert("YMZ " + q.x +" , "+ q.y +" , "+q.z);
+		 		
 		  		
 		  });
 
@@ -87,6 +93,7 @@
 			
 				document.addEventListener('getMatrixGL_RH', (ev) => {
 					try{
+// 						var m = ev.detail.matrixGL_RH
 						
 					}catch(e){
 						alert(e)
