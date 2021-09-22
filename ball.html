@@ -49,7 +49,7 @@
 	    
       
       function createGraph(x,y,z){
-	      
+	      try{
 	      try{
 		  var selectedObject = nft_loaded.root.getObjectByName("ymz_path");
     		  nft_loaded.root.remove( selectedObject );
@@ -114,6 +114,10 @@
                                    try{
                                      nft_loaded.add(path);}catch(e){  alert(e) 
 								   }
+		      
+	      }catch(e){
+		alert(e)      
+	      }
 	      
 	      
 		     
