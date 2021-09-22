@@ -70,7 +70,7 @@
 // 			alert("YMZ " + q.x +" , "+ q.y +" , "+q.z);
 			  var p1 =  model.worldToLocal(point);
 			  var p2 = model.worldToLocal(v);
-			 alert("YMZ : xs :  "+ (p1.x - p2.x ) + " , ys : "+ (p1.y - p2.y ) );
+			 alert("YMZ : xs :  "+ (((p1.x - p2.x )*100) | 0) + " , ys : "+ (((p1.y - p2.y)*100) | 0 )    );
 			  
 			 
 		 		
