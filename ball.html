@@ -56,17 +56,19 @@
           
           nft.addSimpleModel('./ball.glb' , 70 , 5 ,0,20 , function(model){
 		  
-		  nft.setOnObjectClickListener('./ball.glb',function(){
-			  var v = new THREE.Vector3()
-			  camera.getWorldDirection(v);
+		  nft.setOnObjectClickListener('./ball.glb',function(point){
+// 			  var v = new THREE.Vector3()
+// 			  camera.getWorldDirection(v);
 // 			  alert("YMZ " + v.x +" , "+ v.y +" , "+v.z);
 // 			  alert("YMZ (" + camera.position.x + " , " + camera.position.y + " , " + camera.position.z + ")" + "\n ("+camera.rotation.x + " , " + camera.rotation.y + " , " + camera.rotation.z + ")"  );
 // 		 		alert("YMZ " + nft_loaded.renderer.camera.projectionMatrix);
-			  model.getWorldPosition(v)
-			 alert("YMZ " + v.x +" , "+ v.y +" , "+v.z);
-			 const q = new THREE.Quaternion();
-			  model.getWorldQuaternion(q)
-			alert("YMZ " + q.x +" , "+ q.y +" , "+q.z);
+// 			  model.getWorldPosition(v)
+// 			 alert("YMZ " + v.x +" , "+ v.y +" , "+v.z);
+// 			 const q = new THREE.Quaternion();
+// 			  model.getWorldQuaternion(q)
+// 			alert("YMZ " + q.x +" , "+ q.y +" , "+q.z);
+			  
+			alert(" point : " + point.x + " , "  + point.y + " , "+ point.z);  
 		 		
 		  		
 		  });
