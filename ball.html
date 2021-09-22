@@ -1,11 +1,92 @@
+<!DOCTYPE html>
 <html>
+<head>
+	<meta charset="utf-8">
+	<title>Mosallas</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<link rel="stylesheet" href="nft-style.css">
+	<canvas id="whole" style="position: absolute;z-index:999"></canvas>
+</head>
+<body>
 
-  <head>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/96/three.min.js"></script>
-    <script src="ball_scripts.js"></script>
-  </head>
+	<audio id="myAudio">
+		<source src="win.mp3" type="audio/mpeg"></source>
+	</audio>
 
-  <body>
-  </body>
+	<audio id="myAudio1">
+		<source src="count.mp3" type="audio/mpeg"></source>
+	</audio>
+	
+	
+		<script src="three.min.js"></script>
+		<script src="ARnft.js"></script>
+        	<script type='text/javascript' src='Tween.js'></script>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+		<script type='text/javascript' src='OrbitControls.js'></script>
+		<script src="confetti.js"></script>
+	
+	
+    <script>
+      
+      let nft_loaded 
+    
+      
+
+			ARnft.ARnft.init(800, 600, "archive/DataNFT/notebook", 'config3.json', false, true)
+			.then((nft) => {
+				nft_loaded = nft;
+
+				document.addEventListener('onInitThreejsRendering', (ev) => {
+					const renderer = ev.detail.renderer;
+					const scene = ev.detail.scene;
+					const camera = ev.detail.camera;
+					
+  					renderer.outputEncoding = THREE.sRGBEncoding;
+                                        renderer.textureEncoding = THREE.sRGBEncoding
+					renderer.physicallyCorrectLights = true;
+				
+					const light1  = new THREE.AmbientLight(0xFFFFFF, 0.3);
+					    light1.name = 'ambient_light';
+					    camera.add( light1 );
+
+					let directionalLight = new THREE.DirectionalLight(0xFFFFFF, 0.8 * Math.PI);
+					directionalLight.position.set(0.5, 0, 0.866);
+					camera.add(directionalLight);
+
+          
+          nft.addSimpleModel('./ball.glb' , 70 , 5 ,0,2 , function(model){
+
+						
+// 						nft.tickExtend = function() {
+
+// 						};
+						
+									});
+          
+          
+                    nft.addSimpleModel('./goal.glb' , 70 , 250 ,0,5 , function(model){
+
+						
+// 						nft.tickExtend = function() {
+
+// 						};
+						
+									});
+                    
+
+				});
+				
+			
+				document.addEventListener('getMatrixGL_RH', (ev) => {
+					try{
+						
+					}catch(e){
+						alert(e)
+					}
+				});
+            });
+
+    </script>
+</body>
 
 </html>
