@@ -7,6 +7,9 @@
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<link rel="stylesheet" href="nft-style.css">
 	<canvas id="whole" style="position: absolute;z-index:999"></canvas>
+	
+	<progress id="power" value="10" max="100" style="-webkit-transform: rotate(-90deg); position: absolute;z-index:999"></progress>
+
 </head>
 <body>
 
@@ -255,7 +258,7 @@ const bezierLine = new THREE.CubicBezierCurve3(
                     nft.addSimpleModel('./goal.glb' , 70 , 250 ,0,1 , function(model){
 
 					goal = model;	
-			    goal.rotation.z = (Math.PI /2)
+			    goal.rotation.y = (Math.PI /2)
 									});
 					
 					
