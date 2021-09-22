@@ -68,8 +68,9 @@
 // 			  model.getWorldQuaternion(q)
 // 			  var t = model.worldToLocal(point)
 // 			alert("YMZ " + q.x +" , "+ q.y +" , "+q.z);
-			  
-			 alert("YMZ : xs :  "+ (v.x - point.x ) + " , ys : "+ (v.y - point.y ) );
+			  var p1 =  model.worldToLocal(point);
+			  var p2 = model.worldToLocal(v);
+			 alert("YMZ : xs :  "+ (p1.x - p2.x ) + " , ys : "+ (p1.y - p2.y ) );
 			  
 			 
 		 		
