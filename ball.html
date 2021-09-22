@@ -34,6 +34,10 @@
 	    let path ;
 	    let pointsPath;
 	    let y4;
+        let length = 50;
+        let height = 20;
+	let sheddatArray = [0.1,0.2,0.3,0.6,0.75,0.85,1,1.5,2,2.5];
+        let shedat = 1;
 	    let fraction = 0
 	    const up = new THREE.Vector3( 0,1, 0 );
   	    const axis = new THREE.Vector3( );
@@ -64,7 +68,7 @@
     
     ball.quaternion.setFromAxisAngle( axis, radians );
     
-    fraction +=0.01;
+    fraction +=(0.02*shedat);
     if (fraction > 1) {
       fraction = 0;
     }    
@@ -78,7 +82,7 @@
 	      try{
 	      try{
 		  var selectedObject = nft_loaded.root.getObjectByName("ymz_path");
-    		  nft_loaded.root.remove( selectedObject );
+    	  nft_loaded.root.remove( selectedObject );
 		      
 	      }catch(e){
 		      
@@ -87,80 +91,105 @@
 	      
 	      let x4;
 	      let z4;
+          let state = 1
+
+          if(x> 0 && y > 0){
+            state = 1
+            var direction = 1
+            if(x > 20) direction =2
+
+            var dd = (length/3)*direction*shedat
+            x4 = goal.position.x + dd
+            y4 = -1 *goal.position.y*shedat
+          }
+          else if(y > 0 && x < 0){
+            state = 2
+            var direction = 1
+            if(x < -20) direction =2
+            var dd = (length/3)*direction*shedat
+
+            x4 = goal.position.x - dd
+            y4 = -1 *goal.position.y*shedat
+
+          }else if(y <= 0 && x>=0){
+            state = 3
+            var direction = 1
+            if(x >20) direction =2
+            if(x<5) direction = 0
+
+            var dd = (length/3)*direction*shedat
+            x4 = goal.position.x + dd
+            y4 = goal.position.y*shedat
+          }else{
+            state = 4
+            var direction = 1
+            if(x <-20) direction =2
+            if(x>-5) direction = 0
+
+            var dd = (length/3)*direction*shedat
+            x4 = goal.position.x - dd
+            y4 = goal.position.y*shedat
+          }
 	      
-	      if(y <= 0 ){
-		      y4 = goal.position.y;
-	      }else {
-		      y4 = -1*goal.position.y;
-	      }
-	      
-	      if( x<= 0){
-		      x4 = goal.position.x
-	      }else{
-			x4 = goal.position.x + 30   
-	      }
 	      
 	      if(z <= 0 ){
-			z4 =  goal.position.z + 20    
+			z4 =  goal.position.z*shedat*2 - height
 	      }else{
 		      z4 = 0
 	      }
-	      
 	      var v4 = new THREE.Vector3(x4,y4,z4);
-	      
-// 		      var x3 = randomIntFromInterval(70,x4);
-// 		      var y3 = randomIntFromInterval(5,y4);
-// 		      var z3 = randomIntFromInterval(0,z4)
-		      
-	     
-	      var v2 = new THREE.Vector3(x4 + 20 ,y4 + 20 ,z4 + 20);
-	      var v3 = new THREE.Vector3( x4 + 10 ,y4 + 10 ,z4 + 10);
-	      
-	      
-	     
-	      
-	         pointsPath = new THREE.CurvePath();
 
-  const bezierLine = new THREE.CubicBezierCurve3(
-	v1,
-	v2,
-	v3,
-	v4
-);
-  
-	pointsPath.add(bezierLine);
-		      
-    const material = new THREE.LineBasicMaterial({
-	color: 0x9132a8
-});
-    const points = pointsPath.curves.reduce((p, d)=> [...p, ...d.getPoints(20)], []);
-  
-    const geometry = new THREE.BufferGeometry().setFromPoints( points );
-  
+          let v2;
+          let v3;
 
-    path = new THREE.Line( geometry, material );
-
-	      path.name = "ymz_path"
-
-// 		      alert(x4 + " , " + y4 + " , " + z4  + "\n ** "+ x3 + " , " + y3 + " , " + z3 );
-                                   try{
-                                     nft_loaded.add(path);
-				   nft_loaded.tickExtend = function() {
-						moveBall();
- 						};
-				   
-				   }catch(e){  
-					     alert(e) 
-								   }
-		      
+          if(state ==1 || state == 3){
+              v2 = new THREE.Vector3(x4*1.4,y4*0.3,z4*1.5); 
+              v3 = new THREE.Vector3(x4*1.7,y4*0.7,z4*2);
+          }else if(state ==2 || state == 4){
+            v2 = new THREE.Vector3(x4*0.4,y4*0.3,z4*1.5); 
+              v3 = new THREE.Vector3(x4*0.7,y4*0.7,z4*2);
+          }
+	         
+          addVectors(v1,v2,v3,v4)
 	      }catch(e){
 		alert(e)      
 	      }
-	      
-	      
-		     
-	      
-	      
+      }
+
+      function addVectors(v1,v2,v3,v4){
+        pointsPath = new THREE.CurvePath();
+
+const bezierLine = new THREE.CubicBezierCurve3(
+  v1,
+  v2,
+  v3,
+  v4
+);
+
+  pointsPath.add(bezierLine);
+            
+  const material = new THREE.LineBasicMaterial({
+  color: 0x9132a8
+});
+  const points = pointsPath.curves.reduce((p, d)=> [...p, ...d.getPoints(20)], []);
+
+  const geometry = new THREE.BufferGeometry().setFromPoints( points );
+
+
+  path = new THREE.Line( geometry, material );
+
+        path.name = "ymz_path"
+
+// 		      alert(x4 + " , " + y4 + " , " + z4  + "\n ** "+ x3 + " , " + y3 + " , " + z3 );
+                                 try{
+                                   nft_loaded.add(path);
+                 nft_loaded.tickExtend = function() {
+                      moveBall();
+                       };
+                 
+                 }catch(e){  
+                       alert(e) 
+                                 }
       }
 
 			ARnft.ARnft.init(800, 600, "archive/DataNFT/notebook", 'config3.json', false, true)
@@ -223,9 +252,10 @@
 									});
           
           
-                    nft.addSimpleModel('./goal.glb' , 70 , 250 ,0,3 , function(model){
+                    nft.addSimpleModel('./goal.glb' , 70 , 250 ,0,1 , function(model){
 
 					goal = model;	
+			    goal.rotation.z = (Math.PI /2)
 									});
 					
 					
