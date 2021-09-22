@@ -83,13 +83,13 @@
 	      
 	      var v4 = new THREE.Vector3(x4,y4,z4);
 	      
-		      var x3 = randomIntFromInterval(70,x4);
-		      var y3 = randomIntFromInterval(5,y4);
-		      var z3 = randomIntFromInterval(0,z4)
+// 		      var x3 = randomIntFromInterval(70,x4);
+// 		      var y3 = randomIntFromInterval(5,y4);
+// 		      var z3 = randomIntFromInterval(0,z4)
 		      
 	     
-	      var v2 = new THREE.Vector3(x3 ,y3 ,z3);
-	      var v3 = new THREE.Vector3(randomIntFromInterval(70,x4) ,randomIntFromInterval(5,y4) , randomIntFromInterval(0,z4) );
+	      var v2 = new THREE.Vector3(x4 + 20 ,y4 + 20 ,z4 + 20);
+	      var v3 = new THREE.Vector3( x4 + 10 ,y4 + 10 ,z4 + 10);
 	      
 	      
 	     
@@ -115,7 +115,7 @@
 
 	      path.name = "ymz_path"
 
-		      alert(x4 + " , " + y4 + " , " + z4  + "\n ** "+ x3 + " , " + y3 + " , " + z3 );
+// 		      alert(x4 + " , " + y4 + " , " + z4  + "\n ** "+ x3 + " , " + y3 + " , " + z3 );
                                    try{
                                      nft_loaded.add(path);}catch(e){  
 					     alert(e) 
