@@ -55,6 +55,12 @@
 
           
           nft.addSimpleModel('./ball.glb' , 70 , 5 ,0,20 , function(model){
+		  
+		  nft.setOnObjectClickListener('./ball.glb',function(){
+			  var v = new THREE.Vector3()
+			  camera.getWorldDirection(v);
+			  alert("YMZ " + v.x +" , "+ v.y +" , "+v.z);
+		  });
 
 						
 // 						nft.tickExtend = function() {
