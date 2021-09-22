@@ -93,29 +93,29 @@
 	      let z4;
           let state = 1
 
-          if(x> 0 && y > 0){
+          if(x< 0 && y > 0){
             state = 1
             var direction = 1
-            if(x > 20) direction =2
+            if(x < -10) direction =2
 
             var dd = (length/3)*direction*shedat
             x4 = goal.position.x + dd
             y4 = -1 *goal.position.y*shedat
           }
-          else if(y > 0 && x < 0){
+          else if(y > 0 && x > 0){
             state = 2
             var direction = 1
-            if(x < -20) direction =2
+            if(x > 10) direction =2
             var dd = (length/3)*direction*shedat
 
             x4 = goal.position.x - dd
             y4 = -1 *goal.position.y*shedat
 
-          }else if(y <= 0 && x>=0){
+          }else if(y <= 0 && x<=0){
             state = 3
             var direction = 1
-            if(x >20) direction =2
-            if(x<5) direction = 0
+            if(x <-10) direction =2
+            if(x>-5) direction = 0
 
             var dd = (length/3)*direction*shedat
             x4 = goal.position.x + dd
