@@ -28,9 +28,98 @@
 	
     <script>
       
-      let nft_loaded 
+      let nft_loaded;
+	    let goal ;
+	    let ball ;
+	    let path ;
     
       
+	    function randomIntFromInterval(a1,a2) { // min and max included 
+		    var max = a1 + 30
+		    var min = a2
+		    if(a1 > a2 ){
+			max = a1
+			min = a2
+		    }else if(a1 < a2){
+			max = a2
+			    min = a1
+		    }
+  		return Math.floor(Math.random() * (max - min + 1) + min)
+		}
+	    
+      
+      function createGraph(x,y,z){
+	      
+	      try{
+		  var selectedObject = nft_loaded.root.getObjectByName("ymz_path);
+    		  nft_loaded.root.remove( selectedObject );
+		      
+	      }catch(e){
+		      
+	      }
+	      var v1 = new THREE.Vector3( 70 , 5 ,0 );
+	      
+	      let y4;
+	      let x4;
+	      let z4;
+	      
+	      if(y <= 0 ){
+		      y4 = goal.position.y;
+	      }else {
+		      y = -1*goal.position.y;
+	      }
+	      
+	      if( x< = 0){
+		      x4 = goal.position.x
+	      }else{
+			x4 = goal.position.x + 30   
+	      }
+	      
+	      if(z <= 0 ){
+			z4 =  goal.position.z + 20    
+	      }else{
+		      z4 = 0
+	      }
+	      
+	      var v4 = new THREE.Vector3(x4,y4,z4);
+	      
+	     
+	      var v2 = new THREE.Vector3(randomIntFromInterval(70,x4) ,randomIntFromInterval(5,y4) , randomIntFromInterval(0,z4) );
+	      var v3 = new THREE.Vector3(randomIntFromInterval(70,x4) ,randomIntFromInterval(5,y4) , randomIntFromInterval(0,z4) );
+	      
+	      
+	     
+	      
+	        const pointsPath = new THREE.CurvePath();
+
+  const bezierLine = new THREE.CubicBezierCurve3(
+	v1,
+	v2,
+	v3,
+	v4
+);
+  
+    const material = new THREE.LineBasicMaterial({
+	color: 0x9132a8
+});
+    const points = pointsPath.curves.reduce((p, d)=> [...p, ...d.getPoints(20)], []);
+  
+    const geometry = new THREE.BufferGeometry().setFromPoints( points );
+  
+
+    path = new THREE.Line( geometry, material );
+
+	      path.name = "ymz_path"
+
+                                   try{
+                                     nft_loaded.add(path);}catch(e){  alert(e) 
+								   }
+	      
+	      
+		     
+	      
+	      
+      }
 
 			ARnft.ARnft.init(800, 600, "archive/DataNFT/notebook", 'config3.json', false, true)
 			.then((nft) => {
@@ -55,6 +144,7 @@
 
           
           nft.addSimpleModel('./ball.glb' , 70 , 5 ,0,20 , function(model){
+		  ball = model;
 		  
 		  nft.setOnObjectClickListener('./ball.glb',function(point){
  			  var v = new THREE.Vector3()
@@ -70,11 +160,14 @@
 // 			alert("YMZ " + q.x +" , "+ q.y +" , "+q.z);
 			  var p1 =  model.worldToLocal(point);
 			  var p2 = model.worldToLocal(v);
-			 alert("YMZ : xs :  "+ (((p1.x - p2.x )*100) | 0) + " , ys : "+ (((p1.y - p2.y)*100) | 0 )    );
+			 alert("YMZ : xs :  "+ ((*100) | 0) + " , ys : "+ (((p1.y - p2.y)*100) | 0 )    );
 			  
+			 var xxs = (p1.x - p2.x)
+			 var yys = (p1.y - p2.y)
+			 var zzs = (p1.z - p2.z)
 			 
-		 		
-		  		
+			 createGraph(xxs,yys,zzs)
+			 
 		  });
 
 						
@@ -87,7 +180,7 @@
           
                     nft.addSimpleModel('./goal.glb' , 70 , 250 ,0,3 , function(model){
 
-						
+					goal = model;	
 									});
 					
 					
