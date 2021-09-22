@@ -34,6 +34,7 @@
 	    let path ;
 	    let pointsPath;
 	    let y4;
+	    let fraction = 0
     
       
 	    function randomIntFromInterval(a1,a2) { // min and max included 
@@ -52,8 +53,7 @@
 	    
 	    function moveBall(){
 		    try{
-		    let fraction = 0;
-  const up = new THREE.Vector3( 0,y4, 0 );
+  const up = new THREE.Vector3( 0,1, 0 );
   const axis = new THREE.Vector3( );
 		    
     const newPosition = pointsPath.getPoint(fraction);
@@ -65,7 +65,7 @@
     
     ball.quaternion.setFromAxisAngle( axis, radians );
     
-    fraction +=1;
+    fraction +=0.01;
     if (fraction > 1) {
       fraction = 0;
     }    
