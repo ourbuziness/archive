@@ -59,7 +59,8 @@
 		  nft.setOnObjectClickListener('./ball.glb',function(){
 			  var v = new THREE.Vector3()
 			  camera.getWorldDirection(v);
-			  alert("YMZ " + v.x +" , "+ v.y +" , "+v.z);
+// 			  alert("YMZ " + v.x +" , "+ v.y +" , "+v.z);
+			  alert("YMZ (" + camera.position.x + " , " + camera.position.y + " , " + camera.position.z + ")" + "\n ("+camera.rotation.x + " , " + camera.rotation.y + " , " + camera.rotation.z + ")"  );
 		  });
 
 						
