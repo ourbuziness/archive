@@ -51,6 +51,8 @@
         let v0;
         let gg = 9.8
         let A;
+	    let vy;
+	    let vz;
         let alpha;
     
       
@@ -211,6 +213,8 @@ const bezierLine = new THREE.CubicBezierCurve3(
 		      alert("A : "+A);
         alpha = (-1*z/y)*Math.PI / 180
 		       alert("alpha : "+alpha);
+		      vy = v0*Math.cos(alpha)
+        vz = v0*Math.sin(alpha)
 //         var R = v0*v0*Math.sin(2*alpha)/gg
 
         var time = 0;
@@ -236,9 +240,8 @@ const bezierLine = new THREE.CubicBezierCurve3(
 
       function createCubic(time){
      try{
-	     alert("here");
-        var vy = v0*Math.cos(alpha)
-        var vz = v0*Math.sin(alpha)
+	    // alert("here");
+        
         var y = vy*time
         var z = -0.5*gg**time*time + vz*time
         var x = linearPath(y)
