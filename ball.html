@@ -8,7 +8,7 @@
 	<link rel="stylesheet" href="nft-style.css">
 	<canvas id="whole" style="position: absolute;z-index:999"></canvas>
 	
-	<progress id="power" value="10" max="100" style="-webkit-transform: rotate(-90deg); position: absolute;z-index:999; top :100px"></progress>
+	<progress id="power" value="10" max="100" style="-webkit-transform: rotate(-90deg); position: absolute;z-index:999"></progress>
 
 </head>
 <body>
@@ -42,12 +42,15 @@
 	let sheddatArray = [0.1,0.2,0.3,0.6,0.75,0.85,1,1.5,2,2.5];
         let shedat = 1;
 	    let prog = 10;
-	    let end = false
 	    let step = 10;
 	    let fraction = 0
 	    const up = new THREE.Vector3( 0,1, 0 );
   	    const axis = new THREE.Vector3( );
 	    let interval;
+        let v0;
+        let gg = 9.8
+        let A;
+        let alpha;
     
       
 	    function randomIntFromInterval(a1,a2) { // min and max included 
@@ -69,7 +72,6 @@
     const newPosition = pointsPath.getPoint(fraction);
     const tangent = pointsPath.getTangent(fraction);
     ball.position.copy(newPosition);
-//if(ball.position.y> goal.position.y) end = true
     axis.crossVectors( up, tangent ).normalize();
     
     const radians = Math.acos( up.dot( tangent ) );
@@ -78,7 +80,6 @@
     
     fraction +=(0.02*shedat);
     if (fraction > 1) {
-	    end = true;
       fraction = 0;
     }    
 		    }catch(e){
@@ -88,10 +89,6 @@
 	    }
       
       function createGraph(x,y,z){
-	      alert(z)
-var t4 = 0;
-
-
 	      try{
 	      try{
 		  var selectedObject = nft_loaded.root.getObjectByName("ymz_path");
@@ -109,7 +106,7 @@ var t4 = 0;
           if(x< 0 && y > 0){
             state = 1
             var direction = 1
-            if(x < -40) direction =2
+            if(x < -10) direction =2
 
             var dd = (length/3)*direction*shedat
             x4 = goal.position.x + dd
@@ -118,7 +115,7 @@ var t4 = 0;
           else if(y > 0 && x > 0){
             state = 2
             var direction = 1
-            if(x > 40) direction =2
+            if(x > 10) direction =2
             var dd = (length/3)*direction*shedat
 
             x4 = goal.position.x - dd
@@ -127,8 +124,8 @@ var t4 = 0;
           }else if(y <= 0 && x<=0){
             state = 3
             var direction = 1
-            if(x <-40) direction =2
-            if(x>-15) direction = 0
+            if(x <-10) direction =2
+            if(x>-5) direction = 0
 
             var dd = (length/3)*direction*shedat
             x4 = goal.position.x + dd
@@ -136,30 +133,31 @@ var t4 = 0;
           }else{
             state = 4
             var direction = 1
-            if(x >40) direction =2
-            if(x<10) direction = 0
+            if(x <-20) direction =2
+            if(x>-5) direction = 0
 
             var dd = (length/3)*direction*shedat
             x4 = goal.position.x - dd
             y4 = goal.position.y*shedat
           }
 	      
-	      if(z > 0 ){
-			t4 =  shedat*3
+	      
+	      if(z <= 0 ){
+			z4 =  goal.position.z*shedat*2 - height
 	      }else{
-		      t4 = 0
+		      z4 = 0
 	      }
-	      var v4 = new THREE.Vector3(x4,y4,0);
+	      var v4 = new THREE.Vector3(x4,y4,z4);
 
           let v2;
           let v3;
 
           if(state ==1 || state == 3){
-              v2 = new THREE.Vector3(x4*1.4,y4*0.3,t4*8); 
-              v3 = new THREE.Vector3(x4*1.7,y4*0.7,t4*12);
+              v2 = new THREE.Vector3(x4*1.4,y4*0.3,z4*1.5); 
+              v3 = new THREE.Vector3(x4*1.7,y4*0.7,z4*2);
           }else if(state ==2 || state == 4){
-            v2 = new THREE.Vector3(x4*0.4,y4*0.3,t4*8); 
-              v3 = new THREE.Vector3(x4*0.7,y4*0.7,t4*12);
+            v2 = new THREE.Vector3(x4*0.4,y4*0.3,z4*1.5); 
+              v3 = new THREE.Vector3(x4*0.7,y4*0.7,z4*2);
           }
 	         
           addVectors(v1,v2,v3,v4)
@@ -196,13 +194,52 @@ const bezierLine = new THREE.CubicBezierCurve3(
                                  try{
                                    nft_loaded.add(path);
                  nft_loaded.tickExtend = function() {
-			 if(!end)
                       moveBall();
                        };
                  
                  }catch(e){  
                        alert(e) 
                                  }
+      }
+
+
+      function createPath(x,y,z){
+        A = (-y/x)
+        alpha = (-z/y)*Math.PI / 180
+        var R = v0*v0*Math.sin(2*alpha)/gg
+
+        let time = 0;
+
+        nft_loaded.tickExtend = function(){
+          if(!end){
+            time +=(0.02);
+            createCubic(time);
+          }
+
+        };
+        
+      }
+
+      function createCubic(time){
+     
+        var vy = v0*Math.cos(alpha)
+        var vz = v0*Math.sin(alph)
+        var y = vy*time
+        var z = -0.5*gg**time*time + vz*time
+        var x = linearPath(y)
+
+        if(z == 0){
+          end = true
+        }else{
+          ball.position.x = x
+          ball.position.y= y
+          ball.position.z = z
+        }
+      }
+
+      function linearPath(y){
+        x = y / A
+        return x
       }
 
 			ARnft.ARnft.init(800, 600, "archive/DataNFT/notebook", 'config3.json', false, true)
@@ -248,11 +285,13 @@ const bezierLine = new THREE.CubicBezierCurve3(
 			  var p2 = model.worldToLocal(v);
 // 			 alert("YMZ : xs :  "+ ((*100) | 0) + " , ys : "+ (((p1.y - p2.y)*100) | 0 )    );
 			  
-			 var xxs = (p1.x - p2.x)*100 | 0
+      var xxs = (p1.x - p2.x)*100 | 0
 			 var yys = (p1.y - p2.y)* 100 | 0
 			 var zzs = (p1.z - p2.z)*100 | 0
 			 
-			 createGraph(xxs,yys,zzs);
+			//  createGraph(xxs,yys,zzs);
+
+      createPath(xxs,yys,zzs);
 			 
 		  });
 
@@ -264,7 +303,7 @@ const bezierLine = new THREE.CubicBezierCurve3(
 									});
           
           
-                    nft.addSimpleModel('./goal.glb' , 70 , 250 ,0,2 , function(model){
+                    nft.addSimpleModel('./goal.glb' , 70 , 250 ,0,1 , function(model){
 
 					goal = model;	
 			    goal.rotation.y = (Math.PI /2)
