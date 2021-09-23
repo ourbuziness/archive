@@ -205,6 +205,7 @@ const bezierLine = new THREE.CubicBezierCurve3(
 
       function createPath(x,y,z){
 	      alert("ymz")
+	      try{
         A = (-y/x)
         alpha = (-z/y)*Math.PI / 180
         var R = v0*v0*Math.sin(2*alpha)/gg
@@ -218,6 +219,7 @@ const bezierLine = new THREE.CubicBezierCurve3(
           }
 
         };
+	      }catch(e){alert(e)}
         
       }
 
@@ -232,6 +234,7 @@ const bezierLine = new THREE.CubicBezierCurve3(
 	$("#pos").text("( "+ x+" , "+y+" , "+z+" )")
 
         if(z == 0){
+		alert("end")
           end = true
         }else{
           ball.position.x = x
