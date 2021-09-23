@@ -43,6 +43,7 @@
         let shedat = 1;
 	    let prog = 10;
 	    let step = 10;
+	    let end = false ;
 	    let fraction = 0
 	    const up = new THREE.Vector3( 0,1, 0 );
   	    const axis = new THREE.Vector3( );
@@ -192,10 +193,10 @@ const bezierLine = new THREE.CubicBezierCurve3(
 
 // 		      alert(x4 + " , " + y4 + " , " + z4  + "\n ** "+ x3 + " , " + y3 + " , " + z3 );
                                  try{
-                                   nft_loaded.add(path);
-                 nft_loaded.tickExtend = function() {
-                      moveBall();
-                       };
+              //                     nft_loaded.add(path);
+             //    nft_loaded.tickExtend = function() {
+              //        moveBall();
+                //       };
                  
                  }catch(e){  
                        alert(e) 
@@ -215,6 +216,7 @@ const bezierLine = new THREE.CubicBezierCurve3(
         var time = 0;
 			alert("time : "+time);
         nft_loaded.tickExtend = function(){
+		//alert("tick");
           if(!end){
 		  try{
             time += 0.1
