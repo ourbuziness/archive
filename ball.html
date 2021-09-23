@@ -224,7 +224,7 @@ const bezierLine = new THREE.CubicBezierCurve3(
       }
 
       function createCubic(time){
-     
+     try{
         var vy = v0*Math.cos(alpha)
         var vz = v0*Math.sin(alph)
         var y = vy*time
@@ -241,10 +241,13 @@ const bezierLine = new THREE.CubicBezierCurve3(
           ball.position.y= y
           ball.position.z = z
         }
+	        }catch(e){
+			alert(e);    
+		    }
       }
 
       function linearPath(y){
-        x = y / A
+       var x = y / A
         return x
       }
 
