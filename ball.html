@@ -7,8 +7,8 @@
 	<meta name="apple-mobile-web-app-capable" content="yes">
 	<link rel="stylesheet" href="nft-style.css">
 	<canvas id="whole" style="position: absolute;z-index:999"></canvas>
-	
-	<progress id="power" value="10" max="100" style="-webkit-transform: rotate(-90deg); position: absolute;z-index:999"></progress>
+	<p id="pos">position</p>
+	<progress id="power" value="10" max="100" style="-webkit-transform: rotate(-90deg); position: absolute;z-index:999;top:100px"></progress>
 
 </head>
 <body>
@@ -212,7 +212,7 @@ const bezierLine = new THREE.CubicBezierCurve3(
 
         nft_loaded.tickExtend = function(){
           if(!end){
-            time +=(0.02);
+            time +=(0.1);
             createCubic(time);
           }
 
@@ -227,6 +227,8 @@ const bezierLine = new THREE.CubicBezierCurve3(
         var y = vy*time
         var z = -0.5*gg**time*time + vz*time
         var x = linearPath(y)
+	
+	$("#pos").text("( "+ x+" , "+y+" , "+z+" )")
 
         if(z == 0){
           end = true
