@@ -211,7 +211,7 @@ const bezierLine = new THREE.CubicBezierCurve3(
 	      try{
         A = (-1*y/x)
 		      alert("A : "+A);
-        alpha = (z/y)*Math.PI / 180
+        alpha = -1*(z/y)*Math.PI / 180
 		       alert("alpha : "+alpha);
 		      vy = v0*Math.cos(alpha)
         vz = v0*Math.sin(alpha)
@@ -242,9 +242,9 @@ const bezierLine = new THREE.CubicBezierCurve3(
      try{
 	    // alert("here");
         
-        var y = vy*time
+        var y = vy*time + 5
         var z = -0.5*gg**time*time + vz*time
-        var x = linearPath(y)
+        var x = linearPath(y) + 70
 	
 	$("#pos").text("( "+ x+" , "+y+" , "+z+" )")
 
