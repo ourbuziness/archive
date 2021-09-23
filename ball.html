@@ -209,7 +209,7 @@ const bezierLine = new THREE.CubicBezierCurve3(
       function createPath(x,y,z){
 	      alert("ymz")
 	      try{
-        A = (-1*y/x)
+        A = (-1*y/x)*10
 		      alert("A : "+A);
         alpha = -1*(z)*Math.PI / 180
 		       alert("alpha : "+alpha);
@@ -230,7 +230,7 @@ const bezierLine = new THREE.CubicBezierCurve3(
 		  }
 		  
           }else{
-		alert("end")  
+		//alert("end")  
 	  }
 
         };
@@ -249,7 +249,7 @@ const bezierLine = new THREE.CubicBezierCurve3(
 	$("#pos").text("( "+ x+" , "+y+" , "+z+" )")
 
         if(z<=0 && time != 0){
-		alert("end")
+		//alert("end")
           end = true
         }else{
           ball.position.x = x
@@ -295,7 +295,7 @@ const bezierLine = new THREE.CubicBezierCurve3(
 			 clearInterval(interval);
 			  shedat = sheddatArray[(prog/10 | 0)]
 			  v0 = sheddatArray[(prog/10 | 0)]
-v0 = 100
+v0 = 24
  			  var v = new THREE.Vector3()
 // 			  camera.getWorldDirection(v);
 // 			  alert("YMZ " + v.x +" , "+ v.y +" , "+v.z);
