@@ -69,7 +69,7 @@
     const newPosition = pointsPath.getPoint(fraction);
     const tangent = pointsPath.getTangent(fraction);
     ball.position.copy(newPosition);
-if(ball.position.y> goal.position.y) end = true
+//if(ball.position.y> goal.position.y) end = true
     axis.crossVectors( up, tangent ).normalize();
     
     const radians = Math.acos( up.dot( tangent ) );
@@ -145,7 +145,7 @@ var t4 = 0;
           }
 	      
 	      if(z > 0 ){
-			t4 =  goal.position.z*shedat*2 - height
+			t4 =  goal.position.z*shedat*1.5
 	      }else{
 		      t4 = 0
 	      }
@@ -264,7 +264,7 @@ const bezierLine = new THREE.CubicBezierCurve3(
 									});
           
           
-                    nft.addSimpleModel('./goal.glb' , 70 , 250 ,0,3 , function(model){
+                    nft.addSimpleModel('./goal.glb' , 70 , 250 ,0,2 , function(model){
 
 					goal = model;	
 			    goal.rotation.y = (Math.PI /2)
