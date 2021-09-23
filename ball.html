@@ -204,6 +204,7 @@ const bezierLine = new THREE.CubicBezierCurve3(
 
 
       function createPath(x,y,z){
+	      alert("ymz")
         A = (-y/x)
         alpha = (-z/y)*Math.PI / 180
         var R = v0*v0*Math.sin(2*alpha)/gg
@@ -270,7 +271,7 @@ const bezierLine = new THREE.CubicBezierCurve3(
 		  ball = model;
 		  
 		  nft.setOnObjectClickListener('./ball.glb',function(point){
-			  clearInterval(interval);
+			 clearInterval(interval);
 			  shedat = sheddatArray[(prog/10 | 0)]
 			  v0 = sheddatArray[(prog/10 | 0)]
  			  var v = new THREE.Vector3()
