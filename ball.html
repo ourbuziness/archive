@@ -39,7 +39,7 @@
 	    let y4;
         let length = 50;
         let height = 20;
-	let sheddatArray = [0.1,0.2,0.3,0.6,0.75,0.85,1,1.5,2,2.5];
+	let sheddatArray = [3,6,9,12,15,20,25,30,35,40];
         let shedat = 1;
 	    let prog = 10;
 	    let step = 10;
@@ -270,6 +270,7 @@ const bezierLine = new THREE.CubicBezierCurve3(
 		  nft.setOnObjectClickListener('./ball.glb',function(point){
 			  clearInterval(interval);
 			  shedat = sheddatArray[(prog/10 | 0)]
+			  v0 = sheddatArray[(prog/10 | 0)]
  			  var v = new THREE.Vector3()
 // 			  camera.getWorldDirection(v);
 // 			  alert("YMZ " + v.x +" , "+ v.y +" , "+v.z);
