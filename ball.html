@@ -69,6 +69,7 @@
     const newPosition = pointsPath.getPoint(fraction);
     const tangent = pointsPath.getTangent(fraction);
     ball.position.copy(newPosition);
+if(ball.position.y> goal.position.y) end = true
     axis.crossVectors( up, tangent ).normalize();
     
     const radians = Math.acos( up.dot( tangent ) );
@@ -142,8 +143,6 @@ var t4 = 0;
             x4 = goal.position.x - dd
             y4 = goal.position.y*shedat
           }
-	     
-if(y4 > goal.position.y ) end = true 
 	      
 	      if(z > 0 ){
 			t4 =  goal.position.z*shedat*2 - height
