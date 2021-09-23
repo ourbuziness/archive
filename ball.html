@@ -210,13 +210,20 @@ const bezierLine = new THREE.CubicBezierCurve3(
         alpha = (-z/y)*Math.PI / 180
         var R = v0*v0*Math.sin(2*alpha)/gg
 
-        let time = 0;
+        var time = 0;
 
         nft_loaded.tickExtend = function(){
           if(!end){
-            time +=(0.1);
+		  try{
+            time += 0.1
             createCubic(time);
-          }
+		  }catch(e){
+			alert(e)  
+		  }
+		  
+          }else{
+		alert("end")  
+	  }
 
         };
 	      }catch(e){alert(e)}
