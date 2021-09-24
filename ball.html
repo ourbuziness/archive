@@ -227,6 +227,7 @@ const bezierLine = new THREE.CubicBezierCurve3(
 
         time = 0;
 			//alert("time : "+time);
+		      end = false;
         nft_loaded.tickExtend = function(){
 		//alert("tick");
           if(!end){
@@ -251,7 +252,7 @@ const bezierLine = new THREE.CubicBezierCurve3(
 		  ball.position.y = 5
 		    ball.position.z = 0
 		    time = 0
-		    end = false
+		  //  end = false
 		    
 		    
 	    }
