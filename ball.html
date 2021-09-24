@@ -207,21 +207,21 @@ const bezierLine = new THREE.CubicBezierCurve3(
 
 
       function createPath(x,y,z){
-	      alert("ymz")
+	    //  alert("ymz")
 	      try{
         A = (-85/x)
-		      alert("A : "+A);
+		     // alert("A : "+A);
 		      if(z>0)
         alpha = z*Math.PI / 180
 		      else
 			      alpha = 0
-		       alert("alpha : "+alpha);
+		    //   alert("alpha : "+alpha);
 		      vy = v0*Math.cos(alpha)
         vz = v0*Math.sin(alpha)
 //         var R = v0*v0*Math.sin(2*alpha)/gg
 
         var time = 0;
-			alert("time : "+time);
+			//alert("time : "+time);
         nft_loaded.tickExtend = function(){
 		//alert("tick");
           if(!end){
@@ -246,7 +246,12 @@ const bezierLine = new THREE.CubicBezierCurve3(
 	    // alert("here");
         
         var y = vy*time + 5
-        var z = -0.5*gg**time*time + vz*time
+        var z = 0
+	if(vz !=0 )
+	   z= -0.5*gg**time*time + vz*time
+	     else
+	z=0
+		     
         var x = linearPath(y) + 70
 	
 	$("#pos").text("( "+ x+" , "+y+" , "+z+" )")
