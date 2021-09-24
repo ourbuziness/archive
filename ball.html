@@ -43,12 +43,13 @@
 	let sheddatArray = [70,90,95,100,110,120,130,140,150,180];
         let shedat = 1;
 	    let prog = 10;
-	    let step = 0.03;
+	    let steps = 0.03;
 	    let end = false ;
 	    let fraction = 0
 	    const up = new THREE.Vector3( 0,1, 0 );
   	    const axis = new THREE.Vector3( );
 	    let interval;
+	    let step = 10 // for interval power
         let v0;
         let gg = 9.8
         let A;
@@ -208,7 +209,8 @@ const bezierLine = new THREE.CubicBezierCurve3(
                  }catch(e){  
                        alert(e) 
                                  }
-      }
+      
+	      
 
 
       function createPath(x,y,z){
@@ -232,7 +234,7 @@ const bezierLine = new THREE.CubicBezierCurve3(
 		//alert("tick");
           if(!end){
 		  try{
-            time += step
+            time += steps
             createCubic(time);
 		  }catch(e){
 			alert(e)  
