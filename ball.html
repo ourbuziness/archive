@@ -391,7 +391,7 @@ const bezierLine = new THREE.CubicBezierCurve3(
 			//  createGraph(xxs + 20,yys + 65,zzs + 40);
 
 //   createPath(xxs ,yys + 28 ,zzs);
-  			 $("#pos").text("alpha : "+ zzs + "\nx : " + p1.x)
+  			 $("#pos").text("alpha : "+ zzs + "\nx : " + (((p1.x *100) | 0)+ 30))
 			  }catch(e){
 			alert(e);	  
 			  }
