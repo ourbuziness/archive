@@ -248,7 +248,7 @@ const bezierLine = new THREE.CubicBezierCurve3(
 	
 	$("#pos").text("( "+ x+" , "+y+" , "+z+" )")
 
-        if(z<=0 && time != 0){
+        if(z<0 && time != 0){
 		//alert("end")
           end = true
         }else{
@@ -317,8 +317,8 @@ v0 = 24
 			 
 			//  createGraph(xxs,yys,zzs - 25);
 
-      createPath(xxs,yys,zzs);
-//alert("z : " + zzs + "  alpha : "+ (-zzs/yys) );
+     // createPath(xxs,yys,zzs);
+alert("A : " + ( -yys / xxs) + "  alpha : "+ (-zzs/yys) );
 			 
 		  });
 
