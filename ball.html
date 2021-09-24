@@ -389,19 +389,24 @@ const bezierLine = new THREE.CubicBezierCurve3(
 // 				}
 				  
 				  var xxs = ((((p1.x) *100) | 0)+ 30)
+				  alert(xxs)
 				  if(xxs <= 20 || xxs >= -20) xxs= 0
 				  else if(xxs > 0) {
+					  alert("mosbat");
 				  if(xxs <= 40 ) xxs = 80
 				  else if(xxs<=60 ) xxs = 70
 				  else if(xxs<=80) xxs = 60 
 				  else xxs = 45
 			  	}else{
+					alert("manfi");
 				  if(xxs>= -35) xxs = 95
 					else if(x >= -40) xxs= 105
 					else if(x >= -50) xxs = 125
 					else if(x>= -60 ) xxs = 130
 					else xxs = 135
 				}
+				  
+				  alert("xxs : " +xxs);
 				  
 			//  createGraph(xxs + 20,yys + 65,zzs + 40);
 
