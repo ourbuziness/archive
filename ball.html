@@ -64,13 +64,6 @@
     }); 
 	    
 	    
-	    $("body").addEvent("touchstart", function (event) {
-    event.preventDefault(); // to avoid scrolling
-    alert("start : "+ event.pageX);
-});
-$("body").addEvent("touchend", function (event) {
-    alert(" end : "+event.changedTouches[0].pageX);
-});
 	    function randomIntFromInterval(a1,a2) { // min and max included 
 		    var max = a1 + 30
 		    var min = a2
@@ -452,6 +445,14 @@ const bezierLine = new THREE.CubicBezierCurve3(
 
 					goal = model;	
 			    goal.rotation.y = (Math.PI /2)
+			    
+			        $(document).on('touchstart', 'body', function (e) {
+    alert("start : "+e.originalEvent.touches[0].pageX);
+});
+$(document).on('touchend', 'body', function (e) {
+    alert(" end : "+e.originalEvent.changedTouches[0].pageX);
+});
+			    
 									});
 					
 					
