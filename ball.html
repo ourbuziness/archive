@@ -304,6 +304,7 @@ var xxs = -1* shib
 			    goal.rotation.y = (Math.PI /2)
 			    
 			        $(document).on('touchstart', 'body', function (e) {
+					 $("#pos").text("ts : ( "+  e.originalEvent.touches[0].pageX + " , " +  e.originalEvent.touches[0].pageY + ")" )
 					if(canStarte){
                canStarte = false
 					starte = e
