@@ -274,13 +274,14 @@ const bezierLine = new THREE.CubicBezierCurve3(
 	
 	$("#pos").text("( "+ x+" , "+y+" , "+z+" )")
 
-        if(z<0 && time != 0){
+        if((z<0 || y>=goal.position.y) && time != 0){
 		//alert("end")
           end = true
         }else{
           ball.position.x = x
           ball.position.y= y
           ball.position.z = z
+          ball.rotation.x += 0.01
         }
 	        }catch(e){
 			alert(e);    
