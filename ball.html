@@ -8,6 +8,7 @@
 	<link rel="stylesheet" href="nft-style.css">
 	<canvas id="whole" style="position: absolute;z-index:999"></canvas>
 	<p id="pos" style="position: absolute;z-index:999">position</p>
+	<button id="reset" style="position: absolute;z-index:999;bottom: 100px; right:100px">try sgain</p>
 	<progress id="power" value="10" max="100" style="-webkit-transform: rotate(-90deg); position: absolute;z-index:999;top:100px"></progress>
 
 </head>
@@ -39,10 +40,10 @@
 	    let y4;
         let length = 50;
         let height = 20;
-	let sheddatArray = [3,6,9,12,15,20,25,30,35,40];
+	let sheddatArray = [70,90,95,100,110,120,130,140,150,180];
         let shedat = 1;
 	    let prog = 10;
-	    let step = 10;
+	    let step = 0.03;
 	    let end = false ;
 	    let fraction = 0
 	    const up = new THREE.Vector3( 0,1, 0 );
@@ -226,7 +227,7 @@ const bezierLine = new THREE.CubicBezierCurve3(
 		//alert("tick");
           if(!end){
 		  try{
-            time += 0.03
+            time += step
             createCubic(time);
 		  }catch(e){
 			alert(e)  
@@ -240,6 +241,16 @@ const bezierLine = new THREE.CubicBezierCurve3(
 	      }catch(e){alert(e)}
         
       }
+	    
+	    function reset(){
+		ball.position.x = 70
+		  ball.position.y = 5
+		    ball.position.z = 0
+		    time = 0
+		    end = false
+		    
+		    
+	    }
 
       function createCubic(time){
      try{
@@ -307,7 +318,7 @@ const bezierLine = new THREE.CubicBezierCurve3(
 			 clearInterval(interval);
 			  shedat = sheddatArray[(prog/10 | 0)]
 			  v0 = sheddatArray[(prog/10 | 0)]
-v0 = 140
+//v0 = 140
  			  var v = new THREE.Vector3()
 // 			  camera.getWorldDirection(v);
 // 			  alert("YMZ " + v.x +" , "+ v.y +" , "+v.z);
