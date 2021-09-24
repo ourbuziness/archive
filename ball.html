@@ -254,6 +254,7 @@ const bezierLine = new THREE.CubicBezierCurve3(
 		  ball.position.y = 5
 		    ball.position.z = 0
 		    time = 0
+		    startInterval()
 		  //  end = false
 		    
 		    
@@ -281,7 +282,7 @@ const bezierLine = new THREE.CubicBezierCurve3(
           ball.position.x = x
           ball.position.y= y
           ball.position.z = z
-          ball.rotation.x += 5
+          ball.rotation.x += 1
         }
 	        }catch(e){
 			alert(e);    
