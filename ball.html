@@ -216,7 +216,7 @@ const bezierLine = new THREE.CubicBezierCurve3(
       function createPath(x,y,z){
 	    //  alert("ymz")
 	      try{
-        A = (-85/x)
+        A = x
 		     // alert("A : "+A);
 		      if(z>0)
         alpha = z*Math.PI / 180
@@ -290,7 +290,11 @@ const bezierLine = new THREE.CubicBezierCurve3(
       }
 
       function linearPath(y){
-       var x = y / A
+	      var x = 1
+	      if(A !=0)
+       		x = y / A
+	      else
+		x = 0
         return x
       }
 	    
@@ -377,11 +381,17 @@ const bezierLine = new THREE.CubicBezierCurve3(
 			 else {
 				xxs = 70 + ((xxs - 114)*130/178)
 			 }
+				  
+				  xxs = xxs + 90
+				  xxs = xxs * 180/Math.PI
+				  if(xss = 90)
+					  xss = 0
+				  xxs = Math.tan(xxs)
 			 
 			//  createGraph(xxs + 20,yys + 65,zzs + 40);
 
-  //createPath(xxs + 35,yys + 28 ,zzs);
- 			 $("#pos").text("alpha : "+ zzs + "\nx : " + (xxs + 90))
+  createPath(xxs ,yys + 28 ,zzs);
+//  			 $("#pos").text("alpha : "+ zzs + "\nx : " + )
 			  }catch(e){
 			alert(e);	  
 			  }
