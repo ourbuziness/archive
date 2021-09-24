@@ -63,6 +63,7 @@
 	    let starty
 	    let shib
 	    let starte
+	    let canStarte = true
     
       
 	       $("#reset").click(function(){
@@ -303,9 +304,12 @@ var xxs = -1* shib
 			    goal.rotation.y = (Math.PI /2)
 			    
 			        $(document).on('touchstart', 'body', function (e) {
+					if(canStarte){
+               canStarte = false
 					starte = e
     startx= e.originalEvent.touches[0].pageX
    starty= e.originalEvent.touches[0].pageY
+					}
 });
 $(document).on('touchend', 'body', function (e) {
    endx= e.originalEvent.changedTouches[0].pageX;
@@ -314,6 +318,7 @@ $(document).on('touchend', 'body', function (e) {
 	 shib = (endy - starty) / (endx - startx)
 	// alert("shib  : " + shib )
 	nft_loaded.onClick(starte)
+	canStarte = true
 });
 			    
 									});
