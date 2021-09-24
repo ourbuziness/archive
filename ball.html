@@ -88,14 +88,18 @@
 	    
 	 function click(x, y)
 {
+	try{
     var e = $.Event('click');
 
 // set coordinates
-e.pageX = x;
-e.pageY = y;
+e.clientX = x;
+e.clientY = y;
 
 // trigger event - must trigger on document
 $(document).trigger(e);
+	}catch(e){
+alert(e)
+	}
 
 }
 
@@ -349,7 +353,7 @@ $(document).on('touchend', 'body', function (e) {
 	 shib = (endy - starty) / (endx - startx)
 	// alert("shib  : " + shib )
 	//nft_loaded.simulateClick(starte)
-		clicked(startx, starty);
+		click(startx, starty);
 	canStarte = true
 }catch(e){
 	alert(e)
