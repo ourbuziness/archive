@@ -369,11 +369,18 @@ const bezierLine = new THREE.CubicBezierCurve3(
 			 }else{
 				zzs = ((zzs + 80)* 72)/130
 			 }
+			  
+			  xss = xss + 24
+			  if(xss < -60 ) xss = -60
+			  else if(xss > 80 ) xss = 70
+			 else {
+				xss = 70 + ((xss - 114)* (130)/178) 
+			 }
 			 
 			//  createGraph(xxs + 20,yys + 65,zzs + 40);
 
   //createPath(xxs + 35,yys + 28 ,zzs);
- 			 $("#pos").text("alpha : "+ zzs + "\nx : " + (xxs) + " A : " + (-85/xxs))
+ 			 $("#pos").text("alpha : "+ zzs + "\nx : " + xxs)
 // alert("y: "+ ( yys+ 28) +" x : " + (xxs+ 20) + "A : " + ((xxs + 20)/85) + "  alpha : "+ (-1*zzs + 20) );
 			 
 		  });
