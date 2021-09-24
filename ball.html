@@ -390,7 +390,7 @@ const bezierLine = new THREE.CubicBezierCurve3(
 				  
 				  var xxs = ((((p1.x) *100) | 0)+ 30)
 // 				  alert(xxs)
-				  if(xxs <= 20 && xxs >= -20) xxs= 0
+				  if(xxs <= 20 && xxs >= -10) xxs= 0
 				  else if(xxs > 0) {
 // 					  alert("mosbat");
 				  if(xxs <= 40 ) xxs = 80
@@ -399,10 +399,11 @@ const bezierLine = new THREE.CubicBezierCurve3(
 				  else xxs = 45
 			  	}else{
 // 					alert("manfi");
-				  if(xxs>= -35) xxs = 95
-					else if(x >= -40) xxs= 105
-					else if(x >= -50) xxs = 125
-					else if(x>= -60 ) xxs = 130
+				  if(xxs>= -20) xxs = 95
+					else if(xxs >= -30) xxs= 100
+					else if(xxs >= -40) xxs = 110
+					else if(xxs>= -50 ) xxs = 115
+					else if(xxs>= -60 ) xxs = 120
 					else xxs = 135
 				}
 				  
