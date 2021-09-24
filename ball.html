@@ -71,18 +71,17 @@
     }); 
 	
 	    
-	 function click(x,y){
-    var ev = document.createEvent("MouseEvent");
-    var el = document.elementFromPoint(x,y);
-    ev.initMouseEvent(
-        "click",
-        true /* bubble */, true /* cancelable */,
-        window, null,
-        x, y, 0, 0, /* coordinates */
-        false, false, false, false, /* modifier keys */
-        0 /*left*/, null
-    );
-    el.dispatchEvent(ev);
+	 function click(x, y)
+{
+    var e = $.Event('click');
+
+// set coordinates
+e.pageX = x;
+e.pageY = y;
+
+// trigger event - must trigger on document
+$(document).trigger(e);
+
 }
 
       function createPath(x,y,z){
