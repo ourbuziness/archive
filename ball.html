@@ -364,7 +364,7 @@ const bezierLine = new THREE.CubicBezierCurve3(
 			  var p2 = model.worldToLocal(v);
 // 			 alert("YMZ : xs :  "+ ((*100) | 0) + " , ys : "+ (((p1.y - p2.y)*100) | 0 )    );
 			  
-      var xxs = (p1.x - p2.x)*100 | 0
+//       var xxs = (p1.x - p2.x)*100 | 0
 			 var yys = (p1.y - p2.y)* 100 | 0
 			 var zzs = (p1.z - p2.z)*100 | 0
 			 zzs = -1*zzs
@@ -375,23 +375,22 @@ const bezierLine = new THREE.CubicBezierCurve3(
 			 }
 			  try{
 			  
-			  xxs = xxs + 24
-			  if(xxs < -60 ) xxs = -60
-			  else if(xxs > 80 ) xxs = 70
-			 else {
-				xxs = 70 + ((xxs - 114)*130/178)
-			 }
-				  
-				  xxs = xxs + 90
-				  xxs = xxs * 180/Math.PI
-				  if(xss = 90)
-					  xss = 0
-				  xxs = Math.tan(xxs)
+				var xxs =  (((p1.x *100) | 0)+ 30)
+				var xxsArrayP = [0,95,100,105,110,115,120]
+				var xxsArrayN = [0,85,80,75,70,65,60]
+				if(xxs > 120 ) xxs = 120
+				  if(xxs < -70 ) xxs = -60
+				if(xxs <=5 || xxs >= -5) xxs = 0
+				else if(xxs > 0 ){
+					xxs =xxsArrayP[Math.ceil(xxs/20)]
+				}else{
+					xxs = xxsArrayN[Math.ceil(xxs/10)]
+				}
 			 
 			//  createGraph(xxs + 20,yys + 65,zzs + 40);
 
 //   createPath(xxs ,yys + 28 ,zzs);
-  			 $("#pos").text("alpha : "+ zzs + "\nx : " + (((p1.x *100) | 0)+ 30))
+//   			 $("#pos").text("alpha : "+ zzs + "\nx : " + )
 			  }catch(e){
 			alert(e);	  
 			  }
