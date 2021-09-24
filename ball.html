@@ -209,7 +209,7 @@ const bezierLine = new THREE.CubicBezierCurve3(
       function createPath(x,y,z){
 	      alert("ymz")
 	      try{
-        A = (y/x)
+        A = (x/85)
 		      alert("A : "+A);
         alpha = z*Math.PI / 180
 		       alert("alpha : "+alpha);
@@ -317,8 +317,8 @@ v0 = 140
 			 
 			//  createGraph(xxs + 20,yys + 65,zzs + 40);
 
-  //  createPath(xxs + 14,yys + 28 ,(-1*zzs + 40));
- alert("y: "+ ( yys+ 28) +" x : " + (xxs+ 20) + "A : " + ((xxs + 20)/85) + "  alpha : "+ (-1*zzs + 40) );
+    createPath(xxs + 35,yys + 28 ,(-1*zzs + 40));
+// alert("y: "+ ( yys+ 28) +" x : " + (xxs+ 20) + "A : " + ((xxs + 20)/85) + "  alpha : "+ (-1*zzs + 40) );
 			 
 		  });
 
