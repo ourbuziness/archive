@@ -375,19 +375,34 @@ const bezierLine = new THREE.CubicBezierCurve3(
 			 }
 			  try{
 			  
-				var xxs =  ((((p1.x) *100) | 0)+ 30)
-				alert(xxs + "   " + (p1.x * 100) );
-				var xxsArrayP = [0,95,100,105,110,115,120]
-				var xxsArrayN = [0,85,80,75,70,65,60]
-				if(xxs > 120 ) xxs = 120
-				  if(xxs < -70 ) xxs = -60
-				if(xxs <=5 || xxs >= -5) xxs = 0
-				else if(xxs > 0 ){
-					xxs =xxsArrayP[Math.ceil(xxs/20)]
-				}else{
-					xxs = xxsArrayN[Math.ceil(xxs/10)]
+// 				var xxs =  ((((p1.x) *100) | 0)+ 30)
+// 				alert(xxs + "   " + (p1.x * 100) );
+// 				var xxsArrayP = [0,95,100,105,110,115,120]
+// 				var xxsArrayN = [0,85,80,75,70,65,60]
+// 				if(xxs > 120 ) xxs = 120
+// 				  if(xxs < -70 ) xxs = -60
+// 				if(xxs <=5 || xxs >= -5) xxs = 0
+// 				else if(xxs > 0 ){
+// 					xxs =xxsArrayP[Math.ceil(xxs/20)]
+// 				}else{
+// 					xxs = xxsArrayN[Math.ceil(xxs/10)]
+// 				}
+				  
+				  var xxs = ((((p1.x) *100) | 0)+ 30)
+				  if(xxs <= 20 || xxs >= -20) xxs= 0
+				  else if(xxs > 0) {
+				  if(xxs <= 40 ) xxs = 80
+				  else if(xxs<=60 ) xxs = 70
+				  else if(xxs<=80) xxs = 60 
+				  else xxs = 45
+			  	}else{
+				  if(xxs>= -35) xxs = 95
+					else if(x >= -40) xxs= 105
+					else if(x >= -50) xxs = 125
+					else if(x>= -60 ) xxs = 130
+					else xxs = 135
 				}
-			 
+				  
 			//  createGraph(xxs + 20,yys + 65,zzs + 40);
 
 //   createPath(xxs ,yys + 28 ,zzs);
