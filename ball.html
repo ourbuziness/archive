@@ -313,6 +313,8 @@ var xxs = -1* shib
 					}
 });
 $(document).on('touchend', 'body', function (e) {
+	try{
+		alert(starte)
    endx= e.originalEvent.changedTouches[0].pageX;
    endy= e.originalEvent.changedTouches[0].pageY;
 	
@@ -320,6 +322,9 @@ $(document).on('touchend', 'body', function (e) {
 	// alert("shib  : " + shib )
 	nft_loaded.onClick(starte)
 	canStarte = true
+}catch(e){
+	alert(e)
+}
 });
 			    
 									});
