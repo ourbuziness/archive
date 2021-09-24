@@ -217,7 +217,7 @@ const bezierLine = new THREE.CubicBezierCurve3(
 	    //  alert("ymz")
 	      try{
 	//if(x==0)
-             A = x
+             A = (-85/x)
        //  else
 	  //   A = Math.tan(x)
 		     // alert("A : "+A);
@@ -236,7 +236,8 @@ const bezierLine = new THREE.CubicBezierCurve3(
         nft_loaded.tickExtend = function(){
 		//alert("tick");
           if(!end){
-		  try{
+		  try
+			  
             time += steps
             createCubic(time);
 		  }catch(e){
@@ -367,7 +368,7 @@ const bezierLine = new THREE.CubicBezierCurve3(
 			  var p2 = model.worldToLocal(v);
 // 			 alert("YMZ : xs :  "+ ((*100) | 0) + " , ys : "+ (((p1.y - p2.y)*100) | 0 )    );
 			  
-//       var xxs = (p1.x - p2.x)*100 | 0
+       var xxs = (p1.x - p2.x)*100 | 0
 			 var yys = (p1.y - p2.y)* 100 | 0
 			 var zzs = (p1.z - p2.z)*100 | 0
 			 zzs = -1*zzs
@@ -391,7 +392,7 @@ const bezierLine = new THREE.CubicBezierCurve3(
 // 					xxs = xxsArrayN[Math.ceil(xxs/10)]
 // 				}
 				  
-				  var xxs = ((((p1.x) *100) | 0)+ 30)
+/*				  var xxs = ((((p1.x) *100) | 0)+ 30)
 // 				  alert(xxs)
 				  if(xxs <= 5 && xxs >= -5) xxs= 0
 				  else if(xxs > 0) {
@@ -414,14 +415,15 @@ const bezierLine = new THREE.CubicBezierCurve3(
 					else if(xxs>= -40 ) xxs = 5
 					else if(xxs>= -50 ) xxs = 2
 					else xxs = 1
-				}
+				}*/
 				  
 // 				  alert("xxs : " +xxs);
 				  
 			//  createGraph(xxs + 20,yys + 65,zzs + 40);
+				  
 
  createPath(xxs ,yys + 28 ,zzs);
-   			 $("#pos").text("alpha : "+ zzs + "\nx : " + xxs)
+   			 $("#pos").text("alpha : "+ zzs + "\nx : " + (-85/xxs))
 			  }catch(e){
 			alert(e);	  
 			  }
