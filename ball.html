@@ -216,10 +216,10 @@ const bezierLine = new THREE.CubicBezierCurve3(
       function createPath(x,y,z){
 	    //  alert("ymz")
 	      try{
-	if(x==0)
-             A = 0
-         else
-	     A = Math.tan(x)
+	//if(x==0)
+             A = x
+       //  else
+	  //   A = Math.tan(x)
 		     // alert("A : "+A);
 		      if(z>0)
         alpha = z*Math.PI / 180
