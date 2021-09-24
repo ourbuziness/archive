@@ -209,9 +209,9 @@ const bezierLine = new THREE.CubicBezierCurve3(
       function createPath(x,y,z){
 	      alert("ymz")
 	      try{
-        A = (-1*y/x)*10
+        A = (y/x)
 		      alert("A : "+A);
-        alpha = -1*(z)*Math.PI / 180
+        alpha = z*Math.PI / 180
 		       alert("alpha : "+alpha);
 		      vy = v0*Math.cos(alpha)
         vz = v0*Math.sin(alpha)
