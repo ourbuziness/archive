@@ -375,7 +375,8 @@ const bezierLine = new THREE.CubicBezierCurve3(
 			 }
 			  try{
 			  
-				var xxs =  (((p1.x *100) | 0)+ 30)
+				var xxs =  ((((p1.x) *100) | 0)+ 30)
+				alert(xxs + "   " + (p1.x * 100) );
 				var xxsArrayP = [0,95,100,105,110,115,120]
 				var xxsArrayN = [0,85,80,75,70,65,60]
 				if(xxs > 120 ) xxs = 120
