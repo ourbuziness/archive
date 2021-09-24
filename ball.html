@@ -57,163 +57,16 @@
 	    let vz;
         let alpha;
 	    let time;
+	    let endx
+	    let endy
+	    let startx
+	    let starty
     
       
 	       $("#reset").click(function(){
         reset();
     }); 
 	    
-	    
-	    function randomIntFromInterval(a1,a2) { // min and max included 
-		    var max = a1 + 30
-		    var min = a2
-		    if(a1 > a2 ){
-			max = a1
-			min = a2
-		    }else if(a1 < a2){
-			max = a2
-			    min = a1
-		    }
-  		return Math.floor(Math.random() * (max - min + 1) + min)
-		}
-	    
-	    
-	    function moveBall(){
-		    try{		    
-    const newPosition = pointsPath.getPoint(fraction);
-    const tangent = pointsPath.getTangent(fraction);
-    ball.position.copy(newPosition);
-    axis.crossVectors( up, tangent ).normalize();
-    
-    const radians = Math.acos( up.dot( tangent ) );
-    
-    ball.quaternion.setFromAxisAngle( axis, radians );
-    
-    fraction +=(0.02*shedat);
-    if (fraction > 1) {
-      fraction = 0;
-    }    
-		    }catch(e){
-			alert(e);    
-		    }
-		    
-	    }
-      
-      function createGraph(x,y,z){
-	      try{
-	      try{
-		  var selectedObject = nft_loaded.root.getObjectByName("ymz_path");
-    	  nft_loaded.root.remove( selectedObject );
-		      
-	      }catch(e){
-		      
-	      }
-	      var v1 = new THREE.Vector3( 70 , 5 ,0 );
-	      
-	      let x4;
-	      let z4;
-          let state = 1
-
-          if(x< 0 && y > 0){
-            state = 1
-            var direction = 1
-            if(x < -10) direction =2
-
-            var dd = (length/3)*direction*shedat
-            x4 = goal.position.x + dd
-            y4 = -1 *goal.position.y*shedat
-          }
-          else if(y > 0 && x > 0){
-            state = 2
-            var direction = 1
-            if(x > 10) direction =2
-            var dd = (length/3)*direction*shedat
-
-            x4 = goal.position.x - dd
-            y4 = -1 *goal.position.y*shedat
-
-          }else if(y <= 0 && x<=0){
-            state = 3
-            var direction = 1
-            if(x <-10) direction =2
-            if(x>-5) direction = 0
-
-            var dd = (length/3)*direction*shedat
-            x4 = goal.position.x + dd
-            y4 = goal.position.y*shedat
-          }else{
-            state = 4
-            var direction = 1
-            if(x <-20) direction =2
-            if(x>-5) direction = 0
-
-            var dd = (length/3)*direction*shedat
-            x4 = goal.position.x - dd
-            y4 = goal.position.y*shedat
-          }
-	      
-	      
-	      if(z <= 0 ){
-			z4 =  goal.position.z*shedat*2 - height
-	      }else{
-		      z4 = 0
-	      }
-	      var v4 = new THREE.Vector3(x4,y4,z4);
-
-          let v2;
-          let v3;
-
-          if(state ==1 || state == 3){
-              v2 = new THREE.Vector3(x4*1.4,y4*0.3,z4*1.5); 
-              v3 = new THREE.Vector3(x4*1.7,y4*0.7,z4*2);
-          }else if(state ==2 || state == 4){
-            v2 = new THREE.Vector3(x4*0.4,y4*0.3,z4*1.5); 
-              v3 = new THREE.Vector3(x4*0.7,y4*0.7,z4*2);
-          }
-	         
-          addVectors(v1,v2,v3,v4)
-	      }catch(e){
-		alert(e)      
-	      }
-      }
-
-      function addVectors(v1,v2,v3,v4){
-        pointsPath = new THREE.CurvePath();
-
-const bezierLine = new THREE.CubicBezierCurve3(
-  v1,
-  v2,
-  v3,
-  v4
-);
-
-  pointsPath.add(bezierLine);
-            
-  const material = new THREE.LineBasicMaterial({
-  color: 0x9132a8
-});
-  const points = pointsPath.curves.reduce((p, d)=> [...p, ...d.getPoints(20)], []);
-
-  const geometry = new THREE.BufferGeometry().setFromPoints( points );
-
-
-  path = new THREE.Line( geometry, material );
-
-        path.name = "ymz_path"
-
-// 		      alert(x4 + " , " + y4 + " , " + z4  + "\n ** "+ x3 + " , " + y3 + " , " + z3 );
-                                 try{
-              //                     nft_loaded.add(path);
-             //    nft_loaded.tickExtend = function() {
-              //        moveBall();
-                //       };
-                 
-                 }catch(e){  
-                       alert(e) 
-                                 }
-      }
-	      
-
 
       function createPath(x,y,z){
 	    //  alert("ymz")
@@ -447,10 +300,16 @@ const bezierLine = new THREE.CubicBezierCurve3(
 			    goal.rotation.y = (Math.PI /2)
 			    
 			        $(document).on('touchstart', 'body', function (e) {
-    alert("start : "+e.originalEvent.touches[0].pageX);
+    startx= e.originalEvent.touches[0].pageX
+   starty= e.originalEvent.touches[0].pageY
 });
 $(document).on('touchend', 'body', function (e) {
-    alert(" end : "+e.originalEvent.changedTouches[0].pageX);
+   endx= e.originalEvent.changedTouches[0].pageX;
+   endy= e.originalEvent.changedTouches[0].pageY;
+	
+	 var shib = (endy - starty) / (endx - startx)
+	 alert("shib  : " + shib )
+	nft_loaded.onClick(e)
 });
 			    
 									});
