@@ -70,6 +70,21 @@
         reset();
     }); 
 	
+	function clicked(x, y)
+{
+    var ev = new MouseEvent('click', {
+        'view': window,
+        'bubbles': true,
+        'cancelable': true,
+        'screenX': x,
+        'screenY': y
+    });
+
+    var el = document.elementFromPoint(x, y);
+
+    el.dispatchEvent(ev);
+}
+	    
 	    
 	 function click(x, y)
 {
@@ -334,7 +349,7 @@ $(document).on('touchend', 'body', function (e) {
 	 shib = (endy - starty) / (endx - startx)
 	// alert("shib  : " + shib )
 	//nft_loaded.simulateClick(starte)
-		click(startx, starty);
+		clicked(startx, starty);
 	canStarte = true
 }catch(e){
 	alert(e)
