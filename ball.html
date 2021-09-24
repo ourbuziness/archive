@@ -13,8 +13,8 @@
 </head>
 <body>
 
-	<audio id="myAudio">
-		<source src="win.mp3" type="audio/mpeg"></source>
+	<audio id="kick">
+		<source src="kick.mp3" type="audio/mpeg"></source>
 	</audio>
 
 	<audio id="myAudio1">
@@ -226,7 +226,7 @@ const bezierLine = new THREE.CubicBezierCurve3(
 		//alert("tick");
           if(!end){
 		  try{
-            time += 0.01
+            time += 0.03
             createCubic(time);
 		  }catch(e){
 			alert(e)  
@@ -295,6 +295,10 @@ const bezierLine = new THREE.CubicBezierCurve3(
 		  ball = model;
 		  
 		  nft.setOnObjectClickListener('./ball.glb',function(point){
+			  
+			  var audio = document.getElementById("kick");
+                              audio.play();
+			  
 			 clearInterval(interval);
 			  shedat = sheddatArray[(prog/10 | 0)]
 			  v0 = sheddatArray[(prog/10 | 0)]
