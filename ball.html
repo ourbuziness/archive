@@ -69,7 +69,21 @@
 	       $("#reset").click(function(){
         reset();
     }); 
+	
 	    
+	 function click(x,y){
+    var ev = document.createEvent("MouseEvent");
+    var el = document.elementFromPoint(x,y);
+    ev.initMouseEvent(
+        "click",
+        true /* bubble */, true /* cancelable */,
+        window, null,
+        x, y, 0, 0, /* coordinates */
+        false, false, false, false, /* modifier keys */
+        0 /*left*/, null
+    );
+    el.dispatchEvent(ev);
+}
 
       function createPath(x,y,z){
 	    //  alert("ymz")
@@ -321,7 +335,7 @@ $(document).on('touchend', 'body', function (e) {
 	 shib = (endy - starty) / (endx - startx)
 	// alert("shib  : " + shib )
 	//nft_loaded.simulateClick(starte)
-		document.elementFromPoint(startx, starty).click();
+		click(startx, starty);
 	canStarte = true
 }catch(e){
 	alert(e)
