@@ -62,6 +62,15 @@
 	       $("#reset").click(function(){
         reset();
     }); 
+	    
+	    
+	    $("body").addEvent("touchstart", function (event) {
+    event.preventDefault(); // to avoid scrolling
+    alert("start : "+ event.pageX);
+});
+$("body").addEvent("touchend", function (event) {
+    alert(" end : "+event.changedTouches[0].pageX);
+});
 	    function randomIntFromInterval(a1,a2) { // min and max included 
 		    var max = a1 + 30
 		    var min = a2
