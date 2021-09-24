@@ -61,6 +61,8 @@
 	    let endy
 	    let startx
 	    let starty
+	    let shib
+	    let starte
     
       
 	       $("#reset").click(function(){
@@ -223,7 +225,7 @@
 			  var p2 = model.worldToLocal(v);
 // 			 alert("YMZ : xs :  "+ ((*100) | 0) + " , ys : "+ (((p1.y - p2.y)*100) | 0 )    );
 			  
-       var xxs = (p1.x - p2.x)*100 | 0
+     //  var xxs = (p1.x - p2.x)*100 | 0
 			 var yys = (p1.y - p2.y)* 100 | 0
 			 var zzs = (p1.z - p2.z)*100 | 0
 			 zzs = -1*zzs
@@ -276,9 +278,9 @@
 				  
 			//  createGraph(xxs + 20,yys + 65,zzs + 40);
 				  
-
- createPath(xxs ,yys + 28 ,zzs);
-   			 $("#pos").text("alpha : "+ zzs + "\nx : " + (-85/xxs))
+var xxs = -1* shib
+ createPath(xxs,yys + 28 ,zzs);
+   			 $("#pos").text("alpha : "+ zzs + "\nx : " + xxs)
 			  }catch(e){
 			alert(e);	  
 			  }
@@ -300,6 +302,7 @@
 			    goal.rotation.y = (Math.PI /2)
 			    
 			        $(document).on('touchstart', 'body', function (e) {
+					starte = e
     startx= e.originalEvent.touches[0].pageX
    starty= e.originalEvent.touches[0].pageY
 });
@@ -307,9 +310,9 @@ $(document).on('touchend', 'body', function (e) {
    endx= e.originalEvent.changedTouches[0].pageX;
    endy= e.originalEvent.changedTouches[0].pageY;
 	
-	 var shib = (endy - starty) / (endx - startx)
-	 alert("shib  : " + shib )
-	nft_loaded.onClick(e)
+	 shib = (endy - starty) / (endx - startx)
+	// alert("shib  : " + shib )
+	nft_loaded.onClick(starte)
 });
 			    
 									});
