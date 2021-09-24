@@ -55,6 +55,7 @@
 	    let vy;
 	    let vz;
         let alpha;
+	    let time;
     
       
 	       $("#reset").click(function(){
@@ -224,7 +225,7 @@ const bezierLine = new THREE.CubicBezierCurve3(
         vz = v0*Math.sin(alpha)
 //         var R = v0*v0*Math.sin(2*alpha)/gg
 
-        var time = 0;
+        time = 0;
 			//alert("time : "+time);
         nft_loaded.tickExtend = function(){
 		//alert("tick");
@@ -287,9 +288,26 @@ const bezierLine = new THREE.CubicBezierCurve3(
        var x = y / A
         return x
       }
+	    
+	    function startInterval(){
+		    interval = setInterval(function() {
+	  prog = prog + step
+	  if(prog>100){
+		  prog = 90
+		  step = -10
+	  }
+	  if(prog <0 ){
+		  prog = 10
+		  step = 10
+	  }
+   document.getElementById("power").value = prog;
+ }, 140);
+		    
+	    }
 
 			ARnft.ARnft.init(800, 600, "archive/DataNFT/notebook", 'config3.json', false, true)
 			.then((nft) => {
+				startInterval()
 				nft_loaded = nft;
 
 				document.addEventListener('onInitThreejsRendering', (ev) => {
@@ -363,18 +381,6 @@ const bezierLine = new THREE.CubicBezierCurve3(
 									});
 					
 					
-  interval = setInterval(function() {
-	  prog = prog + step
-	  if(prog>100){
-		  prog = 90
-		  step = -10
-	  }
-	  if(prog <0 ){
-		  prog = 10
-		  step = 10
-	  }
-   document.getElementById("power").value = prog;
- }, 140);
 
 				});
 				
