@@ -320,7 +320,8 @@ $(document).on('touchend', 'body', function (e) {
 	
 	 shib = (endy - starty) / (endx - startx)
 	// alert("shib  : " + shib )
-	nft_loaded.simulateClick(starte)
+	//nft_loaded.simulateClick(starte)
+		document.elementFromPoint(startx, starty).click();
 	canStarte = true
 }catch(e){
 	alert(e)
