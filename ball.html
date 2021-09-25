@@ -284,10 +284,14 @@ alert(e)
 				shib = (endy - starty) / (endx - startx)
 				  
 				var zpower = Math.sqrt( Math.pow(endy - starty,2) + Math.pow(endx - startx,2) )
-				 
+				if(zpower < 0 ) zpower = -1 * zpower
+				 if(zpower > 350 ) zpower = 50
+				  else{
+					zpower = ((zpower * 50)/350)
+				  }
 				  
 			var xxs = -1* shib
-//   createPath(xxs,yys + 28 ,zzs);
+  createPath(xxs,yys + 28 ,zpower);
    			 $("#pos").text("power : "+ zpower +"\nx : " + xxs)
 			  }catch(e){
 			alert(e);	  
