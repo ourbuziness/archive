@@ -266,13 +266,13 @@ alert(e)
 			  var p2 = model.worldToLocal(v);
 
 			 var yys = (p1.y - p2.y)* 100 | 0
-			 var zzs = (p1.z - p2.z)*100 | 0
-			 zzs = -1*zzs
-			 if(zzs < -80 || zzs >70){
-				zzs = 0	 
-			 }else{
-				zzs = ((zzs + 80)* 72)/130
-			 }
+// 			 var zzs = (p1.z - p2.z)*100 | 0
+// 			 zzs = -1*zzs
+// 			 if(zzs < -80 || zzs >70){
+// 				zzs = 0	 
+// 			 }else{
+// 				zzs = ((zzs + 80)* 72)/130
+// 			 }
 			  try{
 
 				startx =  startx= startEvent.touches[0].pageX
@@ -283,9 +283,12 @@ alert(e)
 					
 				shib = (endy - starty) / (endx - startx)
 				  
+				var zpower = var Math.sqrt( Math.pow(endy - starty) + Math.pow(endx - startx) )
+				 
+				  
 			var xxs = -1* shib
-  createPath(xxs,yys + 28 ,zzs);
-   			 $("#pos").text("alpha : "+ zzs + "\nx : " + xxs)
+//   createPath(xxs,yys + 28 ,zzs);
+   			 $("#pos").text("power : "+ zpower + "  alpha : "+ zzs + "\nx : " + xxs)
 			  }catch(e){
 			alert(e);	  
 			  }
