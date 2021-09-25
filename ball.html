@@ -261,11 +261,11 @@ alert(e)
 			 }
 			  try{
 
-				startx =  startx= startEvent.originalEvent.touches[0].pageX
-   				starty= startEvent.originalEvent.touches[0].pageY
+				startx =  startx= startEvent.touches[0].pageX
+   				starty= startEvent.touches[0].pageY
 			  
-				endx= endEvent.originalEvent.changedTouches[0].pageX;
-				endy= endEvent.originalEvent.changedTouches[0].pageY;
+				endx= endEvent.changedTouches[0].pageX;
+				endy= endEvent.changedTouches[0].pageY;
 					
 				shib = (endy - starty) / (endx - startx)
 				  
