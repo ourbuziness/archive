@@ -64,6 +64,9 @@
 	    let shib
 	    let starte
 	    let canStarte = true
+	    let keeper
+	    let keeperx = 70
+	    let keeperStep = 0.02
     
       
 	       $("#reset").click(function(){
@@ -135,6 +138,10 @@ alert(e)
 		      end = false;
         nft_loaded.tickExtend = function(){
 		//alert("tick");
+		keeperx += keeperStep
+		if(keeperx >100) keeperStep = -0.02
+		if(keeperx <=70) keeperStep = 0.02
+		keeper.position.x = keeperx
           if(!end){
 		  try{
 			  
@@ -240,6 +247,9 @@ alert(e)
 					directionalLight.position.set(0.5, 0, 0.866);
 					camera.add(directionalLight);
 
+					 nft.addSimpleModel('./keeper.glb' , 70 , 250 ,0,50 , function(model){
+						 keeper = model
+					 });
           
 					 nft.addSimpleModel('./soccer.glb' , 140 , 180 ,-10,300 , function(model){
 						 model.rotation.x = Math.PI/2
