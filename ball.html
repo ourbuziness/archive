@@ -81,6 +81,16 @@
     });
 
     var el = document.elementFromPoint(x, y);
+	
+// 	var current2 = { y : 250 , z = 0}
+// 	var easing1 = TWEEN.Easing.Back.InOut;
+// 	var tween1 = new TWEEN.Tween(current2)
+// 		.to({scale : 0}, 1400)
+// 		.delay(10)
+// 		.easing(easing1)
+// 		.onUpdate(update2);
+	
+// 	tween1.start()
 
     el.dispatchEvent(ev);
 }
@@ -176,7 +186,7 @@ alert(e)
           ball.position.x = x
           ball.position.y= y
           ball.position.z = z
-          ball.rotation.y += 0.4
+          ball.rotation.x += 0.4
         }
 	        }catch(e){
 			alert(e);    
