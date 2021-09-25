@@ -156,7 +156,7 @@ alert(e)
 	    function reset(){
 		ball.position.x = 70
 		  ball.position.y = 5
-		    ball.position.z = 5
+		    ball.position.z = 0
 		    time = 0
 		    startInterval()
 		  //  end = false
@@ -171,9 +171,9 @@ alert(e)
         var y = vy*time + 5
         var z = 0
 	if(vz !=0 )
-	   z= -0.5*gg**time*time + vz*time + 5
+	   z= -0.5*gg**time*time + vz*time 
 	     else
-	z=5
+	z=0
 		     
         var x = linearPath(y) + 70
 	
@@ -241,11 +241,11 @@ alert(e)
 					camera.add(directionalLight);
 
           
-					 nft.addSimpleModel('./soccer.glb' , 140 , 180 ,0,300 , function(model){
+					 nft.addSimpleModel('./soccer.glb' , 140 , 180 ,-5,300 , function(model){
 						 model.rotation.x = Math.PI/2
 					 });
 						 
-          nft.addSimpleModel('./ball.glb' , 70 , 5 ,5,20 , function(model){
+          nft.addSimpleModel('./ball.glb' , 70 , 5 ,0,20 , function(model){
 		  ball = model;
 		  
 		  nft.setOnObjectClickListener('./ball.glb',function(startEvent,endEvent,point){
@@ -296,7 +296,7 @@ alert(e)
 									});
           
           
-                    nft.addSimpleModel('./goal.glb' , 70 , 250 ,5,2 ,function(model){
+                    nft.addSimpleModel('./goal.glb' , 70 , 250 ,0,2 ,function(model){
 
 					goal = model;	
 			    goal.rotation.y = (Math.PI /2)
