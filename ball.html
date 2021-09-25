@@ -234,8 +234,8 @@ alert(e)
           nft.addSimpleModel('./ball.glb' , 70 , 5 ,0,20 , function(model){
 		  ball = model;
 		  
-		  nft.setOnObjectClickListener('./ball.glb',function(point){
-			  alert("clicked")
+		  nft.setOnObjectClickListener('./ball.glb',function(startEvent,endEvent,point){
+			//   alert("clicked")
 			  
 			  var audio = document.getElementById("kick");
                               audio.play();
@@ -245,21 +245,12 @@ alert(e)
 			  v0 = sheddatArray[(prog/10 | 0)]
 //v0 = 140
  			  var v = new THREE.Vector3()
-// 			  camera.getWorldDirection(v);
-// 			  alert("YMZ " + v.x +" , "+ v.y +" , "+v.z);
-// 			  alert("YMZ (" + camera.position.x + " , " + camera.position.y + " , " + camera.position.z + ")" + "\n ("+camera.rotation.x + " , " + camera.rotation.y + " , " + camera.rotation.z + ")"  );
-// 		 		alert("YMZ " + nft_loaded.renderer.camera.projectionMatrix);
+
  			  model.getWorldPosition(v)
-// 			 alert("YMZ " + v.x +" , "+ v.y +" , "+v.z);
-// 			 const q = new THREE.Quaternion();
-// 			  model.getWorldQuaternion(q)
-// 			  var t = model.worldToLocal(point)
-// 			alert("YMZ " + q.x +" , "+ q.y +" , "+q.z);
+
 			  var p1 =  model.worldToLocal(point);
 			  var p2 = model.worldToLocal(v);
-// 			 alert("YMZ : xs :  "+ ((*100) | 0) + " , ys : "+ (((p1.y - p2.y)*100) | 0 )    );
-			  
-     //  var xxs = (p1.x - p2.x)*100 | 0
+
 			 var yys = (p1.y - p2.y)* 100 | 0
 			 var zzs = (p1.z - p2.z)*100 | 0
 			 zzs = -1*zzs
@@ -269,63 +260,24 @@ alert(e)
 				zzs = ((zzs + 80)* 72)/130
 			 }
 			  try{
+
+				startx =  startx= startEvent.originalEvent.touches[0].pageX
+   				starty= startEvent.originalEvent.touches[0].pageY
 			  
-// 				var xxs =  ((((p1.x) *100) | 0)+ 30)
-// 				alert(xxs + "   " + (p1.x * 100) );
-// 				var xxsArrayP = [0,95,100,105,110,115,120]
-// 				var xxsArrayN = [0,85,80,75,70,65,60]
-// 				if(xxs > 120 ) xxs = 120
-// 				  if(xxs < -70 ) xxs = -60
-// 				if(xxs <=5 && xxs >= -5) xxs = 0
-// 				else if(xxs > 0 ){
-// 					xxs =xxsArrayP[Math.ceil(xxs/20)]
-// 				}else{
-// 					xxs = xxsArrayN[Math.ceil(xxs/10)]
-// 				}
+				endx= endEvent.originalEvent.changedTouches[0].pageX;
+				endy= endEvent.originalEvent.changedTouches[0].pageY;
+					
+				shib = (endy - starty) / (endx - startx)
 				  
-/*				  var xxs = ((((p1.x) *100) | 0)+ 30)
-// 				  alert(xxs)
-				  if(xxs <= 5 && xxs >= -5) xxs= 0
-				  else if(xxs > 0) {
-// 					  alert("mosbat");
-					  if(xxs <= 20 ) xxs = -30
-				  else if(xxs <= 30) xxs = -25
-				  else if(xxs<=40) xxs = -20
-				  else if(xxs<=50)xxs = -15
-					  else if(xxs <= 60 ) xxs = -10
-					 else if(xxs <= 70 ) xxs = -5
-					  else if(xxs <= 80) xxs = -2
-				  else xxs = -1
-			  	}else{
-// 					alert("manfi");
-				  if(xxs>= -10) xxs = 30
-					else if(xxs >= -20) xxs= 25
-					else if(xxs >= -25) xxs = 20
-					else if(xxs>= -30 ) xxs = 15
-					else if(xxs>= -35 ) xxs = 10
-					else if(xxs>= -40 ) xxs = 5
-					else if(xxs>= -50 ) xxs = 2
-					else xxs = 1
-				}*/
-				  
-// 				  alert("xxs : " +xxs);
-				  
-			//  createGraph(xxs + 20,yys + 65,zzs + 40);
-				  
-var xxs = -1* shib
- createPath(xxs,yys + 28 ,zzs);
+			var xxs = -1* shib
+//  createPath(xxs,yys + 28 ,zzs);
    			 $("#pos").text("alpha : "+ zzs + "\nx : " + xxs)
 			  }catch(e){
 			alert(e);	  
 			  }
-// alert("y: "+ ( yys+ 28) +" x : " + (xxs+ 20) + "A : " + ((xxs + 20)/85) + "  alpha : "+ (-1*zzs + 20) );
 			 
 		  });
 
-						
-// 						nft.tickExtend = function() {
-
-// 						};
 						
 									});
           
@@ -334,32 +286,6 @@ var xxs = -1* shib
 
 					goal = model;	
 			    goal.rotation.y = (Math.PI /2)
-			    
-			        $(document).on('touchstart', 'body', function (e) {
-					 $("#pos").text("ts : ( "+  e.originalEvent.touches[0].pageX + " , " +  e.originalEvent.touches[0].pageY + ")" )
-					if(canStarte){
-               canStarte = false
-					starte = e
-    startx= e.originalEvent.touches[0].pageX
-   starty= e.originalEvent.touches[0].pageY
-					}
-});
-$(document).on('touchend', 'body', function (e) {
-	try{
-		alert(starte)
-   endx= e.originalEvent.changedTouches[0].pageX;
-   endy= e.originalEvent.changedTouches[0].pageY;
-	
-	 shib = (endy - starty) / (endx - startx)
-	// alert("shib  : " + shib )
-	//nft_loaded.simulateClick(starte)
-		click(startx, starty);
-	canStarte = true
-}catch(e){
-	alert(e)
-}
-});
-			    
 									});
 					
 					
