@@ -66,7 +66,7 @@
 	    let canStarte = true
 	    let keeper
 	    let keeperx = 70
-	    let keeperStep = 0.02
+	    let keeperStep = 0.8
     
       
 	       $("#reset").click(function(){
@@ -139,8 +139,8 @@ alert(e)
         nft_loaded.tickExtend = function(){
 		//alert("tick");
 		keeperx += keeperStep
-		if(keeperx >172) keeperStep = -0.02
-		if(keeperx <=70) keeperStep = 0.02
+		if(keeperx >172) keeperStep = -1 * keeperStep
+		if(keeperx <=70) keeperStep = -1 * keeperStep
 		keeper.position.x = keeperx
           if(!end){
 		  try{
