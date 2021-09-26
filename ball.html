@@ -10,6 +10,19 @@
 	<p id="pos" style="position: absolute;z-index:999;background-color: #fff;left:40px">position</p>
 	<button id="reset" style="position: absolute;z-index:999;bottom: 100px; right:100px">try sgain</button>
 	<progress id="power" value="10" max="100" style="-webkit-transform: rotate(-90deg); position: absolute;z-index:999;top:100px"></progress>
+	
+	<style type="text/css">
+	
+	div {
+		width: 50px;
+		height: 50px;
+		background: red;
+		border-radius: 50%;
+		position: absolute;
+		-webkit-transform: translateZ(0);
+	}
+	
+	</style>
 
 </head>
 <body>
@@ -73,49 +86,37 @@
         reset();
     }); 
 	
-	function clicked(x, y)
-{
-    var ev = new MouseEvent('click', {
-        'view': window,
-        'bubbles': true,
-        'cancelable': true,
-        'screenX': x,
-        'screenY': y
-    });
-
-    var el = document.elementFromPoint(x, y);
-	
-// 	var current2 = { y : 250 , z = 0}
-// 	var easing1 = TWEEN.Easing.Back.InOut;
-// 	var tween1 = new TWEEN.Tween(current2)
-// 		.to({scale : 0}, 1400)
-// 		.delay(10)
-// 		.easing(easing1)
-// 		.onUpdate(update2);
-	
-// 	tween1.start()
-
-    el.dispatchEvent(ev);
-}
 	    
-	    
-	 function click(x, y)
-{
-	try{
-    var e = $.Event('click');
+var touches = [], removedTouches = [], dots = {};
 
-// set coordinates
-e.clientX = x;
-e.clientY = y;
+	function drawDots() {
+		for (var i = 0; touches && i < touches.length; i++) {
+			var touch = touches[i],
+				touch_id = touch.identifier;
 
-// trigger event - must trigger on document
-$(document).trigger(e);
-	}catch(e){
-alert(e)
+			if (!dots[touch_id]) {
+				dots[touch_id] = document.createElement("div");
+				document.body.appendChild(dots[touch_id]);
+			}
+
+			dots[touch_id].style.top = (touch.clientY - 25) + "px";
+			dots[touch_id].style.left = (touch.clientX - 25)+ "px";
+		};
+		touches = null;
+
+		for (var i = 0 ; removedTouches && i < removedTouches.length; i++) {
+			var touch = removedTouches[i],
+				touch_id = touch.identifier;
+
+			if(dots[touch_id]) {
+				dots[touch_id].remove();
+				dots[touch_id] = null;
+			}
+		};
+		removedTouches = null;
 	}
 
-}
-
+	    
       function createPath(x,y,z){
 	    //  alert("ymz")
 	      try{
@@ -138,6 +139,7 @@ alert(e)
 		      end = false;
         nft_loaded.tickExtend = function(){
 		//alert("tick");
+		drawDots();
 		keeperx += keeperStep
 		if(keeperx >100) keeperStep = -1 * keeperStep
 		if(keeperx <=0) keeperStep = -1 * keeperStep
@@ -336,6 +338,12 @@ alert(e)
 						alert(e)
 					}
 				});
+				
+	document.addEventListener('touchmove', function(event) {
+		event.preventDefault();
+		touches = event.touches;
+	});
+	    
             });
 
     </script>
