@@ -115,7 +115,8 @@
           }else{
 		  if(ghaltkhorde > 0){
 			ball.position.y = ball.position.y + 0.04
-			if(shib !=0 ) ball.position.x = (shib / (ball.position.y)) + ball.position.x
+			ball.position.x = linearPath(ball.position.y) + ball.position.x
+			  ball.rotation.x += 0.35
 			 ghaltkhorde --;
 			  
 		  }
