@@ -67,7 +67,7 @@
 	    let keeper
 	    let keeperx = 0
 	    let keeperStep = 0.8
-	    let ghatkhorde = 10
+	    let ghatkhorde = 100
     
       
 	       $("#reset").click(function(){
@@ -96,7 +96,7 @@
         time = 0;
 			//alert("time : "+time);
 		      end = false;
-		      ghaltkhorde = 10
+		      ghaltkhorde = 100
         nft_loaded.tickExtend = function(){
 		//alert("tick");
 		keeperx += keeperStep
@@ -115,7 +115,7 @@
           }else{
 		  if(ghaltkhorde > 0){
 			ball.position.y = ball.position.y + 0.04
-			if(shib !=0 ) ball.position.x = shib / (ball.position.y)
+			if(shib !=0 ) ball.position.x = (shib / (ball.position.y)) + ball.position.x
 			 ghaltkhorde --;
 			  
 		  }
