@@ -153,7 +153,19 @@
 
         if((ball.position.z <= 0 || ball.position.y >= goal.position.y ) && time > 0.1){
 		//alert("end")
-          end = true
+		
+		ball.position.z = 0
+		
+		 if(ghaltkhorde > 0){
+			  $("#pos").text(" y : "+ ball.position.y + " x : "+ ball.position.x + " A : " + A)
+			ball.position.y = ball.position.y + 0.04
+			ball.position.x = linearPath(ball.position.y) + 70
+			  ball.rotation.x += 0.35
+			 ghaltkhorde --;
+
+		  }else{
+          		end = true
+		  }
         }else{
           ball.position.x = x
           ball.position.y= y
