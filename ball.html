@@ -43,7 +43,7 @@
 	let sheddatArray = [70,90,95,100,110,120,130,140,150,180];
         let shedat = 1;
 	    let prog = 10;
-	    let steps = 0.08;
+	    let steps = 0.05;
 	    let end = false ;
 	    let fraction = 0
 	    const up = new THREE.Vector3( 0,1, 0 );
@@ -161,7 +161,7 @@
 // 			  $("#pos").text(" y : "+ ball.position.y + " x : "+ ball.position.x + " A : " + A)
 			ball.position.y = ball.position.y + 1
 			ball.position.x = linearPath(ball.position.y) + 70
-			  ball.rotation.x += ((ghaltkhorde/84)*0.74 + 0.1)
+			  ball.rotation.x += ((ghaltkhorde/100)*0.62 + 0.1)
 			 ghaltkhorde --;
 
 		  }else{
@@ -171,7 +171,7 @@
           ball.position.x = x
           ball.position.y= y
           ball.position.z = z
-          ball.rotation.x += 0.84
+          ball.rotation.x += 0.72
 		 $("#pos").text(ball.rotation.x)
         }
 	        }catch(e){
