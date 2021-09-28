@@ -67,7 +67,7 @@
 	    let keeper
 	    let keeperx = 0
 	    let keeperStep = 0.8
-	    let ghaltkhorde = 50
+	    let ghaltkhorde = 40
 	    let totalDistance = -1
     
       
@@ -97,7 +97,7 @@
         time = 0;
 			//alert("time : "+time);
 		      end = false;
-		      ghaltkhorde = 50
+		      ghaltkhorde = 40
 		      totalDistance = (2*vz*vy) / gg
 		      
         nft_loaded.tickExtend = function(){
@@ -152,17 +152,19 @@
 	
 // 	$("#pos").text("( "+ x+" , "+y+" , "+z+" )")
 
-        if((ball.position.z <= 0 /*|| ball.position.y >= goal.position.y*/ ) && time > 0.1){
+        if(((ball.position.z <= 0 /*|| ball.position.y >= goal.position.y*/ ) && time > 0.1) || ghaltkhorde < 40){
 		//alert("end")
 		
-		ball.position.z = 0
+		if(ghaltkhorde == 40 )
+			ball.position.z = 0
 		
 		 if(ghaltkhorde > 0){
 			 $("#pos").text(ball.rotation.x)
 // 			  $("#pos").text(" y : "+ ball.position.y + " x : "+ ball.position.x + " A : " + A)
 			ball.position.y = ball.position.y + 1
+			 ball.position.z = 5*Math.abs(Math.sin(ghaltkhorde))
 			ball.position.x = linearPath(ball.position.y) + 70
-			  ball.rotation.x += ((ghaltkhorde/100)*0.62 + 0.1)
+			  ball.rotation.x += ((ghaltkhorde/80)*0.62 + 0.1)
 			 ghaltkhorde --;
 
 		  }else{
