@@ -68,6 +68,7 @@
 	    let keeperx = 0
 	    let keeperStep = 0.8
 	    let ghaltkhorde = 50
+	    let totalTime = -1
     
       
 	       $("#reset").click(function(){
@@ -97,6 +98,7 @@
 			//alert("time : "+time);
 		      end = false;
 		      ghaltkhorde = 50
+		      totalTime = (2*vz)/gg
         nft_loaded.tickExtend = function(){
 		//alert("tick");
 		keeperx += keeperStep
@@ -148,7 +150,7 @@
 	
 // 	$("#pos").text("( "+ x+" , "+y+" , "+z+" )")
 
-        if((z<0 || y>=goal.position.y) && time != 0){
+        if(time >= totalTime || y>=goal.position.y){
 		//alert("end")
           end = true
         }else{
