@@ -162,7 +162,7 @@
 			 $("#pos").text(ball.rotation.x)
 // 			  $("#pos").text(" y : "+ ball.position.y + " x : "+ ball.position.x + " A : " + A)
 			ball.position.y = ball.position.y + 1
-			 ball.position.z = 10*Math.abs(Math.sin(ghaltkhorde))
+			 ball.position.z = 10*Math.abs(Math.sin(ghaltkhorde/2))
 			ball.position.x = linearPath(ball.position.y) + 70
 			  ball.rotation.x += ((ghaltkhorde/80)*0.62 + 0.1)
 			 ghaltkhorde --;
