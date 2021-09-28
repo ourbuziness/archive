@@ -157,7 +157,8 @@
 		ball.position.z = 0
 		
 		 if(ghaltkhorde > 0){
-			  $("#pos").text(" y : "+ ball.position.y + " x : "+ ball.position.x + " A : " + A)
+			 $("#pos").text(ball.rotation.x)
+// 			  $("#pos").text(" y : "+ ball.position.y + " x : "+ ball.position.x + " A : " + A)
 			ball.position.y = ball.position.y + 1
 			ball.position.x = linearPath(ball.position.y) + 70
 			  ball.rotation.x += ((ghaltkhorde/50)*0.74 + 0.1)
@@ -171,6 +172,7 @@
           ball.position.y= y
           ball.position.z = z
           ball.rotation.x += 0.84
+		 $("#pos").text(ball.rotation.x)
         }
 	        }catch(e){
 			alert(e);    
