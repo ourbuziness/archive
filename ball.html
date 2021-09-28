@@ -68,7 +68,7 @@
 	    let keeperx = 0
 	    let keeperStep = 0.8
 	    let ghaltkhorde = 50
-	    let totalTime = -1
+	    let totalDistance = -1
     
       
 	       $("#reset").click(function(){
@@ -98,7 +98,7 @@
 			//alert("time : "+time);
 		      end = false;
 		      ghaltkhorde = 50
-		      totalTime = (2*vz)/gg
+		      totalDistance = (2*vz*vy) / gg
 		      
         nft_loaded.tickExtend = function(){
 		//alert("tick");
@@ -151,7 +151,7 @@
 	
 // 	$("#pos").text("( "+ x+" , "+y+" , "+z+" )")
 
-        if(y>=goal.position.y){
+        if(ball.position.y >= totalDistance || y>=goal.position.y){
 		//alert("end")
           end = true
         }else{
