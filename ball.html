@@ -151,7 +151,7 @@
 	
 // 	$("#pos").text("( "+ x+" , "+y+" , "+z+" )")
 
-        if(ball.position.y >= totalDistance || y>=goal.position.y){
+        if((ball.position.z <= 0 || ball.position.y >= ball.position.y ) && time > 0){
 		//alert("end")
           end = true
         }else{
