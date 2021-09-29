@@ -164,7 +164,7 @@
 			ball.position.y = ball.position.y + 1
 			 ball.position.z = 10*Math.abs(Math.sin(ghaltkhorde/6))
 			ball.position.x = linearPath(ball.position.y) + 70
-			  ball.rotation.x += ((ghaltkhorde/80)*0.62 + 0.1)
+			  ball.rotation.x -= ((ghaltkhorde/80)*0.62 + 0.1)
 			 ghaltkhorde --;
 
 		  }else{
@@ -174,7 +174,7 @@
           ball.position.x = x
           ball.position.y= y
           ball.position.z = z
-          ball.rotation.x += 0.72
+          ball.rotation.x -= 0.72
 		 $("#pos").text(ball.rotation.x)
         }
 	        }catch(e){
