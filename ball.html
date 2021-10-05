@@ -69,6 +69,14 @@
 	    let keeperStep = 0.8
 	    let ghaltkhorde = 40
 	    let totalDistance = -1
+	    
+	    let latestMatrix = -1
+	    let differenceMatrix = [
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0
+  ]
     
       
 	       $("#reset").click(function(){
@@ -159,7 +167,7 @@
 			ball.position.z = 0
 		
 		 if(ghaltkhorde > 0){
-			 $("#pos").text(ball.rotation.x)
+// 			 $("#pos").text(ball.rotation.x)
 // 			  $("#pos").text(" y : "+ ball.position.y + " x : "+ ball.position.x + " A : " + A)
 			ball.position.y = ball.position.y + 1
 			 ball.position.z = 10*Math.abs(Math.sin(ghaltkhorde/6))
@@ -175,7 +183,7 @@
           ball.position.y= y
           ball.position.z = z
           ball.rotation.x -= 0.72
-		 $("#pos").text(ball.rotation.x)
+// 		 $("#pos").text(ball.rotation.x)
         }
 	        }catch(e){
 			alert(e);    
@@ -315,6 +323,13 @@
 				document.addEventListener('getMatrixGL_RH', (ev) => {
 					try{
 // 						var m = ev.detail.matrixGL_RH
+						if(latestMatrix != -1){
+							for(i=0;i<16;i++){
+								differenceMatrix[i] = (Math.abs(m[i] - latestMatrix[i])).toFixed(3)
+							}
+							console.log(latest.toString().replaceAll(",","").replace(/(.{4})/g,"$1\n").replace(/(.{1})/g,"$1 , "))
+						}
+						latestMatrix = m ;
 						
 					}catch(e){
 						alert(e)
