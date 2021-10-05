@@ -322,12 +322,13 @@
 			
 				document.addEventListener('getMatrixGL_RH', (ev) => {
 					try{
-// 						var m = ev.detail.matrixGL_RH
+						var m = ev.detail.matrixGL_RH
 						if(latestMatrix != -1){
 							for(i=0;i<16;i++){
 								differenceMatrix[i] = (Math.abs(m[i] - latestMatrix[i])).toFixed(3)
 							}
-							console.log(latest.toString().replaceAll(",","").replace(/(.{4})/g,"$1\n").replace(/(.{1})/g,"$1 , "))
+							var t = latest.toString().replaceAll(",","").replace(/(.{4})/g,"$1\n").replace(/(.{1})/g,"$1 , ")
+							$("#pos").text(t);
 						}
 						latestMatrix = m ;
 						
