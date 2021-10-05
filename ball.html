@@ -325,9 +325,9 @@
 						var m = ev.detail.matrixGL_RH
 						if(latestMatrix != -1){
 							for(i=0;i<16;i++){
-								differenceMatrix[i] = (Math.abs(m[i] - latestMatrix[i])).toFixed(3)
+								differenceMatrix[i] = (Math.abs(m[i] - latestMatrix[i])).toFixed(3) + "\n"
 							}
-							var t = differenceMatrix.toString().replaceAll(",","").replace(/(.{4})/g,"$1\n").replace(/(.{1})/g,"$1 , ")
+							var t = differenceMatrix.toString()
 							$("#pos").text(t);
 						}
 						latestMatrix = m ;
