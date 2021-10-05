@@ -77,6 +77,8 @@
     0, 0, 0, 0,
     0, 0, 0, 0
   ]
+	    
+	    var timeStamp = -1
     
       
 	       $("#reset").click(function(){
@@ -322,16 +324,32 @@
 			
 				document.addEventListener('getMatrixGL_RH', (ev) => {
 					try{
+
+
+
+						 if(timeStamp == -1){
+							 timeStamp = Date.now()
+						 }else{
+							 var newTime = Date.now()
+							  if((newTime - timeStamp)>50){
+                                timeStamp = newTime
 						var m = ev.detail.matrixGL_RH
 						if(latestMatrix != -1){
+							$("#pos").text("");
+							var t = ""
 							for(i=0;i<16;i++){
-								differenceMatrix[i] = (Math.abs(m[i] - latestMatrix[i])).toFixed(3) + "\n"
+								t  = t +(Math.abs(m[i] - latestMatrix[i])).toFixed(3) + "<br />"
 							}
-							var t = differenceMatrix.toString()
-							$("#pos").text(t);
-						}
-						latestMatrix = m ;
+							$("#pos").html(t);
+						        }
+							  }
+                              latestMatrix = m ;
+						 }
 						
+						
+
+
+
 					}catch(e){
 						alert(e)
 					}
