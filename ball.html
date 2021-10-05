@@ -70,7 +70,7 @@
 	    let ghaltkhorde = 40
 	    let totalDistance = -1
 	    
-	    let latestMatrix = -1
+	    let latestMatrix = null
 	    let differenceMatrix = [
     0, 0, 0, 0,
     0, 0, 0, 0,
@@ -334,11 +334,11 @@
 							  if((newTime - timeStamp)>50){
                                 timeStamp = newTime
 						var m = ev.detail.matrixGL_RH
-						if(latestMatrix != -1){
+						if(latestMatrix != null){
 							$("#pos").text("");
 							var t = ""
 							for(i=0;i<16;i++){
-								t  = t +(Math.abs(m[i] - latestMatrix[i])).toFixed(5) + "<br />"
+								t  = t + ((Math.abs(m[i] - latestMatrix[i])).toFixed(5) + "<br />")
 							}
 							$("#pos").html(t);
 						        }
