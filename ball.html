@@ -327,7 +327,7 @@
 							for(i=0;i<16;i++){
 								differenceMatrix[i] = (Math.abs(m[i] - latestMatrix[i])).toFixed(3)
 							}
-							var t = latest.toString().replaceAll(",","").replace(/(.{4})/g,"$1\n").replace(/(.{1})/g,"$1 , ")
+							var t = differenceMatrix.toString().replaceAll(",","").replace(/(.{4})/g,"$1\n").replace(/(.{1})/g,"$1 , ")
 							$("#pos").text(t);
 						}
 						latestMatrix = m ;
