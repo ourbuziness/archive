@@ -323,36 +323,33 @@
 				
 			
 				document.addEventListener('getMatrixGL_RH', (ev) => {
-					try{
+				    try{
 
+					 if(timeStamp == -1){
 
+					     timeStamp = Date.now()
 
-						 if(timeStamp == -1){
-							 timeStamp = Date.now()
-						 }else{
-							 var newTime = Date.now()
-							  if((newTime - timeStamp)>50){
-                                timeStamp = newTime
-						var m = ev.detail.matrixGL_RH
-						if(latestMatrix != null){
+					 }else{
+					    var newTime = Date.now()
+					    var m = ev.detail.matrixGL_RH
+					    if((newTime - timeStamp)>50){
+						    timeStamp = newTime
+						    if(latestMatrix != -1){
 							$("#pos").text("");
 							var t = ""
 							for(i=0;i<16;i++){
-								t  = t + ((Math.abs(m[i] - latestMatrix[i])).toFixed(5) + "<br />")
+							    t  = t +(Math.abs(m[i] - latestMatrix[i])).toFixed(5) + "<br />"
 							}
 							$("#pos").html(t);
-						        }
-							  }
-                              latestMatrix = m ;
-						 }
-						
-						
+						    }
+						}
+					    latestMatrix = m ;
+					    }
 
 
-
-					}catch(e){
-						alert(e)
-					}
+				    }catch(e){
+					alert(e)
+				    }
 				});
 			
             });
