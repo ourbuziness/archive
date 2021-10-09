@@ -84,6 +84,13 @@
     0, 0, 0, 0
   ]
 		    
+var stableMatrix =[
+  0.0002 ,0.0003 ,0.003 ,0 ,
+  0.0002 , 0.0002 , 0.0009,0,
+  0.003,0.0009,0.00025,0,
+  0.092,0.12 , 0.33 ,0
+]
+		    
 	    
 	    var timeStamp = -1
             var count = 0
@@ -335,38 +342,70 @@
 				
 			
 				document.addEventListener('getMatrixGL_RH', (ev) => {
-				    try{
+				   try{
 
-					 var mdata = ev.detail.matrixGL_RH
-					 if(unlocked){ 
-					 if(timeStamp == -1){
-					     timeStamp = Date.now()
-				            latestMatrix = mdata
+    var mdata = ev.detail.matrixGL_RH
+    if(unlocked){ 
+    /*if(timeStamp == -1){
+        timeStamp = Date.now()
+           latestMatrix = mdata
 
-					 }else{
-					    var newTime = Date.now()
-					    if((newTime - timeStamp)>100){
-						    var tt = ""
-						    timeStamp = newTime
-						    count++
-						    for(let i =0 ; i< 16; i++){
-							 var speed = Math.abs(latestMatrix[i] - mdata[i]) / 100
-							 if(speed > maxes[i] ) maxes[i] = speed
-							 var sum =  (latestMatrix[i] + sums[i])
-							 sums[i] = sum
-							 var mean = sum/count
-							 tt = tt + /*"speed + "  max : " + */ (maxes[i].toFixed(5)) + " mean : " + (mean.toFixed(5)) + " <br/>"
-						    }
-						    latestMatrix = mdata
-						    $("#pos").html(tt)
-						}
-					    }
-					 }
+    }else{
+       var newTime = Date.now()
+       if((newTime - timeStamp)>100){
+           var tt = ""
+           timeStamp = newTime
+           count++
+           for(let i =0 ; i< 16; i++){
+            var speed = Math.abs(latestMatrix[i] - mdata[i]) / 100
+            if(speed > maxes[i] ) maxes[i] = speed
+            var sum =  (latestMatrix[i] + sums[i])
+            sums[i] = sum
+            var mean = sum/count
+            tt = tt + /*"speed + "  max : " +  (maxes[i].toFixed(5)) + " mean : " + (mean.toFixed(5)) + " <br/>"
+           }
+           latestMatrix = mdata
+           $("#pos").html(tt)
+       }
+       }
+    }*/
+             
+if(timeStamp == -1){
+     timeStamp = Date.now()
+       latestMatrix = mdata
+
+     }else{
+    var newTime = Date.now()
+    if((newTime - timeStamp)>100){
+      var tt = ""
+      isBreak = false
+      timeStamp = newTime
+      for(let i =0 ; i< 16; i++){
+       var speed = Math.abs(latestMatrix[i] - mdata[i]) / 100
+       if(speed[i] > stableMatrix[i]){
+         isBreak = true
+           $("#pos").text("در حال حرکت")
+        // Utils.setInterpolate(data)
+        // Utils.setMatrix(this.root.matrix, data)
+         break;
+       }
+      }
+      latestMatrix = mdata
+      if(!isBreak){
+           $("#pos").text("ثابت")
+       //const matrix = Utils.interpolate(data)
+       //Utils.setMatrix(this.root.matrix, matrix)
+      }
+     
+}
+     
 
 
-				    }catch(e){
-					alert(e)
-				    }
+   }
+}
+}catch(e){
+   alert(e)
+   }
 				});
 			
             });
