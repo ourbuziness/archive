@@ -87,6 +87,7 @@
 	    
 	    var timeStamp = -1
             var count = 0
+	    var unlocked = false
       
 	       $("#reset").click(function(){
         reset();
@@ -224,6 +225,10 @@
 		    
 	    }
 	    
+	    window.addEventListener('touchstart', () => {
+		    unlocked = true
+	    })
+	    
 	    document.addEventListener('touchmove', this.preventDefault, {passive: false});
 
 			ARnft.ARnft.init(800, 600, "archive/DataNFT/notebook", 'config3.json', false, true)
@@ -333,6 +338,7 @@
 				    try{
 
 					 var mdata = ev.detail.matrixGL_RH
+					 if(unlocked){ 
 					 if(timeStamp == -1){
 					     timeStamp = Date.now()
 				            latestMatrix = mdata
@@ -355,6 +361,7 @@
 						    $("#pos").html(tt)
 						}
 					    }
+					 }
 
 
 				    }catch(e){
