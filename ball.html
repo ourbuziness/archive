@@ -377,12 +377,12 @@ if(timeStamp == -1){
 
      }else{
     var newTime = Date.now()
-    if((newTime - timeStamp)>100){
+    if((newTime - timeStamp)>20){
       var tt = ""
       isBreak = false
       timeStamp = newTime
       for(let i =0 ; i< 16; i++){
-       var speed = Math.abs(latestMatrix[i] - mdata[i]) / 100
+       var speed = Math.abs(latestMatrix[i] - mdata[i]) / 20
        if(speed > stableMatrix[i]){
          isBreak = true
            $("#pos").text("در حال حرکت")
