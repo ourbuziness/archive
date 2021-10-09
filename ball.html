@@ -339,17 +339,17 @@
 
 					 }else{
 					    var newTime = Date.now()
-					    if((newTime - timeStamp)>500){
+					    if((newTime - timeStamp)>100){
 						    var tt = ""
 						    timeStamp = newTime
 						    count++
 						    for(let i =0 ; i< 16; i++){
-							 var speed = Math.abs(latestMatrix[i] - mdata[i]) / 100 
+							 var speed = Math.abs(latestMatrix[i] - mdata[i]) / 100
 							 if(speed > maxes[i] ) maxes[i] = speed
 							 var sum =  (latestMatrix[i] + sums[i])
 							 sums[i] = sum
 							 var mean = sum/count
-							 tt = tt + "0 : " +speed + "  max : " + maxes[i] + " mean : " + mean + " <br/>"
+							 tt = tt + /*"speed + "  max : " + */ (maxes[i].toFixed(5)) + " mean : " + (mean.toFixed(5)) + " <br/>"
 						    }
 						    latestMatrix = mdata
 						    $("#pos").html(tt)
