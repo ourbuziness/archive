@@ -383,7 +383,7 @@ if(timeStamp == -1){
       timeStamp = newTime
       for(let i =0 ; i< 16; i++){
        var speed = Math.abs(latestMatrix[i] - mdata[i]) / 100
-       if(speed[i] > stableMatrix[i]){
+       if(speed > stableMatrix[i]){
          isBreak = true
            $("#pos").text("در حال حرکت")
         // Utils.setInterpolate(data)
