@@ -325,27 +325,24 @@
 				document.addEventListener('getMatrixGL_RH', (ev) => {
 				    try{
 
-				/*	 if(timeStamp == -1){
-
+					 var mdata = ev.detail.matrixGL_RH
+					 if(timeStamp == -1){
 					     timeStamp = Date.now()
+				            latestMatrix = mdata
 
 					 }else{
 					    var newTime = Date.now()
-					    var m = ev.detail.matrixGL_RH
 					    if((newTime - timeStamp)>50){
+						    var tt = ""
 						    timeStamp = newTime
-						    if(latestMatrix != -1){
-							$("#pos").text("");
-							var t = ""
-							for(i=0;i<16;i++){
-							    t  = t +(Math.abs(m[i] - latestMatrix[i])).toFixed(5) + "<br />"
-							}
-							$("#pos").html(t);
+						    for(let i =0 ; i< 16; i++){
+							 tt = tt + "0 : " + Math.abs(latestMatrix[i] - mdata[i]) / 50 + " <br/>"
 						    }
+						    latestMatrix = mdata
+						    $("#pos").html(tt)
 						}
-					    latestMatrix = m ;
 					    }
-*/
+
 
 				    }catch(e){
 					alert(e)
