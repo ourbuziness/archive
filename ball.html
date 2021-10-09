@@ -354,7 +354,7 @@
 
     var mdata = ev.detail.matrixGL_RH
     if(unlocked){ 
-    if(timeStamp == -1){
+   /* if(timeStamp == -1){
         timeStamp = Date.now()
            latestMatrix = mdata
 
@@ -370,15 +370,15 @@
             var sum =  (latestMatrix[i] + sums[i])
             sums[i] = sum
             var mean = sum/count
-            tt = tt + /*"speed + "  max : " + */ (maxes[i].toFixed(5)) + " mean : " + (mean.toFixed(5)) + " <br/>"
+            tt = tt + /*"speed + "  max : " +  (maxes[i].toFixed(5)) + " mean : " + (mean.toFixed(5)) + " <br/>"
            }
            latestMatrix = mdata
            $("#pos").html(tt)
        }
        }
-    }
+    }*/
              
-/*if(timeStamp == -1){
+if(timeStamp == -1){
      timeStamp = Date.now()
        latestMatrix = mdata
 
@@ -410,7 +410,7 @@
 
 
    }
-}*/
+}
 }catch(e){
    alert(e)
    }
