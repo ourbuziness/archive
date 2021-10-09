@@ -71,15 +71,22 @@
 	    let totalDistance = -1
 	    
 	    let latestMatrix = null
-	    let differenceMatrix = [
+	    let maxes = [
     0, 0, 0, 0,
     0, 0, 0, 0,
     0, 0, 0, 0,
     0, 0, 0, 0
   ]
+	    	    let sums = [
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0
+  ]
+		    
 	    
 	    var timeStamp = -1
-    
+            var count = 0
       
 	       $("#reset").click(function(){
         reset();
@@ -332,11 +339,17 @@
 
 					 }else{
 					    var newTime = Date.now()
-					    if((newTime - timeStamp)>50){
+					    if((newTime - timeStamp)>100){
 						    var tt = ""
 						    timeStamp = newTime
+						    count++
 						    for(let i =0 ; i< 16; i++){
-							 tt = tt + "0 : " + Math.abs(latestMatrix[i] - mdata[i]) / 50 + " <br/>"
+							 var speed = Math.abs(latestMatrix[i] - mdata[i]) / 100 
+							 if(speed > maxes[i] ) maxes[i] = speed
+							 var sum =  (latestMatrix[i] + sums[i])
+							 sums[i] = sum
+							 var mean = sum/count
+							 tt = tt + "0 : " +speed + "  max : " + maxes[i] + " mean : " + mean + " <br/>"
 						    }
 						    latestMatrix = mdata
 						    $("#pos").html(tt)
