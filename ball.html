@@ -367,7 +367,7 @@
            for(let i =0 ; i< 16; i++){
             var speed = Math.abs(latestMatrix[i] - mdata[i]) / 20
             if(speed > maxes[i] ) maxes[i] = speed
-            var sum =  (latestMatrix[i] + sums[i])
+            var sum =  (speed + sums[i])
             sums[i] = sum
             var mean = sum/count
             tt = tt + /*"speed + "  max : " +  */(maxes[i].toFixed(5)) + " mean : " + (mean.toFixed(5)) + " <br/>"
