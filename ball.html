@@ -91,11 +91,18 @@
 //   0.092,0.12 , 0.33 ,0
 // ]
 		    
+// 		    var stableMatrix =[
+//   0.0014 ,0.003 ,0.014 ,0 ,
+//   0.0056 , 0.0016 , 0.006,0,
+//   0.014,0.006,0.003,0,
+//   0.4,0.5 , 2.5 ,0
+// ]
+		    
 		    var stableMatrix =[
-  0.0014 ,0.003 ,0.014 ,0 ,
-  0.0056 , 0.0016 , 0.006,0,
-  0.014,0.006,0.003,0,
-  0.4,0.5 , 2.5 ,0
+  0.0002 ,0.0003 ,0.003 ,0 ,
+  0.0002 , 0.0002 , 0.0009,0,
+  0.003,0.0009,0.00025,0,
+  0.092,0.12 , 0.33 ,0
 ]
 		    
 	    
@@ -354,7 +361,7 @@
 
     var mdata = ev.detail.matrixGL_RH
     if(unlocked){ 
-   if(timeStamp == -1){
+   /*if(timeStamp == -1){
         timeStamp = Date.now()
            latestMatrix = mdata
 
@@ -370,26 +377,26 @@
             var sum =  (speed + sums[i])
             sums[i] = sum
             var mean = sum/count
-            tt = tt + /*"speed + "  max : " +  */(maxes[i].toFixed(5)) + " mean : " + (mean.toFixed(5)) + " <br/>"
+            tt = tt + /*"speed + "  max : " +  (maxes[i].toFixed(5)) + " mean : " + (mean.toFixed(5)) + " <br/>"
            }
            latestMatrix = mdata
            $("#pos").html(tt)
        }
        }
-    }
+    }*/
              
-/*if(timeStamp == -1){
+if(timeStamp == -1){
      timeStamp = Date.now()
        latestMatrix = mdata
 
      }else{
     var newTime = Date.now()
-    if((newTime - timeStamp)>20){
+    if((newTime - timeStamp)>50){
       var tt = ""
       isBreak = false
       timeStamp = newTime
       for(let i =0 ; i< 16; i++){
-       var speed = Math.abs(latestMatrix[i] - mdata[i]) / 20
+       var speed = Math.abs(latestMatrix[i] - mdata[i]) / 50
        if(speed > stableMatrix[i]){
          isBreak = true
            $("#pos").text("در حال حرکت")
@@ -410,7 +417,7 @@
 
 
    }
-}*/
+}
 }catch(e){
    alert(e)
    }
