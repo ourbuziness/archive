@@ -216,6 +216,9 @@
           ball.position.x = x
           ball.position.y= y
           ball.position.z = z
+	  if(x <=0 || x>= 144 || y>=165){
+		  end = true
+	  }
           ball.rotation.x -= 0.72
 // 		 $("#pos").text(ball.rotation.x)
         }
