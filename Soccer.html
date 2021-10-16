@@ -19,8 +19,8 @@
 		<source src="kick.mp3.mp3" type="audio/mpeg"></source>
 	</audio>
 
-	<audio id="myAudio1">
-		<source src="count.mp3" type="audio/mpeg"></source>
+	<audio id="free">
+		<source src="free.mp3" type="audio/mpeg"></source>
 	</audio>
 	
 	
@@ -171,6 +171,8 @@
 		ball.position.x = 70
 		  ball.position.y = 5
 		    ball.position.z = 0
+		    ball.scale.x = 8;
+		    ball.scale.y = 8;
 		    time = 0
 		    clearInterval(interval);
 		    startInterval()
@@ -217,6 +219,15 @@
           ball.position.y= y
           ball.position.z = z
 	  if(x <=0 || x>= 144 || y>=165){
+		  if(x<= 0 || x >= 144)
+		  	ball.scale.x = 4
+		  else
+			ball.scale.y = 4
+		  
+		   var audio2 = document.getElementById("free");
+			  audio2.muted = false
+                          audio2.play();
+		  
 		  end = true
 	  }
           ball.rotation.x -= 0.72
@@ -253,6 +264,13 @@
 	    }
 	    
 	    window.addEventListener('touchstart', () => {
+		    var audio = document.getElementById("kick");
+		    audio.muted = true
+                     audio.play();
+		    
+		    var audio1 = document.getElementById("free");
+		    audio1.muted = true
+                     audio1.play();
 		    unlocked = true
 	    })
 	    
@@ -298,7 +316,8 @@
 			//   alert("clicked")
 			  
 			  var audio = document.getElementById("kick");
-                              audio.play();
+			  audio.muted = false
+                          audio.play();
 			  
 			 clearInterval(interval);
 			  shedat = sheddatArray[(prog/10 | 0)]
