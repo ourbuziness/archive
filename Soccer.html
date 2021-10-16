@@ -41,7 +41,8 @@
 	    let y4;
         let length = 50;
         let height = 20;
-	let sheddatArray = [70,90,95,100,110,120,130,140,150,180];
+// 	let sheddatArray = [70,90,95,100,110,120,130,140,150,180];
+	let sheddatArray = [10,20,30,40,45,50,60,65,70,80];
         let shedat = 1;
 	    let prog = 10;
 	    let steps = 0.05;
@@ -276,7 +277,7 @@
 					directionalLight.position.set(0.5, 0, 0.866);
 					camera.add(directionalLight);
 
-					 nft.addSimpleModel('./keeper.glb' , 60 , 140 ,0,4 , function(model){
+					 nft.addSimpleModel('./keeper.glb' , 60 , 170 ,0,4 , function(model){
 						 keeper = model
 						 keeper.rotation.y = 0
                                                  keeper.rotation.x = Math.PI/2
@@ -345,7 +346,7 @@
 									});
           
           
-                    nft.addSimpleAnimatedCompressedModel('./goal1.glb' , 60 , 156 ,0,0.14 ,function(gltf,model){
+                    nft.addSimpleAnimatedCompressedModel('./goal1.glb' , 60 , 172 ,0,0.14 ,function(gltf,model){
 
 					goal = model;
 			    model.rotation.x = (Math.PI/2)
