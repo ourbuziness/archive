@@ -174,8 +174,8 @@
 		    ball.scale.x = 8;
 		    ball.scale.y = 8;
 		    time = 0
-		 //   clearInterval(interval);
-		   // startInterval()
+		   clearInterval(interval);
+		    startInterval()
 		  //  end = false
 		    
 		    
@@ -278,7 +278,7 @@
 
 			ARnft.ARnft.init(800, 600, "archive/DataNFT/sun_small1", 'config3.json', false, true)
 			.then((nft) => {
-				//startInterval()
+				startInterval()
 				nft_loaded = nft;
 
 				document.addEventListener('onInitThreejsRendering', (ev) => {
@@ -319,7 +319,7 @@
 		//	  audio.muted = false
                       //    audio.play();
 			  
-			// clearInterval(interval);
+			 clearInterval(interval);
 			  shedat = sheddatArray[(prog/10 | 0)]
 
 			  v0 = sheddatArray[(prog/10 | 0)]
