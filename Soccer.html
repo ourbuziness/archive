@@ -276,18 +276,18 @@
 					directionalLight.position.set(0.5, 0, 0.866);
 					camera.add(directionalLight);
 
-					 nft.addSimpleModel('./keeper.glb' , 0 , 84 ,0,2 , function(model){
+					 nft.addSimpleModel('./keeper.glb' , 0 , 84 ,0,5 , function(model){
 						 keeper = model
 						 keeper.rotation.y = 0
                                                  keeper.rotation.x = Math.PI/2
 
 					 });
           
-					 nft.addSimpleModel('./soccer.glb' , 28 , 42 ,-10,140 , function(model){
+					 nft.addSimpleModel('./soccer.glb' , 84 , 84 ,-10,140 , function(model){
 						 model.rotation.x = Math.PI/2
 					 });
 						 
-          nft.addSimpleModel('./ball2.glb' , 28 , 5 ,0,5, function(model){
+          nft.addSimpleModel('./ball2.glb' , 42 , 5 ,0,8, function(model){
 		  ball = model;
 		  
 		  nft.setOnObjectClickListener('./ball2.glb',function(startEvent,endEvent,point){
@@ -345,7 +345,7 @@
 									});
           
           
-                    nft.addSimpleModel('./goal.glb' , 30 , 84 ,0,1 ,function(model){
+                    nft.addSimpleModel('./goal.glb' , 42 , 120 ,0,1 ,function(model){
 
 					goal = model;	
 			    goal.rotation.y = (Math.PI /2)
