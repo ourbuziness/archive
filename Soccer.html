@@ -277,14 +277,14 @@
 					directionalLight.position.set(0.5, 0, 0.866);
 					camera.add(directionalLight);
 
-					 nft.addSimpleModel('./keeper.glb' , 60 , 170 ,0,4 , function(model){
+					 nft.addSimpleModel('./keeper.glb' , 60 , 165 ,0,4 , function(model){
 						 keeper = model
 						 keeper.rotation.y = 0
                                                  keeper.rotation.x = Math.PI/2
 
 					 });
           
-					 nft.addSimpleAnimatedCompressedModel('./field3.glb' , 60 , 84 ,-10,0.5 , function(gltf,model){
+					 nft.addSimpleAnimatedCompressedModel('./field2.glb' , 60 , 84 ,-10,0.5 , function(gltf,model){
 						 model.rotation.x = Math.PI/2
 					 });
 						 
