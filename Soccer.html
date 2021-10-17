@@ -179,6 +179,17 @@
 		      
         nft_loaded.tickExtend = function(){
 		//alert("tick");
+		
+		if(timeStamp == -1){
+        		timeStamp = Date.now()
+		}else{
+			if((Date.now() - timeStamp) >= 1000){
+			$("#changes").text("fps : " + fps )
+				fps = 0
+				timeStamp = Date.now()
+			}
+		}
+		
 		keeperx += keeperStep
 		if(keeperx >100) keeperStep = -1 * keeperStep
 		if(keeperx <=0) keeperStep = -1 * keeperStep
@@ -251,15 +262,6 @@
           		end = true
 		  }
         }else{
-		if(timeStamp == -1){
-        		timeStamp = Date.now()
-		}else{
-			if((Date.now() - timeStamp) >= 1000){
-			$("#changes").text("fps : " + fps )
-				fps = 0
-				timeStamp = Date.now()
-			}
-		}
           ball.position.x = x
           ball.position.y= y
           ball.position.z = z
