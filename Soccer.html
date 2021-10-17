@@ -257,6 +257,7 @@
 			if((Date.now() - timeStamp) >= 1000){
 			$("#changes").text("fps : " + fps )
 				fps = 0
+				timeStamp = Date.now()
 			}
 		}
           ball.position.x = x
