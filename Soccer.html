@@ -46,7 +46,7 @@
         let shedat = 1;
 	    let prog = 10;
 // 	    let steps = 0.05;
-	    let steps = 0.1;
+	    let steps = 0.05;
 	    let end = false ;
 	    let fraction = 0
 	    const up = new THREE.Vector3( 0,1, 0 );
@@ -72,6 +72,8 @@
 	    let keeperStep = 0.8
 	    let ghaltkhorde = 40
 	    let totalDistance = -1
+	    
+	    let ballRotatingSpeed =  0.72
 	    
 	    let tickAdded = false
 	    
@@ -183,6 +185,11 @@
 		//alert("tick");
 		
 		fps++
+		if(FPS > 0 && FPS <=60){
+			var n =  (0.01 *(60/FPS))
+			steps = 0.05 + n
+			ballRotatingSpeed = 0.72 + n
+		}
 		
 		if(timeStamp == -1){
         		timeStamp = Date.now()
@@ -260,7 +267,7 @@
 			ball.position.y = ball.position.y + 1
 			 ball.position.z = 10*Math.abs(Math.sin(ghaltkhorde/6))
 			ball.position.x = linearPath(ball.position.y) + 70
-			  ball.rotation.x -= ((ghaltkhorde/80)*0.62 + 0.1)
+			  ball.rotation.x -= ((ghaltkhorde/80)*(ballRotatingSpeed - 0.1) + 0.1)
 			 ghaltkhorde --;
 
 		  }else{
@@ -282,7 +289,7 @@
 		  
 		  end = true
 	  }
-          ball.rotation.x -= 0.72
+          ball.rotation.x -= ballRotatingSpeed
 // 		 $("#pos").text(ball.rotation.x)
         }
 	        }catch(e){
