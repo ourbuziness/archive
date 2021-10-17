@@ -72,6 +72,8 @@
 	    let ghaltkhorde = 40
 	    let totalDistance = -1
 	    
+	    let tickAdded = false
+	    
 	    let latestMatrix = null
 	    let maxes = [
     0, 0, 0, 0,
@@ -119,9 +121,8 @@
 	
 	    
 	    
-      function createPath(x,y,z){
-	    //  alert("ymz")
-	      try{
+	    function configPath(x,y,z){
+		   try{
 	//if(x==0)
              A = x
        //  else
@@ -141,6 +142,38 @@
 		      end = false;
 		      ghaltkhorde = 40
 		      totalDistance = (2*vz*vy) / gg
+			   
+			   if(!tickAdded){
+				   tickAdded = true
+				   createPath()
+			   }
+		   }catch(e){
+			alert(e)   
+		   }
+	    }
+	    
+      function createPath(){
+	    //  alert("ymz")
+	      try{
+	//if(x==0)
+//              A = x
+       //  else
+	  //   A = Math.tan(x)
+		     // alert("A : "+A);
+// 		      if(z>0)
+//         alpha = z*Math.PI / 180
+// 		      else
+// 			      alpha = 0
+		    //   alert("alpha : "+alpha);
+// 		      vy = v0*Math.cos(alpha)
+//         vz = v0*Math.sin(alpha)
+//         var R = v0*v0*Math.sin(2*alpha)/gg
+
+//         time = 0;
+			//alert("time : "+time);
+// 		      end = false;
+// 		      ghaltkhorde = 40
+// 		      totalDistance = (2*vz*vy) / gg
 		      
         nft_loaded.tickExtend = function(){
 		//alert("tick");
@@ -357,7 +390,8 @@
 				  }
 				  
 			var xxs = -1* shib
-  createPath(xxs,yys + 28 ,zpower);
+  			configPath(xxs,yys + 28 ,zpower);
+				  
 //    			 $("#pos").text("power : "+ zpower +"\nx : " + xxs)
 			  }catch(e){
 			alert(e);	  
