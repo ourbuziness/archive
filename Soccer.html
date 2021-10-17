@@ -41,8 +41,8 @@
 	    let y4;
         let length = 50;
         let height = 20;
-	let sheddatArray = [70,90,95,100,110,120,130,140,150,180];
-//	let sheddatArray = [30,40,50,70,80,100,110,115,120,130,140];
+// 	let sheddatArray = [70,90,95,100,110,120,130,140,150,180];
+	let sheddatArray = [30,40,50,70,80,100,110,115,120,130,140];
         let shedat = 1;
 	    let prog = 10;
 	    let steps = 0.05;
@@ -77,6 +77,7 @@
 	    let latestMatrix = null
 	    
 	    let fps = 0
+	    let FPS = 0
 	    let maxes = [
     0, 0, 0, 0,
     0, 0, 0, 0,
@@ -186,7 +187,8 @@
         		timeStamp = Date.now()
 		}else{
 			if((Date.now() - timeStamp) >= 1000){
-			$("#changes").text("fps : " + fps )
+				FPS = fps
+			$("#changes").text("fps : " + FPS )
 				fps = 0
 				timeStamp = Date.now()
 			}
@@ -372,6 +374,7 @@
 			  shedat = sheddatArray[(prog/10 | 0)]
 
 			  v0 = sheddatArray[(prog/10 | 0)]
+			  if(FPS > 0 ) v0 = v0* (60/FPS)
 //v0 = 220
  			  var v = new THREE.Vector3()
 
