@@ -180,6 +180,8 @@
         nft_loaded.tickExtend = function(){
 		//alert("tick");
 		
+		fps++
+		
 		if(timeStamp == -1){
         		timeStamp = Date.now()
 		}else{
@@ -228,7 +230,7 @@
 	    }
 
       function createCubic(time){
-	      fps++
+	      
      try{
 	    // alert("here");
         
