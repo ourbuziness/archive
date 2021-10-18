@@ -187,7 +187,8 @@
 		fps++
 		if(FPS > 0 && FPS <=60){
 			var n =  (0.01 *(60/FPS))
-			steps = 0.05 + n
+// 			steps = 0.05 + n
+			
 			ballRotatingSpeed = 0.72 + n
 		}
 		
@@ -382,7 +383,7 @@
 			  shedat = sheddatArray[(prog/10 | 0)]
 
 			  v0 = sheddatArray[(prog/10 | 0)]
-// 			  if(FPS > 0 ) v0 = v0* (60/FPS)
+ 			  if(FPS > 0 ) v0 = v0* (60/FPS)
 //v0 = 220
  			  var v = new THREE.Vector3()
 
