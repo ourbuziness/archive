@@ -227,11 +227,12 @@
       }
 	    
 	    function reset(){
-		ball.position.x = 70
+		ball.position.x = 75
 		  ball.position.y = 5
-		    ball.position.z = 0
-		    ball.scale.x = 8;
-		    ball.scale.y = 8;
+		    ball.position.z = 10
+		    ball.scale.x = 10;
+		    ball.scale.y = 10;
+		    ball.scale.z = 10;
 		    time = 0
 		   clearInterval(interval);
 		    startInterval()
@@ -256,7 +257,7 @@
 	
 // 	$("#pos").text("( "+ x+" , "+y+" , "+z+" )")
 
-        if(((ball.position.z <= 0 /*|| ball.position.y >= goal.position.y*/ ) && time > 0.1) || ghaltkhorde < 40){
+        if(((ball.position.z <= 10 /*|| ball.position.y >= goal.position.y*/ ) && time > 0.1) || ghaltkhorde < 40){
 		//alert("end")
 		
 		if(ghaltkhorde == 40 )
@@ -369,7 +370,7 @@
 						 model.rotation.x = Math.PI/2
 					 });
 						 
-          nft.addSimpleModel('./ball2.glb' , 72 , 5 ,0,10, function(model){
+          nft.addSimpleModel('./ball2.glb' , 72 , 5 ,10,10, function(model){
 		  ball = model;
 		  
 		  nft.setOnObjectClickListener('./ball2.glb',function(startEvent,endEvent,point){
