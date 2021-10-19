@@ -128,10 +128,19 @@
 	
 	    
 	    function detectGoal(x,y,z){
+		    var kx = keeper.position.x 
+		    var ky = keeper.position.y
+		    var kz = keeper.position.z
+		    
 		    if(x >= 26 && x<= 96 && y >= 190 && y<= 205 && z<= 20){
-			    if(isGoal == false){
-			    isGoal = true
-		             alert("goal")
+			    if(isGoal == false) {
+			    if(x>= kx && x <= (kx+45)){
+				    isGoal = true
+				    alert("failed")
+			    }else {
+				    isGoal = true
+				     alert("goal")
+				    }
 			    }
 		    }
 		    
