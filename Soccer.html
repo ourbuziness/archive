@@ -301,6 +301,7 @@
 			ball.position.x = linearPath(ball.position.y) + 70
 			  ball.rotation.x -= ((ghaltkhorde/80)*(ballRotatingSpeed - 0.1) + 0.1)
 			 ghaltkhorde --;
+detectGoal(ball.position.x , ball.position.y,ball.position.z);
 
 		  }else{
 			  ball.position.z = 10
@@ -313,6 +314,7 @@
 	     temp = ( 2*reverseY) - temp
           ball.position.y= temp
           ball.position.z = z
+detectGoal(ball.position.x , ball.position.y,ball.position.z);
 // 	  if(x <=0 || x>= 144 || y>=190){
 // 		  if(x<= 0 || x >= 150)
 // 		  	ball.scale.x = 4
@@ -326,7 +328,6 @@
 	        }catch(e){
 			alert(e);    
 		    }
-	      detectGoal(ball.position.x , ball.position.y,ball.position.z);
       }
 
       function linearPath(y){
