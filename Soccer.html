@@ -230,9 +230,9 @@
 		ball.position.x = 75
 		  ball.position.y = 5
 		    ball.position.z = 10
-		    ball.scale.x = 10;
-		    ball.scale.y = 10;
-		    ball.scale.z = 10;
+		    ball.scale.x = 8;
+		    ball.scale.y = 8;
+		    ball.scale.z = 8;
 		    time = 0
 		   clearInterval(interval);
 		    startInterval()
@@ -273,13 +273,14 @@
 			 ghaltkhorde --;
 
 		  }else{
+			  ball.position.z = 10
           		end = true
 		  }
         }else{
           ball.position.x = x
           ball.position.y= y
           ball.position.z = z
-// 	  if(x <=0 || x>= 144 || y>=205){
+// 	  if(x <=0 || x>= 144 || y>=190){
 // 		  if(x<= 0 || x >= 150)
 // 		  	ball.scale.x = 4
 // 		  else
@@ -367,7 +368,7 @@
 						 model.rotation.x = Math.PI/2
 					 });
 						 
-          nft.addSimpleModel('./ball2.glb' , 72 , 5 ,10,10, function(model){
+          nft.addSimpleModel('./ball2.glb' , 72 , 5 ,10,8, function(model){
 		  ball = model;
 		  
 		  nft.setOnObjectClickListener('./ball2.glb',function(startEvent,endEvent,point){
@@ -429,7 +430,7 @@
 									});
           
           
-                    nft.addSimpleAnimatedCompressedModel('./goal1.glb' , 60 , 205 ,0,0.14 ,function(gltf,model){
+                    nft.addSimpleAnimatedCompressedModel('./goal1.glb' , 60 , 190 ,0,0.2 ,function(gltf,model){
 
 					goal = model;
 			    model.rotation.x = (Math.PI/2)
