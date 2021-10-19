@@ -261,14 +261,14 @@
 		//alert("end")
 		
 		if(ghaltkhorde == 40 )
-			ball.position.z = 0
+			ball.position.z = 10
 		
 		 if(ghaltkhorde > 0){
 // 			 $("#pos").text(ball.rotation.x)
 // 			  $("#pos").text(" y : "+ ball.position.y + " x : "+ ball.position.x + " A : " + A)
 			ball.position.y = ball.position.y + 1
 			 ball.position.z = 10*Math.abs(Math.sin(ghaltkhorde/6))
-			ball.position.x = linearPath(ball.position.y) + 75
+			ball.position.x = linearPath(ball.position.y) + 70
 			  ball.rotation.x -= ((ghaltkhorde/80)*(ballRotatingSpeed - 0.1) + 0.1)
 			 ghaltkhorde --;
 
@@ -279,18 +279,13 @@
           ball.position.x = x
           ball.position.y= y
           ball.position.z = z
-	  if(x <=0 || x>= 144 || y>=205){
-		  if(x<= 0 || x >= 150)
-		  	ball.scale.x = 4
-		  else
-			ball.scale.y = 4
-		  
-// 		   var audio2 = document.getElementById("free");
-// 			  audio2.muted = false
-//                           audio2.play();
-		  
-		  end = true
-	  }
+// 	  if(x <=0 || x>= 144 || y>=205){
+// 		  if(x<= 0 || x >= 150)
+// 		  	ball.scale.x = 4
+// 		  else
+// 			ball.scale.y = 4
+// 		  end = true
+// 	  }
           ball.rotation.x -= ballRotatingSpeed
 // 		 $("#pos").text(ball.rotation.x)
         }
