@@ -261,13 +261,13 @@
 		//alert("end")
 		
 		if(ghaltkhorde == 40 )
-			ball.position.z = 10
+			ball.position.z = 0
 		
 		 if(ghaltkhorde > 0){
 // 			 $("#pos").text(ball.rotation.x)
 // 			  $("#pos").text(" y : "+ ball.position.y + " x : "+ ball.position.x + " A : " + A)
-			ball.position.y = ball.position.y + 10
-			 ball.position.z = 10*Math.abs(Math.sin(ghaltkhorde/6)) + 10
+			ball.position.y = ball.position.y + 1
+			 ball.position.z = 10*Math.abs(Math.sin(ghaltkhorde/6))
 			ball.position.x = linearPath(ball.position.y) + 75
 			  ball.rotation.x -= ((ghaltkhorde/80)*(ballRotatingSpeed - 0.1) + 0.1)
 			 ghaltkhorde --;
@@ -337,7 +337,9 @@
 	    
 	    document.addEventListener('touchmove', this.preventDefault, {passive: false});
 
-			ARnft.ARnft.init(800, 600, "archive/DataNFT/sun_small1", 'config3.json', false, true)
+	    //sun_small1
+	    //sun_small
+			ARnft.ARnft.init(800, 600, "archive/DataNFT/sun_n", 'config3.json', false, true)
 			.then((nft) => {
 				startInterval()
 				nft_loaded = nft;
