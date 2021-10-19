@@ -72,6 +72,7 @@
 	    let keeperStep = 0.8
 	    let ghaltkhorde = 40
 	    let totalDistance = -1
+	    let reverse = 1
 	    
 	    let ballRotatingSpeed =  0.72
 	    
@@ -132,12 +133,12 @@
 		    var ky = keeper.position.y
 		    var kz = keeper.position.z
 		    
-		    if(x >= 26 && x<= 96 && y >= 190 && y<= 205 && z<= 20){
+		    if(x >= 26 && x<= 96 && y >= 186 && y<= 205 && z<= 20){
 			    if(isGoal == false) {
 			    if(x>= kx && x <= (kx+45)){
 				    isGoal = true
 				    alert("failed")
-				    end = true
+				    //end = true
 			    }else {
 				    isGoal = true
 				     alert("goal")
@@ -254,6 +255,7 @@
 		    ball.scale.y = 10;
 		    isGoal = false
 		    ball.scale.z = 10;
+		    reverse = 1
 		    time = 0
 		   clearInterval(interval);
 		    startInterval()
@@ -287,7 +289,7 @@
 		 if(ghaltkhorde > 0){
 // 			 $("#pos").text(ball.rotation.x)
 // 			  $("#pos").text(" y : "+ ball.position.y + " x : "+ ball.position.x + " A : " + A)
-			ball.position.y = ball.position.y + 1
+			ball.position.y = (ball.position.y + 1) * reverse
 			 ball.position.z = 10*Math.abs(Math.sin(ghaltkhorde/6))
 			ball.position.x = linearPath(ball.position.y) + 70
 			  ball.rotation.x -= ((ghaltkhorde/80)*(ballRotatingSpeed - 0.1) + 0.1)
@@ -299,7 +301,7 @@
 		  }
         }else{
           ball.position.x = x
-          ball.position.y= y
+          ball.position.y= ( y * reverse )
           ball.position.z = z
 // 	  if(x <=0 || x>= 144 || y>=190){
 // 		  if(x<= 0 || x >= 150)
