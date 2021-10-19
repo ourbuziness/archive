@@ -247,11 +247,11 @@
 	    // alert("here");
         
         var y = vy*time + 5
-        var z = 0
+        var z = 10
 	if(vz !=0 )
-	   z= -0.5*gg**time*time + vz*time 
+	   z= -0.5*gg**time*time + vz*time + 10
 	     else
-	z=0
+	   z=10
 		     
         var x = linearPath(y) + 70
 	
@@ -261,14 +261,14 @@
 		//alert("end")
 		
 		if(ghaltkhorde == 40 )
-			ball.position.z = 0
+			ball.position.z = 10
 		
 		 if(ghaltkhorde > 0){
 // 			 $("#pos").text(ball.rotation.x)
 // 			  $("#pos").text(" y : "+ ball.position.y + " x : "+ ball.position.x + " A : " + A)
-			ball.position.y = ball.position.y + 1
-			 ball.position.z = 10*Math.abs(Math.sin(ghaltkhorde/6))
-			ball.position.x = linearPath(ball.position.y) + 70
+			ball.position.y = ball.position.y + 10
+			 ball.position.z = 10*Math.abs(Math.sin(ghaltkhorde/6)) + 10
+			ball.position.x = linearPath(ball.position.y) + 75
 			  ball.rotation.x -= ((ghaltkhorde/80)*(ballRotatingSpeed - 0.1) + 0.1)
 			 ghaltkhorde --;
 
