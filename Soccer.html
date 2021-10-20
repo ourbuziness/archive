@@ -484,30 +484,30 @@ detectGoal(ball.position.x , ball.position.y,ball.position.z);
 				document.addEventListener('getMatrixGL_RH', (ev) => {
 				   try{
 
-//     var mdata = ev.detail.matrixGL_RH
-//     if(unlocked){ 
-   /*if(timeStamp == -1){
+     var mdata = ev.detail.matrixGL_RH
+     if(unlocked){ 
+   if(timeStamp == -1){
         timeStamp = Date.now()
            latestMatrix = mdata
     }else{
        var newTime = Date.now()
-       if((newTime - timeStamp)>20){
+       if((newTime - timeStamp)>80){
            var tt = ""
            timeStamp = newTime
            count++
            for(let i =0 ; i< 16; i++){
-            var speed = Math.abs(latestMatrix[i] - mdata[i]) / 20
+            var speed = Math.abs(latestMatrix[i] - mdata[i]) / 80
             if(speed > maxes[i] ) maxes[i] = speed
             var sum =  (speed + sums[i])
             sums[i] = sum
             var mean = sum/count
-            tt = tt + /*"speed + "  max : " +  (maxes[i].toFixed(5)) + " mean : " + (mean.toFixed(5)) + " <br/>"
+            tt = tt +  "max : " +  (maxes[i].toFixed(5)) + " mean : " + (mean.toFixed(5)) + " <br/>"
            }
            latestMatrix = mdata
            $("#pos").html(tt)
        }
        }
-    }*/
+    }
              
 // if(timeStamp == -1){
 //      timeStamp = Date.now()
