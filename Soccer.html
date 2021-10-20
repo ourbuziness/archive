@@ -69,7 +69,7 @@
 	    let starte
 	    let canStarte = true
 	    let keeper
-	    let keeperx = 40
+	    let keeperx = 60
 	    let keeperStep = 0.8
 	    let ghaltkhorde = 40
 	    let totalDistance = -1
@@ -236,8 +236,8 @@ var stableMatrix =[  /*"""80 """*/
 		}
 		
 		keeperx += keeperStep
-		if(keeperx >80) keeperStep = -1 * keeperStep
-		if(keeperx <=20) keeperStep = -1 * keeperStep
+		if(keeperx >100) keeperStep = -1 * keeperStep
+		if(keeperx <=40) keeperStep = -1 * keeperStep
 		keeper.position.x = keeperx
           if(!end){
 		  try{
@@ -259,7 +259,7 @@ var stableMatrix =[  /*"""80 """*/
       }
 	    
 	    function reset(){
-		ball.position.x = 65
+		ball.position.x = 85
 		  ball.position.y = 40
 		    ball.position.z = 10
 		    ball.scale.x = 12;
@@ -287,7 +287,7 @@ var stableMatrix =[  /*"""80 """*/
 	     else
 	   z=10
 		     
-        var x = linearPath(y) + 65
+        var x = linearPath(y) + 85
 	
 // 	$("#pos").text("( "+ x+" , "+y+" , "+z+" )")
 
@@ -400,18 +400,18 @@ detectGoal(ball.position.x , ball.position.y,ball.position.z);
 					directionalLight.position.set(0.5, 0, 0.866);
 					camera.add(directionalLight);
 
-					 nft.addSimpleModel('./keeper.glb' , 60 , 165 ,0,4 , function(model){
+					 nft.addSimpleModel('./keeper.glb' , 80 , 165 ,0,4 , function(model){
 						 keeper = model
 						 keeper.rotation.y = 0
                                                  keeper.rotation.x = Math.PI/2
 
 					 });
           
-					 nft.addSimpleAnimatedCompressedModel('./field3.glb' , 60 , 84 ,-10,0.5 , function(gltf,model){
+					 nft.addSimpleAnimatedCompressedModel('./field3.glb' , 80 , 84 ,-10,0.8 , function(gltf,model){
 						 model.rotation.x = Math.PI/2
 					 });
 						 
-          nft.addSimpleModel('./ball2.glb' , 65 , 40 ,10,12, function(model){
+          nft.addSimpleModel('./ball2.glb' , 85 , 40 ,10,12, function(model){
 		  ball = model;
 		  
 		  nft.setOnObjectClickListener('./ball2.glb',function(startEvent,endEvent,point){
@@ -473,7 +473,7 @@ detectGoal(ball.position.x , ball.position.y,ball.position.z);
 									});
           
           
-                    nft.addSimpleAnimatedCompressedModel('./goal1.glb' , 60 , 190 ,0,0.2 ,function(gltf,model){
+                    nft.addSimpleAnimatedCompressedModel('./goal1.glb' , 80 , 190 ,0,0.2 ,function(gltf,model){
 
 					goal = model;
 			    model.rotation.x = (Math.PI/2)
