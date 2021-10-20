@@ -69,7 +69,7 @@
 	    let starte
 	    let canStarte = true
 	    let keeper
-	    let keeperx = 40
+	    let keeperx = 50
 	    let keeperStep = 0.8
 	    let ghaltkhorde = 40
 	    let totalDistance = -1
@@ -141,7 +141,7 @@ var stableMatrix =[  /*"""80 """*/
 		    var ky = keeper.position.y
 		    var kz = keeper.position.z
 		    
-		    if(x >= 26 && x<= 96 && y >= 186 && y<= 205 && z<= 20){
+		    if(x >= 36 && x<= 106 && y >= 206 && y<= 225 && z<= 20){
 			    if(isGoal == false) {
 			    if(x>= kx && x <= (kx+45)){
 				    isGoal = true
@@ -236,8 +236,8 @@ var stableMatrix =[  /*"""80 """*/
 		}
 		
 		keeperx += keeperStep
-		if(keeperx >80) keeperStep = -1 * keeperStep
-		if(keeperx <=20) keeperStep = -1 * keeperStep
+		if(keeperx >90) keeperStep = -1 * keeperStep
+		if(keeperx <=30) keeperStep = -1 * keeperStep
 		keeper.position.x = keeperx
           if(!end){
 		  try{
@@ -259,8 +259,8 @@ var stableMatrix =[  /*"""80 """*/
       }
 	    
 	    function reset(){
-		ball.position.x = 65
-		  ball.position.y = 40
+		ball.position.x = 75
+		  ball.position.y = 60
 		    ball.position.z = 10
 		    ball.scale.x = 12;
 		    ball.scale.y = 12;
@@ -280,14 +280,14 @@ var stableMatrix =[  /*"""80 """*/
      try{
 	    // alert("here");
         
-        var y = vy*time + 40
+        var y = vy*time + 60
         var z = 10
 	if(vz !=0 )
 	   z= -0.5*gg**time*time + vz*time + 10
 	     else
 	   z=10
 		     
-        var x = linearPath(y) + 65
+        var x = linearPath(y) + 75
 	
 // 	$("#pos").text("( "+ x+" , "+y+" , "+z+" )")
 
@@ -305,7 +305,7 @@ var stableMatrix =[  /*"""80 """*/
 // 				temp = ( 2*reverseY) - temp
 			 ball.position.y = temp
 			 ball.position.z = 10*Math.abs(Math.sin(ghaltkhorde/6))
-			ball.position.x = linearPath(ball.position.y) + 65
+			ball.position.x = linearPath(ball.position.y) + 75
 			  ball.rotation.x -= ((ghaltkhorde/80)*(ballRotatingSpeed - 0.1) + 0.1)
 			 ghaltkhorde --;
 detectGoal(ball.position.x , ball.position.y,ball.position.z);
@@ -400,18 +400,18 @@ detectGoal(ball.position.x , ball.position.y,ball.position.z);
 					directionalLight.position.set(0.5, 0, 0.866);
 					camera.add(directionalLight);
 
-					 nft.addSimpleModel('./keeper.glb' , 60 , 165 ,0,4 , function(model){
+					 nft.addSimpleModel('./keeper.glb' , 70 , 185 ,0,4 , function(model){
 						 keeper = model
 						 keeper.rotation.y = 0
                                                  keeper.rotation.x = Math.PI/2
 
 					 });
           
-					 nft.addSimpleAnimatedCompressedModel('./field3.glb' , 60 , 84 ,-10,0.5 , function(gltf,model){
+					 nft.addSimpleAnimatedCompressedModel('./field3.glb' , 70 , 104 ,-10,0.5 , function(gltf,model){
 						 model.rotation.x = Math.PI/2
 					 });
 						 
-          nft.addSimpleModel('./ball2.glb' , 65 , 40 ,10,12, function(model){
+          nft.addSimpleModel('./ball2.glb' , 75 , 60,10,12, function(model){
 		  ball = model;
 		  
 		  nft.setOnObjectClickListener('./ball2.glb',function(startEvent,endEvent,point){
@@ -473,7 +473,7 @@ detectGoal(ball.position.x , ball.position.y,ball.position.z);
 									});
           
           
-                    nft.addSimpleAnimatedCompressedModel('./goal1.glb' , 60 , 190 ,0,0.2 ,function(gltf,model){
+                    nft.addSimpleAnimatedCompressedModel('./goal1.glb' , 70 , 210 ,0,0.2 ,function(gltf,model){
 
 					goal = model;
 			    model.rotation.x = (Math.PI/2)
