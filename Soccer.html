@@ -262,10 +262,10 @@ var stableMatrix =[  /*"""80 """*/
 		ball.position.x = 85
 		  ball.position.y = 40
 		    ball.position.z = 10
-		    ball.scale.x = 12;
-		    ball.scale.y = 12;
+		    ball.scale.x = 16;
+		    ball.scale.y = 16;
 		    isGoal = false
-		    ball.scale.z = 12;
+		    ball.scale.z = 16;
 		    reverse = 0
 		    time = 0
 		   clearInterval(interval);
@@ -400,7 +400,7 @@ detectGoal(ball.position.x , ball.position.y,ball.position.z);
 					directionalLight.position.set(0.5, 0, 0.866);
 					camera.add(directionalLight);
 
-					 nft.addSimpleModel('./keeper.glb' , 80 , 165 ,0,4 , function(model){
+					 nft.addSimpleModel('./keeper.glb' , 80 , 165 ,0,6 , function(model){
 						 keeper = model
 						 keeper.rotation.y = 0
                                                  keeper.rotation.x = Math.PI/2
@@ -411,7 +411,7 @@ detectGoal(ball.position.x , ball.position.y,ball.position.z);
 						 model.rotation.x = Math.PI/2
 					 });
 						 
-          nft.addSimpleModel('./ball2.glb' , 85 , 40 ,10,12, function(model){
+          nft.addSimpleModel('./ball2.glb' , 85 , 40 ,10,16, function(model){
 		  ball = model;
 		  
 		  nft.setOnObjectClickListener('./ball2.glb',function(startEvent,endEvent,point){
@@ -473,7 +473,7 @@ detectGoal(ball.position.x , ball.position.y,ball.position.z);
 									});
           
           
-                    nft.addSimpleAnimatedCompressedModel('./goal1.glb' , 80 , 190 ,0,0.2 ,function(gltf,model){
+                    nft.addSimpleAnimatedCompressedModel('./goal1.glb' , 80 , 190 ,0,0.4 ,function(gltf,model){
 
 					goal = model;
 			    model.rotation.x = (Math.PI/2)
