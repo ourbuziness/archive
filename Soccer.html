@@ -252,13 +252,13 @@
       }
 	    
 	    function reset(){
-		ball.position.x = 75
-		  ball.position.y = 5
+		ball.position.x = 65
+		  ball.position.y = 40
 		    ball.position.z = 10
-		    ball.scale.x = 10;
-		    ball.scale.y = 10;
+		    ball.scale.x = 12;
+		    ball.scale.y = 12;
 		    isGoal = false
-		    ball.scale.z = 10;
+		    ball.scale.z = 12;
 		    reverse = 0
 		    time = 0
 		   clearInterval(interval);
@@ -273,14 +273,14 @@
      try{
 	    // alert("here");
         
-        var y = vy*time + 5
+        var y = vy*time + 40
         var z = 10
 	if(vz !=0 )
 	   z= -0.5*gg**time*time + vz*time + 10
 	     else
 	   z=10
 		     
-        var x = linearPath(y) + 70
+        var x = linearPath(y) + 65
 	
 // 	$("#pos").text("( "+ x+" , "+y+" , "+z+" )")
 
@@ -298,7 +298,7 @@
 // 				temp = ( 2*reverseY) - temp
 			 ball.position.y = temp
 			 ball.position.z = 10*Math.abs(Math.sin(ghaltkhorde/6))
-			ball.position.x = linearPath(ball.position.y) + 70
+			ball.position.x = linearPath(ball.position.y) + 65
 			  ball.rotation.x -= ((ghaltkhorde/80)*(ballRotatingSpeed - 0.1) + 0.1)
 			 ghaltkhorde --;
 detectGoal(ball.position.x , ball.position.y,ball.position.z);
@@ -403,7 +403,7 @@ detectGoal(ball.position.x , ball.position.y,ball.position.z);
 						 model.rotation.x = Math.PI/2
 					 });
 						 
-          nft.addSimpleModel('./ball2.glb' , 72 , 5 ,10,10, function(model){
+          nft.addSimpleModel('./ball2.glb' , 65 , 40 ,10,12, function(model){
 		  ball = model;
 		  
 		  nft.setOnObjectClickListener('./ball2.glb',function(startEvent,endEvent,point){
