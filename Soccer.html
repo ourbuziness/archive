@@ -85,6 +85,9 @@
 	    let fps = 0
 	    let FPS = 0
 	    let isGoal = false
+	    let range = 0
+	    let rangea = 0
+	    let rangeb = 0
 	    let maxes = [
     0, 0, 0, 0,
     0, 0, 0, 0,
@@ -173,7 +176,11 @@ var stableMatrix =[  /*"""80 """*/
 		    //   alert("alpha : "+alpha);
 		      vy = v0*Math.cos(alpha)
         vz = v0*Math.sin(alpha)
-//         var R = v0*v0*Math.sin(2*alpha)/gg
+			  
+        range = v0*v0*Math.sin(2*alpha)/gg
+	rangea= (-23 / (range+14))
+	rangeb = (35* range + 168 ) /(range + 12 )
+			   
 
         time = 0;
 			//alert("time : "+time);
@@ -288,9 +295,10 @@ var stableMatrix =[  /*"""80 """*/
 	   z=40
 		     
         var x = linearPath(y) + 75
-	ball.scale.x = (ball.scale.x - 0.4)
-	ball.scale.y = (ball.scale.y - 0.4)
-	ball.scale.z = (ball.scale.z - 0.4)
+	var nscale = (rangea*y) + rangeb
+	ball.scale.x = nscale
+	ball.scale.y = nscale
+	ball.scale.z = nscale
 	
 // 	$("#pos").text("( "+ x+" , "+y+" , "+z+" )")
 
