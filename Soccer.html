@@ -260,8 +260,8 @@ var stableMatrix =[  /*"""80 """*/
 	    
 	    function reset(){
 		ball.position.x = 75
-		  ball.position.y = 60
-		    ball.position.z = 10
+		  ball.position.y = -5
+		    ball.position.z = 40
 		    ball.scale.x = 12;
 		    ball.scale.y = 12;
 		    isGoal = false
@@ -280,12 +280,12 @@ var stableMatrix =[  /*"""80 """*/
      try{
 	    // alert("here");
         
-        var y = vy*time + 60
-        var z = 10
+        var y = vy*time -5
+        var z = 40
 	if(vz !=0 )
-	   z= -0.5*gg**time*time + vz*time + 10
+	   z= -0.5*gg**time*time + vz*time + 40
 	     else
-	   z=10
+	   z=40
 		     
         var x = linearPath(y) + 75
 	
@@ -411,7 +411,7 @@ detectGoal(ball.position.x , ball.position.y,ball.position.z);
 						 model.rotation.x = Math.PI/2
 					 });
 						 
-          nft.addSimpleModel('./ball2.glb' , 75 , 60,10,12, function(model){
+          nft.addSimpleModel('./ball2.glb' , 75 , -5,40,28, function(model){
 		  ball = model;
 		  
 		  nft.setOnObjectClickListener('./ball2.glb',function(startEvent,endEvent,point){
