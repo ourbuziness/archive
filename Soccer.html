@@ -121,10 +121,10 @@
 		    
 var stableMatrix =[  /*"""80 """*/
   0.0002 ,0.0003 ,0.003 ,0 ,
-  0.0002 , 0.0002 , 0.0009,0,
+  0.0003 , 0.0003 , 0.0009,0,
   0.003,0.0009,0.00025,0,
   0.092,0.12 , 0.33 ,0
-]    
+]
 	    
 	    var timeStamp = -1
             var count = 0
@@ -394,7 +394,7 @@ detectGoal(ball.position.x , ball.position.y,ball.position.z);
 				
 					const light1  = new THREE.AmbientLight(0xFFFFFF, 0.3);
 					    light1.name = 'ambient_light';
-					 //   camera.add( light1 );
+					    camera.add( light1 );
 
 					let directionalLight = new THREE.DirectionalLight(0xFFFFFF, 0.8 * Math.PI);
 					directionalLight.position.set(0, 50, 40);
