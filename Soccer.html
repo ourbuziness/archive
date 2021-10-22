@@ -85,9 +85,6 @@
 	    let fps = 0
 	    let FPS = 0
 	    let isGoal = false
-	    let range = 0
-	    let rangea = 0
-	    let rangeb = 0
 	    let maxes = [
     0, 0, 0, 0,
     0, 0, 0, 0,
@@ -176,11 +173,7 @@ var stableMatrix =[  /*"""80 """*/
 		    //   alert("alpha : "+alpha);
 		      vy = v0*Math.cos(alpha)
         vz = v0*Math.sin(alpha)
-			  
-        range = v0*v0*Math.sin(2*alpha)/gg
-	rangea= (-23 / (range+14))
-	rangeb = (35* range + 168 ) /(range + 12 )
-			   
+//         var R = v0*v0*Math.sin(2*alpha)/gg
 
         time = 0;
 			//alert("time : "+time);
@@ -267,12 +260,12 @@ var stableMatrix =[  /*"""80 """*/
 	    
 	    function reset(){
 		ball.position.x = 75
-		  ball.position.y = -14
-		    ball.position.z = 40
-		    ball.scale.x = 35;
-		    ball.scale.y = 35;
+		  ball.position.y = 60
+		    ball.position.z = 10
+		    ball.scale.x = 12;
+		    ball.scale.y = 12;
 		    isGoal = false
-		    ball.scale.z = 35;
+		    ball.scale.z = 12;
 		    reverse = 0
 		    time = 0
 		   clearInterval(interval);
@@ -287,18 +280,14 @@ var stableMatrix =[  /*"""80 """*/
      try{
 	    // alert("here");
         
-        var y = vy*time -14
-        var z = 40
+        var y = vy*time + 60
+        var z = 10
 	if(vz !=0 )
-	   z= -0.5*gg**time*time + vz*time + 40
+	   z= -0.5*gg**time*time + vz*time + 10
 	     else
-	   z=40
+	   z=10
 		     
         var x = linearPath(y) + 75
-	var nscale = (rangea*y) + rangeb
-	ball.scale.x = nscale
-	ball.scale.y = nscale
-	ball.scale.z = nscale
 	
 // 	$("#pos").text("( "+ x+" , "+y+" , "+z+" )")
 
@@ -422,7 +411,7 @@ detectGoal(ball.position.x , ball.position.y,ball.position.z);
 						 model.rotation.x = Math.PI/2
 					 });
 						 
-          nft.addSimpleModel('./ball2.glb' , 75 , -14,40,35, function(model){
+          nft.addSimpleModel('./ball2.glb' , 75 , 60,10,12, function(model){
 		  ball = model;
 		  
 		  nft.setOnObjectClickListener('./ball2.glb',function(startEvent,endEvent,point){
