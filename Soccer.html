@@ -73,8 +73,7 @@
 	    let keeperStep = 0.8
 	    let ghaltkhorde = 40
 	    let totalDistance = -1
-	    let reverse = 0
-	    let reverseY = 0
+
 	    
 	    let ballRotatingSpeed =  0.72
 	    
@@ -144,10 +143,9 @@ var stableMatrix =[  /*"""80 """*/
 		    if(x >= 36 && x<= 106 && y >= 206 && y<= 225 && z<= 20){
 			    if(isGoal == false) {
 			    if(x>= kx && x <= (kx+45)){
-				    isGoal = true
+// 				    isGoal = true
 				   // alert("failed")
-				    reverse = 1
-				    reverseY = y
+
 				    
 				    //end = true
 			    }else {
@@ -266,7 +264,6 @@ var stableMatrix =[  /*"""80 """*/
 		    ball.scale.y = 12;
 		    isGoal = false
 		    ball.scale.z = 12;
-		    reverse = 0
 		    time = 0
 		   clearInterval(interval);
 		    startInterval()
@@ -301,8 +298,6 @@ var stableMatrix =[  /*"""80 """*/
 // 			 $("#pos").text(ball.rotation.x)
 // 			  $("#pos").text(" y : "+ ball.position.y + " x : "+ ball.position.x + " A : " + A)
 			var temp = ball.position.y + 1
-// 			if(reverse == 1 )
-// 				temp = ( 2*reverseY) - temp
 			 ball.position.y = temp
 			 ball.position.z = 10*Math.abs(Math.sin(ghaltkhorde/6))
 			ball.position.x = linearPath(ball.position.y) + 75
@@ -317,8 +312,6 @@ detectGoal(ball.position.x , ball.position.y,ball.position.z);
         }else{
           ball.position.x = x
 	var temp = y
-	if(reverse == 1 )
-	     temp = ( 2*reverseY) - temp
           ball.position.y= temp
           ball.position.z = z
 detectGoal(ball.position.x , ball.position.y,ball.position.z);
