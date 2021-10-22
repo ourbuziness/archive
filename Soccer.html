@@ -73,6 +73,7 @@
 	    let keeperStep = 0.8
 	    let ghaltkhorde = 40
 	    let totalDistance = -1
+	    let reverseY = -1
 
 	    
 	    let ballRotatingSpeed =  0.72
@@ -130,6 +131,24 @@ var stableMatrix =[  /*"""80 """*/
 	    var isBreak = false
 	    var unlocked = false
       
+	    	    
+	    function reset(){
+		ball.position.x = 75
+		  ball.position.y = 60
+		    ball.position.z = 10
+		    ball.scale.x = 12;
+		    ball.scale.y = 12;
+		    isGoal = false
+		    ball.scale.z = 12;
+		    time = 0
+		    reverseY = -1
+		   clearInterval(interval);
+		    startInterval()
+		  //  end = false
+		    
+		    
+	    }
+	    
 	       $("#reset").click(function(){
         reset();
     }); 
@@ -144,8 +163,9 @@ var stableMatrix =[  /*"""80 """*/
 			    if(isGoal == false) {
 			    if(x>= kx && x <= (kx+45)){
 // 				    isGoal = true
+				    reverseY = y
 				   // alert("failed")
-
+                                 
 				    
 				    //end = true
 			    }else {
@@ -255,22 +275,7 @@ var stableMatrix =[  /*"""80 """*/
 	      }catch(e){alert(e)}
         
       }
-	    
-	    function reset(){
-		ball.position.x = 75
-		  ball.position.y = 60
-		    ball.position.z = 10
-		    ball.scale.x = 12;
-		    ball.scale.y = 12;
-		    isGoal = false
-		    ball.scale.z = 12;
-		    time = 0
-		   clearInterval(interval);
-		    startInterval()
-		  //  end = false
-		    
-		    
-	    }
+
 
       function createCubic(time){
 	      
@@ -278,6 +283,8 @@ var stableMatrix =[  /*"""80 """*/
 	    // alert("here");
         
         var y = vy*time + 60
+	if(reverseY != -1)
+		y = (2*reverseY) - y
         var z = 10
 	if(vz !=0 )
 	   z= -0.5*gg**time*time + vz*time + 10
