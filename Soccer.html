@@ -171,7 +171,7 @@ var stableMatrix =[  /*"""80 """*/
 				    //end = true
 			    }else {
 				    isGoal = true
-				    reverseY = y
+// 				    reverseY = y
 				     alert("goal")
 				    }
 			    }
@@ -316,7 +316,7 @@ var stableMatrix =[  /*"""80 """*/
 			 ball.position.y = temp
 			 ball.position.z = 10*Math.abs(Math.sin(ghaltkhorde/6))
 			ball.position.x = linearPath(ball.position.y) + 75
-			  ball.rotation.x -= ((ghaltkhorde/80)*(ballRotatingSpeed - 0.1) + 0.1)
+			 ball.rotation.x = ball.rotation.x + (inc*(-1)*((ghaltkhorde/80)*(ballRotatingSpeed - 0.1) + 0.1))
 			 ghaltkhorde --;
 detectGoal(ball.position.x , ball.position.y,ball.position.z);
 
@@ -337,7 +337,12 @@ detectGoal(ball.position.x , ball.position.y,ball.position.z);
 // 			ball.scale.y = 4
 // 		  end = true
 // 	  }
-          ball.rotation.x -= ballRotatingSpeed
+	
+		var incs = -1
+			 if(reverseY != -1)
+				 incs = 1
+		
+          ball.rotation.x  =  ball.rotation.x + (incs*ballRotatingSpeed)
 // 		 $("#pos").text(ball.rotation.x)
         }
 	        }catch(e){
