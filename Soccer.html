@@ -163,7 +163,7 @@ var stableMatrix =[  /*"""80 """*/
 		    if(x >= 36 && x<= 106 && y >= 206 && y<= 225 && z<= 20){
 			    if(isGoal == false) {
 			    if(x>= kx && x <= (kx+45)){
-// 				    isGoal = true
+				    isGoal = true
 				    reverseY = y
 				   // alert("failed")
                                  
@@ -306,7 +306,13 @@ var stableMatrix =[  /*"""80 """*/
 		 if(ghaltkhorde > 0){
 // 			 $("#pos").text(ball.rotation.x)
 // 			  $("#pos").text(" y : "+ ball.position.y + " x : "+ ball.position.x + " A : " + A)
-			var temp = ball.position.y + 1
+			 var inc = 1
+			 if(reverseY != -1)
+				 inc = -1
+				 
+			var temp = ball.position.y + inc
+			
+				
 			 ball.position.y = temp
 			 ball.position.z = 10*Math.abs(Math.sin(ghaltkhorde/6))
 			ball.position.x = linearPath(ball.position.y) + 75
