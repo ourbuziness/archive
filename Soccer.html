@@ -293,7 +293,7 @@ var stableMatrix =[  /*"""80 """*/
 	     else
 	   z=10
 		     
-        var x = linearPath(y) + 75
+        var x = linearPath(y) + 60
 	
 // 	$("#pos").text("( "+ x+" , "+y+" , "+z+" )")
 
@@ -315,7 +315,7 @@ var stableMatrix =[  /*"""80 """*/
 				
 			 ball.position.y = temp
 			 ball.position.z = 10*Math.abs(Math.sin(ghaltkhorde/6))
-			ball.position.x = linearPath(ball.position.y) + 75
+			ball.position.x = linearPath(ball.position.y) + 60
 			 ball.rotation.x = ball.rotation.x + (inc*(-1)*((ghaltkhorde/80)*(ballRotatingSpeed - 0.1) + 0.1))
 			 ghaltkhorde --;
 detectGoal(ball.position.x , ball.position.y,ball.position.z);
