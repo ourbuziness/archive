@@ -158,7 +158,7 @@ var stableMatrix =[  /*"""80 """*/
 		    var kx = keeper.position.x 
 		    var ky = keeper.position.y
 		    var kz = keeper.position.z
-		    $("#changes").text("y = "+y)
+		    $("#changes").text("x = "+x)
 		    
 		    if(x >= 36 && x<= 106 && y >= 200 && y<= 225 && z<= 30){
 			    if(isGoal == false) {
@@ -293,7 +293,7 @@ var stableMatrix =[  /*"""80 """*/
 	     else
 	   z=10
 		     
-        var x = linearPath(y) + 70
+        var x = linearPath(y) + 75
 	
 // 	$("#pos").text("( "+ x+" , "+y+" , "+z+" )")
 
@@ -315,7 +315,7 @@ var stableMatrix =[  /*"""80 """*/
 				
 			 ball.position.y = temp
 			 ball.position.z = 10*Math.abs(Math.sin(ghaltkhorde/6))
-			ball.position.x = linearPath(ball.position.y) + 70
+			ball.position.x = linearPath(ball.position.y) + 75
 			 ball.rotation.x = ball.rotation.x + (inc*(-1)*((ghaltkhorde/80)*(ballRotatingSpeed - 0.1) + 0.1))
 			 ghaltkhorde --;
 detectGoal(ball.position.x , ball.position.y,ball.position.z);
