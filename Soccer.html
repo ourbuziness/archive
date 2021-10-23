@@ -142,7 +142,7 @@ var stableMatrix =[  /*"""80 """*/
 		    ball.scale.z = 12;
 		    time = 0
 		    reverseY = -1
-		   clearInterval(interval);
+		    clearInterval(interval);
 		    startInterval()
 		  //  end = false
 		    
@@ -160,7 +160,7 @@ var stableMatrix =[  /*"""80 """*/
 		    var kz = keeper.position.z
 		    $("#changes").text("y = "+y)
 		    
-		    if(x >= 36 && x<= 106 && y >= 206 && y<= 225 && z<= 20){
+		    if(x >= 36 && x<= 106 && y >= 200 && y<= 225 && z<= 20){
 			    if(isGoal == false) {
 			    if(x>= kx && x <= (kx+45)){
 				    isGoal = true
@@ -239,7 +239,7 @@ var stableMatrix =[  /*"""80 """*/
 		fps++
 		if(FPS > 0 && FPS <=60){
 			var n =  (0.01 *(60/FPS))
-// 			steps = 0.05 + n
+ 			steps = 0.05 + n
 			
 			ballRotatingSpeed = 0.72 + n
 		}
