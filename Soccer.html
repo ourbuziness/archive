@@ -537,12 +537,12 @@ if(timeStamp == -1){
 
      }else{
     var newTime = Date.now()
-    if((newTime - timeStamp)>80){
+    if((newTime - timeStamp)>10){
       var tt = ""
       isBreak = false
       timeStamp = newTime
       for(let i =0 ; i< 16; i++){
-       var speed = Math.abs(latestMatrix[i] - mdata[i]) / 80
+       var speed = Math.abs(latestMatrix[i] - mdata[i])
        if(speed > stableMatrix[i]){
          isBreak = true
 	    $("#changes").text("i = " +i + "  speed : " + speed )
