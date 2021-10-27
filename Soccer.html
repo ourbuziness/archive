@@ -420,66 +420,19 @@ detectGoal(ball.position.x , ball.position.y,ball.position.z);
 
 					 });
           
-					 nft.addSimpleAnimatedCompressedModel('./field3.glb' , 70 , 104 ,-10,0.5 , function(gltf,model){
+					 nft.addSimpleAnimatedCompressedModel('./field3_1.glb' , 70 , 104 ,-10,0.5 , function(gltf,model){
 						 model.rotation.x = Math.PI/2
+						 nft.setOnObjectClickListener('./field3_1.glb',function(startEvent,endEvent,point){
+							 handleTouchBall(startEvent,endEvent,point)
+						  });
 					 });
 						 
           nft.addSimpleModel('./ball2.glb' , 75 , 60,10,12, function(model){
 		  ball = model;
 		  
 		  nft.setOnObjectClickListener('./ball2.glb',function(startEvent,endEvent,point){
-			//   alert("clicked")
-			  
-			//  var audio = document.getElementById("kick");
-		//	  audio.muted = false
-                      //    audio.play();
-			  
-			 clearInterval(interval);
-			  shedat = sheddatArray[(prog/10 | 0)]
 
-			  v0 = sheddatArray[(prog/10 | 0)]
- 			  if(FPS > 0 && FPS < 40 ) v0 = v0 + ((60/FPS)*8)
-//v0 = 220
- 			  var v = new THREE.Vector3()
-
- 			  model.getWorldPosition(v)
-
-			  var p1 =  model.worldToLocal(point);
-			  var p2 = model.worldToLocal(v);
-
-			 var yys = (p1.y - p2.y)* 100 | 0
-// 			 var zzs = (p1.z - p2.z)*100 | 0
-// 			 zzs = -1*zzs
-// 			 if(zzs < -80 || zzs >70){
-// 				zzs = 0	 
-// 			 }else{
-// 				zzs = ((zzs + 80)* 72)/130
-// 			 }
-			  try{
-
-				startx =  startx= startEvent.touches[0].pageX
-   				starty= startEvent.touches[0].pageY
-			  
-				endx= endEvent.changedTouches[0].pageX;
-				endy= endEvent.changedTouches[0].pageY;
-					
-				shib = (endy - starty) / (endx - startx)
-				  
-				var zpower = Math.sqrt( Math.pow(endy - starty,2) + Math.pow(endx - startx,2) )
-				if(zpower < 0 ) zpower = -1 * zpower
-				 if(zpower > 350 ) zpower = 40
-				  else{
-					zpower = ((zpower * 40)/350)
-				  }
-				  
-			var xxs = -1* shib
-  			configPath(xxs,yys + 28 ,zpower);
-				  
-//    			 $("#pos").text("power : "+ zpower +"\nx : " + xxs)
-			  }catch(e){
-			alert(e);	  
-			  }
-			 
+			 handleTouchBall(startEvent,endEvent,point)
 		  });
 
 						
@@ -573,6 +526,60 @@ if(timeStamp == -1){
             });
 	    
  
+	    function handleTouchBall(startEvent,endEvent,point){
+		    
+					//   alert("clicked")
+			  
+			//  var audio = document.getElementById("kick");
+		//	  audio.muted = false
+                      //    audio.play();
+			  
+			 clearInterval(interval);
+			  shedat = sheddatArray[(prog/10 | 0)]
+
+			  v0 = sheddatArray[(prog/10 | 0)]
+ 			  if(FPS > 0 && FPS < 40 ) v0 = v0 + ((60/FPS)*8)
+//v0 = 220
+ 			  var v = new THREE.Vector3()
+
+ 			  model.getWorldPosition(v)
+
+			  var p1 =  model.worldToLocal(point);
+			  var p2 = model.worldToLocal(v);
+
+			 var yys = (p1.y - p2.y)* 100 | 0
+// 			 var zzs = (p1.z - p2.z)*100 | 0
+// 			 zzs = -1*zzs
+// 			 if(zzs < -80 || zzs >70){
+// 				zzs = 0	 
+// 			 }else{
+// 				zzs = ((zzs + 80)* 72)/130
+// 			 }
+			  try{
+
+				startx =  startx= startEvent.touches[0].pageX
+   				starty= startEvent.touches[0].pageY
+			  
+				endx= endEvent.changedTouches[0].pageX;
+				endy= endEvent.changedTouches[0].pageY;
+					
+				shib = (endy - starty) / (endx - startx)
+				  
+				var zpower = Math.sqrt( Math.pow(endy - starty,2) + Math.pow(endx - startx,2) )
+				if(zpower < 0 ) zpower = -1 * zpower
+				 if(zpower > 350 ) zpower = 40
+				  else{
+					zpower = ((zpower * 40)/350)
+				  }
+				  
+			var xxs = -1* shib
+  			configPath(xxs,yys + 28 ,zpower);
+				  
+//    			 $("#pos").text("power : "+ zpower +"\nx : " + xxs)
+			  }catch(e){
+			alert(e);	  
+			  }    
+	    }
 	    
     </script>
 </body>
