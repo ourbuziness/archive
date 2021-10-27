@@ -414,25 +414,25 @@ detectGoal(ball.position.x , ball.position.y,ball.position.z);
 // 					camera.add(directionalLight);
 					
 					let spotLight1 = new THREE.SpotLight( 0xff0000 );
-						spotLight1.position.set( 0, 0, 98 );
+						spotLight1.position.set( 0, 50, 40 );
 
 						spotLight1.castShadow = true;
 
 						spotLight1.shadow.mapSize.width = 1024;
 						spotLight1.shadow.mapSize.height = 1024;
-						spotLight1.angle= 0.174;
+// 						spotLight1.angle= 0.174;
 
 
 						camera.add( spotLight1 );
 					
 					let spotLight2 = new THREE.SpotLight( 0xffffff );
-						spotLight2.position.set( 280, 0, 98 );
+						spotLight2.position.set( 280, 0, 40 );
 
 						spotLight2.castShadow = true;
 
 						spotLight2.shadow.mapSize.width = 1024;
 						spotLight2.shadow.mapSize.height = 1024;
-						spotLight2.angle= 0.174;
+// 						spotLight2.angle= 0.174;
 
 
 						camera.add( spotLight2 );
