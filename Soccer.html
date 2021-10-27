@@ -411,7 +411,21 @@ detectGoal(ball.position.x , ball.position.y,ball.position.z);
 
 					let directionalLight = new THREE.DirectionalLight(0xFFFFFF, 0.8 * Math.PI);
 					directionalLight.position.set(0, 50, 40);
-					camera.add(directionalLight);
+// 					camera.add(directionalLight);
+					
+					const spotLight = new THREE.SpotLight( 0xff0000 );
+						spotLight.position.set( 0, 0, 98 );
+
+						spotLight.castShadow = true;
+
+						spotLight.shadow.mapSize.width = 1024;
+						spotLight.shadow.mapSize.height = 1024;
+
+// 						spotLight.shadow.camera.near = 500;
+// 						spotLight.shadow.camera.far = 4000;
+// 						spotLight.shadow.camera.fov = 30;
+
+						camera.add( spotLight );
 
 					 nft.addSimpleModel('./keeper.glb' , 70 , 185 ,0,4 , function(model){
 						 keeper = model
