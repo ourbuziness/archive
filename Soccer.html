@@ -175,15 +175,20 @@ stableMatrix =[  /*"""test """*/
 				    isGoal = true
 				    reverseY = y
 				   // alert("failed")
-                                 
+                                  // keeper take the ball
 				    
 				    //end = true
 			    }else {
 				    isGoal = true
+				    end = true
 // 				    reverseY = y
 				     alert("goal")
+				    //goal
 				    }
 			    }
+		    }else if(x<=0 || x>=150 || y>=220 ){
+			    end = true
+			    // ball went outside
 		    }
 		    
 	    }
