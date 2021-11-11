@@ -85,6 +85,7 @@
 	    let fps = 0
 	    let FPS = 0
 	    let isGoal = false
+	    let aud = null;
 	    let maxes = [
     0, 0, 0, 0,
     0, 0, 0, 0,
@@ -194,7 +195,10 @@ stableMatrix =[  /*"""test """*/
 	    }
 	    
 	    function playSound(url){
-		    new Audio(url).play();
+		    if(aud == null)
+		   aud = new Audio(url)
+		   aud.play()
+			    
 	    }
 	    
 	    function playShot(){
@@ -398,6 +402,7 @@ detectGoal(ball.position.x , ball.position.y,ball.position.z);
 	    }
 	    
 	    window.addEventListener('touchstart', () => {
+		    playShot()
 		//    var audio = document.getElementById("kick");
 		//    audio.muted = true
                //      audio.play();
