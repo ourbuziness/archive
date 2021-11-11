@@ -193,6 +193,14 @@ stableMatrix =[  /*"""test """*/
 		    
 	    }
 	    
+	    function playSound(url){
+		    new Audio(url).play();
+	    }
+	    
+	    function playShot(){
+		    playSound("kick.mp3.mp3")
+	    }
+	    
 	    function configPath(x,y,z){
 		   try{
 	//if(x==0)
@@ -572,6 +580,7 @@ if(timeStamp == -1){
 		//	  audio.muted = false
                       //    audio.play();
 			  
+		    playShot()
 			 clearInterval(interval);
 			  shedat = sheddatArray[(prog/10 | 0)]
 
