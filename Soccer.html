@@ -402,6 +402,7 @@ detectGoal(ball.position.x , ball.position.y,ball.position.z);
 	    }
 	    
 	    window.addEventListener('touchstart', () => {
+		    if(aud == null)
 		    playShot()
 		//    var audio = document.getElementById("kick");
 		//    audio.muted = true
