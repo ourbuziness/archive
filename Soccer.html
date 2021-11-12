@@ -15,17 +15,10 @@
 
 </head>
 <body style="overscroll-behavior: contain;">
-
-	<audio id="kick">
-		<source src="kick.mp3.mp3" type="audio/mpeg"></source>
-	</audio>
-
-	<audio id="free">
-		<source src="free.mp3" type="audio/mpeg"></source>
-	</audio>
 	
 	
 		<script src="three.min.js"></script>
+		<script src="howler.js"></script>
 		<script src="ARnft.js"></script>
         	<script type='text/javascript' src='Tween.js'></script>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
 		<script type='text/javascript' src='OrbitControls.js'></script>
@@ -196,7 +189,9 @@ stableMatrix =[  /*"""test """*/
 	    
 	    function playSound(url){
 		    if(aud == null)
-		   aud = new Audio(url)
+		   aud = new Howl({
+		      src: ['url']
+		    });
 		   aud.play()
 			    
 	    }
