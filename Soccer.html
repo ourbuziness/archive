@@ -161,7 +161,7 @@ var stableMatrix =[  /*"""test """*/
 }
 	    
 	    function goalAnimation(){
-		    
+		    try{
 var goalRepeatConfetti = 0
 var confettiInterval = setInterval(function(){
   
@@ -175,6 +175,7 @@ var confettiInterval = setInterval(function(){
 goalRepeatConfetti++
 if(goalRepeatConfetti > 2) clearInterval(confettiInterval)
 }, 500);    
+		    }catch(e){alert(e)}
 	    }
 	    
 	    function detectGoal(x,y,z){
