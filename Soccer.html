@@ -22,7 +22,7 @@
 		<script src="ARnft.js"></script>
         	<script type='text/javascript' src='Tween.js'></script>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
 		<script type='text/javascript' src='OrbitControls.js'></script>
-		<script src="confetti.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
 		<script src="jquery.min.js"></script>
 	
     <script>
@@ -158,10 +158,27 @@ var stableMatrix =[  /*"""test """*/
 	
 	    function goalAnimation(){
 		    
-		var confettiElement = document.getElementById('whole');
-			var confettiSettings = { target: confettiElement , clock : 56};
-			var confetti = new ConfettiGenerator(confettiSettings);
-			confetti.render();    
+		confetti({
+  angle: randomInRange(55, 125),
+  spread: randomInRange(50, 70),
+  particleCount: randomInRange(50, 100),
+  origin: { y: 0.6 }
+});
+		
+		    		confetti({
+  angle: randomInRange(55, 125),
+  spread: randomInRange(50, 70),
+  particleCount: randomInRange(50, 100),
+  origin: { y: 0.6 }
+});
+		    
+		    		confetti({
+  angle: randomInRange(55, 125),
+  spread: randomInRange(50, 70),
+  particleCount: randomInRange(50, 100),
+  origin: { y: 0.6 }
+});
+		    
 	    }
 	    
 	    function detectGoal(x,y,z){
