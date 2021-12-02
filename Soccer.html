@@ -481,7 +481,9 @@ detectGoal(ball.position.x , ball.position.y,ball.position.z);
 		    
 	    }
 	    
-	    window.addEventListener('click', () => {
+	    const el = document.getElementById("body");
+	    
+	    el.addEventListener('click', () => {
 		    if(aud == null)
 		    playShot()
 		//    var audio = document.getElementById("kick");
