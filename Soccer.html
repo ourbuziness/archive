@@ -156,6 +156,13 @@ var stableMatrix =[  /*"""test """*/
         reset();
     }); 
 	
+	    function goalAnimation(){
+		    
+		var confettiElement = document.getElementById('whole');
+			var confettiSettings = { target: confettiElement , clock : 56};
+			var confetti = new ConfettiGenerator(confettiSettings);
+			confetti.render();    
+	    }
 	    
 	    function detectGoal(x,y,z){
 		    var kx = keeper.position.x 
@@ -176,7 +183,8 @@ var stableMatrix =[  /*"""test """*/
 				    isGoal = true
 				    end = true
 // 				    reverseY = y
-				     alert("goal")
+// 				     alert("goal")
+				    goalAnimation()
 				    //goal
 				    }
 			    }
