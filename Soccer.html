@@ -282,7 +282,10 @@ if(goalRepeatConfetti > 2) clearInterval(confettiInterval)
 	    }
 	    
 	    function playGoal(){
-		playSound("goal_.mp3")   
+		var aud1 = new Howl({
+		      src: ["goal_.mp3"]
+		    });
+		   aud1.play()
 	    }
 	    
 	    function playShot(){
