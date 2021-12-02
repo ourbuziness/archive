@@ -467,7 +467,7 @@ detectGoal(ball.position.x , ball.position.y,ball.position.z);
 
 					 });
           
-					 nft.addSimpleAnimatedCompressedModel('./field3_1.glb' , 70 , 104 ,-10,0.5 , function(gltf,model){
+					 nft.addCompressedModelWithProgress('./field3_1.glb' , 70 , 104 ,-10,0.5 , function(gltf,model){
 						 model.rotation.x = Math.PI/2
 						 nft.setOnObjectClickListener('./field3_1.glb',function(startEvent,endEvent,point){
 							 handleTouchBall(startEvent,endEvent,point,model)
@@ -486,7 +486,7 @@ detectGoal(ball.position.x , ball.position.y,ball.position.z);
 									});
           
           
-                    nft.addSimpleAnimatedCompressedModel('./goal1.glb' , 70 , 210 ,0,0.2 ,function(gltf,model){
+                    nft.addCompressedModelWithProgress('./goal1.glb' , 70 , 210 ,0,0.2 ,function(gltf,model){
 
 					goal = model;
 			    model.rotation.x = (Math.PI/2)
