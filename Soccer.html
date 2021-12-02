@@ -74,6 +74,7 @@
 	    let tickAdded = false
 	    
 	    let latestMatrix = null
+	    let keeperStop = false
 	    
 	    let fps = 0
 	    let FPS = 0
@@ -141,6 +142,7 @@ var stableMatrix =[  /*"""test """*/
 		    ball.position.z = 10
 		    ball.scale.x = 12;
 		    ball.scale.y = 12;
+		    keeperStop = false
 		    isGoal = false
 		    ball.scale.z = 12;
 		    time = 0
@@ -161,6 +163,7 @@ var stableMatrix =[  /*"""test """*/
 }
 	    
 	    function goalAnimation(){
+		    keeperStop = true
 		    try{
 var goalRepeatConfetti = 0
 var confettiInterval = setInterval(function(){
@@ -301,6 +304,7 @@ if(goalRepeatConfetti > 2) clearInterval(confettiInterval)
 		keeperx += keeperStep
 		if(keeperx >90) keeperStep = -1 * keeperStep
 		if(keeperx <=30) keeperStep = -1 * keeperStep
+		if(!keeperStop)
 		keeper.position.x = keeperx
           if(!end){
 		  try{
