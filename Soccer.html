@@ -490,16 +490,6 @@ detectGoal(ball.position.x , ball.position.y,ball.position.z);
 			.then((nft) => {
 				startInterval()
 				nft_loaded = nft;
-
-				try{
-					    var el = document.getElementById("body");
-	    
-	    el.addEventListener('click', () => {
-		    if(aud == null)
-		    playShot()
-		    unlocked = true
-	    })
-				}catch(e){alert(e)}
 				
 				document.addEventListener('onInitThreejsRendering', (ev) => {
 					const renderer = ev.detail.renderer;
