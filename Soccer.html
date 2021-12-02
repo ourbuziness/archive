@@ -5,12 +5,71 @@
 	<title>Mosallas</title>
 	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=1">
 	<meta name="apple-mobile-web-app-capable" content="yes">
-	<link rel="stylesheet" href="nft-style.css">
+	<link rel="stylesheet" href="nft-style.css"/>
+	<style>
+	.bn29 {
+  border: none;
+  padding: 0.8em 2.5em;
+  outline: none;
+  color: white;
+  font-style: 1.2em;
+  position: relative;
+  z-index: 1;
+  cursor: pointer;
+  background: none;
+  text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.45);
+}
+
+.bn29:before,
+.bn29:after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-radius: 10em;
+  -webkit-transform: translateX(-50%) translateY(-50%);
+  transform: translateX(-50%) translateY(-50%);
+  width: 105%;
+  height: 105%;
+  content: "";
+  z-index: -2;
+  background-size: 400% 400%;
+  background: linear-gradient(
+    60deg,
+    #f79533,
+    #f37055,
+    #ef4e7b,
+    #a166ab,
+    #5073b8,
+    #1098ad,
+    #07b39b,
+    #6fba82
+  );
+}
+
+.bn29:before {
+  -webkit-filter: blur(7px);
+  filter: blur(7px);
+  -webkit-transition: all 0.25s ease;
+  transition: all 0.25s ease;
+  -webkit-animation: pulse 10s infinite ease;
+  animation: pulse 10s infinite ease;
+}
+
+.bn29:after {
+  -webkit-filter: blur(0.3px);
+  filter: blur(0.3px);
+}
+
+.bn29:hover:before {
+  width: 115%;
+  height: 115%;
+}
+	</style>
 	<canvas id="whole" style="position: absolute;z-index:999;width:100%;height:100%"></canvas>
 	<p id="pos" style="position: absolute;z-index:999;background-color: #fff;left:40px;visibility:hidden">position</p>
 	<p id="pos1" style="position: absolute;z-index:999;background-color: #fff;left:40px;top:50pxx;visibility:hidden">position</p>
 	<p id="changes" style="position: absolute;z-index:999;background-color: #fff;left:40px;top:100px;visibility:hidden">changes</p>
-	<button id="reset" style="position: absolute;z-index:999;bottom: 100px; left:100px;height:40px">try sgain</button>
+	<button id="reset" className="bn29" style="position: absolute;z-index:999;bottom: 100px; left:100px">try sgain</button>
 	<progress id="power" value="10" max="100" style="-webkit-transform: rotate(-90deg); position: absolute;z-index:999;bottom:150px; left:-100px;width:350px;height:40px;background-color: #9c27b0; "></progress>
 
 </head>
