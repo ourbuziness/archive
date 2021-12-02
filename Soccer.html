@@ -162,27 +162,19 @@ var stableMatrix =[  /*"""test """*/
 	    
 	    function goalAnimation(){
 		    
-		confetti({
+var goalRepeatConfetti = 0
+var confettiInterval = setInterval(function(){
+  
+  confetti({
   angle: randomInRange(55, 125),
   spread: randomInRange(50, 70),
   particleCount: randomInRange(50, 100),
   origin: { y: 0.6 }
 });
-		
-		    		confetti({
-  angle: randomInRange(55, 125),
-  spread: randomInRange(50, 70),
-  particleCount: randomInRange(50, 100),
-  origin: { y: 0.6 }
-});
-		    
-		    		confetti({
-  angle: randomInRange(55, 125),
-  spread: randomInRange(50, 70),
-  particleCount: randomInRange(50, 100),
-  origin: { y: 0.6 }
-});
-		    
+
+goalRepeatConfetti++
+if(goalRepeatConfetti > 2) clearInterval(confettiInterval)
+}, 500);    
 	    }
 	    
 	    function detectGoal(x,y,z){
