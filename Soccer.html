@@ -481,7 +481,17 @@ detectGoal(ball.position.x , ball.position.y,ball.position.z);
 		    
 	    }
 	    
-	    const el = document.getElementById("body");
+	    window.addEventListener( 'touchmove', function() {})
+
+	    //sun_small1
+	    //sun_small
+	    //sunbig
+			ARnft.ARnft.init(800, 600, "archive/DataNFT/sun_n_7", 'config3.json', false, true)
+			.then((nft) => {
+				startInterval()
+				nft_loaded = nft;
+
+					    var el = document.getElementById("body");
 	    
 	    el.addEventListener('click', () => {
 		    if(aud == null)
@@ -495,17 +505,7 @@ detectGoal(ball.position.x , ball.position.y,ball.position.z);
 //                      audio1.play();
 		    unlocked = true
 	    })
-	    
-	    window.addEventListener( 'touchmove', function() {})
-
-	    //sun_small1
-	    //sun_small
-	    //sunbig
-			ARnft.ARnft.init(800, 600, "archive/DataNFT/sun_n_7", 'config3.json', false, true)
-			.then((nft) => {
-				startInterval()
-				nft_loaded = nft;
-
+				
 				document.addEventListener('onInitThreejsRendering', (ev) => {
 					const renderer = ev.detail.renderer;
 					const scene = ev.detail.scene;
