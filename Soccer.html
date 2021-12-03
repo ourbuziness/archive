@@ -585,39 +585,39 @@ powbar[3].style.width=npowbar
 //        }
 //     }
              
-if(timeStamp == -1){
-     timeStamp = Date.now()
-       latestMatrix = mdata
+// if(timeStamp == -1){
+//      timeStamp = Date.now()
+//        latestMatrix = mdata
 
-     }else{
-    var newTime = Date.now()
-    if((newTime - timeStamp)>10){
-      var tt = ""
-      isBreak = false
-      timeStamp = newTime
-      for(let i =0 ; i< 16; i++){
-       var speed = Math.abs(latestMatrix[i] - mdata[i])
-       if(speed > stableMatrix[i]){
-         isBreak = true
-	    $("#changes").text("i = " +i + "  speed : " + speed )
-           $("#pos1").text("در حال حرکت")
-        // Utils.setInterpolate(data)
-        // Utils.setMatrix(this.root.matrix, data)
-         break;
-       }
-      }
-      latestMatrix = mdata
-      if(!isBreak){
-           $("#pos1").text("ثابت")
-       //const matrix = Utils.interpolate(data)
-       //Utils.setMatrix(this.root.matrix, matrix)
-      }
+//      }else{
+//     var newTime = Date.now()
+//     if((newTime - timeStamp)>10){
+//       var tt = ""
+//       isBreak = false
+//       timeStamp = newTime
+//       for(let i =0 ; i< 16; i++){
+//        var speed = Math.abs(latestMatrix[i] - mdata[i])
+//        if(speed > stableMatrix[i]){
+//          isBreak = true
+// 	    $("#changes").text("i = " +i + "  speed : " + speed )
+//            $("#pos1").text("در حال حرکت")
+//         // Utils.setInterpolate(data)
+//         // Utils.setMatrix(this.root.matrix, data)
+//          break;
+//        }
+//       }
+//       latestMatrix = mdata
+//       if(!isBreak){
+//            $("#pos1").text("ثابت")
+//        //const matrix = Utils.interpolate(data)
+//        //Utils.setMatrix(this.root.matrix, matrix)
+//       }
      
-}
+// }
      
 
 
-    }
+//     }
  }
 }catch(e){
    alert(e)
