@@ -414,8 +414,10 @@ if(goalRepeatConfetti > 2) clearInterval(confettiInterval)
         if(((ball.position.z <= 10 /*|| ball.position.y >= goal.position.y*/ ) && time > 0.1) || ghaltkhorde < 40){
 		//alert("end")
 		
-		if(ghaltkhorde == 40 )
+		if(ghaltkhorde == 40 ){
 			ball.position.z = 10
+			playShot()
+		}
 		
 		 if(ghaltkhorde > 0){
 // 			 $("#pos").text(ball.rotation.x)
