@@ -505,7 +505,13 @@ detectGoal(ball.position.x , ball.position.y,ball.position.z);
 		  prog = 10
 		  step = 10
 	  }
-   document.getElementById("power").style.width = (prog*350/100)+"px";
+			    
+var powbar = document.getElementsByClassName("growing-bar")
+var npowbar = (prog*350/100)+"px";
+powbar[0].style.width=npowbar
+powbar[1].style.width=npowbar
+powbar[2].style.width=npowbar
+powbar[3].style.width=npowbar
  }, 140);
 		    
 	    }
