@@ -15,7 +15,7 @@
 <!-- 	<button id="reset" class="bn29" style="position: absolute;z-index:999;bottom: 40px; left:140px;background-Image:url('retry.png');visibility:hidden;width:70px;height:70px;"></button> -->
 <!-- 	<progress id="power" value="10" max="100" style="-webkit-transform: rotate(-90deg); position: absolute;z-index:999;bottom:150px; left:-100px;width:350px;height:40px;background-color: #9c27b0; "></progress> -->
 
-	               <div class="chart" style="position: absolute;z-index:999;bottom:150px; left:-200px;width:350px;height:20px;">
+	               <div class="chart" style="position: absolute;z-index:999;bottom:150px; left:-200px;width:280px;height:20px;">
                     <div class="bar bar-75 red" id="power">
                         <div class="face top">
                             <div class="growing-bar"></div>
@@ -462,7 +462,7 @@ detectGoal(ball.position.x , ball.position.y,ball.position.z);
 	  }
 			    
 var powbar = document.getElementsByClassName("growing-bar")
-var npowbar = (prog*350/100)+"px";
+var npowbar = (prog*280/100)+"px";
 powbar[0].style.width=npowbar
 powbar[1].style.width=npowbar
 powbar[2].style.width=npowbar
