@@ -11,7 +11,7 @@
 	<p id="pos" style="position: absolute;z-index:999;background-color: #fff;left:40px;visibility:hidden">position</p>
 	<p id="pos1" style="position: absolute;z-index:999;background-color: #fff;left:40px;top:50pxx;visibility:hidden">position</p>
 	<p id="changes" style="position: absolute;z-index:999;background-color: #fff;left:40px;top:100px;visibility:hidden">changes</p>
-	<button id="reset" class="bn29" style="position: absolute;z-index:999;bottom: 100px; left:100px;background-Image:'tryagain.png';width:140px;height:50px;">try sgain</button>
+	<button id="reset" class="bn29" style="position: absolute;z-index:999;bottom: 100px; left:140px;background-Image:url('tryagain.png');width:140px;height:50px;;visibility:hidden">try sgain</button>
 <!-- 	<progress id="power" value="10" max="100" style="-webkit-transform: rotate(-90deg); position: absolute;z-index:999;bottom:150px; left:-100px;width:350px;height:40px;background-color: #9c27b0; "></progress> -->
 
 	               <div class="chart" style="position: absolute;z-index:999;bottom:150px; left:-200px;width:350px;height:40px;">
@@ -156,6 +156,7 @@ var stableMatrix =[  /*"""test """*/
       
 	    	    
 	    function reset(){
+		    goneResetButton()
 		ball.position.x = 75
 		  ball.position.y = 60
 		    ball.position.z = 10
@@ -201,6 +202,15 @@ if(goalRepeatConfetti > 2) clearInterval(confettiInterval)
 		    }catch(e){alert(e)}
 	    }
 	    
+	    function visibleResetButton(){
+		    
+		document.getElementById("reset").style.visibility = "visible"    
+	    }
+	    
+	    function goneResetButton(){
+		   document.getElementById("reset").style.visibility = "hidden"
+	    }
+	    
 	    function detectGoal(x,y,z){
 		    var kx = keeper.position.x 
 		    var ky = keeper.position.y
@@ -219,6 +229,7 @@ if(goalRepeatConfetti > 2) clearInterval(confettiInterval)
 			    }else {
 				    isGoal = true
 				    end = true
+				    visibleResetButton()
 // 				    reverseY = y
 // 				     alert("goal")
 				    goalAnimation()
@@ -227,6 +238,7 @@ if(goalRepeatConfetti > 2) clearInterval(confettiInterval)
 			    }
 		    }else if(x<=0 || x>=150 || y>=220 ){
 			    end = true
+			    visibleResetButton()
 			    // ball went outside
 		    }
 		    
@@ -399,6 +411,7 @@ detectGoal(ball.position.x , ball.position.y,ball.position.z);
 		  }else{
 			  ball.position.z = 10
           		end = true
+			  visibleResetButton()
 		  }
         }else{
           ball.position.x = x
