@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Mosallas</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=0.5, maximum-scale=1">
+	<meta name="apple-mobile-web-app-capable" content="yes">
+	<link rel="stylesheet" href="nft-style.css"/>
+	<link rel="stylesheet" href="progress.css"/>
+	<canvas id="whole" style="position: absolute;z-index:999;width:100%;height:100%"></canvas>
+	<p id="pos" style="position: absolute;z-index:999;background-color: #fff;left:40px;visibility:hidden">position</p>
+	<p id="pos1" style="position: absolute;z-index:999;background-color: #fff;left:40px;top:50pxx;visibility:hidden">position</p>
+	<p id="changes" style="position: absolute;z-index:999;background-color: #fff;left:40px;top:100px;visibility:hidden">changes</p>
+	<img src="retry.png"  id="reset" width="14%" height="12%" style="position: absolute;z-index:999;bottom: 40px; left:140px;visibility:hidden;"/>
+<!-- 	<button id="reset" class="bn29" style="position: absolute;z-index:999;bottom: 40px; left:140px;background-Image:url('retry.png');visibility:hidden;width:70px;height:70px;"></button> -->
+<!-- 	<progress id="power" value="10" max="100" style="-webkit-transform: rotate(-90deg); position: absolute;z-index:999;bottom:150px; left:-100px;width:350px;height:40px;background-color: #9c27b0; "></progress> -->
+
+	<div class="progress" style="-webkit-transform: rotate(-90deg); position: absolute;z-index:999;bottom:80px; left:-140px;width:280px;height:40px;">
+            <div class="bar shadow aztec"></div>
+        </div>
+
+</head>
+<body style="overscroll-behavior: contain;">
+	
+	
+		<script src="three.min.js"></script>
+		<script src="howler.min.js"></script>
+		<script src=".js"></script>
+        	<script type='text/javascript' src='Tween.js'></script>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+		<script type='text/javascript' src='OrbitControls.js'></script>
+		<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+		<script src="jquery.min.js"></script>
+	
+    <script>
+      
+      let nft_loaded;
+	    let goal ;
+	    let ball ;
+	    let path ;
+	    let pointsPath;
+	    let y4;
+        let length = 50;
+        let height = 20;
+// 	let sheddatArray = [70,90,95,100,110,120,130,140,150,180];
+	let sheddatArray = [40,45,50,55,60,65,80,90,100,105,110];
+        let shedat = 1;
+	    let prog = 10;
+// 	    let steps = 0.05;
+	    let steps = 0.05;
+	    let end = false ;
+	    let fraction = 0
+	    const up = new THREE.Vector3( 0,1, 0 );
+  	    const axis = new THREE.Vector3( );
+	    let interval;
+	    let step = 10 // for interval power
+        let v0;
+        let gg = 9.8
+        let A;
+	    let vy;
+	    let vz;
+        let alpha;
+	    let time;
+	    let endx
+	    let endy
+	    let startx
+	    let starty
+	    let shib
+	    let starte
+	    let canStarte = true
+	    let keeper
+	    let keeperx = 50
+	    let keeperStep = 0.8
+	    let ghaltkhorde = 40
+	    let totalDistance = -1
+	    let reverseY = -1
+
+	    
+	    let ballRotatingSpeed =  0.72
+	    
+	    let tickAdded = false
+	    
+	    let latestMatrix = null
+	    let keeperStop = false
+	    
+	    let fps = 0
+	    let FPS = 0
+	    let isGoal = false
+	    let aud = null;
+	    let maxes = [
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0
+  ]
+	    	    let sums = [
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0,
+    0, 0, 0, 0
+  ]
+		    
+// var stableMatrix =[
+//   0.0002 ,0.0003 ,0.003 ,0 ,
+//   0.0002 , 0.0002 , 0.0009,0,
+//   0.003,0.0009,0.00025,0,
+//   0.092,0.12 , 0.33 ,0
+// ]
+		    
+// 		    var stableMatrix =[
+//   0.0014 ,0.003 ,0.014 ,0 ,
+//   0.0056 , 0.0016 , 0.006,0,
+//   0.014,0.006,0.003,0,
+//   0.4,0.5 , 2.5 ,0
+// ]
+		    
+// 		    var stableMatrix =[  ****100 ***
+//   0.0005 ,0.00068 ,0.003 ,0 ,
+//   0.00035 , 0.00035 , 0.0009,0,
+//   0.003,0.0009,0.00025,0,
+//   0.092,0.12 , 0.4 ,0
+// ]
+		    
+var stableMatrix =[  /*"""test """*/
+  0.03 ,0.07 ,0.4 ,0 ,
+  0.04 , 0.04 , 0.5,0,
+  0.4,0.5,0.05,0,
+  4,6 , 19 ,0
+]
+
+// stableMatrix =[  /*"""test """*/
+//   0.03 ,0.07 ,0.4 ,0 ,
+//   0.04 , 0.04 , 0.5,0,
+//   0.4,0.5,0.05,0,
+//   3,4 , 19 ,0
+// ]
+
+
+	    
+	    var timeStamp = -1
+            var count = 0
+	    var isBreak = false
+	    var unlocked = false
+      
+	    	    
+	    function reset(){
+		    goneResetButton()
+		ball.position.x = 75
+		  ball.position.y = 60
+		    ball.position.z = 10
+		    ball.scale.x = 12;
+		    ball.scale.y = 12;
+		    keeperStop = false
+		    isGoal = false
+		    ball.scale.z = 12;
+		    time = 0
+		    reverseY = -1
+		    clearInterval(interval);
+		    startInterval()
+		  //  end = false
+		    
+		    
+	    }
+	    
+	       $("#reset").click(function(){
+        reset();
+    }); 
+	
+	    function randomInRange(min, max) {
+  return Math.random() * (max - min) + min;
+}
+	    
+	    function goalAnimation(){
+		    keeperStop = true
+		    playGoal()
+		    try{
+var goalRepeatConfetti = 0
+var confettiInterval = setInterval(function(){
+  
+  confetti({
+  angle: randomInRange(55, 125),
+  spread: randomInRange(50, 70),
+  particleCount: randomInRange(50, 100),
+  origin: { y: 0.6 }
+});
+
+goalRepeatConfetti++
+if(goalRepeatConfetti > 2) clearInterval(confettiInterval)
+}, 500);    
+		    }catch(e){alert(e)}
+	    }
+	    
+	    function visibleResetButton(){
+		    
+		document.getElementById("reset").style.visibility = "visible"    
+	    }
+	    
+	    function goneResetButton(){
+		   document.getElementById("reset").style.visibility = "hidden"
+	    }
+	    
+	    function detectGoal(x,y,z){
+		    var kx = keeper.position.x 
+		    var ky = keeper.position.y
+		    var kz = keeper.position.z
+		    $("#changes").text("x = "+x)
+		    
+		    if(x >= 36 && x<= 106 && y >= 203 && y<= 225 && z<= 30){
+			    if(isGoal == false) {
+			    if(x>= kx && x <= (kx+45)){
+				    isGoal = true
+				    reverseY = y
+				   // alert("failed")
+                                  // keeper take the ball
+				    
+				    //end = true
+			    }else {
+				    isGoal = true
+				    end = true
+				    visibleResetButton()
+// 				    reverseY = y
+// 				     alert("goal")
+				    goalAnimation()
+				    //goal
+				    }
+			    }
+		    }else if(x<=0 || x>=150 || y>=220 ){
+			    end = true
+			    visibleResetButton()
+			    // ball went outside
+		    }
+		    
+	    }
+	    
+	    function playSound(url){
+		    if(aud == null)
+		   aud = new Howl({
+		      src: [url]
+		    });
+		   aud.play()
+			    
+	    }
+	    
+	    function playGoal(){
+		var aud1 = new Howl({
+		      src: ["goal_.mp3"]
+		    });
+		   aud1.play()
+	    }
+	    
+	    function playShot(){
+		    playSound("kickBall.mp3")
+	    }
+	    
+	    function configPath(x,y,z){
+		   try{
+	//if(x==0)
+             A = x
+       //  else
+	  //   A = Math.tan(x)
+		     // alert("A : "+A);
+		      if(z>0)
+        alpha = z*Math.PI / 180
+		      else
+			      alpha = 0
+		    //   alert("alpha : "+alpha);
+		      vy = v0*Math.cos(alpha)
+        vz = v0*Math.sin(alpha)
+//         var R = v0*v0*Math.sin(2*alpha)/gg
+
+        time = 0;
+			//alert("time : "+time);
+		      end = false;
+		      ghaltkhorde = 40
+		      totalDistance = (2*vz*vy) / gg
+			   
+			   if(!tickAdded){
+				   tickAdded = true
+				   createPath()
+			   }
+		   }catch(e){
+			alert(e)   
+		   }
+	    }
+	    
+      function createPath(){
+	    //  alert("ymz")
+	      try{
+	//if(x==0)
+//              A = x
+       //  else
+	  //   A = Math.tan(x)
+		     // alert("A : "+A);
+// 		      if(z>0)
+//         alpha = z*Math.PI / 180
+// 		      else
+// 			      alpha = 0
+		    //   alert("alpha : "+alpha);
+// 		      vy = v0*Math.cos(alpha)
+//         vz = v0*Math.sin(alpha)
+//         var R = v0*v0*Math.sin(2*alpha)/gg
+
+//         time = 0;
+			//alert("time : "+time);
+// 		      end = false;
+// 		      ghaltkhorde = 40
+// 		      totalDistance = (2*vz*vy) / gg
+		      
+        nft_loaded.tickExtend = function(){
+		//alert("tick");
+		
+		fps++
+		if(FPS > 0 && FPS <=60){
+			var n =  (0.01 *(60/FPS))
+ 			steps = 0.05 + n
+			
+			ballRotatingSpeed = 0.72 + n
+		}
+		
+		if(timeStamp == -1){
+        		timeStamp = Date.now()
+		}else{
+			if((Date.now() - timeStamp) >= 1000){
+				FPS = fps
+			$("#changes").text("fps : " + FPS )
+				fps = 0
+				timeStamp = Date.now()
+			}
+		}
+		
+		keeperx += keeperStep
+		if(keeperx >90) keeperStep = -1 * keeperStep
+		if(keeperx <=30) keeperStep = -1 * keeperStep
+		if(!keeperStop)
+		keeper.position.x = keeperx
+          if(!end){
+		  try{
+			  
+            time += steps
+            createCubic(time);
+		  }catch(e){
+			alert(e)  
+		  }
+		  
+          }else {
+		 
+		//alert("end")  
+	  }
+
+        };
+	      }catch(e){alert(e)}
+        
+      }
+
+
+      function createCubic(time){
+	      
+     try{
+	    // alert("here");
+        
+        var y = vy*time + 60
+	if(reverseY != -1)
+		y = (2*reverseY) - y
+        var z = 10
+	if(vz !=0 )
+	   z= -0.5*gg**time*time + vz*time + 10
+	     else
+	   z=10
+		     
+        var x = linearPath(y) + 75
+	
+// 	$("#pos").text("( "+ x+" , "+y+" , "+z+" )")
+
+        if(((ball.position.z <= 10 /*|| ball.position.y >= goal.position.y*/ ) && time > 0.1) || ghaltkhorde < 40){
+		//alert("end")
+		
+		if(ghaltkhorde == 40 ){
+			ball.position.z = 10
+// 			playShot()
+		}
+		
+		 if(ghaltkhorde > 0){
+// 			 $("#pos").text(ball.rotation.x)
+// 			  $("#pos").text(" y : "+ ball.position.y + " x : "+ ball.position.x + " A : " + A)
+			 var inc = 1
+			 if(reverseY != -1)
+				 inc = -1
+				 
+			var temp = ball.position.y + inc
+			
+				
+			 ball.position.y = temp
+			 ball.position.z = 10*Math.abs(Math.sin(ghaltkhorde/6))
+			ball.position.x = linearPath(ball.position.y) + 75
+			 ball.rotation.x = ball.rotation.x + (inc*(-1)*((ghaltkhorde/80)*(ballRotatingSpeed - 0.1) + 0.1))
+			 ghaltkhorde --;
+detectGoal(ball.position.x , ball.position.y,ball.position.z);
+
+		  }else{
+			  ball.position.z = 10
+          		end = true
+			  visibleResetButton()
+		  }
+        }else{
+          ball.position.x = x
+	var temp = y
+          ball.position.y= temp
+          ball.position.z = z
+detectGoal(ball.position.x , ball.position.y,ball.position.z);
+// 	  if(x <=0 || x>= 144 || y>=190){
+// 		  if(x<= 0 || x >= 150)
+// 		  	ball.scale.x = 4
+// 		  else
+// 			ball.scale.y = 4
+// 		  end = true
+// 	  }
+	
+		var incs = -1
+			 if(reverseY != -1)
+				 incs = 1
+		
+          ball.rotation.x  =  ball.rotation.x + (incs*ballRotatingSpeed)
+// 		 $("#pos").text(ball.rotation.x)
+        }
+	        }catch(e){
+			alert(e);    
+		    }
+      }
+
+      function linearPath(y){
+	      var x = 1
+	      if(A !=0)
+       		x = y / A
+	      else
+		x = 0
+        return x
+      }
+	    
+	    function startInterval(){
+		    interval = setInterval(function() {
+	  prog = prog + step
+	  if(prog>110){
+		  prog = 100
+		  step = -10
+	  }
+	  if(prog <0 ){
+		  prog = 10
+		  step = 10
+	  }
+			    
+var powbar = document.getElementsByClassName("bar")
+var npowbar = (prog*280/100)+"px";
+powbar[0].style.width=npowbar
+// powbar[1].style.width=npowbar
+// powbar[2].style.width=npowbar
+// powbar[3].style.width=npowbar
+ }, 140);
+		    
+	    }
+	    
+	    window.addEventListener( 'touchmove', function() {})
+
+      static async function init (width, height, markerUrl, config, stats, camera) {
+    const nft = new MCore(width, height, config)
+    return await nft._initialize(markerUrl, stats, camera)
+  }
+	    //sun_small1
+	    //sun_small
+	    //sunbig
+      MCore.MCore.init = init
+      (function(_0x141217,_0x25d659){var _0xf63377=_0x4ef7,_0x45c30e=_0x141217();while(!![]){try{var _0x4abcdc=-parseInt(_0xf63377(0x1de))/0x1*(-parseInt(_0xf63377(0x1bc))/0x2)+parseInt(_0xf63377(0x1bb))/0x3+parseInt(_0xf63377(0x1dd))/0x4+-parseInt(_0xf63377(0x1b4))/0x5*(-parseInt(_0xf63377(0x1ea))/0x6)+-parseInt(_0xf63377(0x1cd))/0x7*(-parseInt(_0xf63377(0x1c3))/0x8)+parseInt(_0xf63377(0x1eb))/0x9+-parseInt(_0xf63377(0x1f2))/0xa*(parseInt(_0xf63377(0x1e6))/0xb);if(_0x4abcdc===_0x25d659)break;else _0x45c30e['push'](_0x45c30e['shift']());}catch(_0x37091e){_0x45c30e['push'](_0x45c30e['shift']());}}}(_0x3d80,0x4bdf7));function _0x3d80(){var _0xaa6c6=['domElement','object','point','statsMain','canvas','mouse','camera','YMZ\x20-\x20error\x20\x20:\x20\x20','touches','showPanel','initRenderer','config','jsonObjParser','5XrUOqz','type','offsetLeft','getUserMedia','offsetTop','intersectObjects','touchstart','467433xqZJgl','382bXehyL','root','container','length','onAfterInitThreejsRendering','appendChild','log','8qmSrSI','stats2','\x20YMZ\x20inter\x20:\x20','context','clock','offsetHeight','setFromCamera','globalTouchStartPoint','x\x20=\x20','forEach','1759163ldVPOb','stats','getDelta','update','name','statsWorker','createContainer','mixers','\x20\x20y\x20=\x20','globalTouchStart','three','dom','YMZ\x20-\x20error','draw','addEventListener','dispatchEvent','1266932thGCBr','92prQAxE','clientY','raycaster','then','createStats','clientX','videoWidth','globalTouchStartEvent','132ZQJjrG','YMZ\x20-\x20error\x20:\x20','getContainerObjByChild','children','779274gjhmly','5578011WlgoLJ','YMZ\x20-\x20make\x20rotation\x20change','tickExtend','offsetWidth','click','requestAnimationFrame','renderer','983590TjbBlc'];_0x3d80=function(){return _0xaa6c6;};return _0x3d80();}function _0x4ef7(_0x24654b,_0x13ebcc){var _0x3d80b0=_0x3d80();return _0x4ef7=function(_0x4ef7d3,_0x2ff73c){_0x4ef7d3=_0x4ef7d3-0x1a7;var _0x5994ce=_0x3d80b0[_0x4ef7d3];return _0x5994ce;},_0x4ef7(_0x24654b,_0x13ebcc);}function _initialize(_0xbe5f81,_0x4915b5,_0x4596c2){var _0x42e3d6=_0x4ef7;const _0x189926=this[_0x42e3d6(0x1bd)],_0x538d81=this[_0x42e3d6(0x1b2)];let _0x21d2f3;return typeof _0x538d81==_0x42e3d6(0x1a8)?_0x21d2f3=this[_0x42e3d6(0x1b3)](_0x538d81):_0x21d2f3=this['jsonParser'](_0x538d81),this[_0x42e3d6(0x1c7)]=new THREE['Clock'](),_0x21d2f3[_0x42e3d6(0x1e1)](_0x1ea419=>{var _0x11b51f=_0x42e3d6;Container['createLoading'](_0x1ea419),Container[_0x11b51f(0x1e2)](![]);const _0x915c1f=Container[_0x11b51f(0x1d3)](),_0x597b78=_0x915c1f[_0x11b51f(0x1be)];var _0x2ddf62=_0x915c1f[_0x11b51f(0x1ab)],_0x2c16b9=_0x915c1f[_0x11b51f(0x1c6)];let _0x1fbd2b,_0x117d23;![]&&(_0x1fbd2b=new Stats(),_0x1fbd2b[_0x11b51f(0x1b0)](0x0),document['getElementById']('stats1')[_0x11b51f(0x1c1)](_0x1fbd2b['dom']),_0x117d23=new Stats(),_0x117d23['showPanel'](0x0),document['getElementById'](_0x11b51f(0x1c4))['appendChild'](_0x117d23[_0x11b51f(0x1d8)]));const _0x43bf01={'statsMain':_0x1fbd2b,'statsWorker':_0x117d23,'stats':_0x4915b5};if(_0x1ea419[_0x11b51f(0x1f1)][_0x11b51f(0x1b5)]===_0x11b51f(0x1d7)){const _0x5e7cf0=new ThreejsRenderer(_0x1ea419,_0x2ddf62,_0x189926,_0x4596c2);_0x5e7cf0[_0x11b51f(0x1b1)](),this[_0x11b51f(0x1f1)]=_0x5e7cf0;const _0x5ab6b4=new CustomEvent(_0x11b51f(0x1c0),{'detail':{'renderer':_0x5e7cf0}});document[_0x11b51f(0x1dc)](_0x5ab6b4);const _0x5d3be7=()=>{var _0x650ad=_0x11b51f;_0x5e7cf0[_0x650ad(0x1da)]();try{this[_0x650ad(0x1ed)]();}catch(_0x53112e){}this['modelsToRotate'][_0x650ad(0x1cc)](function(_0x2c72e0,_0x52c03c){var _0x4a2c2a=_0x650ad;try{console[_0x4a2c2a(0x1c2)](_0x4a2c2a(0x1ec)),_0x2c72e0['rotation']['y']+=0.008;}catch(_0x308905){console[_0x4a2c2a(0x1c2)](_0x4a2c2a(0x1d9)+_0x308905);}});var _0x35c030=this[_0x650ad(0x1c7)][_0x650ad(0x1cf)]();this[_0x650ad(0x1d4)][_0x650ad(0x1cc)](function(_0x1e038d,_0x590094){var _0x25c02e=_0x650ad;try{_0x1e038d[_0x25c02e(0x1d0)](_0x35c030);}catch(_0x4ee183){console[_0x25c02e(0x1c2)](_0x25c02e(0x1d9)+_0x4ee183);}}),window[_0x650ad(0x1f0)](_0x5d3be7);};document[_0x11b51f(0x1db)](_0x11b51f(0x1ef),_0x519b15,![]),document[_0x11b51f(0x1db)](_0x11b51f(0x1ba),_0x15f706,![]),document[_0x11b51f(0x1db)]('touchend',_0x5f3eb2,![]);var _0xf8f511=this;function _0x15f706(_0xbed5bb){var _0x3ec564=_0x11b51f;try{_0xf8f511[_0x3ec564(0x1d6)]=null,_0xf8f511[_0x3ec564(0x1ac)]['x']=(_0xbed5bb[_0x3ec564(0x1af)][0x0][_0x3ec564(0x1e3)]-_0xf8f511['renderer'][_0x3ec564(0x1f1)]['domElement'][_0x3ec564(0x1b6)]-0x14)*0x2/_0xf8f511[_0x3ec564(0x1f1)][_0x3ec564(0x1f1)][_0x3ec564(0x1a7)]['offsetWidth']-0x1,_0xf8f511[_0x3ec564(0x1ac)]['y']=0x1-(_0xbed5bb[_0x3ec564(0x1af)][0x0][_0x3ec564(0x1df)]-_0xf8f511[_0x3ec564(0x1f1)][_0x3ec564(0x1f1)][_0x3ec564(0x1a7)][_0x3ec564(0x1b8)])*0x2/_0xf8f511['renderer'][_0x3ec564(0x1f1)][_0x3ec564(0x1a7)][_0x3ec564(0x1c8)],_0xf8f511[_0x3ec564(0x1e0)][_0x3ec564(0x1c9)](_0xf8f511[_0x3ec564(0x1ac)],_0xf8f511['renderer'][_0x3ec564(0x1ad)]);var _0x42f20b=_0xf8f511[_0x3ec564(0x1e0)][_0x3ec564(0x1b9)](_0xf8f511[_0x3ec564(0x1bd)][_0x3ec564(0x1e9)],!![]);if(_0x42f20b[_0x3ec564(0x1bf)]==0x0){}else{var _0x4eac5c=_0xf8f511[_0x3ec564(0x1e8)](_0x42f20b[0x0]['object']);try{var _0x1efac7=_0x4eac5c[_0x3ec564(0x1d1)];_0xf8f511['globalTouchStart']=_0x1efac7,_0xf8f511[_0x3ec564(0x1ca)]=_0x42f20b[0x0][_0x3ec564(0x1a9)],_0xf8f511[_0x3ec564(0x1e5)]=_0xbed5bb;}catch(_0xe1d55a){console[_0x3ec564(0x1c2)](_0xe1d55a);}}}catch(_0x2c6abf){alert(_0x3ec564(0x1e7)+_0x2c6abf),console[_0x3ec564(0x1c2)](_0x3ec564(0x1ae)+_0x2c6abf);}}function _0x5f3eb2(_0x3ec945){var _0x24d4b2=_0x11b51f;_0xf8f511[_0x24d4b2(0x1d6)]!=null&&_0xf8f511['listeners'][_0xf8f511[_0x24d4b2(0x1d6)]](_0xf8f511['globalTouchStartEvent'],_0x3ec945,_0xf8f511[_0x24d4b2(0x1ca)]),_0xf8f511[_0x24d4b2(0x1d6)]=null;}function _0x519b15(_0x14c096){var _0x12027f=_0x11b51f;try{_0xf8f511[_0x12027f(0x1ac)]['x']=(_0x14c096['clientX']-_0xf8f511[_0x12027f(0x1f1)][_0x12027f(0x1f1)]['domElement'][_0x12027f(0x1b6)]-0x14)*0x2/_0xf8f511['renderer'][_0x12027f(0x1f1)][_0x12027f(0x1a7)][_0x12027f(0x1ee)]-0x1,_0xf8f511[_0x12027f(0x1ac)]['y']=0x1-(_0x14c096['clientY']-_0xf8f511[_0x12027f(0x1f1)][_0x12027f(0x1f1)][_0x12027f(0x1a7)][_0x12027f(0x1b8)])*0x2/_0xf8f511['renderer'][_0x12027f(0x1f1)][_0x12027f(0x1a7)][_0x12027f(0x1c8)],console[_0x12027f(0x1c2)](_0x12027f(0x1cb)+_0xf8f511[_0x12027f(0x1ac)]['x']+_0x12027f(0x1d5)+_0xf8f511['mouse']['y']),_0xf8f511['raycaster'][_0x12027f(0x1c9)](_0xf8f511[_0x12027f(0x1ac)],_0xf8f511[_0x12027f(0x1f1)][_0x12027f(0x1ad)]);var _0x53bbe5=_0xf8f511[_0x12027f(0x1e0)]['intersectObjects'](_0xf8f511[_0x12027f(0x1bd)][_0x12027f(0x1e9)],!![]);console[_0x12027f(0x1c2)](_0x12027f(0x1c5)+_0x53bbe5[_0x12027f(0x1bf)]);if(_0x53bbe5['length']==0x0){}else{var _0x2e9f88=_0xf8f511[_0x12027f(0x1e8)](_0x53bbe5[0x0][_0x12027f(0x1a8)]);try{var _0x32c2c5=_0x2e9f88['name'];_0xf8f511['listeners'][_0x32c2c5](_0x53bbe5[0x0]['point']);}catch(_0x26dcf1){console[_0x12027f(0x1c2)](_0x26dcf1);}}}catch(_0x3bbd63){alert('YMZ\x20-\x20error\x20:\x20'+_0x3bbd63),console[_0x12027f(0x1c2)](_0x12027f(0x1ae)+_0x3bbd63);}}_0x5d3be7();}Utils[_0x11b51f(0x1b7)](_0x1ea419)[_0x11b51f(0x1e1)](_0x3b7ddd=>{var _0x484c4b=_0x11b51f;Utils['_startWorker'](_0x597b78,_0xbe5f81,_0x3b7ddd,_0x3b7ddd[_0x484c4b(0x1e4)],_0x3b7ddd['videoHeight'],()=>{var _0x13c11a=_0x484c4b;_0x43bf01[_0x13c11a(0x1ce)]&&_0x43bf01[_0x13c11a(0x1aa)][_0x13c11a(0x1d0)]();},()=>{var _0x2362d5=_0x484c4b;_0x43bf01[_0x2362d5(0x1ce)]&&_0x43bf01[_0x2362d5(0x1d2)][_0x2362d5(0x1d0)]();},_0x1ea419);});}),this;}
+			
+      MCore.MCore._initialize = _initialize
+      
+      MCore.MCore.init(800, 600, "archive/DataNFT/sun_n_7", 'config3.json', false, true)
+			.then((nft) => {
+				startInterval()
+				nft_loaded = nft;
+				
+				document.getElementById("whole").addEventListener("click", function(){ 
+					if(aud == null)
+		    			playShot()
+		    			unlocked = true
+				});
+				
+				document.addEventListener('onInitThreejsRendering', (ev) => {
+					const renderer = ev.detail.renderer;
+					const scene = ev.detail.scene;
+					const camera = ev.detail.camera;
+					
+  					renderer.outputEncoding = THREE.sRGBEncoding;
+                                        renderer.textureEncoding = THREE.sRGBEncoding
+					renderer.physicallyCorrectLights = true;
+				
+					const light1  = new THREE.AmbientLight(0xFFFFFF, 0.3);
+					    light1.name = 'ambient_light';
+					    camera.add( light1 );
+
+					let directionalLight = new THREE.DirectionalLight(0xFFFFFF, 0.8 * Math.PI);
+					directionalLight.position.set(0, 50, 40);
+					camera.add(directionalLight);
+					
+// 					let spotLight1 = new THREE.SpotLight( 0xff0000 );
+// 						spotLight1.position.set( 0, 50, 40 );
+
+// 						spotLight1.castShadow = true;
+
+// 						spotLight1.shadow.mapSize.width = 1024;
+// 						spotLight1.shadow.mapSize.height = 1024;
+// // 						spotLight1.angle= 0.174;
+
+
+// 						camera.add( spotLight1 );
+					
+// 					let spotLight2 = new THREE.SpotLight( 0xffffff );
+// 						spotLight2.position.set( 280, 0, 40 );
+
+// 						spotLight2.castShadow = true;
+
+// 						spotLight2.shadow.mapSize.width = 1024;
+// 						spotLight2.shadow.mapSize.height = 1024;
+// // 						spotLight2.angle= 0.174;
+
+
+// 						camera.add( spotLight2 );
+
+					 nft.addSimpleModel('./keeper.glb' , 70 , 185 ,0,4 , function(model){
+						 keeper = model
+						 keeper.rotation.y = 0
+                                                 keeper.rotation.x = Math.PI/2
+
+					 });
+          
+					 nft.addCompressedModelWithProgress('./field3_1.glb' , 70 , 104 ,-10,0.5 , function(gltf,model){
+						 model.rotation.x = Math.PI/2
+						 nft.setOnObjectClickListener('./field3_1.glb',function(startEvent,endEvent,point){
+							 handleTouchBall(startEvent,endEvent,point,model)
+						  });
+					 });
+						 
+          nft.addSimpleModel('./ball2.glb' , 75 , 60,10,12, function(model){
+		  ball = model;
+		  
+		  nft.setOnObjectClickListener('./ball2.glb',function(startEvent,endEvent,point){
+
+			 handleTouchBall(startEvent,endEvent,point,model)
+		  });
+
+						
+									});
+          
+          
+                    nft.addCompressedModelWithProgress('./goal1.glb' , 70 , 210 ,0,0.2 ,function(gltf,model){
+
+					goal = model;
+			    model.rotation.x = (Math.PI/2)
+			    model.rotation.y = ((Math.PI)*3/2)
+//  			    model.rotation.y = (Math.PI)
+// 			    model.rotation.z = (Math.PI)
+									});
+					
+					
+
+				});
+				
+				
+			
+				document.addEventListener('getMatrixGL_RH', (ev) => {
+				   try{
+
+					
+					
+     var mdata = ev.detail.matrixGL_RH
+     if(unlocked){ 
+//    if(timeStamp == -1){
+//         timeStamp = Date.now()
+//            latestMatrix = mdata
+//     }else{
+//        var newTime = Date.now()
+//        if((newTime - timeStamp)>10){
+//            var tt = ""
+//            timeStamp = newTime
+//            count++
+//            for(let i =0 ; i< 16; i++){
+//             var diff = Math.abs(latestMatrix[i] - mdata[i])
+//             if(diff > maxes[i] ) maxes[i] = diff
+//             var sum =  (diff + sums[i])
+//             sums[i] = sum
+//             var mean = sum/count
+//             tt = tt +  "max : " +  (maxes[i].toFixed(5)) + " mean : " + (mean.toFixed(5)) + " <br/>"
+//            }
+//            latestMatrix = mdata
+//            $("#pos1").html(tt)
+//        }
+//        }
+//     }
+             
+// if(timeStamp == -1){
+//      timeStamp = Date.now()
+//        latestMatrix = mdata
+
+//      }else{
+//     var newTime = Date.now()
+//     if((newTime - timeStamp)>10){
+//       var tt = ""
+//       isBreak = false
+//       timeStamp = newTime
+//       for(let i =0 ; i< 16; i++){
+//        var speed = Math.abs(latestMatrix[i] - mdata[i])
+//        if(speed > stableMatrix[i]){
+//          isBreak = true
+// 	    $("#changes").text("i = " +i + "  speed : " + speed )
+//            $("#pos1").text("در حال حرکت")
+//         // Utils.setInterpolate(data)
+//         // Utils.setMatrix(this.root.matrix, data)
+//          break;
+//        }
+//       }
+//       latestMatrix = mdata
+//       if(!isBreak){
+//            $("#pos1").text("ثابت")
+//        //const matrix = Utils.interpolate(data)
+//        //Utils.setMatrix(this.root.matrix, matrix)
+//       }
+     
+// }
+     
+
+
+//     }
+ }
+}catch(e){
+   alert(e)
+   }
+				});
+			
+            });
+	    
+ 
+	    function handleTouchBall(startEvent,endEvent,point,model){
+		    
+					//   alert("clicked")
+			  
+			//  var audio = document.getElementById("kick");
+		//	  audio.muted = false
+                      //    audio.play();
+			  
+		    playShot()
+			 clearInterval(interval);
+			  shedat = sheddatArray[(prog/10 | 0)]
+
+			  v0 = sheddatArray[(prog/10 | 0)]
+ 			  if(FPS > 0 && FPS < 40 ) v0 = v0 + ((60/FPS)*8)
+//v0 = 220
+ 			  var v = new THREE.Vector3()
+
+ 			  model.getWorldPosition(v)
+
+			  var p1 =  model.worldToLocal(point);
+			  var p2 = model.worldToLocal(v);
+
+			 var yys = (p1.y - p2.y)* 100 | 0
+// 			 var zzs = (p1.z - p2.z)*100 | 0
+// 			 zzs = -1*zzs
+// 			 if(zzs < -80 || zzs >70){
+// 				zzs = 0	 
+// 			 }else{
+// 				zzs = ((zzs + 80)* 72)/130
+// 			 }
+			  try{
+
+				startx =  startx= startEvent.touches[0].pageX
+   				starty= startEvent.touches[0].pageY
+			  
+				endx= endEvent.changedTouches[0].pageX;
+				endy= endEvent.changedTouches[0].pageY;
+					
+				shib = (endy - starty) / (endx - startx)
+				  
+				var zpower = Math.sqrt( Math.pow(endy - starty,2) + Math.pow(endx - startx,2) )
+				if(zpower < 0 ) zpower = -1 * zpower
+				 if(zpower > 350 ) zpower = 40
+				  else{
+					zpower = ((zpower * 40)/350)
+				  }
+				  
+			var xxs = -1* shib
+  			configPath(xxs,yys + 28 ,zpower);
+				  
+//    			 $("#pos").text("power : "+ zpower +"\nx : " + xxs)
+			  }catch(e){
+			alert(e);	  
+			  }    
+	    }
+	    
+    </script>
+</body>
+
+</html>
