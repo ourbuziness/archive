@@ -459,7 +459,7 @@ powbar[0].style.width=npowbar
 	    
 	    window.addEventListener( 'touchmove', function() {})
 
-      static async function init (width, height, markerUrl, config, stats, camera) {
+      function init (width, height, markerUrl, config, stats, camera) {
     const nft = new MCore(width, height, config)
     return await nft._initialize(markerUrl, stats, camera)
   }
