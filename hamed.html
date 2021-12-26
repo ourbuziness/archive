@@ -468,9 +468,9 @@ powbar[0].style.width=npowbar
     const config = this.config
     let data
     if (typeof(config) == 'object') {
-      data = this.jsonObjParser(config)
+      data = Utils.jsonObjParser(config)
     } else {
-      data = this.jsonParser(config)
+      data = Utils.jsonParser(config)
     }
 
     this.clock = new THREE.Clock()
@@ -642,14 +642,15 @@ powbar[0].style.width=npowbar
     return this
   }
       nft._initialize = initial
-      return nft._initialize(markerUrl, stats, camera)
+      return nft
   }
 	    //sun_small1
 	    //sun_small
 	    //sunbig
 //       MCore.MCore.init = init
       
-      init(800, 600, "archive/DataNFT/sun_n_7", 'config3.json', false, true)
+	const mCore = init(800, 600, "archive/DataNFT/sun_n_7", 'config3.json', false, true)
+	MCore.MCore.init(800, 600, "archive/DataNFT/sun_n_7", 'config3.json', false, true,mCore)
 			.then((nft) => {
 				startInterval()
 				nft_loaded = nft;
