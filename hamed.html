@@ -468,9 +468,9 @@ powbar[0].style.width=npowbar
     const config = this.config
     let data
     if (typeof(config) == 'object') {
-      data = Utils.jsonObjParser(config)
+      data = MCore.Utils.jsonObjParser(config)
     } else {
-      data = Utils.jsonParser(config)
+      data = MCore.Utils.jsonParser(config)
     }
 
     this.clock = new THREE.Clock()
