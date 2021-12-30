@@ -464,8 +464,112 @@ powbar[0].style.width=npowbar
 	    
      MCore.MCore.MCoring = async function(){
 	const core = new MCore.MCore(800, 600,'config3.json')
+	core.createRenderer = function(){
+		
+	const setRendererEvent = new CustomEvent('onAfterInitThreejsRendering', { detail: { renderer: this.renderer } })
+      document.dispatchEvent(setRendererEvent)
+      const tick = () => {
+        this.renderer.draw()
+        try{
+        this.tickExtend()
+        }catch(e){
+            // alert(e)
+        }
+
+        var delta = this.clock.getDelta();
+        this.mixers.forEach(function (item,index){
+          try{
+            item.update( delta );
+          }catch(e){
+            // console.log("YMZ - error" + e)
+          }
+        });
+
+        window.requestAnimationFrame(tick)
+      }
+
+      document.addEventListener( 'click', onClick, false );
+      document.addEventListener( 'touchstart', onTouchStart, false );
+      document.addEventListener( 'touchend', onTouchEnd, false );
+
+      var _self = this
+
+      function onTouchStart(event){
+        try{
+
+        _self.globalTouchStart = null
+        _self.mouse.x = (((event.touches[0].clientX - _self.renderer.renderer.domElement.offsetLeft - 20) * 2)/_self.renderer.renderer.domElement.offsetWidth) -1 ;
+        _self.mouse.y = 1 - (((event.touches[0].clientY - _self.renderer.renderer.domElement.offsetTop) * 2)/_self.renderer.renderer.domElement.offsetHeight)
+        
+
+        _self.raycaster.setFromCamera( _self.mouse, _self.renderer.camera );
+        var intersects = _self.raycaster.intersectObjects( _self.root.children, true );
+    
+        if(intersects.length == 0){
+        }else{
+          var containerObject = _self.getContainerObjByChild(intersects[0].object)
+          try{
+          var found = containerObject.name
+          _self.globalTouchStart = found
+          _self.globalTouchStartPoint = intersects[0].point
+          _self.globalTouchStartEvent = event
+          }catch(e){
+            // console.log(e)
+          }
+        }
+      }catch(e){
+        // alert("YMZ - error : " +e )
+        // console.log("YMZ - error  :  "+ e)
+      }
+      }
+
+
+      function onTouchEnd(event){
+          if(_self.globalTouchStart != null){
+            _self.listeners[_self.globalTouchStart](_self.globalTouchStartEvent , event ,_self.globalTouchStartPoint)
+          }
+
+          _self.globalTouchStart = null
+      }
+
+      
+      function onClick(event){
+      try{
+        _self.mouse.x = (((event.clientX - _self.renderer.renderer.domElement.offsetLeft - 20) * 2)/_self.renderer.renderer.domElement.offsetWidth) -1 ;
+        _self.mouse.y = 1 - (((event.clientY - _self.renderer.renderer.domElement.offsetTop) * 2)/_self.renderer.renderer.domElement.offsetHeight)
+        
+        // console.log("x = " + _self.mouse.x + "  y = " + _self.mouse.y)
+        _self.raycaster.setFromCamera( _self.mouse, _self.renderer.camera );
+        var intersects = _self.raycaster.intersectObjects( _self.root.children, true );
+    
+        // console.log(" YMZ inter : " + intersects.length)
+        if(intersects.length == 0){
+        }else{
+          var containerObject = _self.getContainerObjByChild(intersects[0].object)
+          try{
+          var found = containerObject.name
+          _self.listeners[found](intersects[0].point)
+          }catch(e){
+            console.log(e)
+          }
+          // container = getContainerObjByChild(intersects[0].object)
+          // console.log("YAZAHRA :   " + this.container)
+          // console.log("YAZAHRA :   " + this.container.name)
+          // alert(container.name)
+        }
+      }catch(e){
+        // alert("YMZ - error : " +e )
+        // console.log("YMZ - error  :  "+ e)
+      }
+      }
+
+      tick()	
+		
+	}
 	return core._initialize("archive/DataNFT/sun_n_7", false, true)
      }
+	    
+
 	    
 	    
 	  MCore.MCore.MCoring().then((nft) => {
