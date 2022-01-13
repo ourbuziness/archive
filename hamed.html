@@ -466,27 +466,6 @@ powbar[0].style.width=npowbar
 	const core = new MCore.MCore(800, 600,'config3.json')
 	core.createRenderer = function(){
 		
-	const setRendererEvent = new CustomEvent('onAfterInitThreejsRendering', { detail: { renderer: this.renderer } })
-      document.dispatchEvent(setRendererEvent)
-      const tick = () => {
-        this.renderer.draw()
-        try{
-        this.tickExtend()
-        }catch(e){
-            // alert(e)
-        }
-
-        var delta = this.clock.getDelta();
-        this.mixers.forEach(function (item,index){
-          try{
-            item.update( delta );
-          }catch(e){
-            // console.log("YMZ - error" + e)
-          }
-        });
-
-        window.requestAnimationFrame(tick)
-      }
 
       document.addEventListener( 'click', onClick, false );
       document.addEventListener( 'touchstart', onTouchStart, false );
